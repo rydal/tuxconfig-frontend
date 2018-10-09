@@ -56,9 +56,11 @@ NotebookGUI.o: ../NotebookGUI.cpp ../NotebookGUI.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qvariant.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qmap.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qhash.h \
- /usr/include/x86_64-linux-gnu/qt5/QtCore/qshareddata.h \
- /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QtWidgets \
- /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QtWidgetsDepends \
+ /usr/include/x86_64-linux-gnu/qt5/QtCore/qshareddata.h ../device.h \
+ ../GetOS.h ../GetHistory.h ../GetRemoteConfig.h ../GetLocalDevices.h \
+ ../compare.h ../RestoreTab.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtGui/QtGui \
+ /usr/include/x86_64-linux-gnu/qt5/QtGui/QtGuiDepends \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/QtCore \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/QtCoreDepends \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qabstractanimation.h \
@@ -271,8 +273,6 @@ NotebookGUI.o: ../NotebookGUI.cpp ../NotebookGUI.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qversionnumber.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qxmlstream.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qtcoreversion.h \
- /usr/include/x86_64-linux-gnu/qt5/QtGui/QtGui \
- /usr/include/x86_64-linux-gnu/qt5/QtGui/QtGuiDepends \
  /usr/include/x86_64-linux-gnu/qt5/QtGui/qaccessible.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qrect.h \
  /usr/include/x86_64-linux-gnu/qt5/QtGui/qcolor.h \
@@ -446,6 +446,9 @@ NotebookGUI.o: ../NotebookGUI.cpp ../NotebookGUI.h \
  /usr/include/x86_64-linux-gnu/qt5/QtGui/qvalidator.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qregularexpression.h \
  /usr/include/x86_64-linux-gnu/qt5/QtGui/qtguiversion.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QtWidgets \
+ /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QtWidgetsDepends \
+ /usr/include/x86_64-linux-gnu/qt5/QtGui/QtGui \
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qaccessiblewidget.h \
  /usr/include/x86_64-linux-gnu/qt5/QtGui/qaccessibleobject.h \
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qcolordialog.h \
@@ -625,9 +628,8 @@ NotebookGUI.o: ../NotebookGUI.cpp ../NotebookGUI.h \
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtoolbox.h \
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtoolbutton.h \
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtwidgetsversion.h \
- ../device.h ../GetOS.h ../GetHistory.h ../GetRemoteConfig.h \
- ../GetLocalDevices.h ../compare.h ../RestoreTab.h ../DefaultTab.h \
- ../ConsoleTab.h /usr/include/x86_64-linux-gnu/qt5/QtGui/QKeySequence \
+ ../DefaultTab.h ../ConsoleTab.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtGui/QKeySequence \
  ../ContributorTab2.h ../HTTPDownloader.hpp
 
 ../NotebookGUI.h:
@@ -748,9 +750,23 @@ NotebookGUI.o: ../NotebookGUI.cpp ../NotebookGUI.h \
 
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qshareddata.h:
 
-/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QtWidgets:
+../device.h:
 
-/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QtWidgetsDepends:
+../GetOS.h:
+
+../GetHistory.h:
+
+../GetRemoteConfig.h:
+
+../GetLocalDevices.h:
+
+../compare.h:
+
+../RestoreTab.h:
+
+/usr/include/x86_64-linux-gnu/qt5/QtGui/QtGui:
+
+/usr/include/x86_64-linux-gnu/qt5/QtGui/QtGuiDepends:
 
 /usr/include/x86_64-linux-gnu/qt5/QtCore/QtCore:
 
@@ -1176,10 +1192,6 @@ NotebookGUI.o: ../NotebookGUI.cpp ../NotebookGUI.h \
 
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qtcoreversion.h:
 
-/usr/include/x86_64-linux-gnu/qt5/QtGui/QtGui:
-
-/usr/include/x86_64-linux-gnu/qt5/QtGui/QtGuiDepends:
-
 /usr/include/x86_64-linux-gnu/qt5/QtGui/qaccessible.h:
 
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qrect.h:
@@ -1525,6 +1537,12 @@ NotebookGUI.o: ../NotebookGUI.cpp ../NotebookGUI.h \
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qregularexpression.h:
 
 /usr/include/x86_64-linux-gnu/qt5/QtGui/qtguiversion.h:
+
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QtWidgets:
+
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QtWidgetsDepends:
+
+/usr/include/x86_64-linux-gnu/qt5/QtGui/QtGui:
 
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qaccessiblewidget.h:
 
@@ -1883,20 +1901,6 @@ NotebookGUI.o: ../NotebookGUI.cpp ../NotebookGUI.h \
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtoolbutton.h:
 
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtwidgetsversion.h:
-
-../device.h:
-
-../GetOS.h:
-
-../GetHistory.h:
-
-../GetRemoteConfig.h:
-
-../GetLocalDevices.h:
-
-../compare.h:
-
-../RestoreTab.h:
 
 ../DefaultTab.h:
 

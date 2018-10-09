@@ -23,7 +23,6 @@
 #include <boost/regex.hpp>
 #include <unistd.h>
 #include <stdlib.h>
-#include <X11/Xlib.h>
 #include <stdio.h>
 
 using namespace std;

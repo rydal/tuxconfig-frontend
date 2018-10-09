@@ -25,12 +25,13 @@
 #include "GetLocalDevices.h"
 #include "GetRemoteConfig.h"
 #include <set>
-#include "RestoreTab.h"
+
 #include "NotebookGUI.h"
 
 class ContributorTab2  : public QWidget {
 public:
-	ContributorTab2();
+    ContributorTab2(const QFileInfo &fileInfo, QWidget *parent = 0);
+
 	virtual ~ContributorTab2();
 	string* DownloadInfo(string owner_git_id);
 	char* getAvatarImage(string url);

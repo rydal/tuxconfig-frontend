@@ -1,4 +1,4 @@
-/*
+/*: QDialog(parent) {
  * RestoreTab.cpp
  *
  *  Created on: 4 Oct 2018
@@ -7,7 +7,10 @@
 
 #include "RestoreTab.h"
 
-RestoreTab::RestoreTab() {
+RestoreTab::RestoreTab(const QFileInfo &fileInfo, QWidget *parent)
+
+{
+
 	// TODO Auto-generated constructor stub
 	std::map<string,Device> hashmap = GetHistory::getInstalledDevices();
 
@@ -40,11 +43,9 @@ RestoreTab::RestoreTab() {
 							mainLayout->addLayout(m_Grid);
 							//restore_button->signal_clicked().connect( sigc::bind<Glib::ustring>( sigc::mem_fun(*this, &RestoreGUI::on_button_clicked), "restore",it->second) );
 				}
+				setLayout(mainLayout);
+				 // Set layout in QWidget
 
 
-}
-
-RestoreTab::~RestoreTab() {
-	// TODO Auto-generated destructor stub
 }
 

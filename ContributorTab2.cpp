@@ -7,7 +7,11 @@
 
 #include "ContributorTab2.h"
 
-ContributorTab2::ContributorTab2() {
+ ContributorTab2::ContributorTab2(const QFileInfo &fileInfo, QWidget *parent)
+: QWidget(parent) {
+
+    QMainWindow *mainWindow = new QMainWindow();
+
 	// TODO Auto-generated constructor stub
 		QPushButton *button = new QPushButton("close");
 		QVBoxLayout *mainLayout = new QVBoxLayout;
@@ -43,6 +47,7 @@ ContributorTab2::ContributorTab2() {
 		email_label->setOpenExternalLinks(true);
 
 		mainLayout->addWidget(email_label);
+	    setLayout(mainLayout);
 
 
 

@@ -7,20 +7,25 @@
 
 #include "NotebookGUI.h"
 
-NotebookGUI::NotebookGUI() {
+    NotebookGUI::NotebookGUI(const QString name, QWidget *parent ) {
     tabWidget = new QTabWidget;
 
+    setWindowTitle("Tuxconfig");
 
 
+    QFileInfo fileInfo(name);
+	   tabWidget->addTab(new RestoreTab(fileInfo), "Restore");
 
-			   tabWidget->addTab(new DefaultTab(),"General");
-			   tabWidget->addTab(new RestoreTab(), "Restore");
-			   tabWidget->addTab(new ConsoleTab(),"Configure");
-			   tabWidget->addTab(new ContributorTab2(),"Contibutor");
+    tabWidget->addTab(new GeneralTab(fileInfo),"General");
+		    tabWidget->addTab(new ConsoleTab(fileInfo),"Configure");
+		    tabWidget->addTab(new ContributorTab2(fileInfo),"Contributor info");
+
+		    QVBoxLayout *mainLayout = new QVBoxLayout;
+		        mainLayout->addWidget(tabWidget);
+
+		        setLayout(mainLayout);
+
+		        setWindowTitle(tr("Tab Dialog"));
 
 
-}
-
-NotebookGUI::~NotebookGUI() {
-	// TODO Auto-generated destructor stub
 }

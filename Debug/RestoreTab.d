@@ -1,7 +1,12 @@
 RestoreTab.o: ../RestoreTab.cpp ../RestoreTab.h \
- /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QApplication \
- /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qapplication.h \
- /usr/include/x86_64-linux-gnu/qt5/QtCore/qcoreapplication.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtGui/QtGui \
+ /usr/include/x86_64-linux-gnu/qt5/QtGui/QtGuiDepends \
+ /usr/include/x86_64-linux-gnu/qt5/QtCore/QtCore \
+ /usr/include/x86_64-linux-gnu/qt5/QtCore/QtCoreDepends \
+ /usr/include/x86_64-linux-gnu/qt5/QtCore/qabstractanimation.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtCore/qobject.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtCore/qobjectdefs.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtCore/qnamespace.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qglobal.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qconfig.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qfeatures.h \
@@ -21,15 +26,12 @@ RestoreTab.o: ../RestoreTab.cpp ../RestoreTab.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qglobalstatic.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qnumeric.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qversiontagging.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtCore/qobjectdefs_impl.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qstring.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qchar.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qbytearray.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qrefcount.h \
- /usr/include/x86_64-linux-gnu/qt5/QtCore/qnamespace.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qarraydata.h \
- /usr/include/x86_64-linux-gnu/qt5/QtCore/qobject.h \
- /usr/include/x86_64-linux-gnu/qt5/QtCore/qobjectdefs.h \
- /usr/include/x86_64-linux-gnu/qt5/QtCore/qobjectdefs_impl.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qlist.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qalgorithms.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qiterator.h \
@@ -44,24 +46,6 @@ RestoreTab.o: ../RestoreTab.cpp ../RestoreTab.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qvarlengtharray.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qcontainerfwd.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qobject_impl.h \
- /usr/include/x86_64-linux-gnu/qt5/QtCore/qcoreevent.h \
- /usr/include/x86_64-linux-gnu/qt5/QtCore/qeventloop.h \
- /usr/include/x86_64-linux-gnu/qt5/QtGui/qwindowdefs.h \
- /usr/include/x86_64-linux-gnu/qt5/QtCore/qpoint.h \
- /usr/include/x86_64-linux-gnu/qt5/QtCore/qsize.h \
- /usr/include/x86_64-linux-gnu/qt5/QtGui/qcursor.h \
- /usr/include/x86_64-linux-gnu/qt5/QtGui/qguiapplication.h \
- /usr/include/x86_64-linux-gnu/qt5/QtGui/qinputmethod.h \
- /usr/include/x86_64-linux-gnu/qt5/QtCore/qlocale.h \
- /usr/include/x86_64-linux-gnu/qt5/QtCore/qvariant.h \
- /usr/include/x86_64-linux-gnu/qt5/QtCore/qmap.h \
- /usr/include/x86_64-linux-gnu/qt5/QtCore/qhash.h \
- /usr/include/x86_64-linux-gnu/qt5/QtCore/qshareddata.h \
- /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QtWidgets \
- /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QtWidgetsDepends \
- /usr/include/x86_64-linux-gnu/qt5/QtCore/QtCore \
- /usr/include/x86_64-linux-gnu/qt5/QtCore/QtCoreDepends \
- /usr/include/x86_64-linux-gnu/qt5/QtCore/qabstractanimation.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qanimationgroup.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qabstractanimation.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qparallelanimationgroup.h \
@@ -71,6 +55,9 @@ RestoreTab.o: ../RestoreTab.cpp ../RestoreTab.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qvariantanimation.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qeasingcurve.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qvector.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtCore/qvariant.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtCore/qmap.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtCore/qhash.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qsequentialanimationgroup.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qvariantanimation.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qtextcodec.h \
@@ -82,6 +69,7 @@ RestoreTab.o: ../RestoreTab.cpp ../RestoreTab.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qisenum.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qlibraryinfo.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qdatetime.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtCore/qshareddata.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qnamespace.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qnumeric.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qprocessordetection.h \
@@ -95,6 +83,7 @@ RestoreTab.o: ../RestoreTab.cpp ../RestoreTab.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qdatastream.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qdebug.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qtextstream.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtCore/qlocale.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qset.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qcontiguouscache.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qsharedpointer.h \
@@ -146,9 +135,11 @@ RestoreTab.o: ../RestoreTab.cpp ../RestoreTab.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qjsonobject.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qjsonvalue.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qabstracteventdispatcher.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtCore/qeventloop.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qabstractnativeeventfilter.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qbasictimer.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qcoreapplication.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtCore/qcoreevent.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qcoreevent.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qeventloop.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qmath.h \
@@ -228,6 +219,7 @@ RestoreTab.o: ../RestoreTab.cpp ../RestoreTab.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qcollator.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qcommandlineoption.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qcommandlineparser.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtCore/qcoreapplication.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qcommandlineoption.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qcontainerfwd.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qcontiguouscache.h \
@@ -239,6 +231,7 @@ RestoreTab.o: ../RestoreTab.cpp ../RestoreTab.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qhashfunctions.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qiterator.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qline.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtCore/qpoint.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qlinkedlist.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qlist.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qlocale.h \
@@ -251,6 +244,7 @@ RestoreTab.o: ../RestoreTab.cpp ../RestoreTab.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qqueue.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qrect.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qmargins.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtCore/qsize.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qrefcount.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qregexp.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qregularexpression.h \
@@ -271,14 +265,13 @@ RestoreTab.o: ../RestoreTab.cpp ../RestoreTab.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qversionnumber.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qxmlstream.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qtcoreversion.h \
- /usr/include/x86_64-linux-gnu/qt5/QtGui/QtGui \
- /usr/include/x86_64-linux-gnu/qt5/QtGui/QtGuiDepends \
  /usr/include/x86_64-linux-gnu/qt5/QtGui/qaccessible.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qrect.h \
  /usr/include/x86_64-linux-gnu/qt5/QtGui/qcolor.h \
  /usr/include/x86_64-linux-gnu/qt5/QtGui/qrgb.h \
  /usr/include/x86_64-linux-gnu/qt5/QtGui/qrgba64.h \
  /usr/include/x86_64-linux-gnu/qt5/QtGui/qevent.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtGui/qwindowdefs.h \
  /usr/include/x86_64-linux-gnu/qt5/QtGui/qregion.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qdatastream.h \
  /usr/include/x86_64-linux-gnu/qt5/QtGui/qkeysequence.h \
@@ -325,6 +318,7 @@ RestoreTab.o: ../RestoreTab.cpp ../RestoreTab.h \
  /usr/include/x86_64-linux-gnu/qt5/QtGui/qgenericpluginfactory.h \
  /usr/include/x86_64-linux-gnu/qt5/QtGui/qguiapplication.h \
  /usr/include/x86_64-linux-gnu/qt5/QtGui/qinputmethod.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtGui/qinputmethod.h \
  /usr/include/x86_64-linux-gnu/qt5/QtGui/qkeysequence.h \
  /usr/include/x86_64-linux-gnu/qt5/QtGui/qoffscreensurface.h \
  /usr/include/x86_64-linux-gnu/qt5/QtGui/qsurface.h \
@@ -343,6 +337,7 @@ RestoreTab.o: ../RestoreTab.cpp ../RestoreTab.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/QEvent \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/QMargins \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/QRect \
+ /usr/include/x86_64-linux-gnu/qt5/QtGui/qcursor.h \
  /usr/include/x86_64-linux-gnu/qt5/QtGui/QPaintDevice \
  /usr/include/x86_64-linux-gnu/qt5/QtGui/qpaintdevice.h \
  /usr/include/x86_64-linux-gnu/qt5/QtGui/QOpenGLContext \
@@ -446,6 +441,9 @@ RestoreTab.o: ../RestoreTab.cpp ../RestoreTab.h \
  /usr/include/x86_64-linux-gnu/qt5/QtGui/qvalidator.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qregularexpression.h \
  /usr/include/x86_64-linux-gnu/qt5/QtGui/qtguiversion.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QtWidgets \
+ /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QtWidgetsDepends \
+ /usr/include/x86_64-linux-gnu/qt5/QtGui/QtGui \
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qaccessiblewidget.h \
  /usr/include/x86_64-linux-gnu/qt5/QtGui/qaccessibleobject.h \
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qcolordialog.h \
@@ -525,6 +523,8 @@ RestoreTab.o: ../RestoreTab.cpp ../RestoreTab.h \
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qactiongroup.h \
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qaction.h \
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qactiongroup.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qapplication.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtGui/qguiapplication.h \
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qboxlayout.h \
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qlayout.h \
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qlayoutitem.h \
@@ -629,11 +629,21 @@ RestoreTab.o: ../RestoreTab.cpp ../RestoreTab.h \
 
 ../RestoreTab.h:
 
-/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QApplication:
+/usr/include/x86_64-linux-gnu/qt5/QtGui/QtGui:
 
-/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qapplication.h:
+/usr/include/x86_64-linux-gnu/qt5/QtGui/QtGuiDepends:
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qcoreapplication.h:
+/usr/include/x86_64-linux-gnu/qt5/QtCore/QtCore:
+
+/usr/include/x86_64-linux-gnu/qt5/QtCore/QtCoreDepends:
+
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qabstractanimation.h:
+
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qobject.h:
+
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qobjectdefs.h:
+
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qnamespace.h:
 
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qglobal.h:
 
@@ -673,6 +683,8 @@ RestoreTab.o: ../RestoreTab.cpp ../RestoreTab.h \
 
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qversiontagging.h:
 
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qobjectdefs_impl.h:
+
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qstring.h:
 
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qchar.h:
@@ -681,15 +693,7 @@ RestoreTab.o: ../RestoreTab.cpp ../RestoreTab.h \
 
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qrefcount.h:
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qnamespace.h:
-
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qarraydata.h:
-
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qobject.h:
-
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qobjectdefs.h:
-
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qobjectdefs_impl.h:
 
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qlist.h:
 
@@ -719,42 +723,6 @@ RestoreTab.o: ../RestoreTab.cpp ../RestoreTab.h \
 
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qobject_impl.h:
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qcoreevent.h:
-
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qeventloop.h:
-
-/usr/include/x86_64-linux-gnu/qt5/QtGui/qwindowdefs.h:
-
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qpoint.h:
-
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qsize.h:
-
-/usr/include/x86_64-linux-gnu/qt5/QtGui/qcursor.h:
-
-/usr/include/x86_64-linux-gnu/qt5/QtGui/qguiapplication.h:
-
-/usr/include/x86_64-linux-gnu/qt5/QtGui/qinputmethod.h:
-
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qlocale.h:
-
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qvariant.h:
-
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qmap.h:
-
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qhash.h:
-
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qshareddata.h:
-
-/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QtWidgets:
-
-/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QtWidgetsDepends:
-
-/usr/include/x86_64-linux-gnu/qt5/QtCore/QtCore:
-
-/usr/include/x86_64-linux-gnu/qt5/QtCore/QtCoreDepends:
-
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qabstractanimation.h:
-
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qanimationgroup.h:
 
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qabstractanimation.h:
@@ -772,6 +740,12 @@ RestoreTab.o: ../RestoreTab.cpp ../RestoreTab.h \
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qeasingcurve.h:
 
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qvector.h:
+
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qvariant.h:
+
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qmap.h:
+
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qhash.h:
 
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qsequentialanimationgroup.h:
 
@@ -794,6 +768,8 @@ RestoreTab.o: ../RestoreTab.cpp ../RestoreTab.h \
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qlibraryinfo.h:
 
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qdatetime.h:
+
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qshareddata.h:
 
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qnamespace.h:
 
@@ -820,6 +796,8 @@ RestoreTab.o: ../RestoreTab.cpp ../RestoreTab.h \
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qdebug.h:
 
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qtextstream.h:
+
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qlocale.h:
 
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qset.h:
 
@@ -923,11 +901,15 @@ RestoreTab.o: ../RestoreTab.cpp ../RestoreTab.h \
 
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qabstracteventdispatcher.h:
 
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qeventloop.h:
+
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qabstractnativeeventfilter.h:
 
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qbasictimer.h:
 
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qcoreapplication.h:
+
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qcoreevent.h:
 
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qcoreevent.h:
 
@@ -1087,6 +1069,8 @@ RestoreTab.o: ../RestoreTab.cpp ../RestoreTab.h \
 
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qcommandlineparser.h:
 
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qcoreapplication.h:
+
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qcommandlineoption.h:
 
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qcontainerfwd.h:
@@ -1108,6 +1092,8 @@ RestoreTab.o: ../RestoreTab.cpp ../RestoreTab.h \
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qiterator.h:
 
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qline.h:
+
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qpoint.h:
 
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qlinkedlist.h:
 
@@ -1132,6 +1118,8 @@ RestoreTab.o: ../RestoreTab.cpp ../RestoreTab.h \
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qrect.h:
 
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qmargins.h:
+
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qsize.h:
 
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qrefcount.h:
 
@@ -1173,10 +1161,6 @@ RestoreTab.o: ../RestoreTab.cpp ../RestoreTab.h \
 
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qtcoreversion.h:
 
-/usr/include/x86_64-linux-gnu/qt5/QtGui/QtGui:
-
-/usr/include/x86_64-linux-gnu/qt5/QtGui/QtGuiDepends:
-
 /usr/include/x86_64-linux-gnu/qt5/QtGui/qaccessible.h:
 
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qrect.h:
@@ -1188,6 +1172,8 @@ RestoreTab.o: ../RestoreTab.cpp ../RestoreTab.h \
 /usr/include/x86_64-linux-gnu/qt5/QtGui/qrgba64.h:
 
 /usr/include/x86_64-linux-gnu/qt5/QtGui/qevent.h:
+
+/usr/include/x86_64-linux-gnu/qt5/QtGui/qwindowdefs.h:
 
 /usr/include/x86_64-linux-gnu/qt5/QtGui/qregion.h:
 
@@ -1281,6 +1267,8 @@ RestoreTab.o: ../RestoreTab.cpp ../RestoreTab.h \
 
 /usr/include/x86_64-linux-gnu/qt5/QtGui/qinputmethod.h:
 
+/usr/include/x86_64-linux-gnu/qt5/QtGui/qinputmethod.h:
+
 /usr/include/x86_64-linux-gnu/qt5/QtGui/qkeysequence.h:
 
 /usr/include/x86_64-linux-gnu/qt5/QtGui/qoffscreensurface.h:
@@ -1316,6 +1304,8 @@ RestoreTab.o: ../RestoreTab.cpp ../RestoreTab.h \
 /usr/include/x86_64-linux-gnu/qt5/QtCore/QMargins:
 
 /usr/include/x86_64-linux-gnu/qt5/QtCore/QRect:
+
+/usr/include/x86_64-linux-gnu/qt5/QtGui/qcursor.h:
 
 /usr/include/x86_64-linux-gnu/qt5/QtGui/QPaintDevice:
 
@@ -1523,6 +1513,12 @@ RestoreTab.o: ../RestoreTab.cpp ../RestoreTab.h \
 
 /usr/include/x86_64-linux-gnu/qt5/QtGui/qtguiversion.h:
 
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QtWidgets:
+
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QtWidgetsDepends:
+
+/usr/include/x86_64-linux-gnu/qt5/QtGui/QtGui:
+
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qaccessiblewidget.h:
 
 /usr/include/x86_64-linux-gnu/qt5/QtGui/qaccessibleobject.h:
@@ -1680,6 +1676,10 @@ RestoreTab.o: ../RestoreTab.cpp ../RestoreTab.h \
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qaction.h:
 
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qactiongroup.h:
+
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qapplication.h:
+
+/usr/include/x86_64-linux-gnu/qt5/QtGui/qguiapplication.h:
 
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qboxlayout.h:
 

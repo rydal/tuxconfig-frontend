@@ -10,7 +10,6 @@
 
 
 #include <QApplication>
-#include <QtWidgets>
 
 #include <string>
 #include <map>
@@ -29,11 +28,8 @@
 using namespace std;
 class NotebookGUI :  public QDialog {
 public:
-    explicit NotebookGUI(const QString &fileName, QWidget *parent = 0);
+    explicit NotebookGUI(const QString name, QWidget *parent = 0);
 
-	NotebookGUI();
-
-	virtual ~NotebookGUI();
 	bool RestoreButton(string command, Device device);
 	protected:
 	  //Signal handlers:

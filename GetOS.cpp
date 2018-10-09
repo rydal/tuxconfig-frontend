@@ -91,12 +91,7 @@ std::string* GetOS::getLocalMchineDistro() {
 }
 
 bool GetOS::is_gui_present() {
-	 Display *display;
-	    if( ! (display=XOpenDisplay(NULL) ) ) {
-	        return false;
-	    } else {
-	    	return true;
-	    }
+		    	return true;
 }
 
 

@@ -7,11 +7,10 @@
 
 #include "DefaultTab.h"
 
-DefaultTab::DefaultTab() {
-	// TODO Auto-generated constructor stub
-
-	 QPushButton *button = new QPushButton("close");
-			 	  QVBoxLayout *mainLayout = new QVBoxLayout;
+ GeneralTab::GeneralTab(const QFileInfo &fileInfo, QWidget *parent)
+     : QWidget(parent)
+ {
+  QVBoxLayout *mainLayout = new QVBoxLayout;
 
 	set<Device> local_devices = GetLocalDevices::listdevices();
 	set<Device> remote_devices;
@@ -23,7 +22,7 @@ DefaultTab::DefaultTab() {
 		}
 	for (auto iterated_device : remote_devices) {
 
-		QVBoxLayout* m_Grid = new QVBoxLayout;
+		QHBoxLayout* m_Grid = new QHBoxLayout;
 			QLabel* description = new QLabel;
 			QLabel* devicename = new QLabel;
 			QPushButton* upgrade_button = new QPushButton(QString::fromStdString("upgrade"));
@@ -48,25 +47,21 @@ DefaultTab::DefaultTab() {
 			}
 			if (iterated_device.isUpgradeable() == true) {
 				m_Grid->addWidget(upgrade_button);
-			}
+			}	 QPushButton *button = new QPushButton("close");
+
 
 			mainLayout->addLayout(m_Grid);
-
-			install_button->connect(install_button, SIGNAL (released()),this, SLOT (handleButton("install",iterated_device)));
-			uninstall_button->connect(uninstall_button, SIGNAL (released()),this, SLOT (handleButton("uninstall",iterated_device)));
-			restore_button->connect(restore_button, SIGNAL (released()),this, SLOT (handleButton("restore",iterated_device)));
-			upgrade_button->connect(upgrade_button, SIGNAL (released()),this, SLOT (handleButton("upgrade",iterated_device)));
-
+			setLayout(mainLayout);
 
 		}
+	 // Set layout in QWidget
+
+
+	        // Set QWidget as the central layout of the main window
 
 
 
 
 
-}
-
-DefaultTab::~DefaultTab() {
-	// TODO Auto-generated destructor stub
 }
 

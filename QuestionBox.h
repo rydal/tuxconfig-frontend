@@ -1,5 +1,12 @@
 /*
- * QuestionBox.h
+ * Qu QApplication app(argc, argv);
+	    QWidget window;
+	    window.resize(320, 240);
+	    window.show();
+	    window.setWindowTitle(
+	        QApplication::translate("toplevel", "Top-level widget"));
+	    return app.exec();
+ * estionBox.h
  *
  *  Created on: 7 Oct 2018
  *      Author: roberty

@@ -7,19 +7,12 @@
 
 #include "ConsoleTab.h"
 
-ConsoleTab::ConsoleTab()
+ ConsoleTab::ConsoleTab(const QFileInfo &fileInfo, QWidget *parent)
 {
 
-    QIcon::setThemeName("oxygen");
-    QMainWindow *mainWindow = new QMainWindow();
-
+		QVBoxLayout *mainLayout = new QVBoxLayout;
     QTermWidget *console = new QTermWidget();
     console->actions();
-    QMenuBar *menuBar = new QMenuBar(mainWindow);
-    QMenu *actionsMenu = new QMenu("Actions", menuBar);
-    menuBar->addMenu(actionsMenu);
-    actionsMenu->addAction("Find..", console, SLOT(toggleShowSearchBar()), QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_F));
-    mainWindow->setMenuBar(menuBar);
 
     QFont font = QApplication::font();
 #ifdef Q_WS_MAC
@@ -45,8 +38,7 @@ ConsoleTab::ConsoleTab()
             console->setKeyBindings(arg);
     }
 
-    mainWindow->setCentralWidget(console);
-    mainWindow->resize(600, 400);
+    mainLayout->addWidget(console);
 
     // info output
     qDebug() << "* INFO *************************";
@@ -56,11 +48,11 @@ ConsoleTab::ConsoleTab()
     qDebug() << "* INFO END *********************";
 
     // real startup
-    QObject::connect(console, SIGNAL(finished()), mainWindow, SLOT(close()));
+    QObject::connect(console, SIGNAL(finished()), mainLayout, SLOT(close()));
 
     console->sendText("ls");
 
-    mainWindow->show();
+   setLayout(mainLayout);
 
 }
 

@@ -627,7 +627,8 @@ Linuxconf.o: ../Linuxconf.cpp ../Linuxconf.h \
  ../CheckConnection.h ../GetOS.h ../RunConfig.h ../device.h \
  ../GetRemoteConfig.h ../NotebookGUI.h \
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QApplication ../GetHistory.h \
- ../GetLocalDevices.h ../compare.h ../RestoreTab.h ../DefaultTab.h \
+ ../GetLocalDevices.h ../compare.h ../RestoreTab.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtGui/QtGui ../DefaultTab.h \
  ../ConsoleTab.h /usr/include/x86_64-linux-gnu/qt5/QtGui/QKeySequence \
  ../ContributorTab2.h ../HTTPDownloader.hpp ../RestoreGUI.h \
  ../QuestionBox.h /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QMessageBox \
@@ -1906,6 +1907,8 @@ Linuxconf.o: ../Linuxconf.cpp ../Linuxconf.h \
 ../compare.h:
 
 ../RestoreTab.h:
+
+/usr/include/x86_64-linux-gnu/qt5/QtGui/QtGui:
 
 ../DefaultTab.h:
 

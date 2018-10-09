@@ -9,15 +9,15 @@
 #define RESTORETAB_H_
 
 
-#include <QApplication>
+#include <QtGui>
 #include <QtWidgets>
 #include "GetHistory.h"
 
 
 class RestoreTab : public QWidget {
 public:
-	RestoreTab();
-	virtual ~RestoreTab();
+    RestoreTab(const QFileInfo &fileInfo, QWidget *parent = 0);
+
 };
 
 #endif /* RESTORETAB_H_ */

@@ -23,7 +23,7 @@ bool CheckConnection::CheckNetwork()
 
 	  curl = curl_easy_init();
 	  if(curl) {
-		   // curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_data);
+		   curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_data);
 
 	    curl_easy_setopt(curl, CURLOPT_URL, "www.google.com");
 	  while ((res = curl_easy_perform(curl)) != CURLE_OK)

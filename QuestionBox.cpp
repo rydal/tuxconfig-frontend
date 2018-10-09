@@ -9,11 +9,12 @@
 
 
 	// TODO Auto-generated constructor stub
-	 QuestionBox::QuestionBox(string messsage) {
+	 QuestionBox::QuestionBox(string message) {
+		 QString qmessage = QString::fromStdString(message);
 		QMessageBox::information(
 		    this,
 		    tr("Tuxconfig"),
-		    tr("An information message."),QMessageBox::Cancel );	}
+		    qmessage,QMessageBox::Cancel );	}
 
 QuestionBox::~QuestionBox() {
 	// TODO Auto-generated destructor stub
