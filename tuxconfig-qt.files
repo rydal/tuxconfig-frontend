@@ -4,10 +4,10 @@ ConsoleTab.cpp
 ConsoleTab.h
 ContributorTab2.cpp
 ContributorTab2.h
-DefaultTab.cpp
-DefaultTab.h
 Feedback.cpp
 Feedback.h
+GeneralTab.cpp
+GeneralTab.h
 GetHistory.cpp
 GetHistory.h
 GetLocalDevices.cpp
