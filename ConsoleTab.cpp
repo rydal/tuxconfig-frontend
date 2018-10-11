@@ -12,6 +12,7 @@
 
 		QVBoxLayout *mainLayout = new QVBoxLayout;
     QTermWidget *console = new QTermWidget();
+    QPushButton *m_button = new QPushButton("CLose");
     console->actions();
 
     QFont font = QApplication::font();
@@ -56,7 +57,5 @@
 
 }
 
-ConsoleTab::~ConsoleTab() {
 
-}
 

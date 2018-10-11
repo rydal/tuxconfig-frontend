@@ -24,15 +24,16 @@
 								<option id="gnu.cpp.compiler.exe.debug.option.optimization.level.885116338" name="Optimization Level" superClass="gnu.cpp.compiler.exe.debug.option.optimization.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.optimization.level.none" valueType="enumerated"/>
 								<option defaultValue="gnu.cpp.compiler.debugging.level.max" id="gnu.cpp.compiler.exe.debug.option.debugging.level.1779502298" name="Debug Level" superClass="gnu.cpp.compiler.exe.debug.option.debugging.level" useByScannerDiscovery="false" valueType="enumerated"/>
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.cpp.compiler.option.include.paths.1391716184" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
-									<listOptionValue builtIn="false" value="/usr/include/qtermwidget5"/>
-									<listOptionValue builtIn="false" value="/usr/include/x86_64-linux-gnu/qt5/QtXml"/>
-									<listOptionValue builtIn="false" value="/usr/include/jsoncpp"/>
-									<listOptionValue builtIn="false" value="/usr/include/boost"/>
-									<listOptionValue builtIn="false" value="/usr/include/x86_64-linux-gnu/qt5/QtWidgets"/>
-									<listOptionValue builtIn="false" value="/usr/include/x86_64-linux-gnu/qt5/QtNetwork"/>
 									<listOptionValue builtIn="false" value="/usr/include/x86_64-linux-gnu/qt5/QtGui"/>
 									<listOptionValue builtIn="false" value="/usr/include/x86_64-linux-gnu/qt5"/>
 									<listOptionValue builtIn="false" value="/usr/include/x86_64-linux-gnu/qt5/QtCore"/>
+									<listOptionValue builtIn="false" value="/usr/include/x86_64-linux-gnu/qt5/QtNetwork"/>
+									<listOptionValue builtIn="false" value="/usr/include/x86_64-linux-gnu/qt5/QtWidgets"/>
+									<listOptionValue builtIn="false" value="/usr/include/x86_64-linux-gnu"/>
+									<listOptionValue builtIn="false" value="/usr/include/jsoncpp"/>
+									<listOptionValue builtIn="false" value="/usr/include/qtermwidget5"/>
+									<listOptionValue builtIn="false" value="/usr/include/x86_64-linux-gnu/qt5/QtXml"/>
+									<listOptionValue builtIn="false" value="/usr/include/boost"/>
 								</option>
 								<option id="gnu.cpp.compiler.option.other.pic.289102386" name="Position Independent Code (-fPIC)" superClass="gnu.cpp.compiler.option.other.pic" useByScannerDiscovery="false" value="true" valueType="boolean"/>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.246579417" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
@@ -41,21 +42,30 @@
 								<option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.exe.debug.option.optimization.level.33781921" name="Optimization Level" superClass="gnu.c.compiler.exe.debug.option.optimization.level" useByScannerDiscovery="false" valueType="enumerated"/>
 								<option defaultValue="gnu.c.debugging.level.max" id="gnu.c.compiler.exe.debug.option.debugging.level.837876324" name="Debug Level" superClass="gnu.c.compiler.exe.debug.option.debugging.level" useByScannerDiscovery="false" valueType="enumerated"/>
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.c.compiler.option.include.paths.1608062727" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
-									<listOptionValue builtIn="false" value="/usr/include/qtermwidget5"/>
-									<listOptionValue builtIn="false" value="/usr/include/x86_64-linux-gnu/qt5/QtXml"/>
-									<listOptionValue builtIn="false" value="/usr/include/x86_64-linux-gnu"/>
-									<listOptionValue builtIn="false" value="/usr/include/jsoncpp"/>
-									<listOptionValue builtIn="false" value="/usr/include/x86_64-linux-gnu/qt5/QtWidgets"/>
-									<listOptionValue builtIn="false" value="/usr/include/x86_64-linux-gnu/qt5/QtNetwork"/>
 									<listOptionValue builtIn="false" value="/usr/include/x86_64-linux-gnu/qt5/QtGui"/>
 									<listOptionValue builtIn="false" value="/usr/include/x86_64-linux-gnu/qt5"/>
 									<listOptionValue builtIn="false" value="/usr/include/x86_64-linux-gnu/qt5/QtCore"/>
+									<listOptionValue builtIn="false" value="/usr/include/x86_64-linux-gnu/qt5/QtNetwork"/>
+									<listOptionValue builtIn="false" value="/usr/include/x86_64-linux-gnu/qt5/QtWidgets"/>
+									<listOptionValue builtIn="false" value="/usr/include/x86_64-linux-gnu"/>
+									<listOptionValue builtIn="false" value="/usr/include/jsoncpp"/>
+									<listOptionValue builtIn="false" value="/usr/include/qtermwidget5"/>
+									<listOptionValue builtIn="false" value="/usr/include/x86_64-linux-gnu/qt5/QtXml"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1247221023" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.c.linker.exe.debug.1200860889" name="GCC C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.exe.debug"/>
 							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.exe.debug.1968902644" name="GCC C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.exe.debug">
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.cpp.link.option.libs.1984113521" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" useByScannerDiscovery="false" valueType="libs">
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="Qt5Gui"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="Qt5Core"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="Qt5Network"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="Qt5Widgets"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="curlpp"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="curl"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="jsoncpp"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="qtermwidget5"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="Qt5Xml"/>
 									<listOptionValue builtIn="false" value="qtermwidget5"/>
 									<listOptionValue builtIn="false" value="boost_system"/>
 									<listOptionValue builtIn="false" value="Qt5Xml"/>
@@ -96,15 +106,6 @@
 						<entry flags="UNDEFINED" kind="libraryFile" name="Qt5Xml" srcPrefixMapping="" srcRootPath=""/>
 					</externalSetting>
 					<externalSetting contentTypes="org.eclipse.cdt.core.cSource:org.eclipse.cdt.core.cxxSource">
-						<entry flags="NONE" kind="includePath" name="/usr/include/qtermwidget5"/>
-						<entry flags="NONE" kind="includePath" name="/usr/include/x86_64-linux-gnu/qt5/QtXml"/>
-						<entry flags="NONE" kind="includePath" name="/usr/include/x86_64-linux-gnu"/>
-						<entry flags="NONE" kind="includePath" name="/usr/include/jsoncpp"/>
-						<entry flags="NONE" kind="includePath" name="/usr/include/x86_64-linux-gnu/qt5/QtWidgets"/>
-						<entry flags="NONE" kind="includePath" name="/usr/include/x86_64-linux-gnu/qt5/QtNetwork"/>
-						<entry flags="NONE" kind="includePath" name="/usr/include/x86_64-linux-gnu/qt5/QtGui"/>
-						<entry flags="NONE" kind="includePath" name="/usr/include/x86_64-linux-gnu/qt5"/>
-						<entry flags="NONE" kind="includePath" name="/usr/include/x86_64-linux-gnu/qt5/QtCore"/>
 						<entry flags="BUILTIN" kind="includePath" name="/usr/include/x86_64-linux-gnu/qt5/QtGui"/>
 						<entry flags="BUILTIN" kind="includePath" name="/usr/include/x86_64-linux-gnu/qt5"/>
 						<entry flags="BUILTIN" kind="includePath" name="/usr/include/x86_64-linux-gnu/qt5/QtCore"/>

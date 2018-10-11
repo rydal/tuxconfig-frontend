@@ -14,9 +14,10 @@
 #include <QtWidgets>
 #include<qtermwidget5/qtermwidget.h>
 class ConsoleTab : public QWidget {
+    Q_OBJECT
+
 public:
     ConsoleTab(const QFileInfo &fileInfo, QWidget *parent = 0);
-	virtual ~ConsoleTab();
 };
 
 #endif /* CONSOLETAB_H_ */

@@ -16,6 +16,7 @@
 #include <curlpp/cURLpp.hpp>
 
 class CheckConnection {
+
 public:
 
 	static bool CheckNetwork();
