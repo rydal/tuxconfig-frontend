@@ -30,7 +30,7 @@ public:
 	RunConfig();
 
 	virtual ~RunConfig();
-	static bool install( Device m_device) ;
+    static string* install( Device m_device) ;
 	static bool uninstall( Device& m_device);
 	static bool upgrade( Device m_device);
 	static bool restore();

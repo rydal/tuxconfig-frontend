@@ -27,6 +27,7 @@
 
 using namespace std;
 class NotebookGUI :  public QDialog {
+        Q_OBJECT
 public:
     explicit NotebookGUI(const QString name, QWidget *parent = 0);
 	 void changeTab(int index);

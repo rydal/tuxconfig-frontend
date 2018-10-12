@@ -57,12 +57,14 @@
 			   QObject::connect(restore_button, SIGNAL(clicked()),this, SLOT(restoreButton(iterated_device)));
 			   QObject::connect(upgrade_button, SIGNAL(clicked()),this, SLOT(upgradeButton(iterated_device)));
 
-			   QObject::connect(install_button, SIGNAL(clicked()), this, this->installButton(iterated_device));
+
 
 
 		}
 	}
  void RunTab::installButton(Device device) {
+ConsoleTab::RunInstallConfig(device);
+
 
  }
  void RunTab::uninstallButton(Device device) {

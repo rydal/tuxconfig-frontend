@@ -30,5 +30,5 @@
 
 }
 void NotebookGUI::changeTab( int index) {
-tabWidget->setCurrentIndex(index);
+
 }

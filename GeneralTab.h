@@ -16,6 +16,7 @@
 #include "GetLocalDevices.h"
 #include "GetRemoteConfig.h"
 #include "NotebookGUI.h"
+#include "RunConfig.h"
 
 
  class RunTab : public QWidget

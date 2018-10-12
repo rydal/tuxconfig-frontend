@@ -15,12 +15,15 @@
 #include<qtermwidget5/qtermwidget.h>
 #include "NotebookGUI.h"
 class ConsoleTab : public QWidget {
+    Q_OBJECT
 
 public:
     ConsoleTab(const QFileInfo &fileInfo, QTabWidget *m_tabWidget, QWidget *parent = 0 );
+    void  RunInstallConfig(Device device);
     QWidget *parent;
     QTabWidget *tabWidget;
-    void move_tabs();
+    QTermWidget *console;
+    void move_tabs(int index);
 };
 
 #endif /* CONSOLETAB_H_ */

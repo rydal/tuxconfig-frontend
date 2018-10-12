@@ -59,7 +59,7 @@ bool RunConfig::uninstall(Device& device) {
 	return false;
 }
 
-bool RunConfig::install(Device device) {
+string* RunConfig::install(Device device) {
 	string runfile = "#!/bin/bash \n";
 	runfile += "set -e \n";
 	runfile += "set -x \n";
@@ -90,11 +90,10 @@ bool RunConfig::install(Device device) {
 
 	runfile += ". " + tuxconfig_file + "\n";
 //install dependencies;
-	runfile += "eval $dependencies \n";
-	runfile += " if [ -z \"${dependencies+x}\" ] ; then \n";
-	runfile  +=  "echo \"" + device.getDeviceid() + "," + device.getDescription() + ","	+ to_string(device.getVoteDifference()) + ",installed \" >> /root/.config/tuxconfig/history  ";
-runfile += "fi \n";
-
+    runfile += " if [ -z \"${dependencies+x}\" ] ; then \n";
+    runfile += "eval $dependencies \n";
+    runfile  +=  "echo \"" + device.getDeviceid() + "," + device.getDescription() + ","	+ to_string(device.getVoteDifference()) + ", apt installed \" >> /root/.config/tuxconfig/history \n";
+    runfile += "fi \n";
 	runfile += "if [ -f Makefile ] ; then \n";
 	runfile += "echo \"installed dependencies\" \n";
 //Build module
@@ -106,28 +105,23 @@ runfile += "fi \n";
 //Insert module
 	runfile += "modprobe -v $tuxconfig_module \n";
 	runfile += "echo \"inserted module into kernel\" \n";
-	runfile  +=  "echo \"" + device.getDeviceid() + "," + device.getDescription() + ","	+ to_string(device.getVoteDifference()) + ",installed \" >> /root/.config/tuxconfig/history  ";
-	runfile += "fi \n";
-	runfile += "echo all looks ok \n";
-	runfile += "read finish \n";
-	boost::replace_all(filedir, "/", "-");
+    runfile +=  "echo \"" + device.getDeviceid() + "," + device.getDescription() + ","	+ to_string(device.getVoteDifference()) + ", moudle installed \" >> /root/.config/tuxconfig/history  \n";
+    runfile += "else \n";
+    runfile += "echo \"" + device.getDeviceid() + "," + device.getDescription() + ","	+ to_string(device.getVoteDifference()) + ", module not installed \" >> /root/.config/tuxconfig/history  \n";
+    runfile += "fi \n";
+
+    boost::replace_all(filedir, "/", "-");
 	string tuxconfig_run_name = "/usr/src/tuxconfig-" + filedir;
 	std::ofstream out(tuxconfig_run_name);
 	out << runfile;
 	out.close();
-	string tuxconfig_chmod_command = "chmod u+x " + tuxconfig_run_name;
-	system(tuxconfig_chmod_command.c_str());
-	string tuxconfig_run_command = "xterm -e " + tuxconfig_run_name
-			+ "| tee > /var/lib/tuxconfig/log_install-" + filedir;
 
-	int result = WEXITSTATUS(system(tuxconfig_run_command.c_str()));
+    string* array = new string[4];
+    array[0] = tuxconfig_run_name;
+    string chmod_command = "chmod u+x " + tuxconfig_run_name;
+    system(chmod_command.c_str());
 
-	if (result != 0) {
 
-		string send_failure = "echo '" + device.getDeviceid() + "," + device.getDescription() + ","	+ to_string(device.getVoteDifference()) + ",failed' >> /root/.config/tuxconfig/history";
-		system(send_failure.c_str());
-		exit(1);
-	}
 
 	string line;
 	ifstream myfile;
@@ -139,7 +133,7 @@ runfile += "fi \n";
 			if (line.find("test_program=") == 0) {
 				boost::replace_all(line, "test_program=", "");
 				boost::trim(line);
-				test_program = line + " &";
+                test_program = line ;
 
 			}
 			if (line.find("test_message=") == 0) {
@@ -154,20 +148,13 @@ runfile += "fi \n";
 	}
 	myfile.close();
 
-	system(test_program.c_str());
-	//FIXME Message dialog wtith contributor details.
+     array[1] = test_program;
+     array[2] = test_message;
 
-	//Shows the window and returns when it is closed.
-	if (test_result == "yes") {
-		string send_success = "echo \"" + device.getDeviceid() + "," + device.getDescription() + ","	+ to_string(device.getVoteDifference()) + ",works \" >> /root/.config/tuxconfig/history  ";
-		system(send_success.c_str());
-		return true;
-	} else {
-		string send_failed = "echo \"" + device.getDeviceid() + "," + device.getDescription() + ","	+ to_string(device.getVoteDifference()) + ",failed  \" >> /root/.config/tuxconfig/history  ";
-				system(send_failed.c_str());
-	}
-
+     return array;
 }
+
+
 
 bool RunConfig::upgrade(Device device) {
 	GetRemoteConfig remote_config_class;

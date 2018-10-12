@@ -60,10 +60,18 @@
 
 
 }
-void ConsoleTab::move_tabs() {
-	tabWidget->setCurrentIndex(1);
+void ConsoleTab::move_tabs(int index) {
+    tabWidget->setCurrentIndex(index);
 
 }
+
+ void ConsoleTab::RunInstallConfig(Device device) {
+    string* details = RunConfig::install(device);
+    console->sendText(details[0] + "\\r");
+
+}
+
+
 
 
 
