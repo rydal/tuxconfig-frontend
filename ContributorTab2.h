@@ -29,10 +29,9 @@
 #include "NotebookGUI.h"
 
 class ContributorTab2  : public QWidget {
+    Q_OBJECT
 public:
     ContributorTab2(const QFileInfo &fileInfo, QWidget *parent = 0);
-
-	virtual ~ContributorTab2();
 	string* DownloadInfo(string owner_git_id);
 	char* getAvatarImage(string url);
 

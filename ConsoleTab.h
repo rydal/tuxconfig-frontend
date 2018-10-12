@@ -18,11 +18,11 @@ class ConsoleTab : public QWidget {
     Q_OBJECT
 
 public:
-    ConsoleTab(const QFileInfo &fileInfo, QTabWidget *m_tabWidget, QWidget *parent = 0 );
-    void  RunInstallConfig(Device device);
+    ConsoleTab(const QFileInfo &fileInfo, QWidget *m_parent);
+     void  RunInstallConfig(Device device);
     QWidget *parent;
     QTabWidget *tabWidget;
-    QTermWidget *console;
+     QTermWidget *console;
     void move_tabs(int index);
 };
 

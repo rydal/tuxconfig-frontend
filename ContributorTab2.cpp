@@ -53,9 +53,7 @@
 
 }
 
-ContributorTab2::~ContributorTab2() {
-	// TODO Auto-generated destructor stub
-}
+
 
 
 string* ContributorTab2::DownloadInfo(string owner_git_id) {
@@ -83,6 +81,8 @@ string* ContributorTab2::DownloadInfo(string owner_git_id) {
 		}
 		return details;
 }
+
+
 char* ContributorTab2::getAvatarImage(string url) {
     HTTPDownloader downloader;
     string returned_content = downloader.download(url);

@@ -17,17 +17,24 @@
 #include "GetRemoteConfig.h"
 #include "NotebookGUI.h"
 #include "RunConfig.h"
+#include "ConsoleTab.h"
 
 
  class RunTab : public QWidget
  {
-
+Q_OBJECT
  public:
      RunTab(const QFileInfo &fileInfo, QWidget *parent = 0);
-     void installButton(Device device);
-     void uninstallButton(Device device);
-     void restoreButton(Device device);
-     void upgradeButton(Device device);
+
+     QWidget *m_parent;
+     QTabWidget * tabWidget;
+
+ public slots:
+     void installButton();
+     void uninstallButton(Device * device);
+     void restoreButton(Device * device);
+     void upgradeButton(Device * device);
+
  protected:
 
  };

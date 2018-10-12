@@ -7,13 +7,14 @@
 
 #include "ConsoleTab.h"
 
- ConsoleTab::ConsoleTab(const QFileInfo &fileInfo,   QTabWidget *m_tabWidget , QWidget *m_parent)
- : parent(m_parent), tabWidget(m_tabWidget)
+ ConsoleTab::ConsoleTab(const QFileInfo &fileInfo,    QWidget *m_parent)
+ : parent(m_parent)
 {
 
 		QVBoxLayout *mainLayout = new QVBoxLayout;
-    QTermWidget *console = new QTermWidget();
-    QPushButton *m_button = new QPushButton("CLose");
+     console = new QTermWidget();
+     console->setObjectName("console");
+    QPushButton *m_button = new QPushButton("Close");
     console->actions();
 
     QFont font = QApplication::font();
@@ -52,7 +53,6 @@
     // real startup
     QObject::connect(console, SIGNAL(finished()), mainLayout, SLOT(close()));
 
-    console->sendText("ls");
 
    setLayout(mainLayout);
 
@@ -66,9 +66,7 @@ void ConsoleTab::move_tabs(int index) {
 }
 
  void ConsoleTab::RunInstallConfig(Device device) {
-    string* details = RunConfig::install(device);
-    console->sendText(details[0] + "\\r");
-
+console->sendText("hello");
 }
 
 

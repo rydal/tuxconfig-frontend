@@ -6,8 +6,6 @@ ContributorTab2.cpp
 ContributorTab2.h
 Feedback.cpp
 Feedback.h
-GeneralTab.cpp
-GeneralTab.h
 GetHistory.cpp
 GetHistory.h
 GetLocalDevices.cpp
@@ -30,6 +28,8 @@ RestoreTab.cpp
 RestoreTab.h
 RunConfig.cpp
 RunConfig.h
+RunConfigTab.cpp
+RunConfigTab.h
 compare.h
 device.cpp
 device.h

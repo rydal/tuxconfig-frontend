@@ -15,7 +15,7 @@ HEADERS += CheckConnection.h \
            compare.h \
            ConsoleTab.h \
            ContributorTab2.h \
-           GeneralTab.h \
+           RunConfigTab.h \
            device.h \
            Feedback.h \
            GetHistory.h \
@@ -32,7 +32,7 @@ HEADERS += CheckConnection.h \
 SOURCES += CheckConnection.cpp \
            ConsoleTab.cpp \
            ContributorTab2.cpp \
-           GeneralTab.cpp \
+           RunconfigTab.cpp \
            device.cpp \
            Feedback.cpp \
            GetHistory.cpp \

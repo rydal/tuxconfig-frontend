@@ -22,14 +22,14 @@
 #include "RestoreTab.h"
 #include "ConsoleTab.h"
 #include "ContributorTab2.h"
-#include "GeneralTab.h"
+#include "RunConfigTab.h"
 
 
 using namespace std;
 class NotebookGUI :  public QDialog {
         Q_OBJECT
 public:
-    explicit NotebookGUI(const QString name, QWidget *parent = 0);
+    explicit NotebookGUI(const QString name);
 	 void changeTab(int index);
 	 QTabWidget *tabWidget;
 	protected:

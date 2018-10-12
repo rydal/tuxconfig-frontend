@@ -201,6 +201,6 @@ bool RunConfig::restore() {
 }
 
 void RunConfig::setAnswer(string answer) {
-	test_result = answer;
+
 }
 

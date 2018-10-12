@@ -5,10 +5,10 @@
  *      Author: roberty
  */
 
-#include "GeneralTab.h"
+#include "RunConfigTab.h"
 
- RunTab::RunTab(const QFileInfo &fileInfo, QWidget *parent)
-     : QWidget(parent)
+ RunTab::RunTab(const QFileInfo &fileInfo, QWidget * m_parent)
+     : QWidget(m_parent), m_parent(m_parent)
  {
   QVBoxLayout *mainLayout = new QVBoxLayout;
 
@@ -51,29 +51,28 @@
 
 
 			mainLayout->addLayout(m_Grid);
-			setLayout(mainLayout);
-			   QObject::connect(install_button, SIGNAL(clicked()),this, SLOT(installButton(iterated_device)));
-			   QObject::connect(uninstall_button, SIGNAL(clicked()),this, SLOT(uninstallButton(iterated_device)));
-			   QObject::connect(restore_button, SIGNAL(clicked()),this, SLOT(restoreButton(iterated_device)));
-			   QObject::connect(upgrade_button, SIGNAL(clicked()),this, SLOT(upgradeButton(iterated_device)));
+            setLayout(mainLayout);
+            QObject::connect(install_button, SIGNAL(clicked()),this, SLOT(installButton()));
 
 
 
 
 		}
 	}
- void RunTab::installButton(Device device) {
-ConsoleTab::RunInstallConfig(device);
 
 
+ void RunTab::installButton() {
+     QList<QTermWidget*> widgetList = m_parent->findChildren<QTermWidget*>();
+    widgetList.at(0)->sendText("hello");
  }
- void RunTab::uninstallButton(Device device) {
+ void RunTab::uninstallButton(Device* device) {
 
   }
- void RunTab::restoreButton(Device device) {
+ void RunTab::restoreButton(Device* device) {
 
   }
- void RunTab::upgradeButton(Device device) {
+ void RunTab::upgradeButton(Device* device) {
 
   }
+
 

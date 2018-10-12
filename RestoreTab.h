@@ -15,6 +15,7 @@
 
 
 class RestoreTab : public QWidget {
+    Q_OBJECT
 public:
     RestoreTab(const QFileInfo &fileInfo, QWidget *parent = 0);
 
