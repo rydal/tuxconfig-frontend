@@ -13,11 +13,14 @@
 #include <QKeySequence>
 #include <QtWidgets>
 #include<qtermwidget5/qtermwidget.h>
+#include "NotebookGUI.h"
 class ConsoleTab : public QWidget {
-    Q_OBJECT
 
 public:
-    ConsoleTab(const QFileInfo &fileInfo, QWidget *parent = 0);
+    ConsoleTab(const QFileInfo &fileInfo, QTabWidget *m_tabWidget, QWidget *parent = 0 );
+    QWidget *parent;
+    QTabWidget *tabWidget;
+    void move_tabs();
 };
 
 #endif /* CONSOLETAB_H_ */

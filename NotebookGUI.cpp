@@ -16,8 +16,8 @@
     QFileInfo fileInfo(name);
 	   tabWidget->addTab(new RestoreTab(fileInfo), "Restore");
 
-    tabWidget->addTab(new GeneralTab(fileInfo),"General");
-		    tabWidget->addTab(new ConsoleTab(fileInfo),"Configure");
+    tabWidget->addTab(new RunTab(fileInfo),"General");
+		    tabWidget->addTab(new ConsoleTab(fileInfo,tabWidget),"Configure");
 		    tabWidget->addTab(new ContributorTab2(fileInfo),"Contributor info");
 
 		    QVBoxLayout *mainLayout = new QVBoxLayout;
@@ -28,4 +28,7 @@
 		        setWindowTitle(tr("Tab Dialog"));
 
 
+}
+void NotebookGUI::changeTab( int index) {
+tabWidget->setCurrentIndex(index);
 }

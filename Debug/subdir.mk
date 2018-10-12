@@ -7,8 +7,8 @@ CPP_SRCS += \
 ../CheckConnection.cpp \
 ../ConsoleTab.cpp \
 ../ContributorTab2.cpp \
-../DefaultTab.cpp \
 ../Feedback.cpp \
+../GeneralTab.cpp \
 ../GetHistory.cpp \
 ../GetLocalDevices.cpp \
 ../GetOS.cpp \
@@ -22,12 +22,32 @@ CPP_SRCS += \
 ../RunConfig.cpp \
 ../device.cpp 
 
+O_SRCS += \
+../CheckConnection.o \
+../ConsoleTab.o \
+../ContributorTab2.o \
+../DefaultTab.o \
+../Feedback.o \
+../GetHistory.o \
+../GetLocalDevices.o \
+../GetOS.o \
+../GetRemoteConfig.o \
+../HTTPDownloader.o \
+../Linuxconf.o \
+../NotebookGUI.o \
+../QuestionBox.o \
+../RestoreGUI.o \
+../RestoreTab.o \
+../RunConfig.o \
+../device.o \
+../moc_ConsoleTab.o 
+
 OBJS += \
 ./CheckConnection.o \
 ./ConsoleTab.o \
 ./ContributorTab2.o \
-./DefaultTab.o \
 ./Feedback.o \
+./GeneralTab.o \
 ./GetHistory.o \
 ./GetLocalDevices.o \
 ./GetOS.o \
@@ -45,8 +65,8 @@ CPP_DEPS += \
 ./CheckConnection.d \
 ./ConsoleTab.d \
 ./ContributorTab2.d \
-./DefaultTab.d \
 ./Feedback.d \
+./GeneralTab.d \
 ./GetHistory.d \
 ./GetLocalDevices.d \
 ./GetOS.d \

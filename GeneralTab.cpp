@@ -5,9 +5,9 @@
  *      Author: roberty
  */
 
-#include "DefaultTab.h"
+#include "GeneralTab.h"
 
- GeneralTab::GeneralTab(const QFileInfo &fileInfo, QWidget *parent)
+ RunTab::RunTab(const QFileInfo &fileInfo, QWidget *parent)
      : QWidget(parent)
  {
   QVBoxLayout *mainLayout = new QVBoxLayout;
@@ -52,16 +52,26 @@
 
 			mainLayout->addLayout(m_Grid);
 			setLayout(mainLayout);
+			   QObject::connect(install_button, SIGNAL(clicked()),this, SLOT(installButton(iterated_device)));
+			   QObject::connect(uninstall_button, SIGNAL(clicked()),this, SLOT(uninstallButton(iterated_device)));
+			   QObject::connect(restore_button, SIGNAL(clicked()),this, SLOT(restoreButton(iterated_device)));
+			   QObject::connect(upgrade_button, SIGNAL(clicked()),this, SLOT(upgradeButton(iterated_device)));
+
+			   QObject::connect(install_button, SIGNAL(clicked()), this, this->installButton(iterated_device));
+
 
 		}
-	 // Set layout in QWidget
+	}
+ void RunTab::installButton(Device device) {
 
+ }
+ void RunTab::uninstallButton(Device device) {
 
-	        // Set QWidget as the central layout of the main window
+  }
+ void RunTab::restoreButton(Device device) {
 
+  }
+ void RunTab::upgradeButton(Device device) {
 
-
-
-
-}
+  }
 

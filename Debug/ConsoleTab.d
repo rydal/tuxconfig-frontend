@@ -629,7 +629,11 @@ ConsoleTab.o: ../ConsoleTab.cpp \
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtoolbox.h \
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtoolbutton.h \
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtwidgetsversion.h \
- /usr/include/x86_64-linux-gnu/qt5/QtGui/QKeySequence
+ /usr/include/x86_64-linux-gnu/qt5/QtGui/QKeySequence ../NotebookGUI.h \
+ ../device.h ../GetOS.h ../GetHistory.h ../GetRemoteConfig.h \
+ ../GetLocalDevices.h ../compare.h ../RestoreTab.h \
+ /usr/include/x86_64-linux-gnu/qt5/QtGui/QtGui ../ContributorTab2.h \
+ ../HTTPDownloader.hpp ../GeneralTab.h
 
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QApplication:
 
@@ -1894,3 +1898,27 @@ ConsoleTab.o: ../ConsoleTab.cpp \
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtwidgetsversion.h:
 
 /usr/include/x86_64-linux-gnu/qt5/QtGui/QKeySequence:
+
+../NotebookGUI.h:
+
+../device.h:
+
+../GetOS.h:
+
+../GetHistory.h:
+
+../GetRemoteConfig.h:
+
+../GetLocalDevices.h:
+
+../compare.h:
+
+../RestoreTab.h:
+
+/usr/include/x86_64-linux-gnu/qt5/QtGui/QtGui:
+
+../ContributorTab2.h:
+
+../HTTPDownloader.hpp:
+
+../GeneralTab.h:

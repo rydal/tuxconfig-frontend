@@ -4,7 +4,8 @@
  *  Created on: 7 Oct 2018
  *      Author: roberty
  */
-
+#ifndef GENERALTAB_H_
+#define GENERALTAB_H_
 
 #include <QtGui>
 #include <QtWidgets>
@@ -14,18 +15,21 @@
 #include "device.h"
 #include "GetLocalDevices.h"
 #include "GetRemoteConfig.h"
+#include "NotebookGUI.h"
 
 
-class QDialogButtonBox;
- class QFileInfo;
- class QTabWidget;
-
-
- class GeneralTab : public QWidget
+ class RunTab : public QWidget
  {
 
  public:
-     GeneralTab(const QFileInfo &fileInfo, QWidget *parent = 0);
+     RunTab(const QFileInfo &fileInfo, QWidget *parent = 0);
+     void installButton(Device device);
+     void uninstallButton(Device device);
+     void restoreButton(Device device);
+     void upgradeButton(Device device);
+ protected:
+
  };
 
+#endif /* CONSOLETAB_H_ */
 

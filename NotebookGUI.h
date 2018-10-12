@@ -20,17 +20,17 @@
 #include "GetRemoteConfig.h"
 #include <set>
 #include "RestoreTab.h"
-#include "DefaultTab.h"
 #include "ConsoleTab.h"
 #include "ContributorTab2.h"
+#include "GeneralTab.h"
 
 
 using namespace std;
 class NotebookGUI :  public QDialog {
 public:
     explicit NotebookGUI(const QString name, QWidget *parent = 0);
-
-	bool RestoreButton(string command, Device device);
+	 void changeTab(int index);
+	 QTabWidget *tabWidget;
 	protected:
 	  //Signal handlers:
 	  void on_button_quit();
@@ -41,7 +41,8 @@ public:
 	  void get_result_gui(string message);
 	  void get_result(string message);
 	  //Child widgets:
-	   QTabWidget *tabWidget;
+
+
 };
 
 #endif /* NOTEBOOKGUI_H_ */

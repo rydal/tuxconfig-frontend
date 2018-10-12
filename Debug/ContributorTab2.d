@@ -628,8 +628,8 @@ ContributorTab2.o: ../ContributorTab2.cpp ../ContributorTab2.h \
  ../HTTPDownloader.hpp ../device.h ../GetOS.h ../GetHistory.h \
  ../GetRemoteConfig.h ../GetLocalDevices.h ../compare.h ../NotebookGUI.h \
  ../RestoreTab.h /usr/include/x86_64-linux-gnu/qt5/QtGui/QtGui \
- ../DefaultTab.h ../ConsoleTab.h \
- /usr/include/x86_64-linux-gnu/qt5/QtGui/QKeySequence
+ ../ConsoleTab.h /usr/include/x86_64-linux-gnu/qt5/QtGui/QKeySequence \
+ ../GeneralTab.h
 
 ../ContributorTab2.h:
 
@@ -1905,8 +1905,8 @@ ContributorTab2.o: ../ContributorTab2.cpp ../ContributorTab2.h \
 
 /usr/include/x86_64-linux-gnu/qt5/QtGui/QtGui:
 
-../DefaultTab.h:
-
 ../ConsoleTab.h:
 
 /usr/include/x86_64-linux-gnu/qt5/QtGui/QKeySequence:
+
+../GeneralTab.h:

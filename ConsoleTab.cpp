@@ -7,7 +7,8 @@
 
 #include "ConsoleTab.h"
 
- ConsoleTab::ConsoleTab(const QFileInfo &fileInfo, QWidget *parent)
+ ConsoleTab::ConsoleTab(const QFileInfo &fileInfo,   QTabWidget *m_tabWidget , QWidget *m_parent)
+ : parent(m_parent), tabWidget(m_tabWidget)
 {
 
 		QVBoxLayout *mainLayout = new QVBoxLayout;
@@ -54,6 +55,13 @@
     console->sendText("ls");
 
    setLayout(mainLayout);
+
+   QObject::connect(m_button, SIGNAL(clicked()),this, SLOT(closeButton()));
+
+
+}
+void ConsoleTab::move_tabs() {
+	tabWidget->setCurrentIndex(1);
 
 }
 

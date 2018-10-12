@@ -628,9 +628,8 @@ NotebookGUI.o: ../NotebookGUI.cpp ../NotebookGUI.h \
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtoolbox.h \
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtoolbutton.h \
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtwidgetsversion.h \
- ../DefaultTab.h ../ConsoleTab.h \
- /usr/include/x86_64-linux-gnu/qt5/QtGui/QKeySequence \
- ../ContributorTab2.h ../HTTPDownloader.hpp
+ ../ConsoleTab.h /usr/include/x86_64-linux-gnu/qt5/QtGui/QKeySequence \
+ ../ContributorTab2.h ../HTTPDownloader.hpp ../GeneralTab.h
 
 ../NotebookGUI.h:
 
@@ -1902,8 +1901,6 @@ NotebookGUI.o: ../NotebookGUI.cpp ../NotebookGUI.h \
 
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtwidgetsversion.h:
 
-../DefaultTab.h:
-
 ../ConsoleTab.h:
 
 /usr/include/x86_64-linux-gnu/qt5/QtGui/QKeySequence:
@@ -1911,3 +1908,5 @@ NotebookGUI.o: ../NotebookGUI.cpp ../NotebookGUI.h \
 ../ContributorTab2.h:
 
 ../HTTPDownloader.hpp:
+
+../GeneralTab.h:
