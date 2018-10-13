@@ -24,6 +24,7 @@ public:
     QTabWidget *tabWidget;
      QTermWidget *console;
     void move_tabs(int index);
+
 };
 
 #endif /* CONSOLETAB_H_ */

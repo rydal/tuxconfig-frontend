@@ -7,6 +7,7 @@
 
 #include "RunConfigTab.h"
 
+
  RunTab::RunTab(const QFileInfo &fileInfo, QWidget * m_parent)
      : QWidget(m_parent), m_parent(m_parent)
  {
@@ -52,7 +53,8 @@
 
 			mainLayout->addLayout(m_Grid);
             setLayout(mainLayout);
-            QObject::connect(install_button, SIGNAL(clicked()),this, SLOT(installButton()));
+            QObject::connect(install_button, SIGNAL(clicked(Device*)),this, SLOT(installButton(Device*)));
+
 
 
 
@@ -61,9 +63,10 @@
 	}
 
 
- void RunTab::installButton() {
+ void RunTab::installButton(Device *device) {
      QList<QTermWidget*> widgetList = m_parent->findChildren<QTermWidget*>();
     widgetList.at(0)->sendText("hello");
+     emit foo();
  }
  void RunTab::uninstallButton(Device* device) {
 

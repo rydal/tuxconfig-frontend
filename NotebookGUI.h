@@ -29,6 +29,7 @@ using namespace std;
 class NotebookGUI :  public QDialog {
         Q_OBJECT
 public:
+    NotebookGUI();
     explicit NotebookGUI(const QString name);
 	 void changeTab(int index);
 	 QTabWidget *tabWidget;
@@ -42,7 +43,8 @@ public:
 	  void get_result_gui(string message);
 	  void get_result(string message);
 	  //Child widgets:
-
+public slots:
+    void changeTab();
 
 };
 

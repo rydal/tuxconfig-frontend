@@ -60,10 +60,7 @@
 
 
 }
-void ConsoleTab::move_tabs(int index) {
-    tabWidget->setCurrentIndex(index);
 
-}
 
  void ConsoleTab::RunInstallConfig(Device device) {
 console->sendText("hello");

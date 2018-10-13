@@ -79,7 +79,7 @@ string* RunConfig::install(Device device) {
 
 	runfile += "rm -rf /usr/src/" + filedir + " \n";
 	runfile += "mkdir -p " + filedir + "\n";
-	runfile += "git clone $URL /usr/src/" + filedir + " \n";
+    runfile += "git clone --global http.sslCAinfo /etc/ssl/certs/ca-certificates.crt $URL /usr/src/" + filedir + " \n";
 	runfile += "echo git repository downloaded \n";
 	runfile += "wait\n";
 	runfile += "cd /usr/src/" + filedir + " \n";

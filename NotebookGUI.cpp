@@ -12,13 +12,16 @@
 
     setWindowTitle("Tuxconfig");
 
-
     QFileInfo fileInfo(name);
 	   tabWidget->addTab(new RestoreTab(fileInfo), "Restore");
+    RunTab *runTab = new RunTab(fileInfo,tabWidget);
+    runTab->setObjectName("RunTab");
+        tabWidget->addTab(runTab,"General");
+        ConsoleTab *consoleTab = new ConsoleTab(fileInfo,tabWidget);
+        runTab->setObjectName("ConsoleTab");
+            tabWidget->addTab(consoleTab,"Console");
 
-        tabWidget->addTab(new RunTab(fileInfo,tabWidget),"General");
-            tabWidget->addTab(new ConsoleTab(fileInfo,tabWidget),"Configure");
-		    tabWidget->addTab(new ContributorTab2(fileInfo),"Contributor info");
+            tabWidget->addTab(new ContributorTab2(fileInfo),"Contributor info");
 
 		    QVBoxLayout *mainLayout = new QVBoxLayout;
 		        mainLayout->addWidget(tabWidget);
@@ -27,7 +30,11 @@
 
 		        setWindowTitle(tr("Tab Dialog"));
 
-}
-void NotebookGUI::changeTab( int index) {
+                connect(runTab, SIGNAL(foo()), this, SLOT(changeTab()));
+
 
 }
+void NotebookGUI::changeTab() {
+    tabWidget->setCurrentIndex(2);
+}
+

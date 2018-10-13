@@ -24,16 +24,19 @@
  {
 Q_OBJECT
  public:
+     RunTab();
      RunTab(const QFileInfo &fileInfo, QWidget *parent = 0);
-
      QWidget *m_parent;
      QTabWidget * tabWidget;
 
  public slots:
-     void installButton();
+     void installButton(Device *device);
      void uninstallButton(Device * device);
      void restoreButton(Device * device);
      void upgradeButton(Device * device);
+
+ signals:
+     void foo();
 
  protected:
 
