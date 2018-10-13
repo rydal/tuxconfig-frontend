@@ -10,6 +10,7 @@
 
  RunTab::RunTab(const QFileInfo &fileInfo, QWidget * m_parent)
      : QWidget(m_parent), m_parent(m_parent)
+
  {
   QVBoxLayout *mainLayout = new QVBoxLayout;
 
@@ -53,28 +54,26 @@
 
 			mainLayout->addLayout(m_Grid);
             setLayout(mainLayout);
-            QObject::connect(install_button, SIGNAL(clicked(Device*)),this, SLOT(installButton(Device*)));
-
-
-
-
-
+ connect(install_button, &QPushButton::clicked, [=] { installButton(iterated_device); });
+connect(uninstall_button, &QPushButton::clicked, [=] { uninstallButton(iterated_device); });
+connect(restore_button, &QPushButton::clicked, [=] { restoreButton(iterated_device); });
+connect(upgrade_button, &QPushButton::clicked, [=] { upgradeButton(iterated_device); });
 		}
 	}
 
 
- void RunTab::installButton(Device *device) {
+ void RunTab::installButton(const Device& device) {
      QList<QTermWidget*> widgetList = m_parent->findChildren<QTermWidget*>();
     widgetList.at(0)->sendText("hello");
      emit foo();
  }
- void RunTab::uninstallButton(Device* device) {
+ void RunTab::uninstallButton(const Device& device) {
+cout<<"Works woop!"<<endl;
+  }
+ void RunTab::restoreButton(const Device& device) {
 
   }
- void RunTab::restoreButton(Device* device) {
-
-  }
- void RunTab::upgradeButton(Device* device) {
+ void RunTab::upgradeButton(const Device& device) {
 
   }
 

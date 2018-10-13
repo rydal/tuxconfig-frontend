@@ -30,10 +30,10 @@ Q_OBJECT
      QTabWidget * tabWidget;
 
  public slots:
-     void installButton(Device *device);
-     void uninstallButton(Device * device);
-     void restoreButton(Device * device);
-     void upgradeButton(Device * device);
+     void installButton(const Device&);
+     void uninstallButton(const Device&);
+     void restoreButton(const Device&);
+     void upgradeButton(const Device&);
 
  signals:
      void foo();
