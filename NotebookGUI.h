@@ -33,14 +33,15 @@ class NotebookGUI :  public QDialog {
 public:
     NotebookGUI();
     explicit NotebookGUI(const QString name);
-    void addButtons();
+    void showResultButtons();
+
 
 	 QTabWidget *tabWidget;
     protected:
       //Child widgets:
 public slots:
     void changeTab(int index);
-    void setDevice(Device device);
+
 
 };
 

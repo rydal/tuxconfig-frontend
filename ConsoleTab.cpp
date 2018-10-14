@@ -21,7 +21,7 @@ Device current_device;
     console->setColorScheme("GreenOnBlack");
 
    works_button = new QPushButton("Yes devie works", this);
-    fails_button = new QPushButton("No device fails", this);
+   fails_button = new QPushButton("No device fails", this);
 
     works_button->setObjectName("works_button");
     works_button->setObjectName("fails_button");
@@ -61,7 +61,6 @@ Device current_device;
    setLayout(mainLayout);
 
    QObject::connect(m_button, SIGNAL(clicked()),this, SLOT(closeButton()));
-
 
 
 

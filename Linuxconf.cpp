@@ -3,11 +3,15 @@
 
 namespace
 {
-  volatile std::sig_atomic_t gSignalStatus;
+std::function<void(int)> shutdown_handler;
+void signal_handler(int signal) { shutdown_handler(signal); }
+}
+void runShowButtons(int signum, NotebookGUI& gui) {
+ gui.showResultButtons();
 }
 
-
 int main(int argc, char *argv[]) {
+
 
 
 
@@ -79,7 +83,11 @@ int main(int argc, char *argv[]) {
 
 
     gui.show();
+    std::signal(SIGINT, signal_handler);
+    shutdown_handler = [&](int signal) {
 
+        gui.showResultButtons();
+      };
 
     return app.exec();
 

@@ -41,7 +41,7 @@ public:
 	virtual ~RestoreGUI();
 	static bool CommandLineInstall(std::map <string,Device> device_map);
 
-    static string DoRestore(string restore_file);
+    static bool DoRestore(string restorefile);
 
 protected:
 

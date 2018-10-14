@@ -34,7 +34,7 @@ Q_OBJECT
      void installButton(const Device&);
      void uninstallButton(const Device&);
      void restoreButton(const Device&);
-     void upgradeButton(const Device&);
+     void upgrade(const Device&);
 
 signals:
      void setTab(int);

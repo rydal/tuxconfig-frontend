@@ -77,15 +77,15 @@ bool RestoreGUI::CommandLineInstall(std::map <string,Device> device_map) {
 	return DoRestore(restore_file);
 
 }
-string RestoreGUI::DoRestore(Device device) {
+bool RestoreGUI::DoRestore(string restorefile) {
 	string runfile = "";
 	runfile += "#! /bin/bash \n";
-    runfile += "tar -C / -xvf " + "/var/lib/tuxconfig/backup" + device.getDeviceid();
+    runfile += "tar -C / -xvf /var/lib/tuxconfig/backup/" + restorefile;
 	string restore_run_file = "/usr/src/tuxconfig-restore";
 		std::ofstream out(restore_run_file);
 		out << runfile;
 		out.close();
-        return
+        return true;
 	}
 
 

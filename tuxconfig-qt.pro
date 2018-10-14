@@ -56,5 +56,4 @@ LIBS += -L"/usr/include/boost" -lboost_system \
 	-L"/usr/include/x86_64-linux-gnu/curl/" -lcurl \	
 	-L"/usr/include/jsoncpp" -ljsoncpp
 
-
-u
+CONFIG += c++14

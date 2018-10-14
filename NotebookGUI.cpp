@@ -42,7 +42,9 @@
 void NotebookGUI::changeTab(int index) {
     tabWidget->setCurrentIndex(index);
 }
-void NotebookGUI::setDevice(Device device) {
+void NotebookGUI::showResultButtons()  {
+    QList<QTermWidget*> widgetList = tabWidget->findChildren<QTermWidget*>();
+    cout<<"butons?"<<widgetList.size();
 }
 
 

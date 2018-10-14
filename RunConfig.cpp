@@ -46,7 +46,7 @@ string RunConfig::uninstall(Device device) {
 	out.close();
 	string tuxconfig_chmod_command = "chmod u+x " + tuxconfig_config_name;
 	system(tuxconfig_chmod_command.c_str());
-    return (tuxconfig_config_name)
+    return (tuxconfig_config_name);
 }
 
 string* RunConfig::install(Device device) {
@@ -150,13 +150,15 @@ string* RunConfig::install(Device device) {
 
 
 
-bool RunConfig::upgrade(Device device) {
+string* RunConfig::upgrade(Device device) {
 	GetRemoteConfig remote_config_class;
 	Device new_device = remote_config_class.GetConfiguration(device);
-	return install(new_device);
+    string* result = install(new_device);
+    return result;
+
 }
 
-string RunConfig::restore() {
+string RunConfig::restore(Device device) {
 	ifstream fs;
 	fs.open("/root/.config/tuxconfig/history", ios::out);
 	fs.close();

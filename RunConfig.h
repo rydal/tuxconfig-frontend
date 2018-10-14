@@ -32,7 +32,7 @@ public:
 	virtual ~RunConfig();
     static string* install( Device m_device) ;
     static string uninstall( Device m_device);
-    static string  upgrade( Device m_device);
+    static string*  upgrade( Device m_device);
     static string  restore(Device m_device);
 
 
