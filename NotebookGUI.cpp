@@ -13,15 +13,16 @@
     setWindowTitle("Tuxconfig");
 
     QFileInfo fileInfo(name);
-	   tabWidget->addTab(new RestoreTab(fileInfo), "Restore");
     RunTab *runTab = new RunTab(fileInfo,tabWidget);
     runTab->setObjectName("RunTab");
-        tabWidget->addTab(runTab,"General");
-        ConsoleTab *consoleTab = new ConsoleTab(fileInfo,tabWidget);
-        runTab->setObjectName("ConsoleTab");
-            tabWidget->addTab(consoleTab,"Console");
+    tabWidget->addTab(runTab,"General");
+    tabWidget->addTab(new RestoreTab(fileInfo), "Restore");
 
-            tabWidget->addTab(new ContributorTab2(fileInfo),"Contributor info");
+    ConsoleTab *consoleTab = new ConsoleTab(fileInfo,tabWidget);
+    runTab->setObjectName("ConsoleTab");
+    tabWidget->addTab(consoleTab,"Console");
+
+    tabWidget->addTab(new ContributorTab2(fileInfo),"Contributor info");
 
 		    QVBoxLayout *mainLayout = new QVBoxLayout;
 		        mainLayout->addWidget(tabWidget);
@@ -30,11 +31,18 @@
 
 		        setWindowTitle(tr("Tab Dialog"));
 
-                connect(runTab, SIGNAL(foo()), this, SLOT(changeTab()));
+                connect(runTab, SIGNAL(setTab(int)), this, SLOT(changeTab(int)));
+                connect(consoleTab, SIGNAL(setTab(int)), this, SLOT(changeTab(int)));
+
+                connect(runTab, SIGNAL(setDevice(Device)), this, SLOT(setDevice(Device)));
+
 
 
 }
-void NotebookGUI::changeTab() {
-    tabWidget->setCurrentIndex(2);
+void NotebookGUI::changeTab(int index) {
+    tabWidget->setCurrentIndex(index);
 }
+void NotebookGUI::setDevice(Device device) {
+}
+
 

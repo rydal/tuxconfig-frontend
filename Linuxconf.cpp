@@ -1,8 +1,18 @@
 #include "Linuxconf.h"
 
+
+namespace
+{
+  volatile std::sig_atomic_t gSignalStatus;
+}
+
+
 int main(int argc, char *argv[]) {
 
-	cout<<"running, woop"<<endl;
+
+
+
+    cout<<"running, woop"<<endl;
 	bool is_gui_present = GetOS::is_gui_present();
 
 	//check root.
@@ -63,8 +73,14 @@ int main(int argc, char *argv[]) {
 	}
     QApplication app(argc, argv);
 
-	NotebookGUI gui("Testing");
-	gui.show();
+
+
+    NotebookGUI gui("Testing");
+
+
+    gui.show();
+
+
     return app.exec();
 
 

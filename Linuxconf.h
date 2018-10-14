@@ -25,9 +25,13 @@
 #include "NotebookGUI.h"
 #include "RestoreGUI.h"
 #include "QuestionBox.h"
+#include "ConsoleTab.h"
+
+#include<csignal>
 
 class LinuxConf {
 public:
+NotebookGUI gui;
 
  static void on_button_clicked(std::string command,Device& device);
 };

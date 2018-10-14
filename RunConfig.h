@@ -31,10 +31,10 @@ public:
 
 	virtual ~RunConfig();
     static string* install( Device m_device) ;
-	static bool uninstall( Device& m_device);
-	static bool upgrade( Device m_device);
-	static bool restore();
-	static void setAnswer(string answer);
+    static string uninstall( Device m_device);
+    static string  upgrade( Device m_device);
+    static string  restore(Device m_device);
+
 
 
 };

@@ -23,6 +23,8 @@
 #include "ConsoleTab.h"
 #include "ContributorTab2.h"
 #include "RunConfigTab.h"
+#include <thread>         // std::this_thread::sleep_for
+#include <chrono>         // std::chrono::seconds
 
 
 using namespace std;
@@ -31,20 +33,14 @@ class NotebookGUI :  public QDialog {
 public:
     NotebookGUI();
     explicit NotebookGUI(const QString name);
-	 void changeTab(int index);
-	 QTabWidget *tabWidget;
-	protected:
-	  //Signal handlers:
-	  void on_button_quit();
+    void addButtons();
 
-	  void restore_button_clicked(string command, Device device);
-	  void main_button_clicked(string command);
-	  void on_child_exited();
-	  void get_result_gui(string message);
-	  void get_result(string message);
-	  //Child widgets:
+	 QTabWidget *tabWidget;
+    protected:
+      //Child widgets:
 public slots:
-    void changeTab();
+    void changeTab(int index);
+    void setDevice(Device device);
 
 };
 

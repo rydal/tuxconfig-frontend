@@ -9,6 +9,7 @@
 
 #include <QtGui>
 #include <QtWidgets>
+
 #include <string>
 #include <map>
 #include <iterator>
@@ -27,16 +28,18 @@ Q_OBJECT
      RunTab();
      RunTab(const QFileInfo &fileInfo, QWidget *parent = 0);
      QWidget *m_parent;
-     QTabWidget * tabWidget;
-
+     QTabWidget *tabWidget;
+    QTermWidget *termWidget;
  public slots:
      void installButton(const Device&);
      void uninstallButton(const Device&);
      void restoreButton(const Device&);
      void upgradeButton(const Device&);
 
- signals:
-     void foo();
+signals:
+     void setTab(int);
+     void setDevice(Device);
+
 
  protected:
 

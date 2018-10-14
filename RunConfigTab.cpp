@@ -58,22 +58,41 @@
 connect(uninstall_button, &QPushButton::clicked, [=] { uninstallButton(iterated_device); });
 connect(restore_button, &QPushButton::clicked, [=] { restoreButton(iterated_device); });
 connect(upgrade_button, &QPushButton::clicked, [=] { upgradeButton(iterated_device); });
-		}
-	}
+
+QList<QTermWidget*> widgetList = m_parent->findChildren<QTermWidget*>();
+termWidget = widgetList.at(0);
+
+  }
+
+ }
 
 
  void RunTab::installButton(const Device& device) {
-     QList<QTermWidget*> widgetList = m_parent->findChildren<QTermWidget*>();
-    widgetList.at(0)->sendText("hello");
-     emit foo();
+     string* install_result = RunConfig::install(device);
+        termWidget->sendText(install_result[0].c_str());
+        termWidget->sendText("\r");
+        emit setTab(2);
  }
  void RunTab::uninstallButton(const Device& device) {
-cout<<"Works woop!"<<endl;
+     string uninstall_command = RunConfig::uninstall(device);
+
+     termWidget->sendText(uninstall_command.c_str());
+     termWidget->sendText("\r");
+     emit setTab(2);
+
   }
  void RunTab::restoreButton(const Device& device) {
+     string restore_command = RunConfig::restore(device);
+     termWidget->sendText(restore_command.c_str());
+     termWidget->sendText("\r");
+     emit setTab(2);
 
   }
  void RunTab::upgradeButton(const Device& device) {
+     string upgrade_command = RunConfig::upgrade(device);
+     termWidget->sendText(upgrade_command.c_str());
+     termWidget->sendText("\r");
+     emit setTab(2);
 
   }
 

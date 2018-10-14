@@ -26,7 +26,7 @@ RunConfig::~RunConfig() {
 	// TODO Auto-generated destructor stub
 }
 
-bool RunConfig::uninstall(Device& device) {
+string RunConfig::uninstall(Device device) {
 
 	string runfile = "#!/bin/bash\n";
 	runfile += "set -x \n";
@@ -46,26 +46,14 @@ bool RunConfig::uninstall(Device& device) {
 	out.close();
 	string tuxconfig_chmod_command = "chmod u+x " + tuxconfig_config_name;
 	system(tuxconfig_chmod_command.c_str());
-	string tuxconfig_config_run = "/bin/bash " + tuxconfig_config_name;
-	int status = system(tuxconfig_config_run.c_str());
-
-	if (status == 0) {
-
-
-
-	} else {
-
-	}
-	return false;
+    return (tuxconfig_config_name)
 }
 
 string* RunConfig::install(Device device) {
 	string runfile = "#!/bin/bash \n";
 	runfile += "set -e \n";
-	runfile += "set -x \n";
 
 	runfile += "touch /root/.config/tuxconfig/history \n";
-
 	//backup /lib folder
 
 	string filedir = device.getGitUrl();
@@ -79,7 +67,7 @@ string* RunConfig::install(Device device) {
 
 	runfile += "rm -rf /usr/src/" + filedir + " \n";
 	runfile += "mkdir -p " + filedir + "\n";
-    runfile += "git clone --global http.sslCAinfo /etc/ssl/certs/ca-certificates.crt $URL /usr/src/" + filedir + " \n";
+    runfile += "git clone $URL /usr/src/" + filedir + " \n";
 	runfile += "echo git repository downloaded \n";
 	runfile += "wait\n";
 	runfile += "cd /usr/src/" + filedir + " \n";
@@ -90,12 +78,15 @@ string* RunConfig::install(Device device) {
 
 	runfile += ". " + tuxconfig_file + "\n";
 //install dependencies;
-    runfile += " if [ -z \"${dependencies+x}\" ] ; then \n";
+    runfile += " if [ !  -z \"$dependencies\" ] ; then \n";
     runfile += "eval $dependencies \n";
     runfile  +=  "echo \"" + device.getDeviceid() + "," + device.getDescription() + ","	+ to_string(device.getVoteDifference()) + ", apt installed \" >> /root/.config/tuxconfig/history \n";
+    runfile += "else \n";
+    runfile  +=  "echo \"" + device.getDeviceid() + "," + device.getDescription() + ","	+ to_string(device.getVoteDifference()) + ", apt not installed \" >> /root/.config/tuxconfig/history \n";
     runfile += "fi \n";
-	runfile += "if [ -f Makefile ] ; then \n";
-	runfile += "echo \"installed dependencies\" \n";
+    runfile += "echo \"installed dependencies\" \n";
+    runfile += "if [ -f Makefile ] ; then \n";
+
 //Build module
 	runfile += "make\n";
 	runfile += "echo \"built source code\" \n";
@@ -109,6 +100,9 @@ string* RunConfig::install(Device device) {
     runfile += "else \n";
     runfile += "echo \"" + device.getDeviceid() + "," + device.getDescription() + ","	+ to_string(device.getVoteDifference()) + ", module not installed \" >> /root/.config/tuxconfig/history  \n";
     runfile += "fi \n";
+    runfile += "eval $test_program \n";
+    runfile += "kill -SIGHUP " + to_string(::getpid()) + " \n";
+
 
     boost::replace_all(filedir, "/", "-");
 	string tuxconfig_run_name = "/usr/src/tuxconfig-" + filedir;
@@ -162,7 +156,7 @@ bool RunConfig::upgrade(Device device) {
 	return install(new_device);
 }
 
-bool RunConfig::restore() {
+string RunConfig::restore() {
 	ifstream fs;
 	fs.open("/root/.config/tuxconfig/history", ios::out);
 	fs.close();
@@ -188,19 +182,9 @@ bool RunConfig::restore() {
 	int int_reply = stoi(reply);
 
 	string rollback_command =
-			" x-terminal-emulator -e tar -xvf /var/lib/tuxconfig/lib_backup-"
+            "tar -xvf /var/lib/tuxconfig/lib_backup-"
 					+ numbered_hashmap.find(int_reply)->second.getDeviceid()
 					+ "-"
 					+ numbered_hashmap.find(int_reply)->second.getStatus();
-	int result = system(rollback_command.c_str());
-
-	if (result == 0) {
-		return true;
-	}
-	return false;
+    return rollback_command;
 }
-
-void RunConfig::setAnswer(string answer) {
-
-}
-
