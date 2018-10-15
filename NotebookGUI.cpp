@@ -34,7 +34,7 @@
                 connect(runTab, SIGNAL(setTab(int)), this, SLOT(changeTab(int)));
                 connect(consoleTab, SIGNAL(setTab(int)), this, SLOT(changeTab(int)));
 
-                connect(runTab, SIGNAL(sendCommand(string)), this, SLOT(runCommand(string)));
+                connect(runTab, SIGNAL(sendCommand(Device, string)), this, SLOT(runCommand(Device, string)));
 
 
 
@@ -52,8 +52,10 @@ void NotebookGUI::showErrorButton()  {
     QList<QWidget*> widgetList = tabWidget->findChildren<QWidget*>("fails_button");
     cout<<"butons?"<<widgetList.size();
 }
-void NotebookGUI::runCommand(string command) {
+void NotebookGUI::runCommand(Device device, string method, string command) {
     QList<QTermWidget*> widgetList = tabWidget->findChildren<QTermWidget*>();
-    widgetList.at(0)->sendText(command.c_str());
+    string runstring = command + " | tee /var/lib/tuxconfig/" + device.getDeviceid() + "-" + method;
+    widgetList.at(0)->sendText(runstring.c_str());
     widgetList.at(0)->sendText("\r");
+
 }

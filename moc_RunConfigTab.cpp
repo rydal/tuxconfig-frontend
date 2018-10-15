@@ -35,16 +35,16 @@ QT_MOC_LITERAL(0, 0, 6), // "RunTab"
 QT_MOC_LITERAL(1, 7, 6), // "setTab"
 QT_MOC_LITERAL(2, 14, 0), // ""
 QT_MOC_LITERAL(3, 15, 11), // "sendCommand"
-QT_MOC_LITERAL(4, 27, 6), // "string"
-QT_MOC_LITERAL(5, 34, 13), // "installButton"
-QT_MOC_LITERAL(6, 48, 6), // "Device"
+QT_MOC_LITERAL(4, 27, 6), // "Device"
+QT_MOC_LITERAL(5, 34, 6), // "string"
+QT_MOC_LITERAL(6, 41, 13), // "installButton"
 QT_MOC_LITERAL(7, 55, 15), // "uninstallButton"
 QT_MOC_LITERAL(8, 71, 13), // "restoreButton"
 QT_MOC_LITERAL(9, 85, 7) // "upgrade"
 
     },
-    "RunTab\0setTab\0\0sendCommand\0string\0"
-    "installButton\0Device\0uninstallButton\0"
+    "RunTab\0setTab\0\0sendCommand\0Device\0"
+    "string\0installButton\0uninstallButton\0"
     "restoreButton\0upgrade"
 };
 #undef QT_MOC_LITERAL
@@ -64,23 +64,23 @@ static const uint qt_meta_data_RunTab[] = {
 
  // signals: name, argc, parameters, tag, flags
        1,    1,   44,    2, 0x06 /* Public */,
-       3,    1,   47,    2, 0x06 /* Public */,
+       3,    3,   47,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       5,    1,   50,    2, 0x0a /* Public */,
-       7,    1,   53,    2, 0x0a /* Public */,
-       8,    1,   56,    2, 0x0a /* Public */,
-       9,    1,   59,    2, 0x0a /* Public */,
+       6,    1,   54,    2, 0x0a /* Public */,
+       7,    1,   57,    2, 0x0a /* Public */,
+       8,    1,   60,    2, 0x0a /* Public */,
+       9,    1,   63,    2, 0x0a /* Public */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Int,    2,
-    QMetaType::Void, 0x80000000 | 4,    2,
+    QMetaType::Void, 0x80000000 | 4, 0x80000000 | 5, 0x80000000 | 5,    2,    2,    2,
 
  // slots: parameters
-    QMetaType::Void, 0x80000000 | 6,    2,
-    QMetaType::Void, 0x80000000 | 6,    2,
-    QMetaType::Void, 0x80000000 | 6,    2,
-    QMetaType::Void, 0x80000000 | 6,    2,
+    QMetaType::Void, 0x80000000 | 4,    2,
+    QMetaType::Void, 0x80000000 | 4,    2,
+    QMetaType::Void, 0x80000000 | 4,    2,
+    QMetaType::Void, 0x80000000 | 4,    2,
 
        0        // eod
 };
@@ -92,7 +92,7 @@ void RunTab::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->setTab((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 1: _t->sendCommand((*reinterpret_cast< string(*)>(_a[1]))); break;
+        case 1: _t->sendCommand((*reinterpret_cast< Device(*)>(_a[1])),(*reinterpret_cast< string(*)>(_a[2])),(*reinterpret_cast< string(*)>(_a[3]))); break;
         case 2: _t->installButton((*reinterpret_cast< const Device(*)>(_a[1]))); break;
         case 3: _t->uninstallButton((*reinterpret_cast< const Device(*)>(_a[1]))); break;
         case 4: _t->restoreButton((*reinterpret_cast< const Device(*)>(_a[1]))); break;
@@ -109,7 +109,7 @@ void RunTab::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
             }
         }
         {
-            typedef void (RunTab::*_t)(string );
+            typedef void (RunTab::*_t)(Device , string , string );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&RunTab::sendCommand)) {
                 *result = 1;
                 return;
@@ -162,9 +162,9 @@ void RunTab::setTab(int _t1)
 }
 
 // SIGNAL 1
-void RunTab::sendCommand(string _t1)
+void RunTab::sendCommand(Device _t1, string _t2, string _t3)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)), const_cast<void*>(reinterpret_cast<const void*>(&_t3)) };
     QMetaObject::activate(this, &staticMetaObject, 1, _a);
 }
 QT_WARNING_POP

@@ -7,7 +7,7 @@
 
 #include "Feedback.h"
 string result_string;
-Feedback::Feedback(Device device, bool successful) {
+Feedback::Feedback(Device device, string method, bool successful) {
 	// TODO Auto-generated constructor stub
 	ostringstream os;
 		string url = "https://linuxconf.feedthepenguin.org/hehe/reportback?";
@@ -25,20 +25,39 @@ Feedback::Feedback(Device device, bool successful) {
 			 result_string =    os.str();
 			 // Let's parse it
 
+             std::istringstream myStream("/var/lib/tuxconfig/"  + method + "-" + device.getDeviceid());
+             int size = myStream.str().size();
 
-}
+             char buf[50];
+              try
+              {
+                 curlpp::Cleanup cleaner;
+                 curlpp::Easy request;
 
-bool Feedback::ReturnVoteStatus() {
-	Json::Value root;
-		     Json::Reader reader;
-		     bool parsingSuccessful = reader.parse( result_string.c_str(), root );     //parse process
-		     if(parsingSuccessful) {
+                 std::list< std::string > headers;
+                 headers.push_back("Content-Type: text/*");
+                 sprintf(buf, "Content-Length: %d", size);
+                 headers.push_back(buf);
 
-		     if(root.get("Success","null").asString().compare("null") == 0 ) {
-		    	 return true;
-		     }
-		     }
-		     return false;
+                 using namespace curlpp::Options;
+                 request.setOpt(new Verbose(true));
+                 request.setOpt(new ReadStream(&myStream));
+                 request.setOpt(new InfileSize(size));
+                 request.setOpt(new Upload(true));
+                 request.setOpt(new HttpHeader(headers));
+                 request.setOpt(new Url(url));
+
+                 request.perform();
+              }
+              catch ( curlpp::LogicError & e )
+                {
+                  std::cout << e.what() << std::endl;
+                }
+              catch ( curlpp::RuntimeError & e )
+                {
+                  std::cout << e.what() << std::endl;
+                }
+
 }
 
 

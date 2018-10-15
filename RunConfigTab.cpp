@@ -67,25 +67,25 @@ connect(upgrade_button, &QPushButton::clicked, [=] { upgrade(iterated_device); }
  void RunTab::installButton(const Device& device) {
      string* install = RunConfig::install(device);
         emit setTab(2);
-        emit sendCommand(install[0]);
+        emit sendCommand(device, "install",install[0]);
  }
  void RunTab::uninstallButton(const Device& device) {
      string uninstall = RunConfig::uninstall(device);
 
      emit setTab(2);
-     emit sendCommand(uninstall);
+     emit sendCommand(device, "uninstall", uninstall);
   }
  void RunTab::restoreButton(const Device& device) {
      string restore = RunConfig::restore(device);
 
      emit setTab(2);
-     emit sendCommand(restore);
+     emit sendCommand(device, "restore", restore);
 
   }
  void RunTab::upgrade(const Device& device) {
      string* upgrade = RunConfig::upgrade(device);
      emit setTab(2);
-     emit sendCommand(upgrade[0]);
+     emit sendCommand(device, "upgrade",upgrade[0]);
 
   }
 

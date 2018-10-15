@@ -38,7 +38,7 @@ Q_OBJECT
 
 signals:
      void setTab(int);
-     void sendCommand(string);
+     void sendCommand(Device, string, string);
 
 
  protected:

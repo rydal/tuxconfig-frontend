@@ -42,7 +42,7 @@ public:
       //Child widgets:
 public slots:
     void changeTab(int index);
-    void runCommand(string command);
+    void runCommand(Device, string,string);
 
 };
 

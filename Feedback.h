@@ -12,16 +12,18 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include <curlpp/cURLpp.hpp>
-#include <curlpp/Options.hpp>
 #include <jsoncpp/json/json.h>
 #include "device.h"
+#include <curlpp/cURLpp.hpp>
+#include <curlpp/Easy.hpp>
+#include <curlpp/Options.hpp>
+#include <curlpp/Exception.hpp>
 
 using namespace std;
 
 class Feedback {
 public:
-	Feedback(Device device, bool successful);
+    Feedback(Device device, string method, bool successful);
 	virtual ~Feedback();
 	static  bool ReturnVoteStatus();
 

@@ -22,7 +22,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_NotebookGUI_t {
     QByteArrayData data[7];
-    char stringdata0[55];
+    char stringdata0[54];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -36,12 +36,12 @@ QT_MOC_LITERAL(1, 12, 9), // "changeTab"
 QT_MOC_LITERAL(2, 22, 0), // ""
 QT_MOC_LITERAL(3, 23, 5), // "index"
 QT_MOC_LITERAL(4, 29, 10), // "runCommand"
-QT_MOC_LITERAL(5, 40, 6), // "string"
-QT_MOC_LITERAL(6, 47, 7) // "command"
+QT_MOC_LITERAL(5, 40, 6), // "Device"
+QT_MOC_LITERAL(6, 47, 6) // "string"
 
     },
     "NotebookGUI\0changeTab\0\0index\0runCommand\0"
-    "string\0command"
+    "Device\0string"
 };
 #undef QT_MOC_LITERAL
 
@@ -60,11 +60,11 @@ static const uint qt_meta_data_NotebookGUI[] = {
 
  // slots: name, argc, parameters, tag, flags
        1,    1,   24,    2, 0x0a /* Public */,
-       4,    1,   27,    2, 0x0a /* Public */,
+       4,    3,   27,    2, 0x0a /* Public */,
 
  // slots: parameters
     QMetaType::Void, QMetaType::Int,    3,
-    QMetaType::Void, 0x80000000 | 5,    6,
+    QMetaType::Void, 0x80000000 | 5, 0x80000000 | 6, 0x80000000 | 6,    2,    2,    2,
 
        0        // eod
 };
@@ -76,7 +76,7 @@ void NotebookGUI::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->changeTab((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 1: _t->runCommand((*reinterpret_cast< string(*)>(_a[1]))); break;
+        case 1: _t->runCommand((*reinterpret_cast< Device(*)>(_a[1])),(*reinterpret_cast< string(*)>(_a[2])),(*reinterpret_cast< string(*)>(_a[3]))); break;
         default: ;
         }
     }
