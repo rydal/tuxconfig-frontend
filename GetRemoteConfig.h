@@ -4,7 +4,6 @@
  *  Created on: 25 Aug 2018
  *      Author: roberty
  */
-
 #ifndef GETREMOTECONFIG_H_
 #define GETREMOTECONFIG_H_
 

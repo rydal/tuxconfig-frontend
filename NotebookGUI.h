@@ -34,6 +34,7 @@ public:
     NotebookGUI();
     explicit NotebookGUI(const QString name);
     void showResultButtons();
+    void showErrorButton();
 
 
 	 QTabWidget *tabWidget;
@@ -41,7 +42,7 @@ public:
       //Child widgets:
 public slots:
     void changeTab(int index);
-
+    void runCommand(string command);
 
 };
 

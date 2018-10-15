@@ -29,8 +29,7 @@ RunConfig::~RunConfig() {
 string RunConfig::uninstall(Device device) {
 
 	string runfile = "#!/bin/bash\n";
-	runfile += "set -x \n";
-	runfile += "set -e \n";
+    runfile += "set -e \n";
 	runfile += "tar -cvpf /var/lib/tuxconfig/lib_backup-" + device.getDeviceid()
 			+ "-uninstall.tar /lib /etc/modules* \n";
 
@@ -52,7 +51,10 @@ string RunConfig::uninstall(Device device) {
 string* RunConfig::install(Device device) {
 	string runfile = "#!/bin/bash \n";
 	runfile += "set -e \n";
-
+    runfile += "cleanup() { \n";
+    runfile += "kill -SIGUSR2 " + to_string(::getpid()) + " \n";
+    runfile += "} \n";
+    runfile += "trap cleanup() 0 \n";
 	runfile += "touch /root/.config/tuxconfig/history \n";
 	//backup /lib folder
 
@@ -73,9 +75,7 @@ string* RunConfig::install(Device device) {
 	runfile += "cd /usr/src/" + filedir + " \n";
 	runfile += "git checkout $COMMIT\n";
 	runfile += "echo commit checked out\n";
-
 	string tuxconfig_file = "/usr/src/" + filedir + "/tuxconfig";
-
 	runfile += ". " + tuxconfig_file + "\n";
 //install dependencies;
     runfile += " if [ !  -z \"$dependencies\" ] ; then \n";
@@ -86,7 +86,6 @@ string* RunConfig::install(Device device) {
     runfile += "fi \n";
     runfile += "echo \"installed dependencies\" \n";
     runfile += "if [ -f Makefile ] ; then \n";
-
 //Build module
 	runfile += "make\n";
 	runfile += "echo \"built source code\" \n";
@@ -101,7 +100,7 @@ string* RunConfig::install(Device device) {
     runfile += "echo \"" + device.getDeviceid() + "," + device.getDescription() + ","	+ to_string(device.getVoteDifference()) + ", module not installed \" >> /root/.config/tuxconfig/history  \n";
     runfile += "fi \n";
     runfile += "eval $test_program \n";
-    runfile += "kill -SIGHUP " + to_string(::getpid()) + " \n";
+    runfile += "kill -SIGUSR1" + to_string(::getpid()) + " \n";
 
 
     boost::replace_all(filedir, "/", "-");
@@ -110,7 +109,7 @@ string* RunConfig::install(Device device) {
 	out << runfile;
 	out.close();
 
-    string* array = new string[4];
+    string* array = new string[3];
     array[0] = tuxconfig_run_name;
     string chmod_command = "chmod u+x " + tuxconfig_run_name;
     system(chmod_command.c_str());

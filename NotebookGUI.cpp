@@ -34,7 +34,7 @@
                 connect(runTab, SIGNAL(setTab(int)), this, SLOT(changeTab(int)));
                 connect(consoleTab, SIGNAL(setTab(int)), this, SLOT(changeTab(int)));
 
-                connect(runTab, SIGNAL(setDevice(Device)), this, SLOT(setDevice(Device)));
+                connect(runTab, SIGNAL(sendCommand(string)), this, SLOT(runCommand(string)));
 
 
 
@@ -43,8 +43,17 @@ void NotebookGUI::changeTab(int index) {
     tabWidget->setCurrentIndex(index);
 }
 void NotebookGUI::showResultButtons()  {
-    QList<QTermWidget*> widgetList = tabWidget->findChildren<QTermWidget*>();
+    QList<QWidget*> worksList = tabWidget->findChildren<QWidget*>("works_button");
+    QList<QWidget*> failsList = tabWidget->findChildren<QWidget*>("fails_button");
+    cout<<"Work buton?"<<worksList.size();
+    cout<<"Fail button?"<<failsList.size();
+}
+void NotebookGUI::showErrorButton()  {
+    QList<QWidget*> widgetList = tabWidget->findChildren<QWidget*>("fails_button");
     cout<<"butons?"<<widgetList.size();
 }
-
-
+void NotebookGUI::runCommand(string command) {
+    QList<QTermWidget*> widgetList = tabWidget->findChildren<QTermWidget*>();
+    widgetList.at(0)->sendText(command.c_str());
+    widgetList.at(0)->sendText("\r");
+}

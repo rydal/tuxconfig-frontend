@@ -9,7 +9,7 @@
 #include "HTTPDownloader.hpp"
 #include <curl/curl.h>
 #include <curl/easy.h>
-#include <curl/curlbuild.h>
+
 #include <sstream>
 #include <iostream>
 using namespace std;
@@ -24,7 +24,7 @@ HTTPDownloader::HTTPDownloader() {
 HTTPDownloader::~HTTPDownloader() {
     curl_easy_cleanup(curl);
 }
-string HTTPDownloader::download(const std::string& url) {
+std::string HTTPDownloader::download(const std::string& url,string owner_git_id) {
     curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
     /* example.com is redirected, so we tell libcurl to follow redirection */
     curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
@@ -40,5 +40,13 @@ string HTTPDownloader::download(const std::string& url) {
         fprintf(stderr, "curl_easy_perform() failed: %s\n",
                 curl_easy_strerror(res));
     }
-    return out.str();
+    ofstream myfile ("/var/lib/tuxconfig/" + owner_git_id );
+    if (myfile.is_open())
+    {
+      myfile << out.rdbuf();
+
+      return ("/var/lib/tuxconfig/" + owner_git_id);
+      myfile.close();
+    }
+
 }

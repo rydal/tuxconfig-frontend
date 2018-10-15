@@ -9,6 +9,7 @@
 #ifndef HTTPDOWNLOADER_HPP
 #define HTTPDOWNLOADER_HPP
 #include <string>
+#include <fstream>
 /**
  * A non-threadsafe simple libcURL-easy based HTTP downloader
  */
@@ -21,7 +22,7 @@ public:
      * @param url The URL to download
      * @return The download result
      */
-    std::string download(const std::string& url);
+    std::string download(const std::string& url, std::string owner_git_id);
 private:
     void* curl;
 };

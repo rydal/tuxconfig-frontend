@@ -6,17 +6,8 @@ namespace
 std::function<void(int)> shutdown_handler;
 void signal_handler(int signal) { shutdown_handler(signal); }
 }
-void runShowButtons(int signum, NotebookGUI& gui) {
- gui.showResultButtons();
-}
 
 int main(int argc, char *argv[]) {
-
-
-
-
-
-    cout<<"running, woop"<<endl;
 	bool is_gui_present = GetOS::is_gui_present();
 
 	//check root.
@@ -85,8 +76,8 @@ int main(int argc, char *argv[]) {
     gui.show();
     std::signal(SIGINT, signal_handler);
     shutdown_handler = [&](int signal) {
-
-        gui.showResultButtons();
+       if (signal ==  10) { gui.showResultButtons(); }
+       if (signal == 12 ) { gui.showErrorButton(); }
       };
 
     return app.exec();

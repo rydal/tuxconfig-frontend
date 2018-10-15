@@ -15,7 +15,6 @@
 #include<qtermwidget5/qtermwidget.h>
 #include "NotebookGUI.h"
 #include <csignal>
-#include "enums.h"
 
 class ConsoleTab : public QWidget {
     Q_OBJECT

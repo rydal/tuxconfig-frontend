@@ -59,9 +59,6 @@ connect(uninstall_button, &QPushButton::clicked, [=] { uninstallButton(iterated_
 connect(restore_button, &QPushButton::clicked, [=] { restoreButton(iterated_device); });
 connect(upgrade_button, &QPushButton::clicked, [=] { upgrade(iterated_device); });
 
-QList<QTermWidget*> widgetList = m_parent->findChildren<QTermWidget*>();
-termWidget = widgetList.at(0);
-
   }
 
  }
@@ -69,30 +66,26 @@ termWidget = widgetList.at(0);
 
  void RunTab::installButton(const Device& device) {
      string* install = RunConfig::install(device);
-        termWidget->sendText(install[0].c_str());
-        termWidget->sendText("\r");
         emit setTab(2);
+        emit sendCommand(install[0]);
  }
  void RunTab::uninstallButton(const Device& device) {
      string uninstall = RunConfig::uninstall(device);
 
-     termWidget->sendText(uninstall.c_str());
-     termWidget->sendText("\r");
      emit setTab(2);
-
+     emit sendCommand(uninstall);
   }
  void RunTab::restoreButton(const Device& device) {
      string restore = RunConfig::restore(device);
-     termWidget->sendText(restore.c_str());
-     termWidget->sendText("\r");
+
      emit setTab(2);
+     emit sendCommand(restore);
 
   }
  void RunTab::upgrade(const Device& device) {
      string* upgrade = RunConfig::upgrade(device);
-     termWidget->sendText(upgrade[0].c_str());
-     termWidget->sendText("\r");
      emit setTab(2);
+     emit sendCommand(upgrade[0]);
 
   }
 

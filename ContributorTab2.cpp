@@ -13,47 +13,50 @@
     QMainWindow *mainWindow = new QMainWindow();
 
 	// TODO Auto-generated constructor stub
-		QPushButton *button = new QPushButton("close");
-		QVBoxLayout *mainLayout = new QVBoxLayout;
 
-		string* details = DownloadInfo("stub");
-		char* image = getAvatarImage(details[4]);
-		QPixmap mpixmap;
-			mpixmap.loadFromData(image,"JPG");
-		QLabel *image_label = new QLabel;
-		image_label->setPixmap(mpixmap);
-
-		"Contributor: " + details[0];
-
-		QLabel *contributor_label = new QLabel;
-		contributor_label->setText(QString::fromStdString("Contributor: " + details[0]));
-		QLabel *bio_label = new QLabel;
-		QLabel *website_label = new QLabel;
-		QLabel *email_label = new QLabel;
-		bio_label->setText(QString::fromStdString("Bio: " + details[1]));
-		mainLayout->addWidget(contributor_label);
-		mainLayout->addWidget(bio_label);
-
-		website_label->setText(QString::fromStdString("<a href=\"" + details[2] +  "\">Website</a>"));
-		website_label->setTextFormat(Qt::RichText);
-		website_label->setTextInteractionFlags(Qt::TextBrowserInteraction);
-		website_label->setOpenExternalLinks(true);
-
-		mainLayout->addWidget(website_label);
-
-		email_label = new QLabel(this);
-		email_label->setTextFormat(Qt::RichText);
-		email_label->setText(QString::fromStdString("Email:href='" +  details[3] + "'>serge@essetee.be</a>"));
-		email_label->setOpenExternalLinks(true);
-
-		mainLayout->addWidget(email_label);
-	    setLayout(mainLayout);
-
+        mainLayout = new QVBoxLayout();
+        label = new QLabel("No contributor selected");
+        mainLayout->addWidget(label);
 
 
 }
 
+ void ContributorTab2::updateScreen(Device device) {
+     string* details = DownloadInfo(device.getOwnerGitId());
+     char* image = getAvatarImage(details[4],device.getOwnerGitId());
+     QPixmap mpixmap;
+         mpixmap.loadFromData(image,"JPG");
+     QLabel *image_label = new QLabel;
+     image_label->setPixmap(mpixmap);
 
+     "Contributor: " + details[0];
+
+     QLabel *contributor_label = new QLabel;
+     contributor_label->setText(QString::fromStdString("Contributor: " + details[0]));
+     QLabel *bio_label = new QLabel;
+     QLabel *website_label = new QLabel;
+     QLabel *email_label = new QLabel;
+     bio_label->setText(QString::fromStdString("Bio: " + details[1]));
+     mainLayout->addWidget(contributor_label);
+     mainLayout->addWidget(bio_label);
+
+     website_label->setText(QString::fromStdString("<a href=\"" + details[2] +  "\">Website</a>"));
+     website_label->setTextFormat(Qt::RichText);
+     website_label->setTextInteractionFlags(Qt::TextBrowserInteraction);
+     website_label->setOpenExternalLinks(true);
+
+     mainLayout->addWidget(website_label);
+
+     email_label = new QLabel(this);
+     email_label->setTextFormat(Qt::RichText);
+     email_label->setText(QString::fromStdString("Email:href='" +  details[3] + "'>serge@essetee.be</a>"));
+     email_label->setOpenExternalLinks(true);
+    label->setText("");
+     mainLayout->addWidget(email_label);
+     setLayout(mainLayout);
+
+
+ }
 
 
 string* ContributorTab2::DownloadInfo(string owner_git_id) {
@@ -83,9 +86,9 @@ string* ContributorTab2::DownloadInfo(string owner_git_id) {
 }
 
 
-char* ContributorTab2::getAvatarImage(string url) {
+char* ContributorTab2::getAvatarImage(string url, string owner_git_id) {
     HTTPDownloader downloader;
-    string returned_content = downloader.download(url);
+    string returned_content = downloader.download(url,owner_git_id);
     char char_array[returned_content.length()  + 1];
     strcpy(char_array,returned_content.c_str());
     return char_array;
