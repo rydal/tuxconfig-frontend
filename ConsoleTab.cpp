@@ -13,7 +13,7 @@ Device current_device;
  : parent(m_parent)
 {
 
-     mainLayout = new QVBoxLayout;
+     mainLayout = new QGridLayout;
      console = new QTermWidget();
      console->setObjectName("console");
     QPushButton *m_button = new QPushButton("Close");
@@ -24,7 +24,7 @@ Device current_device;
    fails_button = new QPushButton("No device fails", this);
 
     works_button->setObjectName("works_button");
-    works_button->setObjectName("fails_button");
+    fails_button->setObjectName("fails_button");
     works_button->setVisible(false);
     fails_button->setVisible(false);
     QFont font = QApplication::font();
@@ -59,15 +59,25 @@ Device current_device;
 
 
    setLayout(mainLayout);
+   connect(works_button, &QPushButton::clicked, [=] { works_result (); });
+   connect(fails_button, &QPushButton::clicked, [=] { fails_result(); });
 
    QObject::connect(m_button, SIGNAL(clicked()),this, SLOT(closeButton()));
 
 
 
  }
+void setDevice(Device m_device) {
+    current_device = m_device;
+}
 
+void ConsoleTab::works_result() {
+    Feedback(current_device,true);
+}
+void ConsoleTab::fails_result() {
+Feedback(current_device,false);
+}
 
-
- void ConsoleTab::setDevice(Device device) {
-     current_device = device;
+ void ConsoleTab::closeButton() {
+     ConsoleTab::close();
  }

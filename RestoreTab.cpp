@@ -23,6 +23,10 @@ RestoreTab::RestoreTab(const QFileInfo &fileInfo, QWidget *parent)
 								QLabel *devicename = new QLabel(QString::fromStdString(it->second.getDevicename()));
 								QLabel *installed_status = new QLabel;
 
+                                description->setAlignment(Qt::AlignCenter);
+                                devicename->setAlignment(Qt::AlignCenter);
+                                installed_status->setAlignment(Qt::AlignCenter);
+
 								QPushButton *restore_button = new QPushButton(QString::fromStdString("restore"));
 								if (it->second.isIsInstalled()) {
 									installed_status->setText("Installed");

@@ -24,7 +24,7 @@
 		}
 	for (auto iterated_device : remote_devices) {
 
-		QHBoxLayout* m_Grid = new QHBoxLayout;
+        QGridLayout* m_Grid = new QGridLayout;
 			QLabel* description = new QLabel;
 			QLabel* devicename = new QLabel;
 			QPushButton* upgrade_button = new QPushButton(QString::fromStdString("upgrade"));
@@ -35,21 +35,25 @@
 			description->setText(QString::fromStdString(iterated_device.getDescription()));
 			devicename->setText(QString::fromStdString(iterated_device.getDevicename() + ":"));
 
-			m_Grid->addWidget(description);
-			m_Grid->addWidget(devicename);
+            m_Grid->addWidget(description,0,0,0,1);
+            m_Grid->addWidget(devicename,0,1,0,1);
 
-			if (iterated_device.getGitUrl() != "null") {
-				m_Grid->addWidget(install_button);
+            m_Grid->addWidget(install_button,0,2,0,1);
+            m_Grid->addWidget(uninstall_button,0,3,0,1);
+            m_Grid->addWidget(restore_button,0,4,0,1);
+            m_Grid->addWidget(upgrade_button,0,5,0,1);
+            if (iterated_device.getGitUrl() == "null") {
+                install_button->hide();
 			}
-			if (iterated_device.getModulename() != "null") {
-				m_Grid->addWidget(uninstall_button);
+            if (iterated_device.getModulename() == "null") {
+                uninstall_button->hide();
 			}
-			if (iterated_device.getAttemptedInstall() == true) {
-				m_Grid->addWidget(restore_button);
+            if (iterated_device.getAttemptedInstall() == false) {
+                restore_button->hide();
 			}
-			if (iterated_device.isUpgradeable() == true) {
-				m_Grid->addWidget(upgrade_button);
-			}	 QPushButton *button = new QPushButton("close");
+            if (iterated_device.isUpgradeable() == false) {
+                upgrade_button->hide();
+            }
 
 
 			mainLayout->addLayout(m_Grid);

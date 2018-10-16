@@ -40,12 +40,12 @@ std::string HTTPDownloader::download(const std::string& url,string owner_git_id)
         fprintf(stderr, "curl_easy_perform() failed: %s\n",
                 curl_easy_strerror(res));
     }
-    ofstream myfile ("/var/lib/tuxconfig/" + owner_git_id );
+    ofstream myfile ("/var/lib/tuxconfig/avatar-" + owner_git_id );
     if (myfile.is_open())
     {
       myfile << out.rdbuf();
 
-      return ("/var/lib/tuxconfig/" + owner_git_id);
+      return ("/var/lib/tuxconfig/avatar-" + owner_git_id);
       myfile.close();
     }
 

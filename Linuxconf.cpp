@@ -66,20 +66,30 @@ int main(int argc, char *argv[]) {
 	    return app.exec();
 		exit(1);
 	}
+    const int dir_err3 = system("mkdir /var/log/tuxconfig");
+    if (-1 == dir_err3) {
+        QApplication app(argc, argv);
+        QuestionBox window("Can't create log directory /var/log/tuxconfig");
+
+        //Shows the window and returns when it is closed.
+        return app.exec();
+        exit(1);
+    }
     QApplication app(argc, argv);
 
 
 
-    NotebookGUI gui("Testing");
+    NotebookGUI gui("Tuxconfig");
 
 
     gui.show();
-    std::signal(SIGINT, signal_handler);
+    std::signal(SIGUSR1, signal_handler);
     shutdown_handler = [&](int signal) {
-       if (signal ==  10) { gui.showResultButtons(); }
-       if (signal == 12 ) { gui.showErrorButton(); }
-      };
+        if (signal == 10 ) {
 
+        gui.showResultButtons();
+        }
+      };
     return app.exec();
 
 

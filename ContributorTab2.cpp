@@ -16,8 +16,9 @@
 
         mainLayout = new QVBoxLayout();
         label = new QLabel("No contributor selected");
+        label->setAlignment(Qt::AlignCenter);
         mainLayout->addWidget(label);
-
+        setLayout(mainLayout);
 
 }
 
@@ -25,7 +26,7 @@
      string* details = DownloadInfo(device.getOwnerGitId());
      char* image = getAvatarImage(details[4],device.getOwnerGitId());
      QPixmap mpixmap;
-         mpixmap.loadFromData(image,"JPG");
+         mpixmap.loadFromData(image,"PNG");
      QLabel *image_label = new QLabel;
      image_label->setPixmap(mpixmap);
 
@@ -53,7 +54,7 @@
      email_label->setOpenExternalLinks(true);
     label->setText("");
      mainLayout->addWidget(email_label);
-     setLayout(mainLayout);
+
 
 
  }

@@ -7,7 +7,7 @@
 
 #include "Feedback.h"
 string result_string;
-Feedback::Feedback(Device device, string method, bool successful) {
+Feedback::Feedback(Device device, bool successful) {
 	// TODO Auto-generated constructor stub
 	ostringstream os;
 		string url = "https://linuxconf.feedthepenguin.org/hehe/reportback?";
@@ -25,7 +25,7 @@ Feedback::Feedback(Device device, string method, bool successful) {
 			 result_string =    os.str();
 			 // Let's parse it
 
-             std::istringstream myStream("/var/lib/tuxconfig/"  + method + "-" + device.getDeviceid());
+             std::istringstream myStream("/var/lib/tuxconfig/"  + device.getDeviceid()+ "-install");
              int size = myStream.str().size();
 
              char buf[50];

@@ -12,6 +12,7 @@
 
     setWindowTitle("Tuxconfig");
 
+
     QFileInfo fileInfo(name);
     RunTab *runTab = new RunTab(fileInfo,tabWidget);
     runTab->setObjectName("RunTab");
@@ -25,16 +26,16 @@
     tabWidget->addTab(new ContributorTab2(fileInfo),"Contributor info");
 
 		    QVBoxLayout *mainLayout = new QVBoxLayout;
-		        mainLayout->addWidget(tabWidget);
+                mainLayout->addWidget(tabWidget);
 
-		        setLayout(mainLayout);
+                setLayout(mainLayout);
 
-		        setWindowTitle(tr("Tab Dialog"));
+                setWindowTitle(tr("Tab Dialog"));
 
                 connect(runTab, SIGNAL(setTab(int)), this, SLOT(changeTab(int)));
                 connect(consoleTab, SIGNAL(setTab(int)), this, SLOT(changeTab(int)));
 
-                connect(runTab, SIGNAL(sendCommand(Device, string)), this, SLOT(runCommand(Device, string)));
+                connect(runTab, SIGNAL(sendCommand(Device, string, string)), this, SLOT(runCommand(Device, string, string)));
 
 
 
@@ -45,16 +46,16 @@ void NotebookGUI::changeTab(int index) {
 void NotebookGUI::showResultButtons()  {
     QList<QWidget*> worksList = tabWidget->findChildren<QWidget*>("works_button");
     QList<QWidget*> failsList = tabWidget->findChildren<QWidget*>("fails_button");
-    cout<<"Work buton?"<<worksList.size();
-    cout<<"Fail button?"<<failsList.size();
+    worksList.at(0)->setVisible(true);
+    failsList.at(0)->setVisible(true);
 }
 void NotebookGUI::showErrorButton()  {
     QList<QWidget*> widgetList = tabWidget->findChildren<QWidget*>("fails_button");
-    cout<<"butons?"<<widgetList.size();
+    cout<<"butons?"<<widgetList.size()<<endl;
 }
 void NotebookGUI::runCommand(Device device, string method, string command) {
     QList<QTermWidget*> widgetList = tabWidget->findChildren<QTermWidget*>();
-    string runstring = command + " | tee /var/lib/tuxconfig/" + device.getDeviceid() + "-" + method;
+    string runstring = command + " | tee /var/log/tuxconfig/" + device.getDeviceid() + "-" + method;
     widgetList.at(0)->sendText(runstring.c_str());
     widgetList.at(0)->sendText("\r");
 

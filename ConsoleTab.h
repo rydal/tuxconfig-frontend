@@ -15,21 +15,23 @@
 #include<qtermwidget5/qtermwidget.h>
 #include "NotebookGUI.h"
 #include <csignal>
-
+#include "Feedback.h"
+#include "device.h"
 class ConsoleTab : public QWidget {
     Q_OBJECT
 
 public:
     ConsoleTab(const QFileInfo &fileInfo, QWidget *m_parent);
-     void  RunInstallConfig(Device device);
+     void setDevice(Device device);
     QWidget *parent;
      QTermWidget *console;
-     QVBoxLayout *mainLayout;
+     QGridLayout *mainLayout;
      QPushButton *works_button;
      QPushButton *fails_button ;
-    void move_tabs(int index);
-    void setDevice(Device device);
-    void setResponseButtons();
+    void fails_result();
+    void works_result();
+    void closeButton();
+
 
 
 signals:
