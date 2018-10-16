@@ -54,17 +54,21 @@ void NotebookGUI::changeTab(int index) {
 void NotebookGUI::showResultButtons()  {
     QList<QWidget*> worksList = tabWidget->findChildren<QWidget*>("works_button");
     QList<QWidget*> failsList = tabWidget->findChildren<QWidget*>("fails_button");
-    QList<QWidget*> successList = tabWidget->findChildren<QWidget*>("success_label");
+    QList<QLabel*> successList = tabWidget->findChildren<QLabel*>("success_label");
 
     worksList.at(0)->setVisible(true);
     failsList.at(0)->setVisible(true);
-    successList.at(0)->setText(test_parameters[1]);
+    successList.at(0)->setText(test_parameters[1].c_str());
 
 }
 void NotebookGUI::runCommand(Device device, string method, string command) {
     QList<QTermWidget*> widgetList = tabWidget->findChildren<QTermWidget*>();
+    if (method == "null") {
+        widgetList.at(0)->sendText(command.c_str());
+        widgetList.at(0)->sendText("\r");
+    } else {
     string runstring = command + " | tee /var/log/tuxconfig/" + device.getDeviceid() + "-" + method;
     widgetList.at(0)->sendText(runstring.c_str());
     widgetList.at(0)->sendText("\r");
-
+}
 }

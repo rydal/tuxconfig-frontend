@@ -37,8 +37,7 @@ public:
     explicit NotebookGUI(const QString name);
     void showResultButtons();
 	 QTabWidget *tabWidget;
-    protected:
-      //Child widgets:
+
 public slots:
     void changeTab(int index);
     void runCommand(Device, string,string);

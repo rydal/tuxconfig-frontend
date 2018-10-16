@@ -87,6 +87,8 @@ connect(upgrade_button, &QPushButton::clicked, [=] { upgrade(iterated_device); }
      string* install = RunConfig::install(device);
         emit setTab(2);
         emit sendCommand(device, "install",install[0]);
+     emit sendCommand(device, "method",install[1]); //run test program
+
  }
  void RunTab::uninstallButton(const Device& device) {
      string uninstall = RunConfig::uninstall(device);
