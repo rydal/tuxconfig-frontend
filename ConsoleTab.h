@@ -28,6 +28,7 @@ public:
      QGridLayout *mainLayout;
      QPushButton *works_button;
      QPushButton *fails_button ;
+     QLabel *success_label;
     void fails_result();
     void works_result();
     void closeButton();

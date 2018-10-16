@@ -30,19 +30,21 @@
 using namespace std;
 class NotebookGUI :  public QDialog {
         Q_OBJECT
+
 public:
+    void setDevice(Device device, string* test_parameters);
     NotebookGUI();
     explicit NotebookGUI(const QString name);
     void showResultButtons();
-    void showErrorButton();
-
-
 	 QTabWidget *tabWidget;
     protected:
       //Child widgets:
 public slots:
     void changeTab(int index);
     void runCommand(Device, string,string);
+protected:
+    Device current_device;
+    string* test_parameters;
 
 };
 

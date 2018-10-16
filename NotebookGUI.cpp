@@ -15,8 +15,11 @@
 
     QFileInfo fileInfo(name);
     RunTab *runTab = new RunTab(fileInfo,tabWidget);
-    runTab->setObjectName("RunTab");
-    tabWidget->addTab(runTab,"General");
+    QScrollArea* contactScrollArea = new QScrollArea();
+    contactScrollArea->setWidget(runTab);
+    contactScrollArea->setMinimumSize( QSize( 1024, 768) );
+
+    tabWidget->addTab(contactScrollArea,"General");
     tabWidget->addTab(new RestoreTab(fileInfo), "Restore");
 
     ConsoleTab *consoleTab = new ConsoleTab(fileInfo,tabWidget);
@@ -40,18 +43,23 @@
 
 
 }
+void NotebookGUI::setDevice(Device device, string* m_test_parameters) {
+    current_device = device;
+    test_parameters = m_test_parameters;
+}
+
 void NotebookGUI::changeTab(int index) {
     tabWidget->setCurrentIndex(index);
 }
 void NotebookGUI::showResultButtons()  {
     QList<QWidget*> worksList = tabWidget->findChildren<QWidget*>("works_button");
     QList<QWidget*> failsList = tabWidget->findChildren<QWidget*>("fails_button");
+    QList<QWidget*> successList = tabWidget->findChildren<QWidget*>("success_label");
+
     worksList.at(0)->setVisible(true);
     failsList.at(0)->setVisible(true);
-}
-void NotebookGUI::showErrorButton()  {
-    QList<QWidget*> widgetList = tabWidget->findChildren<QWidget*>("fails_button");
-    cout<<"butons?"<<widgetList.size()<<endl;
+    successList.at(0)->setText(test_parameters[1]);
+
 }
 void NotebookGUI::runCommand(Device device, string method, string command) {
     QList<QTermWidget*> widgetList = tabWidget->findChildren<QTermWidget*>();

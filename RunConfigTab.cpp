@@ -31,28 +31,43 @@
 			QPushButton* install_button = new QPushButton(QString::fromStdString("install"));
 			QPushButton* uninstall_button = new QPushButton(QString::fromStdString("uninstall"));
 			QPushButton* restore_button = new QPushButton(QString::fromStdString("restore"));
+            description->setAlignment(Qt::AlignLeft);
+            devicename->setAlignment(Qt::AlignLeft);
+            description->setFixedWidth(200);
+            devicename->setFixedWidth(500);
+
 
 			description->setText(QString::fromStdString(iterated_device.getDescription()));
 			devicename->setText(QString::fromStdString(iterated_device.getDevicename() + ":"));
 
-            m_Grid->addWidget(description,0,0,0,1);
-            m_Grid->addWidget(devicename,0,1,0,1);
+            m_Grid->addWidget(description,0,0,1,1);
+            m_Grid->addWidget(devicename,0,1,1,1);
 
-            m_Grid->addWidget(install_button,0,2,0,1);
-            m_Grid->addWidget(uninstall_button,0,3,0,1);
-            m_Grid->addWidget(restore_button,0,4,0,1);
-            m_Grid->addWidget(upgrade_button,0,5,0,1);
+            m_Grid->addWidget(install_button,0,2,1,1);
+            m_Grid->addWidget(uninstall_button,0,3,1,1);
+            m_Grid->addWidget(restore_button,0,4,1,1);
+            m_Grid->addWidget(upgrade_button,0,5,1,1);
+
             if (iterated_device.getGitUrl() == "null") {
-                install_button->hide();
+                install_button->setFlat(true);
+                install_button->setText("");
+
+
 			}
             if (iterated_device.getModulename() == "null") {
-                uninstall_button->hide();
+                uninstall_button->setFlat(true);
+                uninstall_button->setText("");
+
 			}
             if (iterated_device.getAttemptedInstall() == false) {
-                restore_button->hide();
+                restore_button->setFlat(true);
+                restore_button->setText("");
+
 			}
             if (iterated_device.isUpgradeable() == false) {
-                upgrade_button->hide();
+                upgrade_button->setFlat(true);
+                upgrade_button->setText("");
+
             }
 
 
@@ -62,8 +77,8 @@
 connect(uninstall_button, &QPushButton::clicked, [=] { uninstallButton(iterated_device); });
 connect(restore_button, &QPushButton::clicked, [=] { restoreButton(iterated_device); });
 connect(upgrade_button, &QPushButton::clicked, [=] { upgrade(iterated_device); });
-
   }
+
 
  }
 

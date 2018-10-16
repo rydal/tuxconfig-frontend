@@ -44,6 +44,7 @@ protected:
     QLabel *email_label;
     QVBoxLayout *mainLayout;
     QMainWindow *mainWindow ;
+
 };
 
 #endif /* MAINTAB_H_ */

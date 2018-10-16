@@ -24,17 +24,20 @@
  class RunTab : public QWidget
  {
 Q_OBJECT
+
  public:
      RunTab();
      RunTab(const QFileInfo &fileInfo, QWidget *parent = 0);
      QWidget *m_parent;
      QTabWidget *tabWidget;
     QTermWidget *termWidget;
+
  public slots:
      void installButton(const Device&);
      void uninstallButton(const Device&);
      void restoreButton(const Device&);
      void upgrade(const Device&);
+
 
 signals:
      void setTab(int);

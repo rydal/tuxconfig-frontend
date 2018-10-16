@@ -22,9 +22,10 @@ Device current_device;
 
    works_button = new QPushButton("Yes devie works", this);
    fails_button = new QPushButton("No device fails", this);
-
+    success_label = new QLabel(" ");
     works_button->setObjectName("works_button");
     fails_button->setObjectName("fails_button");
+    success_label->setObjectName("success_label");
     works_button->setVisible(false);
     fails_button->setVisible(false);
     QFont font = QApplication::font();
@@ -52,6 +53,8 @@ Device current_device;
     }
 
     mainLayout->addWidget(console);
+
+    mainLayout->addWidget(success_label);
     mainLayout->addWidget(works_button);
     mainLayout->addWidget(fails_button);
 
