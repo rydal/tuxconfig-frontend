@@ -37,6 +37,7 @@ public:
 
 signals:
      void setTab(int);
+     void updateScreen();
 };
 
 #endif /* CONSOLETAB_H_ */

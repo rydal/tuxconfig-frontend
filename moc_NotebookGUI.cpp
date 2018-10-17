@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_NotebookGUI_t {
-    QByteArrayData data[7];
-    char stringdata0[54];
+    QByteArrayData data[11];
+    char stringdata0[94];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -35,11 +35,16 @@ QT_MOC_LITERAL(2, 22, 0), // ""
 QT_MOC_LITERAL(3, 23, 5), // "index"
 QT_MOC_LITERAL(4, 29, 10), // "runCommand"
 QT_MOC_LITERAL(5, 40, 6), // "Device"
-QT_MOC_LITERAL(6, 47, 6) // "string"
+QT_MOC_LITERAL(6, 47, 6), // "device"
+QT_MOC_LITERAL(7, 54, 6), // "string"
+QT_MOC_LITERAL(8, 61, 6), // "method"
+QT_MOC_LITERAL(9, 68, 14), // "vector<string>"
+QT_MOC_LITERAL(10, 83, 10) // "parameters"
 
     },
     "NotebookGUI\0changeTab\0\0index\0runCommand\0"
-    "Device\0string"
+    "Device\0device\0string\0method\0vector<string>\0"
+    "parameters"
 };
 #undef QT_MOC_LITERAL
 
@@ -62,7 +67,7 @@ static const uint qt_meta_data_NotebookGUI[] = {
 
  // slots: parameters
     QMetaType::Void, QMetaType::Int,    3,
-    QMetaType::Void, 0x80000000 | 5, 0x80000000 | 6, 0x80000000 | 6,    2,    2,    2,
+    QMetaType::Void, 0x80000000 | 5, 0x80000000 | 7, 0x80000000 | 9,    6,    8,   10,
 
        0        // eod
 };
@@ -74,7 +79,7 @@ void NotebookGUI::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->changeTab((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 1: _t->runCommand((*reinterpret_cast< Device(*)>(_a[1])),(*reinterpret_cast< string(*)>(_a[2])),(*reinterpret_cast< string(*)>(_a[3]))); break;
+        case 1: _t->runCommand((*reinterpret_cast< Device(*)>(_a[1])),(*reinterpret_cast< string(*)>(_a[2])),(*reinterpret_cast< vector<string>(*)>(_a[3]))); break;
         default: ;
         }
     }

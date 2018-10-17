@@ -30,7 +30,8 @@ vector<string> RunConfig::uninstall(Device device) {
 
 	string runfile = "#!/bin/bash\n";
     runfile += "set -e \n";
-    runfile += "exec > /var/lib/tuxconfig/" + device.getDeviceid() + "-uninstall.log 2>&1 \n";
+    runfile += "exec > >(tee -i /var/lib/tuxconfig/" + device.getDeviceid() + "-uninstall.log) \n";
+    runfile += "exec 2>&1 \n";
 	runfile += "tar -cvpf /var/lib/tuxconfig/lib_backup-" + device.getDeviceid()
 			+ "-uninstall.tar /lib /etc/modules* \n";
 
@@ -54,11 +55,12 @@ vector<string> RunConfig::uninstall(Device device) {
 vector<string> RunConfig::install(Device device) {
 	string runfile = "#!/bin/bash \n";
 	runfile += "set -e \n";
-    runfile += "exec > /var/lib/tuxconfig/" + device.getDeviceid() + "-install.log 2>&1 \n";
-    runfile += "cleanup() { \n";
-    runfile += "kill -SIGUSR2 " + to_string(::getpid()) + " \n";
+    runfile += "exec > >(tee -i /var/lib/tuxconfig/" + device.getDeviceid() + "-install.log) \n";
+    runfile += "exec 2>&1 \n";
+    runfile += "function cleanup() { \n";
+    runfile += "kill -SIGUSR1 " + to_string(::getpid()) + " \n";
     runfile += "} \n";
-    runfile += "trap cleanup() 0 \n";
+    runfile += "trap cleanup ERR \n";
 	runfile += "touch /root/.config/tuxconfig/history \n";
 	//backup /lib folder
 
@@ -100,8 +102,7 @@ vector<string> RunConfig::install(Device device) {
     runfile += "else \n";
     runfile += "echo \"" + device.getDeviceid() + "," + device.getDescription() + ","	+ to_string(device.getVoteDifference()) + ",installed \" >> /root/.config/tuxconfig/history  \n";
     runfile += "fi \n";
-    runfile += "eval $test_program \n";
-    runfile += "kill -SIGUSR1" + to_string(::getpid()) + " \n";
+    runfile += "pkill -SIGUSR1  -x $tuxconfig  \n";
 
 
     boost::replace_all(filedir, "/", "-");
@@ -124,13 +125,15 @@ vector<string> RunConfig::install(Device device) {
 		while (getline(myfile, line)) {
 			if (line.find("test_program=") == 0) {
 				boost::replace_all(line, "test_program=", "");
+                boost::replace_all(line, "\"", "");
 				boost::trim(line);
                 test_program = line ;
 
 			}
 			if (line.find("test_message=") == 0) {
 				boost::replace_all(line, "test_message=", "");
-				boost::trim(line);
+                boost::replace_all(line, "\"", "");
+                boost::trim(line);
 				test_message = line;
 
 			}
@@ -197,13 +200,26 @@ bool RunConfig::restoreCmd(Device device) {
 }
 
 vector<string> RunConfig::restoreGUI(Device device) {
-    string rollback_command =
-            "tar -xvf /var/lib/tuxconfig/"
+    string runfile = "#!/bin/bash \n";
+    runfile += "set -e \n";
+    runfile += "exec > >(tee -i /var/lib/tuxconfig/" + device.getDeviceid() + "-install.log) \n";
+    runfile += "exec 2>&1 \n";
+    runfile += "function cleanup() { \n";
+    runfile += "kill -SIGUSR1 " + to_string(::getpid()) + " \n";
+    runfile += "} \n";
+    runfile += "trap cleanup ERR \n";
+    runfile += "tar -xvf /var/lib/tuxconfig/"
                     + device.getDeviceid()
                     + "-"
                     + device.getStatus();
-       vector<string> result;
-       result.push_back( rollback_command);
-       return result;
-
+    string tuxconfig_config_name = "/usr/src/tuxconfig-restore-"
+            + device.getDeviceid();
+    std::ofstream out(tuxconfig_config_name);
+    out << runfile;
+    out.close();
+    string tuxconfig_chmod_command = "chmod u+x " + tuxconfig_config_name;
+    system(tuxconfig_chmod_command.c_str());
+    vector<string> result;
+    result.push_back(tuxconfig_config_name);
+    return (result);
 }

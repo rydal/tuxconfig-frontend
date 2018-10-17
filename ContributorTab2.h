@@ -32,9 +32,8 @@ class ContributorTab2  : public QWidget {
     Q_OBJECT
 public:
     ContributorTab2(const QFileInfo &fileInfo, QWidget *parent = 0);
-    void updateScreen(Device device);
-	string* DownloadInfo(string owner_git_id);
-    char* getAvatarImage(string url, string owner_git_id);
+    string* DownloadInfo(string owner_git_id);
+    string getAvatarImage(string url, string owner_git_id);
 protected:
     QLabel *label;
     QLabel *image_label;
@@ -44,6 +43,9 @@ protected:
     QLabel *email_label;
     QVBoxLayout *mainLayout;
     QMainWindow *mainWindow ;
+
+public slots:
+    void updateScreen(Device);
 
 };
 

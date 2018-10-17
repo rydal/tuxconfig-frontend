@@ -58,6 +58,7 @@ Device current_device;
     mainLayout->addWidget(works_button);
     mainLayout->addWidget(fails_button);
 
+
        QObject::connect(console, SIGNAL(finished()), mainLayout, SLOT(close()));
 
 
@@ -70,12 +71,12 @@ Device current_device;
 
 
  }
-void setDevice(Device m_device) {
-    current_device = m_device;
-}
+
 
 void ConsoleTab::works_result() {
     Feedback(current_device,true);
+    emit setTab(3);
+    emit updateScreen();
 }
 void ConsoleTab::fails_result() {
 Feedback(current_device,false);

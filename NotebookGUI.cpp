@@ -22,11 +22,12 @@
     tabWidget->addTab(contactScrollArea,"General");
     tabWidget->addTab(new RestoreTab(fileInfo), "Restore");
 
-    ConsoleTab *consoleTab = new ConsoleTab(fileInfo,tabWidget);
-    runTab->setObjectName("ConsoleTab");
-    tabWidget->addTab(consoleTab,"Console");
+    ConsoleTab *console_tab = new ConsoleTab(fileInfo,tabWidget);
 
-    tabWidget->addTab(new ContributorTab2(fileInfo),"Contributor info");
+    tabWidget->addTab(console_tab,"Console");
+
+    ContributorTab2 *contributor_tab = new ContributorTab2(fileInfo,tabWidget);
+    tabWidget->addTab(contributor_tab,"Contributor");
 
 		    QVBoxLayout *mainLayout = new QVBoxLayout;
                 mainLayout->addWidget(tabWidget);
@@ -36,10 +37,9 @@
                 setWindowTitle(tr("Tab Dialog"));
 
                 connect(runTab, SIGNAL(setTab(int)), this, SLOT(changeTab(int)));
-                connect(consoleTab, SIGNAL(setTab(int)), this, SLOT(changeTab(int)));
+                connect(console_tab, SIGNAL(setTab(int)), this, SLOT(changeTab(int)));
 
-                connect(runTab, SIGNAL(sendCommand(Device, string, vector<string>)), this, SLOT(runCommand(Device, string, string)));
-
+                connect(runTab, SIGNAL(sendCommand(Device, string, vector<string>)), this, SLOT(runCommand(Device, string, vector<string>)));
 
 
 
@@ -56,7 +56,9 @@ void NotebookGUI::showResultButtons()  {
 
     worksList.at(0)->setVisible(true);
     failsList.at(0)->setVisible(true);
+    if (install_details.size() >= 2) {
     successList.at(0)->setText(install_details.at(2).c_str());
+    }
 
 }
 void NotebookGUI::runCommand(Device device, string method, vector<string> parameters) {

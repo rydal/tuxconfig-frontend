@@ -38,7 +38,7 @@ int main(int argc, char *argv[]) {
 
 	}   else {
             RestoreGUI::CommandLineInstall(installed_devices);
-            exit(0);
+            exit(1);
 	}
 	}
 	}
@@ -48,13 +48,13 @@ int main(int argc, char *argv[]) {
 			QuestionBox window(
 					"No internet connection\n consider tethering with a mobile phone\n or plug into a network socket");
 			    return app.exec();
-
+        exit(1);
 
 		//Shows the window and returns when it is closed.
 
 	};
 
-    const int dir_err = system("mkdir ~/.config/tuxconfig 2&1> /dev/null");
+    const int dir_err = system("mkdir ~/.config/tuxconfig >  /dev/null 2>&1 ");
 	if (-1 == dir_err) {
 	    QApplication app(argc, argv);
 		QuestionBox window("Can't create config directory ~/.config/tuxconfig");
@@ -64,7 +64,7 @@ int main(int argc, char *argv[]) {
 
 		exit(1);
 	}
-    const int dir_err2 = system("mkdir /var/lib/tuxconfig 2&1> /dev/null");
+    const int dir_err2 = system("mkdir /var/lib/tuxconfig >  /dev/null 2>&1 ");
 	if (-1 == dir_err2) {
 	    QApplication app(argc, argv);
 		QuestionBox window("Can't create library directory /var/lib/tuxconfig");
@@ -73,7 +73,7 @@ int main(int argc, char *argv[]) {
 	    return app.exec();
 		exit(1);
 	}
-    const int dir_err3 = system("mkdir /var/log/tuxconfig 2&1> /dev/null");
+    const int dir_err3 = system("mkdir /var/log/tuxconfig >  /dev/null 2>&1 ");
     if (-1 == dir_err3) {
         QApplication app(argc, argv);
         QuestionBox window("Can't create log directory /var/log/tuxconfig");
@@ -92,10 +92,8 @@ int main(int argc, char *argv[]) {
     gui.show();
     std::signal(SIGUSR1, signal_handler);
     shutdown_handler = [&](int signal) {
-        if (signal == 10 ) {
-
         gui.showResultButtons();
-        }
+
       };
     return app.exec();
 
