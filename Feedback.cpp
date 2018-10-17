@@ -25,7 +25,7 @@ Feedback::Feedback(Device device, bool successful) {
 			 result_string =    os.str();
 			 // Let's parse it
 
-             std::istringstream myStream("/var/lib/tuxconfig/"  + device.getDeviceid()+ "-install");
+             std::istringstream myStream("/var/lib/tuxconfig/"  + device.getDeviceid()+ "-install.log");
              int size = myStream.str().size();
 
              char buf[50];

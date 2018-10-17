@@ -40,10 +40,12 @@ public:
 
 public slots:
     void changeTab(int index);
-    void runCommand(Device, string,string);
+    void runCommand(Device device, string method, vector<string> parameters);
+
 protected:
     Device current_device;
-    string* test_parameters;
+    string install_method;
+    vector<string> install_details;
 
 };
 

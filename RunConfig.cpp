@@ -26,10 +26,11 @@ RunConfig::~RunConfig() {
 	// TODO Auto-generated destructor stub
 }
 
-string RunConfig::uninstall(Device device) {
+vector<string> RunConfig::uninstall(Device device) {
 
 	string runfile = "#!/bin/bash\n";
     runfile += "set -e \n";
+    runfile += "exec > /var/lib/tuxconfig/" + device.getDeviceid() + "-uninstall.log 2>&1 \n";
 	runfile += "tar -cvpf /var/lib/tuxconfig/lib_backup-" + device.getDeviceid()
 			+ "-uninstall.tar /lib /etc/modules* \n";
 
@@ -45,12 +46,15 @@ string RunConfig::uninstall(Device device) {
 	out.close();
 	string tuxconfig_chmod_command = "chmod u+x " + tuxconfig_config_name;
 	system(tuxconfig_chmod_command.c_str());
-    return (tuxconfig_config_name);
+    vector<string> result;
+    result.push_back(tuxconfig_config_name);
+    return (result);
 }
 
-string* RunConfig::install(Device device) {
+vector<string> RunConfig::install(Device device) {
 	string runfile = "#!/bin/bash \n";
 	runfile += "set -e \n";
+    runfile += "exec > /var/lib/tuxconfig/" + device.getDeviceid() + "-install.log 2>&1 \n";
     runfile += "cleanup() { \n";
     runfile += "kill -SIGUSR2 " + to_string(::getpid()) + " \n";
     runfile += "} \n";
@@ -80,9 +84,6 @@ string* RunConfig::install(Device device) {
 //install dependencies;
     runfile += " if [ !  -z \"$dependencies\" ] ; then \n";
     runfile += "eval $dependencies \n";
-    runfile  +=  "echo \"" + device.getDeviceid() + "," + device.getDescription() + ","	+ to_string(device.getVoteDifference()) + ", apt installed \" >> /root/.config/tuxconfig/history \n";
-    runfile += "else \n";
-    runfile  +=  "echo \"" + device.getDeviceid() + "," + device.getDescription() + ","	+ to_string(device.getVoteDifference()) + ", apt not installed \" >> /root/.config/tuxconfig/history \n";
     runfile += "fi \n";
     runfile += "echo \"installed dependencies\" \n";
     runfile += "if [ -f Makefile ] ; then \n";
@@ -95,9 +96,9 @@ string* RunConfig::install(Device device) {
 //Insert module
 	runfile += "modprobe -v $tuxconfig_module \n";
 	runfile += "echo \"inserted module into kernel\" \n";
-    runfile +=  "echo \"" + device.getDeviceid() + "," + device.getDescription() + ","	+ to_string(device.getVoteDifference()) + ", moudle installed \" >> /root/.config/tuxconfig/history  \n";
+    runfile +=  "echo \"" + device.getDeviceid() + "," + device.getDescription() + ","	+ to_string(device.getVoteDifference()) + ",installed \" >> /root/.config/tuxconfig/history  \n";
     runfile += "else \n";
-    runfile += "echo \"" + device.getDeviceid() + "," + device.getDescription() + ","	+ to_string(device.getVoteDifference()) + ", module not installed \" >> /root/.config/tuxconfig/history  \n";
+    runfile += "echo \"" + device.getDeviceid() + "," + device.getDescription() + ","	+ to_string(device.getVoteDifference()) + ",installed \" >> /root/.config/tuxconfig/history  \n";
     runfile += "fi \n";
     runfile += "eval $test_program \n";
     runfile += "kill -SIGUSR1" + to_string(::getpid()) + " \n";
@@ -109,8 +110,6 @@ string* RunConfig::install(Device device) {
 	out << runfile;
 	out.close();
 
-    string* array = new string[3];
-    array[0] = tuxconfig_run_name;
     string chmod_command = "chmod u+x " + tuxconfig_run_name;
     system(chmod_command.c_str());
 
@@ -140,24 +139,25 @@ string* RunConfig::install(Device device) {
 
 	}
 	myfile.close();
+     vector<string> result;
+     result.push_back(tuxconfig_run_name);
+     result.push_back(test_program);
+     result.push_back(test_message);
 
-     array[1] = test_program;
-     array[2] = test_message;
 
-     return array;
+     return result;
 }
 
 
 
-string* RunConfig::upgrade(Device device) {
+vector<string> RunConfig::upgrade(Device device) {
 	GetRemoteConfig remote_config_class;
 	Device new_device = remote_config_class.GetConfiguration(device);
-    string* result = install(new_device);
-    return result;
+    return install(new_device);
 
 }
 
-string RunConfig::restore(Device device) {
+bool RunConfig::restoreCmd(Device device) {
 	ifstream fs;
 	fs.open("/root/.config/tuxconfig/history", ios::out);
 	fs.close();
@@ -183,9 +183,27 @@ string RunConfig::restore(Device device) {
 	int int_reply = stoi(reply);
 
 	string rollback_command =
-            "tar -xvf /var/lib/tuxconfig/lib_backup-"
+            "tar -xvf /var/lib/tuxconfig/"
 					+ numbered_hashmap.find(int_reply)->second.getDeviceid()
 					+ "-"
 					+ numbered_hashmap.find(int_reply)->second.getStatus();
-    return rollback_command;
+    int result = system(rollback_command.c_str());
+    if (result == 0) {
+        return true;
+    } else {
+        return false;
+    }
+
+}
+
+vector<string> RunConfig::restoreGUI(Device device) {
+    string rollback_command =
+            "tar -xvf /var/lib/tuxconfig/"
+                    + device.getDeviceid()
+                    + "-"
+                    + device.getStatus();
+       vector<string> result;
+       result.push_back( rollback_command);
+       return result;
+
 }

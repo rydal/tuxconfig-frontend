@@ -28,10 +28,17 @@ int main(int argc, char *argv[]) {
 	if (argc == 2) {
 	if (strcmp(argv[1], "recover") == 0) {
 		map <string, Device> installed_devices = GetHistory::getInstalledDevices();
-		if (is_gui_present) {
-		RestoreGUI::CommandLineInstall(installed_devices);
-		exit(0);
+        if (is_gui_present) {
+            QApplication app(argc, argv);
+
+            NotebookGUI gui("Tuxconfig");
+            gui.show();
+            gui.changeTab(1);
+            return app.exec();
+
 	}   else {
+            RestoreGUI::CommandLineInstall(installed_devices);
+            exit(0);
 	}
 	}
 	}
@@ -47,7 +54,7 @@ int main(int argc, char *argv[]) {
 
 	};
 
-	const int dir_err = system("mkdir ~/.config/tuxconfig");
+    const int dir_err = system("mkdir ~/.config/tuxconfig 2&1> /dev/null");
 	if (-1 == dir_err) {
 	    QApplication app(argc, argv);
 		QuestionBox window("Can't create config directory ~/.config/tuxconfig");
@@ -57,7 +64,7 @@ int main(int argc, char *argv[]) {
 
 		exit(1);
 	}
-	const int dir_err2 = system("mkdir /var/lib/tuxconfig");
+    const int dir_err2 = system("mkdir /var/lib/tuxconfig 2&1> /dev/null");
 	if (-1 == dir_err2) {
 	    QApplication app(argc, argv);
 		QuestionBox window("Can't create library directory /var/lib/tuxconfig");
@@ -66,7 +73,7 @@ int main(int argc, char *argv[]) {
 	    return app.exec();
 		exit(1);
 	}
-    const int dir_err3 = system("mkdir /var/log/tuxconfig");
+    const int dir_err3 = system("mkdir /var/log/tuxconfig 2&1> /dev/null");
     if (-1 == dir_err3) {
         QApplication app(argc, argv);
         QuestionBox window("Can't create log directory /var/log/tuxconfig");

@@ -38,14 +38,12 @@
                 connect(runTab, SIGNAL(setTab(int)), this, SLOT(changeTab(int)));
                 connect(consoleTab, SIGNAL(setTab(int)), this, SLOT(changeTab(int)));
 
-                connect(runTab, SIGNAL(sendCommand(Device, string, string)), this, SLOT(runCommand(Device, string, string)));
+                connect(runTab, SIGNAL(sendCommand(Device, string, vector<string>)), this, SLOT(runCommand(Device, string, string)));
 
 
 
-}
-void NotebookGUI::setDevice(Device device, string* m_test_parameters) {
-    current_device = device;
-    test_parameters = m_test_parameters;
+
+
 }
 
 void NotebookGUI::changeTab(int index) {
@@ -58,17 +56,21 @@ void NotebookGUI::showResultButtons()  {
 
     worksList.at(0)->setVisible(true);
     failsList.at(0)->setVisible(true);
-    successList.at(0)->setText(test_parameters[1].c_str());
+    successList.at(0)->setText(install_details.at(2).c_str());
 
 }
-void NotebookGUI::runCommand(Device device, string method, string command) {
+void NotebookGUI::runCommand(Device device, string method, vector<string> parameters) {
     QList<QTermWidget*> widgetList = tabWidget->findChildren<QTermWidget*>();
-    if (method == "null") {
-        widgetList.at(0)->sendText(command.c_str());
+    if (method == "install") {
+        string  install_command = parameters.at(0) + " ; " + parameters.at(1);
+        widgetList.at(0)->sendText(install_command.c_str());
         widgetList.at(0)->sendText("\r");
     } else {
-    string runstring = command + " | tee /var/log/tuxconfig/" + device.getDeviceid() + "-" + method;
-    widgetList.at(0)->sendText(runstring.c_str());
+    widgetList.at(0)->sendText(parameters.at(0).c_str());
     widgetList.at(0)->sendText("\r");
+    this->current_device = device;
+    this->install_method = method;
+    this->install_details = parameters;
+
 }
 }
