@@ -58,7 +58,7 @@ vector<string> RunConfig::install(Device device) {
 	runfile += "set -e \n";
     runfile += "exec 2> >(tee -i /var/lib/tuxconfig/" + device.getDeviceid() + "-install.log) \n";
     runfile += "function cleanup() { \n";
-    runfile += "kill -SIGUSR2 " + to_string(::getpid()) + " \n";
+    runfile += "kill -SIGUSR1 " + to_string(::getpid()) + " \n";
     runfile += "} \n";
     runfile += "trap cleanup ERR \n";
     runfile += "touch /var/lib/tuxconfig/history \n";
@@ -108,7 +108,7 @@ vector<string> RunConfig::install(Device device) {
     runfile += "else \n";
     runfile += "echo \"" + device.getDeviceid() + "," + device.getDescription() + ","	+ to_string(device.getVoteDifference()) +  "," + device.getCommit() + ",installed \" >> /var/lib/tuxconfig/history  \n";
     runfile += "fi \n";
-    runfile += "kill -SIGUSR2 " + to_string(::getpid()) + " \n";
+    runfile += "kill -SIGUSR1 " + to_string(::getpid()) + " \n";
 
 
     boost::replace_all(filedir, "/", "-");

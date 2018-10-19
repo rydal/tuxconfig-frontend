@@ -37,7 +37,7 @@ public:
     static int attempt_number;
 	GetOS();
     virtual ~GetOS();
-    void runWebpage(string url);
+    static void runWebpage(string url);
 };
 
 #endif /* GETOS_H_ */

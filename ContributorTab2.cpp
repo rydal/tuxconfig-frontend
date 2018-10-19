@@ -26,7 +26,7 @@
  void ContributorTab2::updateScreen(Device device) {
 
      label->setVisible(false);
-     string* details = DownloadInfo(device.getOwnerGitId());
+     details = DownloadInfo(device.getOwnerGitId());
      string image_location = getAvatarImage(details[4],device.getOwnerGitId());
 
      image_label = new QLabel;
@@ -56,7 +56,6 @@
 
      mainLayout->addWidget(website_label);
 
-     connect(upgrade_button, &QLabel::clicked, [=] { GetOS::runWebpage(details[2]) });
 
 
      email_label->setOpenExternalLinks(true);
@@ -70,10 +69,11 @@
 
 
  }
-
-
+ void ContributorTab2::mousePressEvent(QMouseEvent *event) {
+GetOS::runWebpage(details[4]);
+}
 string* ContributorTab2::DownloadInfo(string owner_git_id) {
-	string* details = new string[5];
+    details = new string[5];
 	ostringstream os;
 		string url = "https://linuxconf.feedthepenguin.org/hehe/getcontributor?owner_git_id=" + owner_git_id;
 		os << curlpp::options::Url(url);

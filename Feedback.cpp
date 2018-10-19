@@ -13,19 +13,26 @@ Feedback::Feedback(Device device, bool successful) {
 		string url = "https://linuxconf.feedthepenguin.org/hehe/reportback?";
 		if (successful == true) {
 		url +=  "success=true";
+        string works_history = "echo " + device.getDeviceid() + "," + device.getDescription() + "," + to_string(device.getVoteDifference())
+                + "," + device.getCommit()  + ", works > /var/lib/tuxconfig/history";
+        system(works_history.c_str());
 		}
 		else {
 			url +=  "success=false";
 
+            string fails_history = "echo " + device.getDeviceid() + "," + device.getDescription() + "," + to_string(device.getVoteDifference())
+                    + "," + device.getCommit()  + ", works > /var/lib/tuxconfig/history";
+            system(fails_history.c_str());
+
 		}
-		url += "code" + device.getSuccessCode();
-		url += "git_url" + device.getGitUrl();
-		url += "device_id" + device.getGitUrl();
+        url += "&code" + device.getSuccessCode();
+        url += "&git_url" + device.getGitUrl();
+        url += "&device_id" + device.getGitUrl();
 		os << curlpp::options::Url(url);
 			 result_string =    os.str();
 			 // Let's parse it
 
-             std::istringstream myStream("/var/lib/tuxconfig/"  + device.getDeviceid()+ "-install.log");
+             std::istringstream myStream("/var/lib/tuxconfig/"  + device.getDeviceid() + "-install.log");
              int size = myStream.str().size();
 
              char buf[50];
@@ -57,6 +64,7 @@ Feedback::Feedback(Device device, bool successful) {
                 {
                   std::cout << e.what() << std::endl;
                 }
+
 
 }
 

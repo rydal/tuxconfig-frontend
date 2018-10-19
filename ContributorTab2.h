@@ -45,7 +45,8 @@ protected:
     QVBoxLayout *mainLayout;
     QMainWindow *mainWindow ;
     Device current_device;
-
+    void mousePressEvent(QMouseEvent *event);
+    string* details;
 public slots:
     void updateScreen(Device device);
 

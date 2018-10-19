@@ -94,7 +94,7 @@ int main(int argc, char *argv[]) {
 
 
     gui.show();
-    std::signal(SIGUSR2, signal_handler);
+    std::signal(SIGUSR1, signal_handler);
     shutdown_handler = [&](int signal) {
         gui.showResultButtons();
 
