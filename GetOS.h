@@ -36,9 +36,8 @@ public:
 	static bool is_gui_present();
     static int attempt_number;
 	GetOS();
-	virtual ~GetOS();
-    static int getAttemptNumber();
-    void incrementAttemptNumber();
+    virtual ~GetOS();
+    void runWebpage(string url);
 };
 
 #endif /* GETOS_H_ */

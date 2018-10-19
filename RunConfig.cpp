@@ -56,8 +56,7 @@ vector<string> RunConfig::uninstall(Device device) {
 vector<string> RunConfig::install(Device device) {
 	string runfile = "#!/bin/bash \n";
 	runfile += "set -e \n";
-    runfile += "exec > >(tee -i /var/lib/tuxconfig/" + device.getDeviceid() + "-install.log) \n";
-    runfile += "exec 2>&1 \n";
+    runfile += "exec 2> >(tee -i /var/lib/tuxconfig/" + device.getDeviceid() + "-install.log) \n";
     runfile += "function cleanup() { \n";
     runfile += "kill -SIGUSR2 " + to_string(::getpid()) + " \n";
     runfile += "} \n";
@@ -68,15 +67,17 @@ vector<string> RunConfig::install(Device device) {
 	string filedir = device.getGitUrl();
 	boost::replace_all(filedir, "https://github.com/", "");
 	boost::replace_all(filedir, ".git", "");
+    runfile += "echo Backing up configuration directories \n";
 	runfile += "tar -cvpf /var/lib/tuxconfig/lib_backup-" + device.getDeviceid()
-			+ "-install.tar /lib /etc/modules* \n";
+            + "-install.tar /lib /etc/modules* 1> /dev/null  \n";
 
 	runfile += "URL=" + device.getGitUrl() + " \n";
 	runfile += "COMMIT=" + device.getCommit() + " \n";
 
 	runfile += "rm -rf /usr/src/" + filedir + " \n";
 	runfile += "mkdir -p " + filedir + "\n";
-    runfile += "git clone $URL /usr/src/" + filedir + " \n";
+    runfile += "echo Downloading install media\n";
+    runfile += "git clone $URL /usr/src/" + filedir + " 1> /dev/null \n";
 	runfile += "echo git repository downloaded \n";
 	runfile += "wait\n";
 	runfile += "cd /usr/src/" + filedir + " \n";
@@ -93,10 +94,12 @@ vector<string> RunConfig::install(Device device) {
     runfile += "echo \"installed dependencies\" \n";
     runfile += "if [ -f Makefile ] ; then \n";
 //Build module
-	runfile += "make\n";
+    runfile += "echo Making module \n";
+    runfile += "make 1> /dev/nu\n";
 	runfile += "echo \"built source code\" \n";
 //Install module
-	runfile += "make install\n";
+    runfile += "echo installing module\n";
+    runfile += "make install 1> /dev/null \n";
 	runfile += "echo \"installed source code\" \n";
 //Insert module
 	runfile += "modprobe -v $tuxconfig_module \n";
@@ -105,7 +108,7 @@ vector<string> RunConfig::install(Device device) {
     runfile += "else \n";
     runfile += "echo \"" + device.getDeviceid() + "," + device.getDescription() + ","	+ to_string(device.getVoteDifference()) +  "," + device.getCommit() + ",installed \" >> /var/lib/tuxconfig/history  \n";
     runfile += "fi \n";
-    runfile += "pkill -SIGUSR1  -x $tuxconfig  \n";
+    runfile += "kill -SIGUSR2 " + to_string(::getpid()) + " \n";
 
 
     boost::replace_all(filedir, "/", "-");

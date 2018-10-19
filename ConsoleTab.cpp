@@ -67,19 +67,18 @@ Device current_device;
    connect(fails_button, &QPushButton::clicked, [=] { fails_result(); });
 
 
-
  }
 void ConsoleTab::showButtons(vector<string> details, bool success) {
 
     fails_button->setVisible(true);
 
-    if (success ) {
+
         works_button->setVisible(true);
-    }
+
     if (details.size() >= 2) {
     success_label->setText(details.at(2).c_str());
-    }
 
+}
 }
 
 void ConsoleTab::works_result() {

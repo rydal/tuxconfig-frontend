@@ -5,6 +5,8 @@ namespace
 {
 std::function<void(int)> shutdown_handler;
 void signal_handler(int signal) { shutdown_handler(signal); }
+std::function<void(int)> shutdown_handler1;
+
 void signal_handler1(int signal) { shutdown_handler(signal); }
 
 }
@@ -92,16 +94,13 @@ int main(int argc, char *argv[]) {
 
 
     gui.show();
-    std::signal(SIGUSR1, signal_handler);
+    std::signal(SIGUSR2, signal_handler);
     shutdown_handler = [&](int signal) {
         gui.showResultButtons();
 
       };
-    std::signal(SIGUSR2, signal_handler1);
-    shutdown_handler = [&](int signal) {
-        gui.showFailButton();
 
-      };
+
 
     return app.exec();
 

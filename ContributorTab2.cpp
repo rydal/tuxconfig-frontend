@@ -56,9 +56,11 @@
 
      mainLayout->addWidget(website_label);
 
+     connect(upgrade_button, &QLabel::clicked, [=] { GetOS::runWebpage(details[2]) });
+
 
      email_label->setOpenExternalLinks(true);
-     string email_string = "<a href='" + details[3] + "'>My Email address.</a>";
+     string email_string = "<a href='mailto:" + details[3] + "'>My Email address.</a>";
      email_label->setText(QString::fromStdString(email_string));
      mainLayout->addWidget(email_label);
 

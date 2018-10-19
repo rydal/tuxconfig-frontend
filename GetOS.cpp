@@ -96,5 +96,10 @@ if (NULL == getenv("DISPLAY")) return false;
 else return true;
 }
 
+void GetOS::runWebpage(string url)  {
+    string runCommand = "sudo -u $SUDO_USER " + url;
+    system(runCommand.c_str());
+}
+
 
 

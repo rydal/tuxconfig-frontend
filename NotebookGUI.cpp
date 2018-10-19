@@ -56,9 +56,6 @@ void NotebookGUI::showResultButtons()  {
 
 }
 
-void NotebookGUI::showFailButton()  {
-    emit showButtons(install_details, false);
-}
 void NotebookGUI::runCommand(Device device, string method, vector<string> parameters) {
     QList<QTermWidget*> widgetList = tabWidget->findChildren<QTermWidget*>();
     if (method == "install") {
@@ -68,11 +65,12 @@ void NotebookGUI::runCommand(Device device, string method, vector<string> parame
     } else {
     widgetList.at(0)->sendText(parameters.at(0).c_str());
     widgetList.at(0)->sendText("\r");
+}
+
     this->current_device = device;
     this->install_method = method;
     this->install_details = parameters;
 
-}
 }
 
 void NotebookGUI::updateContributor() {

@@ -12,16 +12,16 @@ GetRemoteConfig::~GetRemoteConfig() {
 }
 
 Device GetRemoteConfig::GetConfiguration(Device configured_device) {
-
+    bool seen_before;
 	//check number  of attempts
 	ifstream inFile;
     string x;
     inFile.open("/var/lib/tuxconfig/history");
 	if (inFile.is_open()) {
 		while (inFile >> x) {
-			if (x.find(configured_device.getDeviceid()) != std::string::npos
-                    && x.find(configured_device.getCommit()) && x.find("failed")) {
+            if (x.find(configured_device.getDeviceid()) != std::string::npos && x.find(configured_device.getCommit()) && x.find("failed") != std::string::npos &&  seen_before == false)  {
                 GetRemoteConfig::attempt_number++;
+                seen_before = true;
             }
 		}
 		inFile.close();
@@ -29,6 +29,7 @@ Device GetRemoteConfig::GetConfiguration(Device configured_device) {
 
 	string* os_string = GetOS::getLocalMchineDistro();
 	ostringstream os;
+
 
     string url = "https://linuxconf.feedthepenguin.org/hehe/getdevice?deviceid="+ configured_device.getDeviceid() + "&attempt="	+ to_string(GetRemoteConfig::attempt_number) + "&distribution=" + os_string[0];
 	os << curlpp::options::Url(url);
