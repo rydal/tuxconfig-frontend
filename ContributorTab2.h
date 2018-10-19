@@ -34,6 +34,7 @@ public:
     ContributorTab2(const QFileInfo &fileInfo, QWidget *parent = 0);
     string* DownloadInfo(string owner_git_id);
     string getAvatarImage(string url, string owner_git_id);
+
 protected:
     QLabel *label;
     QLabel *image_label;
@@ -43,9 +44,11 @@ protected:
     QLabel *email_label;
     QVBoxLayout *mainLayout;
     QMainWindow *mainWindow ;
+    Device current_device;
 
 public slots:
-    void updateScreen(Device);
+    void updateScreen(Device device);
+
 
 };
 

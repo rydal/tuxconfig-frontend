@@ -40,6 +40,7 @@ vector<string> RunConfig::uninstall(Device device) {
 			+ " >> /etc/modprobe.d/blacklist.conf \n";
 	runfile += "echo uninstalled " + device.getModulename()
 			+ " >> /root/.config/tuxconfig/uninstalled";
+    runfile += "Device uninstalled \n";
 	string tuxconfig_config_name = "/usr/src/tuxconfig-uninstall-"
 			+ device.getDeviceid();
 	std::ofstream out(tuxconfig_config_name);
@@ -58,10 +59,10 @@ vector<string> RunConfig::install(Device device) {
     runfile += "exec > >(tee -i /var/lib/tuxconfig/" + device.getDeviceid() + "-install.log) \n";
     runfile += "exec 2>&1 \n";
     runfile += "function cleanup() { \n";
-    runfile += "kill -SIGUSR1 " + to_string(::getpid()) + " \n";
+    runfile += "kill -SIGUSR2 " + to_string(::getpid()) + " \n";
     runfile += "} \n";
     runfile += "trap cleanup ERR \n";
-	runfile += "touch /root/.config/tuxconfig/history \n";
+    runfile += "touch /var/lib/tuxconfig/history \n";
 	//backup /lib folder
 
 	string filedir = device.getGitUrl();
@@ -86,6 +87,8 @@ vector<string> RunConfig::install(Device device) {
 //install dependencies;
     runfile += " if [ !  -z \"$dependencies\" ] ; then \n";
     runfile += "eval $dependencies \n";
+    runfile +=  "echo \"" + device.getDeviceid() + "," + device.getDescription() + ","	+ to_string(device.getVoteDifference()) + "," + device.getCommit() + ",apt-installed \" >> /var/lib/tuxconfig/history  \n";
+
     runfile += "fi \n";
     runfile += "echo \"installed dependencies\" \n";
     runfile += "if [ -f Makefile ] ; then \n";
@@ -98,9 +101,9 @@ vector<string> RunConfig::install(Device device) {
 //Insert module
 	runfile += "modprobe -v $tuxconfig_module \n";
 	runfile += "echo \"inserted module into kernel\" \n";
-    runfile +=  "echo \"" + device.getDeviceid() + "," + device.getDescription() + ","	+ to_string(device.getVoteDifference()) + ",installed \" >> /root/.config/tuxconfig/history  \n";
+    runfile +=  "echo \"" + device.getDeviceid() + "," + device.getDescription() + ","	+ to_string(device.getVoteDifference()) + "," + device.getCommit() + ",installed \" >> /var/lib/tuxconfig/history  \n";
     runfile += "else \n";
-    runfile += "echo \"" + device.getDeviceid() + "," + device.getDescription() + ","	+ to_string(device.getVoteDifference()) + ",installed \" >> /root/.config/tuxconfig/history  \n";
+    runfile += "echo \"" + device.getDeviceid() + "," + device.getDescription() + ","	+ to_string(device.getVoteDifference()) +  "," + device.getCommit() + ",installed \" >> /var/lib/tuxconfig/history  \n";
     runfile += "fi \n";
     runfile += "pkill -SIGUSR1  -x $tuxconfig  \n";
 
@@ -162,7 +165,7 @@ vector<string> RunConfig::upgrade(Device device) {
 
 bool RunConfig::restoreCmd(Device device) {
 	ifstream fs;
-	fs.open("/root/.config/tuxconfig/history", ios::out);
+    fs.open("/var/lib/tuxconfig/history", ios::out);
 	fs.close();
 	map<string, Device> hashmap;
 	map<int, Device> numbered_hashmap;
@@ -211,7 +214,8 @@ vector<string> RunConfig::restoreGUI(Device device) {
     runfile += "tar -xvf /var/lib/tuxconfig/"
                     + device.getDeviceid()
                     + "-"
-                    + device.getStatus();
+                    + device.getStatus() + "\n";
+    runfile += "Configuration restored \n";
     string tuxconfig_config_name = "/usr/src/tuxconfig-restore-"
             + device.getDeviceid();
     std::ofstream out(tuxconfig_config_name);

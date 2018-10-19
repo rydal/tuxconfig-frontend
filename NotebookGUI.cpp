@@ -12,7 +12,7 @@
 
     setWindowTitle("Tuxconfig");
 
-
+    QPushButton *button;
     QFileInfo fileInfo(name);
     RunTab *runTab = new RunTab(fileInfo,tabWidget);
     QScrollArea* contactScrollArea = new QScrollArea();
@@ -40,26 +40,24 @@
                 connect(console_tab, SIGNAL(setTab(int)), this, SLOT(changeTab(int)));
 
                 connect(runTab, SIGNAL(sendCommand(Device, string, vector<string>)), this, SLOT(runCommand(Device, string, vector<string>)));
+                connect(console_tab, SIGNAL(updateScreen()),  this, SLOT(updateContributor()));
+                connect(this, SIGNAL(updatedContributor(Device)),  contributor_tab, SLOT(updateScreen(Device)));
 
+                connect(this, SIGNAL(showButtons(vector<string>, bool)),console_tab,SLOT(showButtons(vector<string>,bool)));
 
+    }
 
-
-}
 
 void NotebookGUI::changeTab(int index) {
     tabWidget->setCurrentIndex(index);
 }
 void NotebookGUI::showResultButtons()  {
-    QList<QWidget*> worksList = tabWidget->findChildren<QWidget*>("works_button");
-    QList<QWidget*> failsList = tabWidget->findChildren<QWidget*>("fails_button");
-    QList<QLabel*> successList = tabWidget->findChildren<QLabel*>("success_label");
+    emit showButtons(install_details, true);
 
-    worksList.at(0)->setVisible(true);
-    failsList.at(0)->setVisible(true);
-    if (install_details.size() >= 2) {
-    successList.at(0)->setText(install_details.at(2).c_str());
-    }
+}
 
+void NotebookGUI::showFailButton()  {
+    emit showButtons(install_details, false);
 }
 void NotebookGUI::runCommand(Device device, string method, vector<string> parameters) {
     QList<QTermWidget*> widgetList = tabWidget->findChildren<QTermWidget*>();
@@ -76,3 +74,9 @@ void NotebookGUI::runCommand(Device device, string method, vector<string> parame
 
 }
 }
+
+void NotebookGUI::updateContributor() {
+    emit updatedContributor(current_device);
+}
+
+

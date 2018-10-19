@@ -35,17 +35,26 @@ public:
     void setDevice(Device device, string* test_parameters);
     NotebookGUI();
     explicit NotebookGUI(const QString name);
-    void showResultButtons();
-	 QTabWidget *tabWidget;
+
+     QTabWidget *tabWidget;
+     void showResultButtons();
+     void showFailButton();
+
+signals:
+     void updatedContributor(Device device);
+     void showButtons(vector<string>, bool);
 
 public slots:
     void changeTab(int index);
     void runCommand(Device device, string method, vector<string> parameters);
+    void updateContributor();
 
 protected:
     Device current_device;
     string install_method;
     vector<string> install_details;
+
+
 
 };
 

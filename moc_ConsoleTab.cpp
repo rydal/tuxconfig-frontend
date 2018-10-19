@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_ConsoleTab_t {
-    QByteArrayData data[4];
-    char stringdata0[32];
+    QByteArrayData data[8];
+    char stringdata0[75];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -32,10 +32,16 @@ static const qt_meta_stringdata_ConsoleTab_t qt_meta_stringdata_ConsoleTab = {
 QT_MOC_LITERAL(0, 0, 10), // "ConsoleTab"
 QT_MOC_LITERAL(1, 11, 6), // "setTab"
 QT_MOC_LITERAL(2, 18, 0), // ""
-QT_MOC_LITERAL(3, 19, 12) // "updateScreen"
+QT_MOC_LITERAL(3, 19, 12), // "updateScreen"
+QT_MOC_LITERAL(4, 32, 11), // "showButtons"
+QT_MOC_LITERAL(5, 44, 14), // "vector<string>"
+QT_MOC_LITERAL(6, 59, 7), // "details"
+QT_MOC_LITERAL(7, 67, 7) // "success"
 
     },
-    "ConsoleTab\0setTab\0\0updateScreen"
+    "ConsoleTab\0setTab\0\0updateScreen\0"
+    "showButtons\0vector<string>\0details\0"
+    "success"
 };
 #undef QT_MOC_LITERAL
 
@@ -45,7 +51,7 @@ static const uint qt_meta_data_ConsoleTab[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       2,   14, // methods
+       3,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -53,12 +59,18 @@ static const uint qt_meta_data_ConsoleTab[] = {
        2,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,   24,    2, 0x06 /* Public */,
-       3,    0,   27,    2, 0x06 /* Public */,
+       1,    1,   29,    2, 0x06 /* Public */,
+       3,    0,   32,    2, 0x06 /* Public */,
+
+ // slots: name, argc, parameters, tag, flags
+       4,    2,   33,    2, 0x0a /* Public */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Int,    2,
     QMetaType::Void,
+
+ // slots: parameters
+    QMetaType::Void, 0x80000000 | 5, QMetaType::Bool,    6,    7,
 
        0        // eod
 };
@@ -71,6 +83,7 @@ void ConsoleTab::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         switch (_id) {
         case 0: _t->setTab((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 1: _t->updateScreen(); break;
+        case 2: _t->showButtons((*reinterpret_cast< vector<string>(*)>(_a[1])),(*reinterpret_cast< bool(*)>(_a[2]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -118,13 +131,13 @@ int ConsoleTab::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 2)
+        if (_id < 3)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 2;
+        _id -= 3;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 2)
+        if (_id < 3)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 2;
+        _id -= 3;
     }
     return _id;
 }

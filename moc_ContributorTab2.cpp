@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_ContributorTab2_t {
-    QByteArrayData data[4];
-    char stringdata0[37];
+    QByteArrayData data[5];
+    char stringdata0[44];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -32,10 +32,12 @@ static const qt_meta_stringdata_ContributorTab2_t qt_meta_stringdata_Contributor
 QT_MOC_LITERAL(0, 0, 15), // "ContributorTab2"
 QT_MOC_LITERAL(1, 16, 12), // "updateScreen"
 QT_MOC_LITERAL(2, 29, 0), // ""
-QT_MOC_LITERAL(3, 30, 6) // "Device"
+QT_MOC_LITERAL(3, 30, 6), // "Device"
+QT_MOC_LITERAL(4, 37, 6) // "device"
 
     },
-    "ContributorTab2\0updateScreen\0\0Device"
+    "ContributorTab2\0updateScreen\0\0Device\0"
+    "device"
 };
 #undef QT_MOC_LITERAL
 
@@ -56,7 +58,7 @@ static const uint qt_meta_data_ContributorTab2[] = {
        1,    1,   19,    2, 0x0a /* Public */,
 
  // slots: parameters
-    QMetaType::Void, 0x80000000 | 3,    2,
+    QMetaType::Void, 0x80000000 | 3,    4,
 
        0        // eod
 };

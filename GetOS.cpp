@@ -91,9 +91,10 @@ std::string* GetOS::getLocalMchineDistro() {
 }
 
 bool GetOS::is_gui_present() {
-		    	return true;
-}
 
+if (NULL == getenv("DISPLAY")) return false;
+else return true;
+}
 
 
 

@@ -19,6 +19,7 @@
 #include "GetOS.h"
 
 class GetRemoteConfig {
+
 public:
 	GetRemoteConfig();
 	~GetRemoteConfig();
@@ -27,6 +28,7 @@ public:
 	size_t writeCallback(char* buf, size_t size, size_t nmemb, void* up);
 	 static Device GetConfiguration(Device configured_device);
 	 static bool isUpgradeable(Device current_device);
+     static int attempt_number;
 
 
 };

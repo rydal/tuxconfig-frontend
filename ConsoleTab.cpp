@@ -59,19 +59,28 @@ Device current_device;
     mainLayout->addWidget(fails_button);
 
 
-       QObject::connect(console, SIGNAL(finished()), mainLayout, SLOT(close()));
+
 
 
    setLayout(mainLayout);
    connect(works_button, &QPushButton::clicked, [=] { works_result (); });
    connect(fails_button, &QPushButton::clicked, [=] { fails_result(); });
 
-   QObject::connect(m_button, SIGNAL(clicked()),this, SLOT(closeButton()));
-
 
 
  }
+void ConsoleTab::showButtons(vector<string> details, bool success) {
 
+    fails_button->setVisible(true);
+
+    if (success ) {
+        works_button->setVisible(true);
+    }
+    if (details.size() >= 2) {
+    success_label->setText(details.at(2).c_str());
+    }
+
+}
 
 void ConsoleTab::works_result() {
     Feedback(current_device,true);
@@ -82,6 +91,6 @@ void ConsoleTab::fails_result() {
 Feedback(current_device,false);
 }
 
- void ConsoleTab::closeButton() {
-     ConsoleTab::close();
- }
+
+
+

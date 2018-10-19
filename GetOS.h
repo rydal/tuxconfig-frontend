@@ -24,6 +24,8 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
+
 
 using namespace std;
 
@@ -32,10 +34,11 @@ public:
 	static std::string exec(const char* cmd);
 	static std::string* getLocalMchineDistro();
 	static bool is_gui_present();
-
+    static int attempt_number;
 	GetOS();
 	virtual ~GetOS();
-
+    static int getAttemptNumber();
+    void incrementAttemptNumber();
 };
 
 #endif /* GETOS_H_ */

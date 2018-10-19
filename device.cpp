@@ -120,13 +120,13 @@ Device::Device() {
 		this->devicename = devicename;
 	}
 
-	const std::string& Device::getSetCommand() const {
-		return setCommand;
-	}
+    const std::string& Device::getSetCommand() const {
+        return setCommand;
+    }
 
-	void Device::setSetCommand(const std::string& setCommand) {
-		this->setCommand = setCommand;
-	}
+    void Device::setSetCommand(const std::string& setCommand) {
+        this->setCommand = setCommand;
+    }
 
 	const int& Device::getVoteDifference() const {
 		return vote_difference;
@@ -144,13 +144,13 @@ Device::Device() {
 		this->attempted_install = installed;
 	}
 
-	const string& Device::getStatus() const {
-			return status;
-		}
+    const string& Device::getStatus() const {
+            return status;
+        }
 
-		void Device::setStatus(const string& status) {
-			this->status = status;
-		}
+        void Device::setStatus(const string& status) {
+            this->status = status;
+        }
 
 
 

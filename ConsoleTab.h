@@ -31,13 +31,13 @@ public:
      QLabel *success_label;
     void fails_result();
     void works_result();
-    void closeButton();
-
-
 
 signals:
      void setTab(int);
      void updateScreen();
+
+public slots:
+     void showButtons(vector<string> details, bool success);
 };
 
 #endif /* CONSOLETAB_H_ */

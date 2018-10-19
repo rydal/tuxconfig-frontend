@@ -21,7 +21,7 @@ GetHistory::~GetHistory() {
 map<string, Device> GetHistory::getInstalledDevices() {
 	std::map<string, Device> device_map;
 	string line;
-	ifstream inputFile("/root/.config/tuxconfig/history");
+    ifstream inputFile("/var/lib/tuxconfig/history");
 	string tempLine;
 	while (getline(inputFile, tempLine, '\n')) {
 		vector<string> tempstr;
@@ -32,14 +32,14 @@ map<string, Device> GetHistory::getInstalledDevices() {
 		}
 		Device new_device;
 
-		if (tempstr[3].find("failed") != string::npos
+        if (tempstr[4].find("failed") != string::npos
 				) {
 			boost::trim(tempstr[0]);
 			boost::trim(tempstr[1]);
 			new_device = Device(tempstr[0], tempstr[1], false, true);
 
 		}
-		if (tempstr[3].find("works") != string::npos
+        if (tempstr[4].find("works") != string::npos
 				) {
 			boost::trim(tempstr[0]);
 			boost::trim(tempstr[1]);
@@ -47,7 +47,7 @@ map<string, Device> GetHistory::getInstalledDevices() {
 			device_map.insert(
 					std::pair<string, Device>(tempstr[0], new_device));
 		}
-		if (tempstr[3].find("uninstalled") != string::npos
+        if (tempstr[4].find("uninstalled") != string::npos
 				) {
 			boost::trim(tempstr[0]);
 			boost::trim(tempstr[1]);

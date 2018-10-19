@@ -20,8 +20,6 @@
         mainLayout->addWidget(label);
         setLayout(mainLayout);
         Device device;
-        device.setOwnerGitId(to_string(4295985));
-        updateScreen(device);
 
 }
 
@@ -104,5 +102,3 @@ string ContributorTab2::getAvatarImage(string url, string owner_git_id) {
     return downloader.download(url,owner_git_id);
 
 }
-
-

@@ -1,4 +1,4 @@
-	/*
+    /*
  * deviceinfo.h
  *
  *  Created on: 25 Aug 2018
@@ -89,15 +89,16 @@ class Device {
 	std::string owner_git_id;
 	std::string devicename;
 	std::string setCommand;
+    std::string AptInstalled;
 
 	bool attempted_install;
 	int vote_difference;
 	bool is_upgradeable;
 	bool is_installed;
 
-	string status;
-	const string& getStatus() const;
-	void setStatus(const string& status);
+    string status;
+    const string& getStatus() const;
+    void setStatus(const string& status);
 
 	bool isIsUpgradeable() const {
 		return is_upgradeable;
@@ -113,7 +114,10 @@ class Device {
 
 	void setIsInstalled(bool isInstalled) {
 		is_installed = isInstalled;
-	}
+    }
+    void setAptInstalled(const std::string& apt_install);
+
+    const std::string& getAptInstalled() const;
 };
 
 
