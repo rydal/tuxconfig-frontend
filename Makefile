@@ -62,7 +62,7 @@ SOURCES       = CheckConnection.cpp \
 		Linuxconf.cpp \
 		NotebookGUI.cpp \
 		QuestionBox.cpp \
-		RestoreGUI.cpp \
+		RestoreCmd.cpp \
 		RestoreTab.cpp \
 		RunConfig.cpp moc_ConsoleTab.cpp \
 		moc_ContributorTab2.cpp \
@@ -83,7 +83,7 @@ OBJECTS       = CheckConnection.o \
 		Linuxconf.o \
 		NotebookGUI.o \
 		QuestionBox.o \
-		RestoreGUI.o \
+		RestoreCmd.o \
 		RestoreTab.o \
 		RunConfig.o \
 		moc_ConsoleTab.o \
@@ -167,7 +167,7 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		Linuxconf.h \
 		NotebookGUI.h \
 		QuestionBox.h \
-		RestoreGUI.h \
+		RestoreCmd.h \
 		RestoreTab.h \
 		RunConfig.h CheckConnection.cpp \
 		ConsoleTab.cpp \
@@ -183,7 +183,7 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		Linuxconf.cpp \
 		NotebookGUI.cpp \
 		QuestionBox.cpp \
-		RestoreGUI.cpp \
+		RestoreCmd.cpp \
 		RestoreTab.cpp \
 		RunConfig.cpp
 QMAKE_TARGET  = tuxconfig
@@ -342,8 +342,8 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents CheckConnection.h compare.h ConsoleTab.h ContributorTab2.h RunConfigTab.h device.h Feedback.h GetHistory.h GetLocalDevices.h GetOS.h GetRemoteConfig.h HTTPDownloader.hpp Linuxconf.h NotebookGUI.h QuestionBox.h RestoreGUI.h RestoreTab.h RunConfig.h $(DISTDIR)/
-	$(COPY_FILE) --parents CheckConnection.cpp ConsoleTab.cpp ContributorTab2.cpp RunConfigTab.cpp device.cpp Feedback.cpp GetHistory.cpp GetLocalDevices.cpp GetOS.cpp GetRemoteConfig.cpp HTTPDownloader.cpp Linuxconf.cpp NotebookGUI.cpp QuestionBox.cpp RestoreGUI.cpp RestoreTab.cpp RunConfig.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents CheckConnection.h compare.h ConsoleTab.h ContributorTab2.h RunConfigTab.h device.h Feedback.h GetHistory.h GetLocalDevices.h GetOS.h GetRemoteConfig.h HTTPDownloader.hpp Linuxconf.h NotebookGUI.h QuestionBox.h RestoreCmd.h RestoreTab.h RunConfig.h $(DISTDIR)/
+	$(COPY_FILE) --parents CheckConnection.cpp ConsoleTab.cpp ContributorTab2.cpp RunConfigTab.cpp device.cpp Feedback.cpp GetHistory.cpp GetLocalDevices.cpp GetOS.cpp GetRemoteConfig.cpp HTTPDownloader.cpp Linuxconf.cpp NotebookGUI.cpp QuestionBox.cpp RestoreCmd.cpp RestoreTab.cpp RunConfig.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -565,7 +565,7 @@ Linuxconf.o: Linuxconf.cpp Linuxconf.h \
 		ContributorTab2.h \
 		HTTPDownloader.hpp \
 		RunConfigTab.h \
-		RestoreGUI.h \
+		RestoreCmd.h \
 		QuestionBox.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Linuxconf.o Linuxconf.cpp
 
@@ -588,12 +588,12 @@ NotebookGUI.o: NotebookGUI.cpp NotebookGUI.h \
 QuestionBox.o: QuestionBox.cpp QuestionBox.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o QuestionBox.o QuestionBox.cpp
 
-RestoreGUI.o: RestoreGUI.cpp RestoreGUI.h \
+RestoreCmd.o: RestoreCmd.cpp RestoreCmd.h \
 		device.h \
 		GetOS.h \
 		GetRemoteConfig.h \
 		GetHistory.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o RestoreGUI.o RestoreGUI.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o RestoreCmd.o RestoreCmd.cpp
 
 RestoreTab.o: RestoreTab.cpp RestoreTab.h \
 		GetHistory.h \

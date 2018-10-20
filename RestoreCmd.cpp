@@ -5,7 +5,7 @@
  *      Author: roberty
  */
 
-#include "RestoreGUI.h"
+#include "RestoreCmd.h"
 
 
 string restore_command;

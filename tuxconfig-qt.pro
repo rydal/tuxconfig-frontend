@@ -26,7 +26,7 @@ HEADERS += CheckConnection.h \
            Linuxconf.h \
            NotebookGUI.h \
            QuestionBox.h \
-           RestoreGUI.h \
+           RestoreCmd.h \
            RestoreTab.h \
            RunConfig.h
 SOURCES += CheckConnection.cpp \
@@ -43,7 +43,7 @@ SOURCES += CheckConnection.cpp \
            Linuxconf.cpp \
            NotebookGUI.cpp \
            QuestionBox.cpp \
-           RestoreGUI.cpp \
+           RestoreCmd.cpp \
            RestoreTab.cpp \
            RunConfig.cpp
 

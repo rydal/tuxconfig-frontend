@@ -34,7 +34,7 @@ set<Device> GetLocalDevices::listdevices() {
 	string name = "";
 	string modulename = "";
 	string description = "";
-
+    bool new_device = false;
 	while (iss.good()) {
 
 		std::string SingleLine;
@@ -69,36 +69,40 @@ set<Device> GetLocalDevices::listdevices() {
 			boost::trim(name);
 
 		}
-		std::smatch m1;
+        std::smatch m1;
 
-		std::regex e1("^\\s*configuration:.*");
-		std::regex e2("^\\s*configuration:.*driver=(.*)(.*)");
+        std::regex e1("^\\s*configuration:.*");
+        std::regex e2("^\\s*configuration:.*driver=(.*)(.*)");
 
-		if (regex_match(SingleLine, m1, e1)) {
-						modulename = "null";
-			if  	(regex_search(SingleLine, m1, e2)) {
-				modulename = m1[1];
-							std::regex pattern("\\s.*$");
-				modulename = std::regex_replace(modulename, pattern, "");
+        if (regex_match(SingleLine, m1, e1)) {
+                        modulename = "null";
+            if  	(regex_search(SingleLine, m1, e2)) {
+                modulename = m1[1];
+                            std::regex pattern("\\s.*$");
+                modulename = std::regex_replace(modulename, pattern, "");
 
-		}
+        }
 
-		}
+        }
+        std::regex e5("^[\\s|\\t].*\\*-.*");
+        std::smatch m5;
+        if (regex_match(SingleLine,m5,e5)) {
+            if(  ( modulename != "" || modulename == "null")   &&  ( description != "" || description != "null") && name != "" && deviceid != ""   ) {
+                //don't list virtual devices
+            Device object(deviceid,description,name,modulename);
 
-		if(  ( modulename != "" || modulename == "null")   &&  ( description != "" || description != "null") && name.compare("") != 0   ) {
-			//don't list virtual devices
-		Device object(deviceid,description,name,modulename);
+            data.insert(object);
+            deviceid = "";
+            description = "";
+            name = "";
+            modulename = "";
 
-		data.insert(object);
-		deviceid = "";
-		description = "";
-		name = "";
-		modulename = "";
+        }
 
-		}
+    }
 
 
 
-	}
+    }
 	return data;
 }

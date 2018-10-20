@@ -58,7 +58,7 @@
                 uninstall_button->setFlat(true);
                 uninstall_button->setText("");
 
-			}
+            }
             if (iterated_device.getAttemptedInstall() == false) {
                 restore_button->setFlat(true);
                 restore_button->setText("");

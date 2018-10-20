@@ -31,16 +31,18 @@ vector<string> RunConfig::uninstall(Device device) {
 	string runfile = "#!/bin/bash\n";
     runfile += "set -e \n";
     runfile += "exec > >(tee -i /var/lib/tuxconfig/" + device.getDeviceid() + "-uninstall.log) \n";
-    runfile += "exec 2>&1 \n";
-	runfile += "tar -cvpf /var/lib/tuxconfig/lib_backup-" + device.getDeviceid()
-			+ "-uninstall.tar /lib /etc/modules* \n";
+    runfile += "function cleanup() { \n";
+    runfile += "kill -SIGUSR2 " + to_string(::getpid()) + " \n";
+    runfile += "} \n";
+    runfile += "tar -cvpf /var/lib/tuxconfig/lib_backup-" + device.getDeviceid()
+            + "-uninstall.tar /lib /etc/modules*  1> /dev/null\n";
 
 	runfile += "modprobe -r " + device.getModulename() + "\n";
 	runfile += "echo blacklist " + device.getModulename()
 			+ " >> /etc/modprobe.d/blacklist.conf \n";
 	runfile += "echo uninstalled " + device.getModulename()
 			+ " >> /root/.config/tuxconfig/uninstalled";
-    runfile += "Device uninstalled \n";
+    runfile += "echo Device uninstalled \n";
 	string tuxconfig_config_name = "/usr/src/tuxconfig-uninstall-"
 			+ device.getDeviceid();
     std::ofstream out(tuxconfig_config_name, std::ios_base::out);
@@ -58,7 +60,7 @@ vector<string> RunConfig::install(Device device) {
 	runfile += "set -e \n";
     runfile += "exec 2> >(tee -i /var/lib/tuxconfig/" + device.getDeviceid() + "-install.log) \n";
     runfile += "function cleanup() { \n";
-    runfile += "kill -SIGUSR1 " + to_string(::getpid()) + " \n";
+    runfile += "kill -SIGUSR2 " + to_string(::getpid()) + " \n";
     runfile += "} \n";
     runfile += "trap cleanup ERR \n";
     runfile += "touch /var/lib/tuxconfig/history \n";
@@ -209,14 +211,14 @@ vector<string> RunConfig::restoreGUI(Device device) {
     runfile += "exec > >(tee -i /var/lib/tuxconfig/" + device.getDeviceid() + "-install.log) \n";
     runfile += "exec 2>&1 \n";
     runfile += "function cleanup() { \n";
-    runfile += "kill -SIGUSR1 " + to_string(::getpid()) + " \n";
+    runfile += "kill -SIGUSR2 " + to_string(::getpid()) + " \n";
     runfile += "} \n";
     runfile += "trap cleanup ERR \n";
     runfile += "tar -xvf /var/lib/tuxconfig/"
                     + device.getDeviceid()
                     + "-"
                     + device.getStatus() + "\n";
-    runfile += "Configuration restored \n";
+    runfile += "echo Configuration restored \n";
     string tuxconfig_config_name = "/usr/src/tuxconfig-restore-"
             + device.getDeviceid();
     std::ofstream out(tuxconfig_config_name);

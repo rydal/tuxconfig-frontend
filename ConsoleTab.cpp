@@ -76,13 +76,20 @@ void ConsoleTab::showButtons(vector<string> details, bool success) {
 
     fails_button->setVisible(true);
 
-
+    if (success) {
         works_button->setVisible(true);
 
     if (details.size() >= 2) {
     success_label->setText(details.at(2).c_str());
+    string command_string = details.at(1) +" > /dev/null 2>&1 \r";
 
-}
+    console->sendText(command_string.c_str());
+    } else {
+        success_label->setText("Command completed successfully");
+    }
+} else {
+        success_label->setText("Command failed");
+    }
 }
 
 void ConsoleTab::works_result() {
@@ -95,8 +102,12 @@ void ConsoleTab::fails_result() {
 Feedback(current_device,false);
 }
 
-void ConsoleTab::updateDevice(Device device) {
+void ConsoleTab::sendToConsole(Device device,string method, vector<string> parameters) {
     this->current_device = device;
+    string command_string = parameters.at(0) +" \r";
+    console->sendText(command_string.c_str());
+
+
 }
 
 

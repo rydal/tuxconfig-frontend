@@ -23,7 +23,7 @@
 #include <map>
 #include "device.h"
 #include "NotebookGUI.h"
-#include "RestoreGUI.h"
+#include "RestoreCmd.h"
 #include "QuestionBox.h"
 #include "ConsoleTab.h"
 

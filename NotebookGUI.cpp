@@ -42,9 +42,11 @@
                 connect(runTab, SIGNAL(sendCommand(Device, string, vector<string>)), this, SLOT(runCommand(Device, string, vector<string>)));
                 connect(console_tab, SIGNAL(updateScreen()),  this, SLOT(updateContributor()));
                 connect(this, SIGNAL(updatedContributor(Device)),  contributor_tab, SLOT(updateScreen(Device)));
-                connect(this, SIGNAL(updatedContributor(Device)),  console_tab, SLOT(updateDevice(Device)));
 
                 connect(this, SIGNAL(showButtons(vector<string>, bool)),console_tab,SLOT(showButtons(vector<string>,bool)));
+                connect(this, SIGNAL(sendToConsole(Device, string, vector<string>)),console_tab,SLOT(sendToConsole(Device, string, vector<string>)));
+
+
 
     }
 
@@ -56,21 +58,16 @@ void NotebookGUI::showResultButtons()  {
     emit showButtons(install_details, true);
 
 }
+void NotebookGUI::showFailButton()  {
+    emit showButtons(install_details, false);
 
-void NotebookGUI::runCommand(Device device, string method, vector<string> parameters) {
-    QList<QTermWidget*> widgetList = tabWidget->findChildren<QTermWidget*>();
-    if (method == "install") {
-        string  install_command = parameters.at(0) + " ; " + parameters.at(1);
-        widgetList.at(0)->sendText(install_command.c_str());
-        widgetList.at(0)->sendText("\r");
-    } else {
-    widgetList.at(0)->sendText(parameters.at(0).c_str());
-    widgetList.at(0)->sendText("\r");
 }
+void NotebookGUI::runCommand(Device device, string method, vector<string> parameters) {
 
     this->current_device = device;
     this->install_method = method;
     this->install_details = parameters;
+    emit sendToConsole(device, method, parameters);
 
 }
 

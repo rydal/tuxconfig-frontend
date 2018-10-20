@@ -13,19 +13,18 @@ Feedback::Feedback(Device& device, bool successful) {
 		string url = "https://linuxconf.feedthepenguin.org/hehe/reportback?";
 		if (successful == true) {
 		url +=  "success=true";
-        string works_history = "echo " + device.getDeviceid() + "," + device.getDescription() + "," + to_string(device.getVoteDifference())
+        string works_history = "echo " + device.getDeviceid() + "," + device.getCommit() + "," + device.getDescription() + "," + to_string(device.getVoteDifference())
                 + "," + device.getCommit()  + ", works >> /var/lib/tuxconfig/history";
         system(works_history.c_str());
 		}
 		else {
 			url +=  "success=false";
 
-            string fails_history = "echo " + device.getDeviceid() + "," + device.getDescription() + "," + to_string(device.getVoteDifference())
-                    + "," + device.getCommit()  + ", failed >> /var/lib/tuxconfig/history";
+            string fails_history = "echo " + device.getDeviceid() + "," + device.getDescription() + "," + to_string(device.getVoteDifference())+ "," + device.getCommit()  + "," + device.getSuccessCode() + ", failed >> /var/lib/tuxconfig/history";
             system(fails_history.c_str());
 
 		}
-        url += "&code=" + device.getSuccessCode();
+        url += "code=" + device.getSuccessCode();
         url += "&git_url=" + device.getGitUrl();
         url += "&device_id=" + device.getDeviceid();
 
@@ -39,41 +38,8 @@ Feedback::Feedback(Device& device, bool successful) {
 
              if (successful == false) {
 
-             char buf[50];
-              try
-              {
-                 curlpp::Cleanup cleaner;
-                 curlpp::Easy request;
-
-                 std::list< std::string > headers;
-                 headers.push_back("Content-Type: text/*");
-                 sprintf(buf, "Content-Length: %d", size);
-                 headers.push_back(buf);
-
-                 using namespace curlpp::Options;
-                 request.setOpt(new Verbose(true));
-                 request.setOpt(new ReadStream(&myStream));
-                 request.setOpt(new InfileSize(size));
-                 request.setOpt(new HttpHeader(headers));
-
-                 string error_log_url =  "https://linuxconf.feedthepenguin.org/hehe/geterrorlog?";
-                 error_log_url += "&code=" + device.getSuccessCode();
-                 error_log_url += "&git_url=" + device.getGitUrl();
-                 error_log_url += "&device_id=" + device.getDeviceid();
-
-                 request.setOpt(new Url(error_log_url));
-
-                 request.perform();
-              }
-              catch ( curlpp::LogicError & e )
-                {
-                  std::cout << e.what() << std::endl;
-                }
-              catch ( curlpp::RuntimeError & e )
-                {
-                  std::cout << e.what() << std::endl;
-                }
-
+              string curl_command = "/usr/bin/curl -X POST \"https://linuxconf.feedthepenguin.org/hehe/geterrorlog?code=" + device.getSuccessCode() + "&git_url=" + device.getGitUrl() + "&device_id=" + device.getDeviceid() + "\" -F 'data=@/var/lib/tuxconfig/" + device.getDeviceid() + "-install.log";
+              system (curl_command.c_str());
 }
 
 }

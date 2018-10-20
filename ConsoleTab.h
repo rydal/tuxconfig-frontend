@@ -39,7 +39,8 @@ signals:
 
 public slots:
      void showButtons(vector<string> details, bool success);
-     void updateDevice(Device device);
+     void sendToConsole(Device device,string method, vector<string> parameters);
+
 };
 
 #endif /* CONSOLETAB_H_ */

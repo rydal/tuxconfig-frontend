@@ -151,6 +151,14 @@ Device::Device() {
         void Device::setStatus(const string& status) {
             this->status = status;
         }
+        void Device::setAptInstalled( bool apt_install) {
+            this->AptInstalled = apt_install;
+            ;
+        }
+
+        bool  Device::getAptInstalled() {
+            return AptInstalled;
+        }
 
 
 

@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_ConsoleTab_t {
-    QByteArrayData data[11];
-    char stringdata0[102];
+    QByteArrayData data[14];
+    char stringdata0[128];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -37,14 +37,18 @@ QT_MOC_LITERAL(4, 32, 11), // "showButtons"
 QT_MOC_LITERAL(5, 44, 14), // "vector<string>"
 QT_MOC_LITERAL(6, 59, 7), // "details"
 QT_MOC_LITERAL(7, 67, 7), // "success"
-QT_MOC_LITERAL(8, 75, 12), // "updateDevice"
-QT_MOC_LITERAL(9, 88, 6), // "Device"
-QT_MOC_LITERAL(10, 95, 6) // "device"
+QT_MOC_LITERAL(8, 75, 13), // "sendToConsole"
+QT_MOC_LITERAL(9, 89, 6), // "Device"
+QT_MOC_LITERAL(10, 96, 6), // "device"
+QT_MOC_LITERAL(11, 103, 6), // "string"
+QT_MOC_LITERAL(12, 110, 6), // "method"
+QT_MOC_LITERAL(13, 117, 10) // "parameters"
 
     },
     "ConsoleTab\0setTab\0\0updateScreen\0"
     "showButtons\0vector<string>\0details\0"
-    "success\0updateDevice\0Device\0device"
+    "success\0sendToConsole\0Device\0device\0"
+    "string\0method\0parameters"
 };
 #undef QT_MOC_LITERAL
 
@@ -67,7 +71,7 @@ static const uint qt_meta_data_ConsoleTab[] = {
 
  // slots: name, argc, parameters, tag, flags
        4,    2,   38,    2, 0x0a /* Public */,
-       8,    1,   43,    2, 0x0a /* Public */,
+       8,    3,   43,    2, 0x0a /* Public */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Int,    2,
@@ -75,7 +79,7 @@ static const uint qt_meta_data_ConsoleTab[] = {
 
  // slots: parameters
     QMetaType::Void, 0x80000000 | 5, QMetaType::Bool,    6,    7,
-    QMetaType::Void, 0x80000000 | 9,   10,
+    QMetaType::Void, 0x80000000 | 9, 0x80000000 | 11, 0x80000000 | 5,   10,   12,   13,
 
        0        // eod
 };
@@ -89,7 +93,7 @@ void ConsoleTab::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 0: _t->setTab((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 1: _t->updateScreen(); break;
         case 2: _t->showButtons((*reinterpret_cast< vector<string>(*)>(_a[1])),(*reinterpret_cast< bool(*)>(_a[2]))); break;
-        case 3: _t->updateDevice((*reinterpret_cast< Device(*)>(_a[1]))); break;
+        case 3: _t->sendToConsole((*reinterpret_cast< Device(*)>(_a[1])),(*reinterpret_cast< string(*)>(_a[2])),(*reinterpret_cast< vector<string>(*)>(_a[3]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {

@@ -27,25 +27,21 @@ map<string, Device> GetHistory::getInstalledDevices() {
 		vector<string> tempstr;
 		stringstream ss(tempLine);
 		string temp;
+
 		while (getline(ss, temp, ',')) {
 			tempstr.push_back(temp);
-		}
+}
 		Device new_device;
 
-        if (tempstr[4].find("failed") != string::npos
-				) {
-			boost::trim(tempstr[0]);
-			boost::trim(tempstr[1]);
-			new_device = Device(tempstr[0], tempstr[1], false, true);
 
-		}
-        if (tempstr[4].find("works") != string::npos
+        if (tempstr[4].find("module-installed") != string::npos
 				) {
 			boost::trim(tempstr[0]);
 			boost::trim(tempstr[1]);
 			new_device = Device(tempstr[0], tempstr[1], true, false);
 			device_map.insert(
 					std::pair<string, Device>(tempstr[0], new_device));
+            cout<<"module installed"<<endl;
 		}
         if (tempstr[4].find("uninstalled") != string::npos
 				) {
@@ -59,11 +55,14 @@ map<string, Device> GetHistory::getInstalledDevices() {
 			device_map.insert(
 					std::pair<string, Device>(tempstr[0], new_device));
 			}
+            cout<<"uninstalled"<<endl;
+        }
             if (tempstr[4].find("apt-installed") != string::npos
                     ) {
                 boost::trim(tempstr[0]);
                 boost::trim(tempstr[1]);
                 new_device = Device(tempstr[0], tempstr[1], true, false);
+                new_device.setAptInstalled(true);
                 std::map<string,Device>::iterator it = device_map.find(tempstr[0]);
                 if (it != device_map.end())
                     it->second = new_device;
@@ -71,9 +70,8 @@ map<string, Device> GetHistory::getInstalledDevices() {
                 device_map.insert(
                         std::pair<string, Device>(tempstr[0], new_device));
                 }
+                cout<<"apt installed"<<endl;
             }
-		}
-
 
 	}
 	return device_map;

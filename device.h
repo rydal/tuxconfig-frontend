@@ -89,7 +89,7 @@ class Device {
 	std::string owner_git_id;
 	std::string devicename;
 	std::string setCommand;
-    std::string AptInstalled;
+    bool AptInstalled;
 
 	bool attempted_install;
 	int vote_difference;
@@ -115,9 +115,9 @@ class Device {
 	void setIsInstalled(bool isInstalled) {
 		is_installed = isInstalled;
     }
-    void setAptInstalled(const std::string& apt_install);
+    void setAptInstalled( bool  apt_install);
 
-    const std::string& getAptInstalled() const;
+    bool getAptInstalled() ;
 };
 
 

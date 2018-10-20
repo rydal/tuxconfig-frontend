@@ -22,8 +22,8 @@ NotebookGUI.cpp
 NotebookGUI.h
 QuestionBox.cpp
 QuestionBox.h
-RestoreGUI.cpp
-RestoreGUI.h
+RestoreCmd.cpp
+RestoreCmd.h
 RestoreTab.cpp
 RestoreTab.h
 RunConfig.cpp
