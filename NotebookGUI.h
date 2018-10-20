@@ -43,6 +43,7 @@ public:
 signals:
      void updatedContributor(Device device);
      void showButtons(vector<string>, bool);
+     void updateDevice(Device);
 
 public slots:
     void changeTab(int index);

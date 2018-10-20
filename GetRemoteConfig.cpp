@@ -11,7 +11,7 @@ GetRemoteConfig::~GetRemoteConfig() {
 
 }
 
-Device GetRemoteConfig::GetConfiguration(Device configured_device) {
+Device GetRemoteConfig::GetConfiguration(Device& configured_device) {
     bool seen_before;
 	//check number  of attempts
 	ifstream inFile;
@@ -69,15 +69,17 @@ Device GetRemoteConfig::GetConfiguration(Device configured_device) {
 	    while (getline(ss, temp, ',')) {
 	      tempstr.push_back(temp);
 	    }
-	    if (tempstr[0] == configured_device.getDeviceid() && tempstr[3].find("works") != string::npos) {
+        if (tempstr[0] == configured_device.getDeviceid() && tempstr[5].find("works") != string::npos) {
 	    	if (stoi(tempstr[2]) < configured_device.getVoteDifference()) {
 	    		configured_device.setIsUpgradeable(true);
-	    	}
+            }
+            configured_device.setSuccessCode(tempstr[4]);
 	    }
 
-	    if (tempstr[0] == configured_device.getDeviceid() && tempstr[3].find("failed") != string::npos) {
+        if (tempstr[0] == configured_device.getDeviceid() && tempstr[5].find("failed") != string::npos) {
 	    	configured_device.setAttemptedInstall(true);
-	    	cout<<"failed device";
+            configured_device.setSuccessCode(tempstr[4]);
+
 	    }
 	  }
 

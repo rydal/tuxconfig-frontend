@@ -59,6 +59,19 @@ map<string, Device> GetHistory::getInstalledDevices() {
 			device_map.insert(
 					std::pair<string, Device>(tempstr[0], new_device));
 			}
+            if (tempstr[4].find("apt-installed") != string::npos
+                    ) {
+                boost::trim(tempstr[0]);
+                boost::trim(tempstr[1]);
+                new_device = Device(tempstr[0], tempstr[1], true, false);
+                std::map<string,Device>::iterator it = device_map.find(tempstr[0]);
+                if (it != device_map.end())
+                    it->second = new_device;
+                else {
+                device_map.insert(
+                        std::pair<string, Device>(tempstr[0], new_device));
+                }
+            }
 		}
 
 

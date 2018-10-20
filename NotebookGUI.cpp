@@ -42,6 +42,7 @@
                 connect(runTab, SIGNAL(sendCommand(Device, string, vector<string>)), this, SLOT(runCommand(Device, string, vector<string>)));
                 connect(console_tab, SIGNAL(updateScreen()),  this, SLOT(updateContributor()));
                 connect(this, SIGNAL(updatedContributor(Device)),  contributor_tab, SLOT(updateScreen(Device)));
+                connect(this, SIGNAL(updatedContributor(Device)),  console_tab, SLOT(updateDevice(Device)));
 
                 connect(this, SIGNAL(showButtons(vector<string>, bool)),console_tab,SLOT(showButtons(vector<string>,bool)));
 

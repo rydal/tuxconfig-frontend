@@ -43,7 +43,7 @@ vector<string> RunConfig::uninstall(Device device) {
     runfile += "Device uninstalled \n";
 	string tuxconfig_config_name = "/usr/src/tuxconfig-uninstall-"
 			+ device.getDeviceid();
-	std::ofstream out(tuxconfig_config_name);
+    std::ofstream out(tuxconfig_config_name, std::ios_base::out);
 	out << runfile;
 	out.close();
 	string tuxconfig_chmod_command = "chmod u+x " + tuxconfig_config_name;
@@ -81,14 +81,14 @@ vector<string> RunConfig::install(Device device) {
 	runfile += "echo git repository downloaded \n";
 	runfile += "wait\n";
 	runfile += "cd /usr/src/" + filedir + " \n";
-	runfile += "git checkout $COMMIT\n";
+    runfile += "git checkout  -b tuxconfig-branch $COMMIT\n";
 	runfile += "echo commit checked out\n";
 	string tuxconfig_file = "/usr/src/" + filedir + "/tuxconfig";
 	runfile += ". " + tuxconfig_file + "\n";
 //install dependencies;
     runfile += " if [ !  -z \"$dependencies\" ] ; then \n";
     runfile += "eval $dependencies \n";
-    runfile +=  "echo \"" + device.getDeviceid() + "," + device.getDescription() + ","	+ to_string(device.getVoteDifference()) + "," + device.getCommit() + ",apt-installed \" >> /var/lib/tuxconfig/history  \n";
+    runfile +=  "echo \"" + device.getDeviceid() + "," + device.getDescription() + ","	+ to_string(device.getVoteDifference()) + "," + device.getCommit() + "," + device.getSuccessCode() + ", apt-installed \" >> /var/lib/tuxconfig/history  \n";
 
     runfile += "fi \n";
     runfile += "echo \"installed dependencies\" \n";
@@ -104,9 +104,7 @@ vector<string> RunConfig::install(Device device) {
 //Insert module
 	runfile += "modprobe -v $tuxconfig_module \n";
 	runfile += "echo \"inserted module into kernel\" \n";
-    runfile +=  "echo \"" + device.getDeviceid() + "," + device.getDescription() + ","	+ to_string(device.getVoteDifference()) + "," + device.getCommit() + ",installed \" >> /var/lib/tuxconfig/history  \n";
-    runfile += "else \n";
-    runfile += "echo \"" + device.getDeviceid() + "," + device.getDescription() + ","	+ to_string(device.getVoteDifference()) +  "," + device.getCommit() + ",installed \" >> /var/lib/tuxconfig/history  \n";
+    runfile +=  "echo \"" + device.getDeviceid() + "," + device.getDescription() + ","	+ to_string(device.getVoteDifference()) + "," + device.getCommit() + "," + device.getSuccessCode() + ", module-installed \" >> /var/lib/tuxconfig/history  \n";
     runfile += "fi \n";
     runfile += "kill -SIGUSR1 " + to_string(::getpid()) + " \n";
 
@@ -124,7 +122,7 @@ vector<string> RunConfig::install(Device device) {
 
 	string line;
 	ifstream myfile;
-	myfile.open(tuxconfig_file);
+    myfile.open(tuxconfig_file, std::ios_base::out);
 	string test_program;
 	string test_message;
 	if (myfile.is_open()) {

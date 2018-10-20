@@ -31,6 +31,7 @@ public:
      QLabel *success_label;
     void fails_result();
     void works_result();
+    Device current_device;
 
 signals:
      void setTab(int);
@@ -38,6 +39,7 @@ signals:
 
 public slots:
      void showButtons(vector<string> details, bool success);
+     void updateDevice(Device device);
 };
 
 #endif /* CONSOLETAB_H_ */

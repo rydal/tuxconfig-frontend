@@ -7,7 +7,6 @@
 
 #include "ConsoleTab.h"
 
-Device current_device;
 
  ConsoleTab::ConsoleTab(const QFileInfo &fileInfo,    QWidget *m_parent)
  : parent(m_parent)
@@ -26,6 +25,11 @@ Device current_device;
     works_button->setObjectName("works_button");
     fails_button->setObjectName("fails_button");
     success_label->setObjectName("success_label");
+
+    success_label->setAlignment(Qt::AlignCenter);
+    QFont f( "Arial", 16, QFont::Bold);
+      success_label->setFont( f);
+
     works_button->setVisible(false);
     fails_button->setVisible(false);
     QFont font = QApplication::font();
@@ -82,14 +86,17 @@ void ConsoleTab::showButtons(vector<string> details, bool success) {
 }
 
 void ConsoleTab::works_result() {
-    Feedback(current_device,true);
     emit setTab(3);
     emit updateScreen();
+    Feedback(current_device,true);
+
 }
 void ConsoleTab::fails_result() {
 Feedback(current_device,false);
 }
 
-
+void ConsoleTab::updateDevice(Device device) {
+    this->current_device = device;
+}
 
 

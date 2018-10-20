@@ -25,7 +25,8 @@
 
  void ContributorTab2::updateScreen(Device device) {
 
-     label->setVisible(false);
+clearLayout(mainLayout,true);
+
      details = DownloadInfo(device.getOwnerGitId());
      string image_location = getAvatarImage(details[4],device.getOwnerGitId());
 
@@ -104,3 +105,19 @@ string ContributorTab2::getAvatarImage(string url, string owner_git_id) {
     return downloader.download(url,owner_git_id);
 
 }
+
+void ContributorTab2::clearLayout(QLayout* layout, bool deleteWidgets = true)
+{
+    while (QLayoutItem* item = layout->takeAt(0))
+    {
+        if (deleteWidgets)
+        {
+            if (QWidget* widget = item->widget())
+                widget->deleteLater();
+        }
+        if (QLayout* childLayout = item->layout())
+            clearLayout(childLayout, deleteWidgets);
+        delete item;
+    }
+}
+

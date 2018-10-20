@@ -23,7 +23,7 @@ using namespace std;
 
 class Feedback {
 public:
-    Feedback(Device device, bool successful);
+    Feedback(Device& device, bool successful);
 	virtual ~Feedback();
 	static  bool ReturnVoteStatus();
 

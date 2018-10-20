@@ -47,6 +47,7 @@ protected:
     Device current_device;
     void mousePressEvent(QMouseEvent *event);
     string* details;
+    void clearLayout(QLayout* layout, bool deleteWidgets );
 public slots:
     void updateScreen(Device device);
 
