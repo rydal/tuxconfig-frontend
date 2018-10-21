@@ -12,6 +12,8 @@
 #include <QtGui>
 #include <QtWidgets>
 #include "GetHistory.h"
+#include "RunConfig.h"
+#include <vector>
 
 
 class RestoreTab : public QWidget {
@@ -19,6 +21,12 @@ class RestoreTab : public QWidget {
 public:
     RestoreTab(const QFileInfo &fileInfo, QWidget *parent = 0);
     string DoRestore(Device device);
+    void RestoreButton(Device device);
+
+signals:
+    void sendCommand(Device, string, vector<string>);
+    void setTab(int);
+
 };
 
 #endif /* RESTORETAB_H_ */

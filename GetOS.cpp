@@ -100,6 +100,16 @@ void GetOS::runWebpage(string url)  {
     string runCommand = "sudo -u $SUDO_USER " + url;
     system(runCommand.c_str());
 }
+string GetOS::DoRestore(string restorefile) {
+    string runfile = "";
+    runfile += "#! /bin/bash \n";
+    runfile += "tar -C / -xvf /var/lib/tuxconfig/" + restorefile;
+    string restore_run_file = "/usr/src/tuxconfig-restore";
+        std::ofstream out(restore_run_file);
+        out << runfile;
+        out.close();
+        return restore_run_file;
+    }
 
 
 

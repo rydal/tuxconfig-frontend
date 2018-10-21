@@ -28,22 +28,20 @@ RestoreTab::RestoreTab(const QFileInfo &fileInfo, QWidget *parent)
                                 installed_status->setAlignment(Qt::AlignCenter);
 
 
-								QPushButton *restore_button = new QPushButton(QString::fromStdString("restore"));
+                                QPushButton *restore_button1 = new QPushButton(QString::fromStdString("restore"));
 
                                 if (it->second.isIsInstalled()) {
 									installed_status->setText("Installed");
-								} else if (it->second.getAttemptedInstall()) {
-                                    installed_status->setText("Attempted Install");
-								}
+                                }
 
-								GetRemoteConfig get_config_class;
 
 
 								m_Grid->addWidget(description);
 								m_Grid->addWidget(devicename);
 
-								m_Grid->addWidget(restore_button);
-                                connect(restore_button, &QPushButton::clicked, [=] { DoRestore(it->second); });
+                                m_Grid->addWidget(restore_button1);
+                                Device& tmp_device = it->second;
+                                connect(restore_button1, &QPushButton::clicked, [=] { RestoreButton(tmp_device); });
 
 
 
@@ -55,25 +53,12 @@ RestoreTab::RestoreTab(const QFileInfo &fileInfo, QWidget *parent)
 
 }
 
-string RestoreTab::DoRestore(Device device) {
-    string found_files = "find /var/lib/tuxconfig/ -name \"" + device.getDeviceid() + "-*.tar\" -printf \"%T@  %p\n\" | sort -n | head -1 | sed 's/^ *//'| cut -d\" \" -f2- ";
-    string restorefile = GetOS::exec(found_files.c_str());
+void RestoreTab::RestoreButton(Device device) {
 
-        string runfile = "";
-        runfile += "#! /bin/bash \n";
-        runfile += "set -e \n";
+vector<string> parameters = RunConfig::restore(device);
 
-        runfile += "exec > >(tee -i /var/lib/tuxconfig/" + device.getDeviceid() + "-uninstall.log) \n";
-        runfile += "function cleanup() { \n";
-        runfile += "kill -SIGUSR2 " + to_string(::getpid()) + " \n";
-        runfile += "} \n";
-        runfile += "tar -C / -xvf /var/lib/tuxconfig/backup/" + restorefile + "\n";
-
-        string restore_run_file = "/usr/src/tuxconfig-" + device.getDeviceid() + "-restore";
-            std::ofstream out(restore_run_file);
-            out << runfile;
-            out.close();
-            return restore_run_file;
+    emit    sendCommand(device, "restore", parameters );
+    emit setTab(2);
 
 
 }

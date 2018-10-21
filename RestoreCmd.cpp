@@ -14,22 +14,12 @@ using namespace std;
 RestoreGUI::RestoreGUI(std::map<std::string,Device> hashmap) {
 
 }
-void RestoreGUI::on_button_clicked(std::string command,Device device) {
-	string found_files = "find /var/lib/tuxconfig/ -name \"lib_backup-" + device.getDeviceid() + "*.tar\" -printf \"%T@  %p\n\" | sort -n | head -1 | sed 's/^ *//'| cut -d\" \" -f2- ";
-		string restore_file = GetOS::exec(found_files.c_str());
-
-		DoRestore(restore_file);
-
-
-}
-
 RestoreGUI::~RestoreGUI() {
 	// TODO Auto-generated destructor stub
 }
 
 bool RestoreGUI::CommandLineInstall(std::map <string,Device> device_map) {
-	string result;
-	string response;
+    string response;
 	cout<<"Don't panic \n";
 	cout<<"Everything configured ok? \n";
 	string answer;
@@ -69,25 +59,23 @@ bool RestoreGUI::CommandLineInstall(std::map <string,Device> device_map) {
 
 	} while  (device_map.find(response) == device_map.end() );
 
-	string found_files = "find /var/lib/tuxconfig/ -name \"lib_backup-" + response + "*.tar\" -printf \"%T@  %p\n\" | sort -n | head -1 | sed 's/^ *//'| cut -d\" \" -f2- ";
-	string restore_file = GetOS::exec(found_files.c_str());
+        string found_files = "find /var/lib/tuxconfig/ -name \"" + response + "*.tar\" -printf \"%T@  %p\n\" | sort -n | head -1 | sed 's/^ *//'| cut -d\" \" -f2- ";
+        string restorefile = GetOS::exec(found_files.c_str());
+ string runfile = "";
+runfile += "#! /bin/bash \n";
+runfile += "set -e \n";
 
+runfile += "exec > >(tee -i /var/lib/tuxconfig/" + response + ".log) \n";
+runfile += "function cleanup() { \n";
+runfile += "kill -SIGUSR2 " + to_string(::getpid()) + " \n";
+runfile += "} \n";
+runfile += "tar -C / -xvf /var/lib/tuxconfig/" +  restorefile + "\n";
 
+string restore_run_file = "/usr/src/tuxconfig-" + response + "-restore";
 
-	return DoRestore(restore_file);
-
+    std::ofstream out(restore_run_file);
+    out << runfile;
+    out.close();
+    //return restore_run_file;
+   return true;
 }
-bool RestoreGUI::DoRestore(string restorefile) {
-	string runfile = "";
-	runfile += "#! /bin/bash \n";
-    runfile += "tar -C / -xvf /var/lib/tuxconfig/backup/" + restorefile;
-	string restore_run_file = "/usr/src/tuxconfig-restore";
-		std::ofstream out(restore_run_file);
-		out << runfile;
-		out.close();
-        return true;
-	}
-
-
-
-

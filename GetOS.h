@@ -38,6 +38,8 @@ public:
 	GetOS();
     virtual ~GetOS();
     static void runWebpage(string url);
+    static string DoRestore(string restorefile);
+
 };
 
 #endif /* GETOS_H_ */

@@ -33,7 +33,7 @@ public:
     static vector<string> install( Device m_device) ;
     static vector<string> uninstall( Device m_device);
     static vector<string> upgrade( Device m_device);
-    static vector<string> restoreGUI(Device m_device);
+    static vector<string> restore(Device m_device);
     static bool restoreCmd(Device m_device);
 
 

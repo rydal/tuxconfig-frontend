@@ -20,7 +20,10 @@
     contactScrollArea->setMinimumSize( QSize( 1024, 768) );
 
     tabWidget->addTab(contactScrollArea,"General");
-    tabWidget->addTab(new RestoreTab(fileInfo), "Restore");
+
+    RestoreTab *restore_tab = new RestoreTab(fileInfo,tabWidget);
+
+    tabWidget->addTab(restore_tab,"Restore");
 
     ConsoleTab *console_tab = new ConsoleTab(fileInfo,tabWidget);
 
@@ -38,6 +41,7 @@
 
                 connect(runTab, SIGNAL(setTab(int)), this, SLOT(changeTab(int)));
                 connect(console_tab, SIGNAL(setTab(int)), this, SLOT(changeTab(int)));
+                connect(restore_tab, SIGNAL(setTab(int)), this, SLOT(changeTab(int)));
 
                 connect(runTab, SIGNAL(sendCommand(Device, string, vector<string>)), this, SLOT(runCommand(Device, string, vector<string>)));
                 connect(console_tab, SIGNAL(updateScreen()),  this, SLOT(updateContributor()));
@@ -45,6 +49,8 @@
 
                 connect(this, SIGNAL(showButtons(vector<string>, bool)),console_tab,SLOT(showButtons(vector<string>,bool)));
                 connect(this, SIGNAL(sendToConsole(Device, string, vector<string>)),console_tab,SLOT(sendToConsole(Device, string, vector<string>)));
+
+                connect(restore_tab, SIGNAL(sendCommand(Device, string, vector<string>)),console_tab,SLOT(sendToConsole(Device, string, vector<string>)));
 
 
 

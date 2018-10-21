@@ -39,9 +39,9 @@ class RestoreGUI  {
 public:
 	RestoreGUI(std::map<std::string,Device> hashmap);
 	virtual ~RestoreGUI();
-	static bool CommandLineInstall(std::map <string,Device> device_map);
+    static bool CommandLineInstall(std::map <string,Device> device_map);
+    static string DoRestore(string restorefile);
 
-    static bool DoRestore(string restorefile);
 
 protected:
 

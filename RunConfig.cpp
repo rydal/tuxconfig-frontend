@@ -26,6 +26,33 @@ RunConfig::~RunConfig() {
 	// TODO Auto-generated destructor stub
 }
 
+vector<string> RunConfig::restore(Device device) {
+    string found_files = "find /var/lib/tuxconfig/ -name \"" + device.getDeviceid() + "*.tar\" -printf \"%T@  %p\n\" | sort -n | head -1 | sed 's/^ *//'| cut -d\" \" -f2- ";
+    string restorefile = GetOS::exec(found_files.c_str());
+        string runfile = "";
+        runfile += "#! /bin/bash \n";
+        runfile += "set -e \n";
+
+        runfile += "exec > >(tee -i /var/lib/tuxconfig/" + device.getDeviceid() + ".log) \n";
+        runfile += "function cleanup() { \n";
+        runfile += "kill -SIGUSR2 " + to_string(::getpid()) + " \n";
+        runfile += "} \n";
+        runfile += "tar -C / -xvf /var/lib/tuxconfig/" +  restorefile + "\n";
+
+        string restore_run_file = "/usr/src/tuxconfig-" + device.getDeviceid() + "-restore";
+            std::ofstream out(restore_run_file);
+            out << runfile;
+            out.close();
+            //return restore_run_file;
+            cout<<restore_run_file<<endl;
+            vector<string> result;
+            result.push_back(restore_run_file);
+
+            return result;
+
+}
+
+
 vector<string> RunConfig::uninstall(Device device) {
 
 	string runfile = "#!/bin/bash\n";
@@ -34,7 +61,7 @@ vector<string> RunConfig::uninstall(Device device) {
     runfile += "function cleanup() { \n";
     runfile += "kill -SIGUSR2 " + to_string(::getpid()) + " \n";
     runfile += "} \n";
-    runfile += "tar -cvpf /var/lib/tuxconfig/lib_backup-" + device.getDeviceid()
+    runfile += "tar -cvpf /var/lib/tuxconfig/" + device.getDeviceid()
             + "-uninstall.tar /lib /etc/modules*  1> /dev/null\n";
 
 	runfile += "modprobe -r " + device.getModulename() + "\n";
@@ -70,7 +97,7 @@ vector<string> RunConfig::install(Device device) {
 	boost::replace_all(filedir, "https://github.com/", "");
 	boost::replace_all(filedir, ".git", "");
     runfile += "echo Backing up configuration directories \n";
-	runfile += "tar -cvpf /var/lib/tuxconfig/lib_backup-" + device.getDeviceid()
+    runfile += "tar -cvpf /var/lib/tuxconfig/" + device.getDeviceid()
             + "-install.tar /lib /etc/modules* 1> /dev/null  \n";
 
 	runfile += "URL=" + device.getGitUrl() + " \n";
@@ -167,35 +194,35 @@ vector<string> RunConfig::upgrade(Device device) {
 }
 
 bool RunConfig::restoreCmd(Device device) {
-	ifstream fs;
+    ifstream fs;
     fs.open("/var/lib/tuxconfig/history", ios::out);
-	fs.close();
-	map<string, Device> hashmap;
-	map<int, Device> numbered_hashmap;
-	string reply;
+    fs.close();
+    map<string, Device> hashmap;
+    map<int, Device> numbered_hashmap;
+    string reply;
 
-	if (!GetOS::is_gui_present()) {
+    if (!GetOS::is_gui_present()) {
 
-		int count = 1;
+        int count = 1;
 
-		for (std::map<string, Device>::iterator it = hashmap.begin();
-				it != hashmap.end(); ++it) {
-			numbered_hashmap.insert(pair<int, Device>(count, it->second));
-		}
-		cout << "Which device install went wrong?";
-		for (std::map<int, Device>::iterator it = numbered_hashmap.begin();
-				it != numbered_hashmap.end(); ++it) {
-			cout << it->first << " " << it->second.getDescription();
-		}
-		cin >> reply;
-	}
-	int int_reply = stoi(reply);
+        for (std::map<string, Device>::iterator it = hashmap.begin();
+                it != hashmap.end(); ++it) {
+            numbered_hashmap.insert(pair<int, Device>(count, it->second));
+        }
+        cout << "Which device install went wrong?";
+        for (std::map<int, Device>::iterator it = numbered_hashmap.begin();
+                it != numbered_hashmap.end(); ++it) {
+            cout << it->first << " " << it->second.getDescription();
+        }
+        cin >> reply;
+    }
+    int int_reply = stoi(reply);
 
-	string rollback_command =
+    string rollback_command =
             "tar -xvf /var/lib/tuxconfig/"
-					+ numbered_hashmap.find(int_reply)->second.getDeviceid()
-					+ "-"
-					+ numbered_hashmap.find(int_reply)->second.getStatus();
+                    + numbered_hashmap.find(int_reply)->second.getDeviceid()
+                    + "-"
+                    + numbered_hashmap.find(int_reply)->second.getStatus();
     int result = system(rollback_command.c_str());
     if (result == 0) {
         return true;
@@ -203,30 +230,4 @@ bool RunConfig::restoreCmd(Device device) {
         return false;
     }
 
-}
-
-vector<string> RunConfig::restoreGUI(Device device) {
-    string runfile = "#!/bin/bash \n";
-    runfile += "set -e \n";
-    runfile += "exec > >(tee -i /var/lib/tuxconfig/" + device.getDeviceid() + "-install.log) \n";
-    runfile += "exec 2>&1 \n";
-    runfile += "function cleanup() { \n";
-    runfile += "kill -SIGUSR2 " + to_string(::getpid()) + " \n";
-    runfile += "} \n";
-    runfile += "trap cleanup ERR \n";
-    runfile += "tar -xvf /var/lib/tuxconfig/"
-                    + device.getDeviceid()
-                    + "-"
-                    + device.getStatus() + "\n";
-    runfile += "echo Configuration restored \n";
-    string tuxconfig_config_name = "/usr/src/tuxconfig-restore-"
-            + device.getDeviceid();
-    std::ofstream out(tuxconfig_config_name);
-    out << runfile;
-    out.close();
-    string tuxconfig_chmod_command = "chmod u+x " + tuxconfig_config_name;
-    system(tuxconfig_chmod_command.c_str());
-    vector<string> result;
-    result.push_back(tuxconfig_config_name);
-    return (result);
 }
