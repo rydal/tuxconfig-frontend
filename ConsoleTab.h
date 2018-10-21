@@ -29,6 +29,7 @@ public:
      QPushButton *works_button;
      QPushButton *fails_button ;
      QLabel *success_label;
+     QLabel *reboot_label;
     void fails_result();
     void works_result();
     Device current_device;

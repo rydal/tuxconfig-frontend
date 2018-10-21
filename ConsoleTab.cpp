@@ -25,13 +25,14 @@
     works_button->setObjectName("works_button");
     fails_button->setObjectName("fails_button");
     success_label->setObjectName("success_label");
-
+    reboot_label = new QLabel("Reboot required");
     success_label->setAlignment(Qt::AlignCenter);
     QFont f( "Arial", 16, QFont::Bold);
       success_label->setFont( f);
 
     works_button->setVisible(false);
     fails_button->setVisible(false);
+    reboot_label->setVisible(false);
     QFont font = QApplication::font();
 #ifdef Q_WS_MAC
     font.setFamily("Monaco");
@@ -61,6 +62,7 @@
     mainLayout->addWidget(success_label);
     mainLayout->addWidget(works_button);
     mainLayout->addWidget(fails_button);
+    mainLayout->addWidget(reboot_label);
 
 
 
@@ -79,17 +81,24 @@ void ConsoleTab::showButtons(vector<string> details, bool success) {
     if (success) {
         works_button->setVisible(true);
 
-    if (details.size() >= 2) {
+    if (details.size() >= 3) {
     success_label->setText(details.at(2).c_str());
-    string command_string = details.at(1) +" > /dev/null 2>&1 \r";
 
+    string command_string = details.at(1) +" > /dev/null 2>&1 \r";
+    if (details.size() >= 4) {
+        if (details.at(3) == "true") {
+            reboot_label->setVisible(true);
+        }
+    }
     console->sendText(command_string.c_str());
+
     } else {
         success_label->setText("Command completed successfully");
     }
 } else {
         success_label->setText("Command failed");
     }
+
 }
 
 void ConsoleTab::works_result() {

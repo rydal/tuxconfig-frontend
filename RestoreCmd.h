@@ -30,7 +30,8 @@
 #include <iostream>
 #include <string>
 #include <sstream>
-
+#include <unistd.h>
+#include <sys/reboot.h>
 
 using namespace std;
 

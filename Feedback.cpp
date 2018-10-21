@@ -13,8 +13,7 @@ Feedback::Feedback(Device& device, bool successful) {
 		string url = "https://linuxconf.feedthepenguin.org/hehe/reportback?";
 		if (successful == true) {
 		url +=  "success=true";
-        string works_history = "echo " + device.getDeviceid() + "," + device.getCommit() + "," + device.getDescription() + "," + to_string(device.getVoteDifference())
-                + "," + device.getCommit()  + ", works >> /var/lib/tuxconfig/history";
+        string works_history = "echo " + device.getDeviceid() + "," + device.getDescription() + "," + to_string(device.getVoteDifference())   + "," + device.getCommit() + ","  + device.getSuccessCode() +", works >> /var/lib/tuxconfig/history";
         system(works_history.c_str());
 		}
 		else {

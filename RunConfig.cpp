@@ -154,6 +154,7 @@ vector<string> RunConfig::install(Device device) {
     myfile.open(tuxconfig_file, std::ios_base::out);
 	string test_program;
 	string test_message;
+    string restart_needed = "false";
 	if (myfile.is_open()) {
 		while (getline(myfile, line)) {
 			if (line.find("test_program=") == 0) {
@@ -170,15 +171,41 @@ vector<string> RunConfig::install(Device device) {
 				test_message = line;
 
 			}
+            if (line.find("restart_needed=") == 0) {
+                boost::replace_all(line, "restart_needed=", "");
+                boost::replace_all(line, "\"", "");
+                boost::trim(line);
+                if( line == "yes" || line == "y") {
+                    restart_needed = "true";
+                }
+            }
 
 		}
 
 	}
-	myfile.close();
+    //wire into boot process.
+    if (restart_needed == "true") {
+        string sudo_user = GetOS::exec("echo $SUDO_USER");
+        ofstream myfile ("/home/" + sudo_user +"/.config/autostart");
+         if (myfile.is_open())
+         {
+           myfile << "/usr/share/applications/tuxconfig.desktop";
+         }
+         ofstream bashrc ("/home/" + sudo_user +"/.bashrc");
+          if (bashrc.is_open())
+          {
+            myfile << "/usr/bin/tuxconfig recover";
+          }
+
+          myfile.close();
+          bashrc.close();
+    }
+
      vector<string> result;
      result.push_back(tuxconfig_run_name);
      result.push_back(test_program);
      result.push_back(test_message);
+     result.push_back(restart_needed);
 
 
      return result;

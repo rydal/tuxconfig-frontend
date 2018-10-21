@@ -20,6 +20,7 @@ RestoreGUI::~RestoreGUI() {
 
 bool RestoreGUI::CommandLineInstall(std::map <string,Device> device_map) {
     string response;
+    bool apt_installed;
 	cout<<"Don't panic \n";
 	cout<<"Everything configured ok? \n";
 	string answer;
@@ -37,6 +38,7 @@ bool RestoreGUI::CommandLineInstall(std::map <string,Device> device_map) {
 	do {
 	for ( it = device_map.begin(); it != device_map.end(); it++ )
 	{
+        apt_installed = false;
 		string installed_status;
 		if (it->second.getAttemptedInstall()) {
 			installed_status = "Failed install";
@@ -44,6 +46,9 @@ bool RestoreGUI::CommandLineInstall(std::map <string,Device> device_map) {
 		} else  if (it->second.isIsInstalled()){
 			installed_status = "Successful install";
 		}
+        if (it->second.getAptInstalled()) {
+            apt_installed = true;
+        }
 
 	    std::cout << it->first
 	              << ":"
@@ -70,12 +75,30 @@ runfile += "function cleanup() { \n";
 runfile += "kill -SIGUSR2 " + to_string(::getpid()) + " \n";
 runfile += "} \n";
 runfile += "tar -C / -xvf /var/lib/tuxconfig/" +  restorefile + "\n";
+if (apt_installed) {
+    runfile +="$ apt-get -s install $(apt-history rollback | tr '\n' ' ') \n";
+}
 
 string restore_run_file = "/usr/src/tuxconfig-" + response + "-restore";
 
     std::ofstream out(restore_run_file);
     out << runfile;
     out.close();
-    //return restore_run_file;
-   return true;
+    int result = system(runfile.c_str());
+    if (result == 0) {
+        cout<<"Configuration restored successfully"<<endl;
+    } else {
+        cout<<"Configuration restore failed"<<endl;
+    }
+    cout<<"Restart?"<<endl;
+    string choose_reboot;
+    getline (cin,choose_reboot);
+    boost::to_lower(choose_reboot);
+    if (choose_reboot == "y" || choose_reboot == "yes") {
+        sync();
+        reboot(RB_AUTOBOOT);
+    }
+
+
+
 }
