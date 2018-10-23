@@ -33,10 +33,10 @@ Q_OBJECT
     QTermWidget *termWidget;
 
  public slots:
-     void installButton(const Device&);
-     void uninstallButton(const Device&);
-     void restoreButton(const Device&);
-     void upgrade(const Device&);
+     void installButton(Device);
+     void uninstallButton(Device);
+     void restoreButton(Device);
+     void upgrade(Device);
 
 
 signals:
