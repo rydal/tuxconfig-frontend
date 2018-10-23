@@ -50,6 +50,7 @@ protected:
     void clearLayout(QLayout* layout, bool deleteWidgets );
 public slots:
     void updateScreen(Device device);
+    void on_description_linkActivated(const QString &link);
 
 
 };

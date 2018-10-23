@@ -1,9 +1,7 @@
 Reboot.
 change get:os form ubuntu.
 get device description.
-chdeck restore flags.
-welcome screen.
-remove restore tab.
-chmod u+x on restore.
-apt-get rollback.
+check restore flags.
+
 desktop file.
+remove run on restore.

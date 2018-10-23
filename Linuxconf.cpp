@@ -90,10 +90,23 @@ int main(int argc, char *argv[]) {
 
 
 
-    NotebookGUI gui("Tuxconfig");
+    QSplashScreen *splash = new QSplashScreen;
+    splash->setPixmap(QPixmap("/home/roberty/tuxconfig-qt/tux.png"));
+    splash->showMessage("Making Linux Easy");
 
 
-    gui.show();
+
+    splash->show();
+
+NotebookGUI gui("Tuxconfig");
+
+
+       QTimer::singleShot(5000, splash, SLOT(close()));
+       QTimer::singleShot(5000, &gui, SLOT(show()));
+
+
+
+    //gui.show();
     std::signal(SIGUSR1, signal_handler);
     shutdown_handler = [&](int signal) {
         gui.showResultButtons();

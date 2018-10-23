@@ -38,7 +38,10 @@ public:
 	GetOS();
     virtual ~GetOS();
     static void runWebpage(string url);
+    static void runEmail(string email);
     static string DoRestore(string restorefile);
+    static void reset_reboot();
+
 
 };
 

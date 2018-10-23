@@ -26,7 +26,7 @@ RunConfig::~RunConfig() {
 	// TODO Auto-generated destructor stub
 }
 
-vector<string> RunConfig::restore(Device device) {
+vector<string> RunConfig::restore(Device& device) {
     string found_files = "find /var/lib/tuxconfig/ -name \"" + device.getDeviceid() + "*.tar\" -printf \"%T@  %p\n\" | sort -n | head -1 | sed 's/^ *//'| cut -d\" \" -f2- ";
     string restorefile = GetOS::exec(found_files.c_str());
         string runfile = "";
@@ -43,6 +43,8 @@ vector<string> RunConfig::restore(Device device) {
             std::ofstream out(restore_run_file);
             out << runfile;
             out.close();
+            chmod(runfile.c_str(), S_IRWXU);
+
             //return restore_run_file;
             cout<<restore_run_file<<endl;
             vector<string> result;
@@ -53,7 +55,7 @@ vector<string> RunConfig::restore(Device device) {
 }
 
 
-vector<string> RunConfig::uninstall(Device device) {
+vector<string> RunConfig::uninstall(Device& device) {
 
 	string runfile = "#!/bin/bash\n";
     runfile += "set -e \n";
@@ -82,7 +84,7 @@ vector<string> RunConfig::uninstall(Device device) {
     return (result);
 }
 
-vector<string> RunConfig::install(Device device) {
+vector<string> RunConfig::install(Device& device) {
 	string runfile = "#!/bin/bash \n";
 	runfile += "set -e \n";
     runfile += "exec 2> >(tee -i /var/lib/tuxconfig/" + device.getDeviceid() + "-install.log) \n";
@@ -213,14 +215,14 @@ vector<string> RunConfig::install(Device device) {
 
 
 
-vector<string> RunConfig::upgrade(Device device) {
+vector<string> RunConfig::upgrade(Device& device) {
 	GetRemoteConfig remote_config_class;
 	Device new_device = remote_config_class.GetConfiguration(device);
     return install(new_device);
 
 }
 
-bool RunConfig::restoreCmd(Device device) {
+bool RunConfig::restoreCmd(Device& device) {
     ifstream fs;
     fs.open("/var/lib/tuxconfig/history", ios::out);
     fs.close();

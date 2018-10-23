@@ -31,7 +31,6 @@ clearLayout(mainLayout,true);
      string image_location = getAvatarImage(details[4],device.getOwnerGitId());
 
      image_label = new QLabel;
-       cout<<"image location"<<image_location<<endl;
      QString url = QString::fromStdString(image_location);
      QPixmap img(url);
      image_label->setPixmap(img);
@@ -59,10 +58,12 @@ clearLayout(mainLayout,true);
 
 
 
-     email_label->setOpenExternalLinks(true);
+     email_label->setOpenExternalLinks(false);
      string email_string = "<a href='mailto:" + details[3] + "'>My Email address.</a>";
      email_label->setText(QString::fromStdString(email_string));
      mainLayout->addWidget(email_label);
+
+     connect(email_label, &QLabel::linkActivated, [=] { on_description_linkActivated(QString::fromStdString(details[3])); });
 
 
      mainLayout->addWidget(email_label);
@@ -119,5 +120,12 @@ void ContributorTab2::clearLayout(QLayout* layout, bool deleteWidgets = true)
             clearLayout(childLayout, deleteWidgets);
         delete item;
     }
+}
+
+void ContributorTab2::on_description_linkActivated(const QString &link)
+{
+    std::string utf8_text = link.toUtf8().constData();
+
+  GetOS::runEmail(utf8_text);
 }
 

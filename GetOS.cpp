@@ -97,9 +97,14 @@ else return true;
 }
 
 void GetOS::runWebpage(string url)  {
-    string runCommand = "sudo -u $SUDO_USER " + url;
+    string runCommand = "sudo -u $SUDO_USER x-www-browser " + url;
     system(runCommand.c_str());
 }
+void GetOS::runEmail(string email)  {
+    string runCommand = "sudo -u $SUDO_USER xdg-email" + email;
+    system(runCommand.c_str());
+}
+
 string GetOS::DoRestore(string restorefile) {
     string runfile = "";
     runfile += "#! /bin/bash \n";
@@ -110,6 +115,11 @@ string GetOS::DoRestore(string restorefile) {
         out.close();
         return restore_run_file;
     }
+
+void GetOS::reset_reboot() {
+
+
+}
 
 
 

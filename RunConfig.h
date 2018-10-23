@@ -21,6 +21,7 @@
 #include <sys/time.h>
 #include <sys/wait.h>
 #include <regex>
+#include <sys/stat.h>
 
 using namespace std;
 class RunConfig {
@@ -30,11 +31,11 @@ public:
 	RunConfig();
 
 	virtual ~RunConfig();
-    static vector<string> install( Device m_device) ;
-    static vector<string> uninstall( Device m_device);
-    static vector<string> upgrade( Device m_device);
-    static vector<string> restore(Device m_device);
-    static bool restoreCmd(Device m_device);
+    static vector<string> install( Device& m_device) ;
+    static vector<string> uninstall( Device& m_device);
+    static vector<string> upgrade( Device& m_device);
+    static vector<string> restore(Device& m_device);
+    static bool restoreCmd(Device& m_device);
 
 
 

@@ -29,6 +29,8 @@ RestoreTab::RestoreTab(const QFileInfo &fileInfo, QWidget *parent)
 
 
                                 QPushButton *restore_button1 = new QPushButton(QString::fromStdString("restore"));
+                                QPushButton *success_button = new QPushButton(QString::fromStdString("Successful install"));
+                                QPushButton *fail_button = new QPushButton(QString::fromStdString("Failed install"));
 
                                 if (it->second.isIsInstalled()) {
 									installed_status->setText("Installed");
@@ -36,13 +38,16 @@ RestoreTab::RestoreTab(const QFileInfo &fileInfo, QWidget *parent)
 
 
 
-								m_Grid->addWidget(description);
+                                m_Grid->addWidget(description);
 								m_Grid->addWidget(devicename);
 
                                 m_Grid->addWidget(restore_button1);
+                                m_Grid->addWidget(success_button);
+                                m_Grid->addWidget(fail_button);
                                 Device& tmp_device = it->second;
                                 connect(restore_button1, &QPushButton::clicked, [=] { RestoreButton(tmp_device); });
-
+                                connect(success_button, &QPushButton::clicked, [=] { SuccessButton(tmp_device); });
+                                connect(fail_button, &QPushButton::clicked, [=] { FailButton(tmp_device); });
 
 
 							mainLayout->addLayout(m_Grid);
@@ -59,7 +64,17 @@ vector<string> parameters = RunConfig::restore(device);
 
     emit    sendCommand(device, "restore", parameters );
     emit setTab(2);
-
-
 }
+
+void RestoreTab::SuccessButton(Device device) {
+    Feedback(device,true);
+    emit setTab(3);
+    GetOS::reset_reboot();
+    }
+
+void RestoreTab::FailButton(Device device) {
+    Feedback(device,false);
+    GetOS::reset_reboot();
+}
+
 

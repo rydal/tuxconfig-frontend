@@ -59,6 +59,7 @@ SOURCES       = CheckConnection.cpp \
 		GetOS.cpp \
 		GetRemoteConfig.cpp \
 		HTTPDownloader.cpp \
+		introtab.cpp \
 		Linuxconf.cpp \
 		NotebookGUI.cpp \
 		QuestionBox.cpp \
@@ -67,6 +68,7 @@ SOURCES       = CheckConnection.cpp \
 		RunConfig.cpp moc_ConsoleTab.cpp \
 		moc_ContributorTab2.cpp \
 		moc_RunConfigTab.cpp \
+		moc_introtab.cpp \
 		moc_NotebookGUI.cpp \
 		moc_RestoreTab.cpp
 OBJECTS       = CheckConnection.o \
@@ -80,6 +82,7 @@ OBJECTS       = CheckConnection.o \
 		GetOS.o \
 		GetRemoteConfig.o \
 		HTTPDownloader.o \
+		introtab.o \
 		Linuxconf.o \
 		NotebookGUI.o \
 		QuestionBox.o \
@@ -89,6 +92,7 @@ OBJECTS       = CheckConnection.o \
 		moc_ConsoleTab.o \
 		moc_ContributorTab2.o \
 		moc_RunConfigTab.o \
+		moc_introtab.o \
 		moc_NotebookGUI.o \
 		moc_RestoreTab.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
@@ -164,6 +168,7 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		GetOS.h \
 		GetRemoteConfig.h \
 		HTTPDownloader.hpp \
+		introtab.h \
 		Linuxconf.h \
 		NotebookGUI.h \
 		QuestionBox.h \
@@ -180,6 +185,7 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		GetOS.cpp \
 		GetRemoteConfig.cpp \
 		HTTPDownloader.cpp \
+		introtab.cpp \
 		Linuxconf.cpp \
 		NotebookGUI.cpp \
 		QuestionBox.cpp \
@@ -342,8 +348,8 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents CheckConnection.h compare.h ConsoleTab.h ContributorTab2.h RunConfigTab.h device.h Feedback.h GetHistory.h GetLocalDevices.h GetOS.h GetRemoteConfig.h HTTPDownloader.hpp Linuxconf.h NotebookGUI.h QuestionBox.h RestoreCmd.h RestoreTab.h RunConfig.h $(DISTDIR)/
-	$(COPY_FILE) --parents CheckConnection.cpp ConsoleTab.cpp ContributorTab2.cpp RunConfigTab.cpp device.cpp Feedback.cpp GetHistory.cpp GetLocalDevices.cpp GetOS.cpp GetRemoteConfig.cpp HTTPDownloader.cpp Linuxconf.cpp NotebookGUI.cpp QuestionBox.cpp RestoreCmd.cpp RestoreTab.cpp RunConfig.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents CheckConnection.h compare.h ConsoleTab.h ContributorTab2.h RunConfigTab.h device.h Feedback.h GetHistory.h GetLocalDevices.h GetOS.h GetRemoteConfig.h HTTPDownloader.hpp introtab.h Linuxconf.h NotebookGUI.h QuestionBox.h RestoreCmd.h RestoreTab.h RunConfig.h $(DISTDIR)/
+	$(COPY_FILE) --parents CheckConnection.cpp ConsoleTab.cpp ContributorTab2.cpp RunConfigTab.cpp device.cpp Feedback.cpp GetHistory.cpp GetLocalDevices.cpp GetOS.cpp GetRemoteConfig.cpp HTTPDownloader.cpp introtab.cpp Linuxconf.cpp NotebookGUI.cpp QuestionBox.cpp RestoreCmd.cpp RestoreTab.cpp RunConfig.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -369,9 +375,9 @@ benchmark: first
 
 compiler_rcc_make_all:
 compiler_rcc_clean:
-compiler_moc_header_make_all: moc_ConsoleTab.cpp moc_ContributorTab2.cpp moc_RunConfigTab.cpp moc_NotebookGUI.cpp moc_RestoreTab.cpp
+compiler_moc_header_make_all: moc_ConsoleTab.cpp moc_ContributorTab2.cpp moc_RunConfigTab.cpp moc_introtab.cpp moc_NotebookGUI.cpp moc_RestoreTab.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_ConsoleTab.cpp moc_ContributorTab2.cpp moc_RunConfigTab.cpp moc_NotebookGUI.cpp moc_RestoreTab.cpp
+	-$(DEL_FILE) moc_ConsoleTab.cpp moc_ContributorTab2.cpp moc_RunConfigTab.cpp moc_introtab.cpp moc_NotebookGUI.cpp moc_RestoreTab.cpp
 moc_ConsoleTab.cpp: NotebookGUI.h \
 		device.h \
 		GetOS.h \
@@ -380,12 +386,13 @@ moc_ConsoleTab.cpp: NotebookGUI.h \
 		GetLocalDevices.h \
 		compare.h \
 		RestoreTab.h \
-		ConsoleTab.h \
+		RunConfig.h \
 		Feedback.h \
+		ConsoleTab.h \
 		ContributorTab2.h \
 		HTTPDownloader.hpp \
 		RunConfigTab.h \
-		RunConfig.h \
+		introtab.h \
 		ConsoleTab.h \
 		/usr/lib/x86_64-linux-gnu/qt5/bin/moc
 	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/roberty/tuxconfig-qt -I/home/roberty/tuxconfig-qt -I/usr/include/jsoncpp -I/usr/include/qtermwidget5 -I/usr/include/qtermwidget5 -I/usr/include/boost -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/6 -I/usr/include/x86_64-linux-gnu/c++/6 -I/usr/include/c++/6/backward -I/usr/lib/gcc/x86_64-linux-gnu/6/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ConsoleTab.h -o moc_ConsoleTab.cpp
@@ -399,11 +406,12 @@ moc_ContributorTab2.cpp: HTTPDownloader.hpp \
 		compare.h \
 		NotebookGUI.h \
 		RestoreTab.h \
-		ConsoleTab.h \
+		RunConfig.h \
 		Feedback.h \
+		ConsoleTab.h \
 		ContributorTab2.h \
 		RunConfigTab.h \
-		RunConfig.h \
+		introtab.h \
 		ContributorTab2.h \
 		/usr/lib/x86_64-linux-gnu/qt5/bin/moc
 	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/roberty/tuxconfig-qt -I/home/roberty/tuxconfig-qt -I/usr/include/jsoncpp -I/usr/include/qtermwidget5 -I/usr/include/qtermwidget5 -I/usr/include/boost -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/6 -I/usr/include/x86_64-linux-gnu/c++/6 -I/usr/include/c++/6/backward -I/usr/lib/gcc/x86_64-linux-gnu/6/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ContributorTab2.h -o moc_ContributorTab2.cpp
@@ -416,15 +424,35 @@ moc_RunConfigTab.cpp: device.h \
 		NotebookGUI.h \
 		GetHistory.h \
 		RestoreTab.h \
-		ConsoleTab.h \
+		RunConfig.h \
 		Feedback.h \
+		ConsoleTab.h \
 		ContributorTab2.h \
 		HTTPDownloader.hpp \
 		RunConfigTab.h \
-		RunConfig.h \
+		introtab.h \
 		RunConfigTab.h \
 		/usr/lib/x86_64-linux-gnu/qt5/bin/moc
 	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/roberty/tuxconfig-qt -I/home/roberty/tuxconfig-qt -I/usr/include/jsoncpp -I/usr/include/qtermwidget5 -I/usr/include/qtermwidget5 -I/usr/include/boost -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/6 -I/usr/include/x86_64-linux-gnu/c++/6 -I/usr/include/c++/6/backward -I/usr/lib/gcc/x86_64-linux-gnu/6/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include RunConfigTab.h -o moc_RunConfigTab.cpp
+
+moc_introtab.cpp: HTTPDownloader.hpp \
+		device.h \
+		GetOS.h \
+		GetHistory.h \
+		GetRemoteConfig.h \
+		GetLocalDevices.h \
+		compare.h \
+		NotebookGUI.h \
+		RestoreTab.h \
+		RunConfig.h \
+		Feedback.h \
+		ConsoleTab.h \
+		ContributorTab2.h \
+		RunConfigTab.h \
+		introtab.h \
+		introtab.h \
+		/usr/lib/x86_64-linux-gnu/qt5/bin/moc
+	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/roberty/tuxconfig-qt -I/home/roberty/tuxconfig-qt -I/usr/include/jsoncpp -I/usr/include/qtermwidget5 -I/usr/include/qtermwidget5 -I/usr/include/boost -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/6 -I/usr/include/x86_64-linux-gnu/c++/6 -I/usr/include/c++/6/backward -I/usr/lib/gcc/x86_64-linux-gnu/6/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include introtab.h -o moc_introtab.cpp
 
 moc_NotebookGUI.cpp: device.h \
 		GetOS.h \
@@ -433,13 +461,14 @@ moc_NotebookGUI.cpp: device.h \
 		GetLocalDevices.h \
 		compare.h \
 		RestoreTab.h \
+		RunConfig.h \
+		Feedback.h \
 		ConsoleTab.h \
 		NotebookGUI.h \
 		ContributorTab2.h \
 		HTTPDownloader.hpp \
 		RunConfigTab.h \
-		RunConfig.h \
-		Feedback.h \
+		introtab.h \
 		NotebookGUI.h \
 		/usr/lib/x86_64-linux-gnu/qt5/bin/moc
 	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/roberty/tuxconfig-qt -I/home/roberty/tuxconfig-qt -I/usr/include/jsoncpp -I/usr/include/qtermwidget5 -I/usr/include/qtermwidget5 -I/usr/include/boost -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/6 -I/usr/include/x86_64-linux-gnu/c++/6 -I/usr/include/c++/6/backward -I/usr/lib/gcc/x86_64-linux-gnu/6/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include NotebookGUI.h -o moc_NotebookGUI.cpp
@@ -448,6 +477,8 @@ moc_RestoreTab.cpp: GetHistory.h \
 		device.h \
 		GetOS.h \
 		GetRemoteConfig.h \
+		RunConfig.h \
+		Feedback.h \
 		RestoreTab.h \
 		/usr/lib/x86_64-linux-gnu/qt5/bin/moc
 	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/roberty/tuxconfig-qt -I/home/roberty/tuxconfig-qt -I/usr/include/jsoncpp -I/usr/include/qtermwidget5 -I/usr/include/qtermwidget5 -I/usr/include/boost -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/6 -I/usr/include/x86_64-linux-gnu/c++/6 -I/usr/include/c++/6/backward -I/usr/lib/gcc/x86_64-linux-gnu/6/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include RestoreTab.h -o moc_RestoreTab.cpp
@@ -478,11 +509,12 @@ ConsoleTab.o: ConsoleTab.cpp ConsoleTab.h \
 		GetLocalDevices.h \
 		compare.h \
 		RestoreTab.h \
+		RunConfig.h \
+		Feedback.h \
 		ContributorTab2.h \
 		HTTPDownloader.hpp \
 		RunConfigTab.h \
-		RunConfig.h \
-		Feedback.h
+		introtab.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ConsoleTab.o ConsoleTab.cpp
 
 ContributorTab2.o: ContributorTab2.cpp ContributorTab2.h \
@@ -495,10 +527,11 @@ ContributorTab2.o: ContributorTab2.cpp ContributorTab2.h \
 		compare.h \
 		NotebookGUI.h \
 		RestoreTab.h \
-		ConsoleTab.h \
+		RunConfig.h \
 		Feedback.h \
+		ConsoleTab.h \
 		RunConfigTab.h \
-		RunConfig.h
+		introtab.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ContributorTab2.o ContributorTab2.cpp
 
 RunConfigTab.o: RunConfigTab.cpp RunConfigTab.h \
@@ -510,11 +543,12 @@ RunConfigTab.o: RunConfigTab.cpp RunConfigTab.h \
 		NotebookGUI.h \
 		GetHistory.h \
 		RestoreTab.h \
-		ConsoleTab.h \
+		RunConfig.h \
 		Feedback.h \
+		ConsoleTab.h \
 		ContributorTab2.h \
 		HTTPDownloader.hpp \
-		RunConfig.h
+		introtab.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o RunConfigTab.o RunConfigTab.cpp
 
 device.o: device.cpp device.h \
@@ -549,6 +583,23 @@ GetRemoteConfig.o: GetRemoteConfig.cpp GetRemoteConfig.h \
 HTTPDownloader.o: HTTPDownloader.cpp HTTPDownloader.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o HTTPDownloader.o HTTPDownloader.cpp
 
+introtab.o: introtab.cpp introtab.h \
+		HTTPDownloader.hpp \
+		device.h \
+		GetOS.h \
+		GetHistory.h \
+		GetRemoteConfig.h \
+		GetLocalDevices.h \
+		compare.h \
+		NotebookGUI.h \
+		RestoreTab.h \
+		RunConfig.h \
+		Feedback.h \
+		ConsoleTab.h \
+		ContributorTab2.h \
+		RunConfigTab.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o introtab.o introtab.cpp
+
 Linuxconf.o: Linuxconf.cpp Linuxconf.h \
 		CheckConnection.h \
 		GetOS.h \
@@ -560,11 +611,12 @@ Linuxconf.o: Linuxconf.cpp Linuxconf.h \
 		GetLocalDevices.h \
 		compare.h \
 		RestoreTab.h \
-		ConsoleTab.h \
 		Feedback.h \
+		ConsoleTab.h \
 		ContributorTab2.h \
 		HTTPDownloader.hpp \
 		RunConfigTab.h \
+		introtab.h \
 		RestoreCmd.h \
 		QuestionBox.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Linuxconf.o Linuxconf.cpp
@@ -577,12 +629,13 @@ NotebookGUI.o: NotebookGUI.cpp NotebookGUI.h \
 		GetLocalDevices.h \
 		compare.h \
 		RestoreTab.h \
-		ConsoleTab.h \
+		RunConfig.h \
 		Feedback.h \
+		ConsoleTab.h \
 		ContributorTab2.h \
 		HTTPDownloader.hpp \
 		RunConfigTab.h \
-		RunConfig.h
+		introtab.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o NotebookGUI.o NotebookGUI.cpp
 
 QuestionBox.o: QuestionBox.cpp QuestionBox.h
@@ -599,7 +652,9 @@ RestoreTab.o: RestoreTab.cpp RestoreTab.h \
 		GetHistory.h \
 		device.h \
 		GetOS.h \
-		GetRemoteConfig.h
+		GetRemoteConfig.h \
+		RunConfig.h \
+		Feedback.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o RestoreTab.o RestoreTab.cpp
 
 RunConfig.o: RunConfig.cpp RunConfig.h \
@@ -616,6 +671,9 @@ moc_ContributorTab2.o: moc_ContributorTab2.cpp
 
 moc_RunConfigTab.o: moc_RunConfigTab.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_RunConfigTab.o moc_RunConfigTab.cpp
+
+moc_introtab.o: moc_introtab.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_introtab.o moc_introtab.cpp
 
 moc_NotebookGUI.o: moc_NotebookGUI.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_NotebookGUI.o moc_NotebookGUI.cpp

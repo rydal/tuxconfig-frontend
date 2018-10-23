@@ -23,6 +23,7 @@ HEADERS += CheckConnection.h \
            GetOS.h \
            GetRemoteConfig.h \
            HTTPDownloader.hpp \
+	   introtab.h \
            Linuxconf.h \
            NotebookGUI.h \
            QuestionBox.h \
@@ -40,6 +41,7 @@ SOURCES += CheckConnection.cpp \
            GetOS.cpp \
            GetRemoteConfig.cpp \
            HTTPDownloader.cpp \
+	   introtab.cpp \
            Linuxconf.cpp \
            NotebookGUI.cpp \
            QuestionBox.cpp \

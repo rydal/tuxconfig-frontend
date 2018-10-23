@@ -14,6 +14,8 @@
 #include "GetHistory.h"
 #include "RunConfig.h"
 #include <vector>
+#include "Feedback.h"
+#include "GetOS.h"
 
 
 class RestoreTab : public QWidget {
@@ -22,6 +24,8 @@ public:
     RestoreTab(const QFileInfo &fileInfo, QWidget *parent = 0);
     string DoRestore(Device device);
     void RestoreButton(Device device);
+    void SuccessButton(Device device);
+    void FailButton(Device device);
 
 signals:
     void sendCommand(Device, string, vector<string>);

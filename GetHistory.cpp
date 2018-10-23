@@ -8,10 +8,6 @@
 #include "GetHistory.h"
 using namespace std;
 GetHistory::GetHistory() {
-	// TODO Auto-generated constructor stub
-	//get history details
-	string line;
-	ifstream inFile;
 
 }
 
@@ -20,8 +16,17 @@ GetHistory::~GetHistory() {
 }
 map<string, Device> GetHistory::getInstalledDevices() {
 	std::map<string, Device> device_map;
-   ifstream inputFile("/var/lib/tuxconfig/history");
-    string tempLine;
+    std::ifstream input_file("/var/lib/tuxconfig/history");
+      std::ofstream output_file("/var/lib/tuxconfig/revsrsed_history");
+      std::istreambuf_iterator<char> input_begin(input_file);
+      std::istreambuf_iterator<char> input_end;
+      std::ostreambuf_iterator<char> output_begin(output_file);
+      std::vector<char> input_data(input_begin, input_end);
+
+      std::reverse_copy(input_data.begin(), input_data.end(), output_begin);
+
+       ifstream inputFile("/var/lib/tuxconfig/revsrsed_history");
+      string tempLine;
     while (getline(inputFile, tempLine, '\n')) {
         vector<string> tempstr;
         stringstream ss(tempLine);
@@ -29,39 +34,59 @@ map<string, Device> GetHistory::getInstalledDevices() {
 
         while (getline(ss, temp, ',')) {
             tempstr.push_back(temp);
-            cout<<"pushing back:"<<temp<<endl;
+
 }
 		Device new_device;
+
+        if (tempstr[5].find("works") != string::npos) {
+            boost::trim(tempstr[0]);
+            boost::trim(tempstr[1]);
+            new_device = Device(tempstr[0], tempstr[1], true, false);
+            std::map<string,Device>::iterator it = device_map.find(tempstr[0]);
+
+            if (it != device_map.end())
+                it->second = new_device;
+            else {
+            device_map.insert(
+                    std::pair<string, Device>(tempstr[0], new_device));
+            }
+
+        }
+        if (tempstr[5].find("failed") != string::npos
+                ) {
+            boost::trim(tempstr[0]);
+            boost::trim(tempstr[1]);
+            new_device = Device(tempstr[0], tempstr[1], false, false);
+            std::map<string,Device>::iterator it = device_map.find(tempstr[0]);
+            if (it != device_map.end())
+                it->second = new_device;
+            else {
+            device_map.insert(
+                    std::pair<string, Device>(tempstr[0], new_device));
+            }
 
 
         if (tempstr[5].find("module-installed") != string::npos
                 ) {
 			boost::trim(tempstr[0]);
 			boost::trim(tempstr[1]);
-			new_device = Device(tempstr[0], tempstr[1], true, false);
-			device_map.insert(
-					std::pair<string, Device>(tempstr[0], new_device));
+            new_device = Device(tempstr[0], tempstr[1], false, true);
+            std::map<string,Device>::iterator it = device_map.find(tempstr[0]);
 
-		}
-        if (tempstr[5].find("uninstalled") != string::npos
-                ) {
-			boost::trim(tempstr[0]);
-			boost::trim(tempstr[1]);
-			new_device = Device(tempstr[0], tempstr[1], true, false);
-			std::map<string,Device>::iterator it = device_map.find(tempstr[0]);
-			if (it != device_map.end())
+            if (it != device_map.end())
                 it->second = new_device;
-			else {
-			device_map.insert(
-					std::pair<string, Device>(tempstr[0], new_device));
-			}
+            else {
+            device_map.insert(
+                    std::pair<string, Device>(tempstr[0], new_device));
+            }
 
+        }
         }
             if (tempstr[5].find("apt-installed") != string::npos
                     ) {
                 boost::trim(tempstr[0]);
                 boost::trim(tempstr[1]);
-                new_device = Device(tempstr[0], tempstr[1], true, false);
+                new_device = Device(tempstr[0], tempstr[1], false, true);
                 new_device.setAptInstalled(true);
                 std::map<string,Device>::iterator it = device_map.find(tempstr[0]);
                 if (it != device_map.end())

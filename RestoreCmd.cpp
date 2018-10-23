@@ -84,6 +84,10 @@ string restore_run_file = "/usr/src/tuxconfig-" + response + "-restore";
     std::ofstream out(restore_run_file);
     out << runfile;
     out.close();
+    chmod(runfile.c_str(), S_IRWXU);
+
+
+
     int result = system(runfile.c_str());
     if (result == 0) {
         cout<<"Configuration restored successfully"<<endl;

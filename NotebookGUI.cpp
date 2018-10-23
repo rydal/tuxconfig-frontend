@@ -32,6 +32,9 @@
     ContributorTab2 *contributor_tab = new ContributorTab2(fileInfo,tabWidget);
     tabWidget->addTab(contributor_tab,"Contributor");
 
+    introTab *intro_tab = new introTab(fileInfo,tabWidget);
+    tabWidget->addTab(intro_tab,"Description");
+    changeTab(4);
 		    QVBoxLayout *mainLayout = new QVBoxLayout;
                 mainLayout->addWidget(tabWidget);
 
@@ -42,7 +45,7 @@
                 connect(runTab, SIGNAL(setTab(int)), this, SLOT(changeTab(int)));
                 connect(console_tab, SIGNAL(setTab(int)), this, SLOT(changeTab(int)));
                 connect(restore_tab, SIGNAL(setTab(int)), this, SLOT(changeTab(int)));
-
+                connect(intro_tab, SIGNAL(setTab(int)), this, SLOT(changeTab(int)));
                 connect(runTab, SIGNAL(sendCommand(Device, string, vector<string>)), this, SLOT(runCommand(Device, string, vector<string>)));
                 connect(console_tab, SIGNAL(updateScreen()),  this, SLOT(updateContributor()));
                 connect(this, SIGNAL(updatedContributor(Device)),  contributor_tab, SLOT(updateScreen(Device)));
