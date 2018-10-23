@@ -74,7 +74,7 @@ runfile += "exec > >(tee -i /var/lib/tuxconfig/" + response + ".log) \n";
 runfile += "function cleanup() { \n";
 runfile += "kill -SIGUSR2 " + to_string(::getpid()) + " \n";
 runfile += "} \n";
-runfile += "tar -C / -xvf /var/lib/tuxconfig/" +  restorefile + "\n";
+runfile += "tar -C / -xvf " +  restorefile + "\n";
 if (apt_installed) {
     runfile +="$ apt-get -s install $(apt-history rollback | tr '\n' ' ') \n";
 }
@@ -84,7 +84,7 @@ string restore_run_file = "/usr/src/tuxconfig-" + response + "-restore";
     std::ofstream out(restore_run_file);
     out << runfile;
     out.close();
-    chmod(runfile.c_str(), S_IRWXU);
+    chmod(restore_run_file.c_str(), S_IRWXU);
 
 
 

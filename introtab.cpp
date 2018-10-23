@@ -19,7 +19,7 @@ QMainWindow *mainWindow = new QMainWindow();
                           to make your devices work.  In cases where an install fails do \
                           not worry.  You can revert to your previous configuration.";
 
-    QLabel *description_label = new QLabel(description_label);
+    QLabel *description_label = new QLabel(QString::fromStdString(description));
     mainLayout->addWidget(description_label);
 
 

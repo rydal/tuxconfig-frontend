@@ -37,16 +37,16 @@ vector<string> RunConfig::restore(Device& device) {
         runfile += "function cleanup() { \n";
         runfile += "kill -SIGUSR2 " + to_string(::getpid()) + " \n";
         runfile += "} \n";
-        runfile += "tar -C / -xvf /var/lib/tuxconfig/" +  restorefile + "\n";
+        runfile += "tar -C / -xvf " +  restorefile + "\n";
 
         string restore_run_file = "/usr/src/tuxconfig-" + device.getDeviceid() + "-restore";
             std::ofstream out(restore_run_file);
             out << runfile;
             out.close();
-            chmod(runfile.c_str(), S_IRWXU);
+            chmod(restore_run_file.c_str(), S_IRWXU);
 
             //return restore_run_file;
-            cout<<restore_run_file<<endl;
+
             vector<string> result;
             result.push_back(restore_run_file);
 

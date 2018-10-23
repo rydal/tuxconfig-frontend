@@ -54,7 +54,7 @@ Device GetRemoteConfig::GetConfiguration(Device& configured_device) {
 		configured_device.setVoteDifference(stoi(vote_difference));
 		configured_device.setCommit(commit_hash);
 		configured_device.setOwnerGitId(owner_git_id);
-        cout<<configured_device.getSuccessCode()<<"success_code"<<endl;
+
 	} else {
 		configured_device.setGitUrl("null");
 
