@@ -6,7 +6,7 @@ QMainWindow *mainWindow = new QMainWindow();
 
     mainLayout = new QVBoxLayout();
     image_label = new QLabel;
-    QString url = QString::fromStdString("/home/roberty/tuxconfig-qt/tux.png");
+    QString url = QString::fromStdString("/usr/share/pixmaps/tux.png");
     QPixmap img(url);
     image_label->setPixmap(img);
     label = new QLabel("Making Linux Easy");
@@ -15,11 +15,10 @@ QMainWindow *mainWindow = new QMainWindow();
 
     mainLayout->addWidget(image_label);
     mainLayout->addWidget(label);
-    string description = "This utility automatically downloads and installed the software \
-                          to make your devices work.  In cases where an install fails do \
-                          not worry.  You can revert to your previous configuration.";
+    string description = "This utility automatically downloads and installed the software \n to make your devices work.  In cases where an install fails do \n not worry.  You can revert to your previous configuration.";
 
     QLabel *description_label = new QLabel(QString::fromStdString(description));
+    description_label->setAlignment(Qt::AlignCenter);
     mainLayout->addWidget(description_label);
 
 
@@ -27,7 +26,7 @@ QMainWindow *mainWindow = new QMainWindow();
     mainLayout->addWidget(runTabButton);
 
 
-    QPushButton *restoreTabButton = new QPushButton("Restore");
+    QPushButton *restoreTabButton = new QPushButton("Restore previous configuration");
     mainLayout->addWidget(restoreTabButton);
 
     connect(restoreTabButton, &QPushButton::clicked, [=] { changeTab(1); });

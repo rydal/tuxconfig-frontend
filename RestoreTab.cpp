@@ -35,15 +35,16 @@ RestoreTab::RestoreTab(const QFileInfo &fileInfo, QWidget *parent)
 
                                  installed_status->setText(QString::fromStdString(it->second.getStatus()));
 
-
-
-
                                 m_Grid->addWidget(description);
 								m_Grid->addWidget(devicename);
                                 m_Grid->addWidget(installed_status);
                                 m_Grid->addWidget(restore_button1);
+
+                                if (it->second.getStatus() != "works" && it->second.getStatus() != "failed") {
                                 m_Grid->addWidget(success_button);
                                 m_Grid->addWidget(fail_button);
+                                }
+
                                 Device& tmp_device = it->second;
                                 connect(restore_button1, &QPushButton::clicked, [=] { RestoreButton(tmp_device); });
                                 connect(success_button, &QPushButton::clicked, [=] { SuccessButton(tmp_device); });

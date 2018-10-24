@@ -74,6 +74,7 @@ Device GetRemoteConfig::GetConfiguration(Device& configured_device) {
 	    		configured_device.setIsUpgradeable(true);
             }
             configured_device.setSuccessCode(tempstr[4]);
+            configured_device.setIsInstalled(true);
 	    }
 
         if (tempstr[0] == configured_device.getDeviceid() && tempstr[5].find("failed") != string::npos) {

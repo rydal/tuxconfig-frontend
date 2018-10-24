@@ -29,6 +29,7 @@
 			QLabel* devicename = new QLabel;
 			QPushButton* upgrade_button = new QPushButton(QString::fromStdString("upgrade"));
             QPushButton* install_button = new QPushButton(QString::fromStdString("replace"));
+            QPushButton* uninstall_button = new QPushButton(QString::fromStdString("uninstall"));
             description->setAlignment(Qt::AlignLeft);
             devicename->setAlignment(Qt::AlignLeft);
             description->setFixedWidth(200);
@@ -41,14 +42,17 @@
             m_Grid->addWidget(description,0,0,1,1);
             m_Grid->addWidget(devicename,0,1,1,1);
 
+            if (iterated_device.isIsInstalled()) {
+                m_Grid->addWidget(uninstall_button,0,2,1,1);
+            }
 
             if (iterated_device.getGitUrl() != "null") {
-            m_Grid->addWidget(install_button,0,2,1,1);
+            m_Grid->addWidget(install_button,0,3,1,1);
 
             }
 
             if (iterated_device.isUpgradeable() == true) {
-                m_Grid->addWidget(upgrade_button,0,3,1,1);
+                m_Grid->addWidget(upgrade_button,0,4,1,1);
 
             }
 

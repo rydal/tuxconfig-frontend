@@ -105,21 +105,40 @@ void GetOS::runEmail(string email)  {
     system(runCommand.c_str());
 }
 
-string GetOS::DoRestore(string restorefile) {
-    string runfile = "";
-    runfile += "#! /bin/bash \n";
-    runfile += "tar -C / -xvf /var/lib/tuxconfig/" + restorefile;
-    string restore_run_file = "/usr/src/tuxconfig-restore";
-        std::ofstream out(restore_run_file);
-        out << runfile;
-        out.close();
-        return restore_run_file;
-    }
+
 
 void GetOS::reset_reboot() {
+        string sudo_user = GetOS::exec("echo $SUDO_USER");
+        string myfile = "/home/" + sudo_user +"/.config/autostart";
+        string erase_line = "/usr/share/applications/tuxconfig.desktop";
+        eraseFileLine(myfile,erase_line);
+         string bashrc_file =  "/home/" + sudo_user +"/.bashrc";
+         erase_line = "/usr/bin/tuxconfig recover";
+         eraseFileLine(bashrc_file,erase_line);
+
 
 
 }
+
+void GetOS::eraseFileLine(std::string path, std::string eraseLine) {
+std::string line;
+std::ifstream fin;
+
+fin.open(path);
+std::ofstream temp; // contents of path must be copied to a temp file then renamed back to the path file
+temp.open("temp.txt");
+
+while (getline(fin, line)) {
+    if (line != eraseLine) // write all lines to temp other than the line marked fro erasing
+        temp << line << std::endl;
+}
+
+temp.close();
+fin.close();
+
+const char * p = path.c_str(); // required conversion for remove and rename functions
+remove(p);
+rename("temp.txt", p);}
 
 
 

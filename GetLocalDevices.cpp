@@ -41,7 +41,7 @@ set<Device> GetLocalDevices::listdevices() {
 		getline(iss, SingleLine, '\n');
 
 		std::smatch m4;
-		std::regex e4("^\\s*description.*");
+        std::regex e4("^\\s*description.*");
 		if (regex_search(SingleLine, m4, e4)) {
 			description = m4[0];
 		description = std::regex_replace(description,regex("^\\s*description:\\s*"),"");

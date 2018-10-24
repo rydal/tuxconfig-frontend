@@ -13,13 +13,13 @@ Feedback::Feedback(Device& device, bool successful) {
 		string url = "https://linuxconf.feedthepenguin.org/hehe/reportback?";
 		if (successful == true) {
 		url +=  "success=true";
-        string works_history = "echo " + device.getDeviceid() + "," + device.getDescription() + "," + to_string(device.getVoteDifference())   + "," + device.getCommit() + ","  + device.getSuccessCode() +", works >> /var/lib/tuxconfig/history";
+        string works_history = "echo " + device.getDeviceid() + "," + device.getDescription() + "," + to_string(device.getVoteDifference())   + "," + device.getCommit() + ","  + device.getSuccessCode() + "," + device.getDescription() + ", works >> /var/lib/tuxconfig/history";
         system(works_history.c_str());
 		}
 		else {
 			url +=  "success=false";
 
-            string fails_history = "echo " + device.getDeviceid() + "," + device.getDescription() + "," + to_string(device.getVoteDifference())+ "," + device.getCommit()  + "," + device.getSuccessCode() + ", failed >> /var/lib/tuxconfig/history";
+            string fails_history = "echo " + device.getDeviceid() + "," + device.getDescription() + "," + to_string(device.getVoteDifference())+ "," + device.getCommit()  + "," + device.getSuccessCode() + "," + device.getDescription() + ", failed >> /var/lib/tuxconfig/history";
             system(fails_history.c_str());
 
 		}

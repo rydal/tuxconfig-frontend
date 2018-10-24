@@ -28,8 +28,9 @@ int main(int argc, char *argv[]) {
 
 		}
 	}
-
+    bool recovering = false; // allow not connected if recovering.
 	if (argc == 2) {
+        recovering = true;
 	if (strcmp(argv[1], "recover") == 0) {
 		map <string, Device> installed_devices = GetHistory::getInstalledDevices();
         if (is_gui_present) {
@@ -47,7 +48,7 @@ int main(int argc, char *argv[]) {
 	}
 	}
 	CheckConnection connchk = CheckConnection();
-	if (connchk.CheckNetwork() == false) {
+    if (connchk.CheckNetwork() == false || recovering) {
 		 QApplication app(argc, argv);
 			QuestionBox window(
 					"No internet connection\n consider tethering with a mobile phone\n or plug into a network socket");
@@ -91,7 +92,7 @@ int main(int argc, char *argv[]) {
 
 
     QSplashScreen *splash = new QSplashScreen;
-    splash->setPixmap(QPixmap("/home/roberty/tuxconfig-qt/tux.png"));
+    splash->setPixmap(QPixmap("/usr/share/pixmaps/tux.png"));
     splash->showMessage("Making Linux Easy");
 
 

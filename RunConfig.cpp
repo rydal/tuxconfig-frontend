@@ -38,7 +38,9 @@ vector<string> RunConfig::restore(Device& device) {
         runfile += "kill -SIGUSR2 " + to_string(::getpid()) + " \n";
         runfile += "} \n";
         runfile += "tar -C / -xvf " +  restorefile + "\n";
-
+        if (device.getAptInstalled() == true) {
+            runfile +="$ apt-get -s install $(apt-history rollback | tr '\n' ' ') \n";
+        }
         string restore_run_file = "/usr/src/tuxconfig-" + device.getDeviceid() + "-restore";
             std::ofstream out(restore_run_file);
             out << runfile;
@@ -119,7 +121,7 @@ vector<string> RunConfig::install(Device& device) {
 //install dependencies;
     runfile += " if [ !  -z \"$dependencies\" ] ; then \n";
     runfile += "eval $dependencies \n";
-    runfile +=  "echo \"" + device.getDeviceid() + "," + device.getDescription() + ","	+ to_string(device.getVoteDifference()) + "," + device.getCommit() + "," + device.getSuccessCode() + ", apt-installed \" >> /var/lib/tuxconfig/history  \n";
+    runfile +=  "echo \"" + device.getDeviceid() + "," + device.getDescription() + ","	+ to_string(device.getVoteDifference()) + "," + device.getCommit() + "," + device.getSuccessCode() + "," + device.getDescription() +  ", apt-installed \" >> /var/lib/tuxconfig/history  \n";
 
     runfile += "fi \n";
     runfile += "echo \"installed dependencies\" \n";
@@ -135,7 +137,7 @@ vector<string> RunConfig::install(Device& device) {
 //Insert module
 	runfile += "modprobe -v $tuxconfig_module \n";
 	runfile += "echo \"inserted module into kernel\" \n";
-    runfile +=  "echo \"" + device.getDeviceid() + "," + device.getDescription() + ","	+ to_string(device.getVoteDifference()) + "," + device.getCommit() + "," + device.getSuccessCode() + ", module-installed \" >> /var/lib/tuxconfig/history  \n";
+    runfile +=  "echo \"" + device.getDeviceid() + "," + device.getDescription() + ","	+ to_string(device.getVoteDifference()) + "," + device.getCommit() + "," + device.getSuccessCode() + "," + device.getDescription() + ", module-installed \" >> /var/lib/tuxconfig/history  \n";
     runfile += "fi \n";
     runfile += "kill -SIGUSR1 " + to_string(::getpid()) + " \n";
 

@@ -41,6 +41,8 @@ public:
     static void runEmail(string email);
     static string DoRestore(string restorefile);
     static void reset_reboot();
+    static void eraseFileLine(std::string path, std::string eraseLine);
+
 
 
 };
