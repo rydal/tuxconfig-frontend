@@ -6,7 +6,7 @@ QMainWindow *mainWindow = new QMainWindow();
 
     mainLayout = new QVBoxLayout();
     image_label = new QLabel;
-    QString url = QString::fromStdString("/usr/share/pixmaps/tux.png");
+    QString url = QString::fromStdString("/usr/share/pixmaps/tux2.png");
     QPixmap img(url);
     image_label->setPixmap(img);
     label = new QLabel("Making Linux Easy");

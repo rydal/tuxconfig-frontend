@@ -3,3 +3,7 @@ change get:os form ubuntu.
 desktop file.
 
 ..reboot?
+
+dependencies:
+build-essential
+git
