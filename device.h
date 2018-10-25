@@ -26,7 +26,7 @@
 class Device {
 	public:
 	Device();
-	Device(string id, string description, string name, string modulename);
+    Device(string id, string description, string name, string modulename);
 
     Device(string m_id,  string m_description, bool isInstalled, bool isFailed, string success_code,string status, string name);
 	string parseDeviceId(string device_id);

@@ -28,9 +28,12 @@ Q_OBJECT
  public:
      RunTab();
      RunTab( QWidget *parent = 0);
+     void updateLayout();
      QWidget *m_parent;
      QTabWidget *tabWidget;
     QTermWidget *termWidget;
+    QVBoxLayout *mainLayout;
+void clearLayout(QLayout* layout, bool deleteWidgets = true);
 
  public slots:
      void installButton(Device);

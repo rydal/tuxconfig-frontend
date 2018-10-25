@@ -9,11 +9,13 @@
 
 
  RunTab::RunTab( QWidget * m_parent)
-     : QWidget(m_parent), m_parent(m_parent)
-
+     : QWidget(m_parent)
  {
-  QVBoxLayout *mainLayout = new QVBoxLayout;
+    mainLayout = new QVBoxLayout;
+    updateLayout();
 
+}
+ void RunTab::updateLayout() {
 	set<Device> local_devices = GetLocalDevices::listdevices();
 	set<Device> remote_devices;
 
@@ -69,12 +71,16 @@
   }
 
 
+    QPushButton* updateButton = new QPushButton(QString::fromStdString("Rescan USB bus"));
+    mainLayout->addWidget(updateButton);
+    connect(updateButton, &QPushButton::clicked, [=] { clearLayout(mainLayout) ;updateLayout();});
+
  }
 
 
  void RunTab::installButton(Device device) {
      vector<string> install = RunConfig::install(device);
-        emit setTab(2);
+        emit setTab(3);
 
      emit sendCommand(device, "install",install);
 
@@ -83,15 +89,29 @@
  void RunTab::uninstallButton(Device device) {
      vector<string> uninstall = RunConfig::uninstall(device);
 
-     emit setTab(2);
+     emit setTab(3);
      emit sendCommand(device, "uninstall", uninstall);
   }
 
  void RunTab::upgrade(Device device) {
      vector<string>   upgrade = RunConfig::upgrade(device);
-     emit setTab(2);
+     emit setTab(3);
      emit sendCommand(device, "upgrade",upgrade);
 
   }
 
+ void RunTab::clearLayout(QLayout* layout, bool deleteWidgets)
+ {
+     while (QLayoutItem* item = layout->takeAt(0))
+     {
+         if (deleteWidgets)
+         {
+             if (QWidget* widget = item->widget())
+                 widget->deleteLater();
+         }
+         if (QLayout* childLayout = item->layout())
+             clearLayout(childLayout, deleteWidgets);
+         delete item;
+     }
+ }
 

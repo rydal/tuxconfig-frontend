@@ -80,7 +80,7 @@
 
  }
 void ConsoleTab::showButtons(vector<string> details, bool success) {
-
+    cout<<"console tab entered\n"<<endl;
     fails_button->setVisible(true);
 
     if (success) {
@@ -88,13 +88,14 @@ void ConsoleTab::showButtons(vector<string> details, bool success) {
 
     if (details.size() >= 3) {
     success_label->setText(details.at(2).c_str());
-
+    cout<<"success label text set\n"<<endl;
     string command_string = details.at(1) +" > /dev/null 2>&1 \r";
     if (details.size() >= 4) {
         if (details.at(3) == "true") {
             reboot_label->setVisible(true);
             reboot_button->setVisible(true);
         }
+
     }
     console->sendText(command_string.c_str());
 
@@ -106,7 +107,6 @@ void ConsoleTab::showButtons(vector<string> details, bool success) {
     }
 
     emit refreshRestore();
-    emit sendReboot();
 
 
 }

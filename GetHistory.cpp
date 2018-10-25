@@ -50,7 +50,6 @@ map<string, Device> GetHistory::getInstalledDevices() {
             boost::trim(tempstr[0]);
             boost::trim(tempstr[1]);
             new_device = Device(tempstr[0], tempstr[1], false, false, tempstr[4],tempstr[6], tempstr[5]);
-            new_device.setDescription(tempstr[5]);
             std::map<string,Device>::iterator it = device_map.find(tempstr[0]);
             if (it != device_map.end())
                 it->second = new_device;
@@ -66,7 +65,6 @@ map<string, Device> GetHistory::getInstalledDevices() {
 			boost::trim(tempstr[0]);
 			boost::trim(tempstr[1]);
             new_device = Device(tempstr[0], tempstr[1], false, true, tempstr[4],tempstr[6], tempstr[5]);
-            new_device.setDescription(tempstr[5]);
             std::map<string,Device>::iterator it = device_map.find(tempstr[0]);
 
             if (it != device_map.end())
@@ -83,7 +81,6 @@ map<string, Device> GetHistory::getInstalledDevices() {
                 boost::trim(tempstr[0]);
                 boost::trim(tempstr[1]);
                 new_device = Device(tempstr[0], tempstr[1], false, true, tempstr[4],tempstr[6], tempstr[5]);
-                new_device.setDescription(tempstr[5]);
                 new_device.setAptInstalled(true);
                 std::map<string,Device>::iterator it = device_map.find(tempstr[0]);
                 if (it != device_map.end())

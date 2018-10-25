@@ -31,7 +31,8 @@ Device GetRemoteConfig::GetConfiguration(Device& configured_device) {
 	ostringstream os;
 
 
-    string url = "https://linuxconf.feedthepenguin.org/hehe/getdevice?deviceid="+ configured_device.getDeviceid() + "&attempt="	+ to_string(GetRemoteConfig::attempt_number) + "&distribution=" + os_string[0];
+   string url = "https://linuxconf.feedthepenguin.org/hehe/getdevice?deviceid="+ configured_device.getDeviceid() + "&attempt="	+ to_string(GetRemoteConfig::attempt_number) + "&distribution=" + os_string[0];
+
 	os << curlpp::options::Url(url);
 	string str = os.str();
 	Json::Value root;
@@ -39,10 +40,9 @@ Device GetRemoteConfig::GetConfiguration(Device& configured_device) {
 
 	bool parsingSuccessful = reader.parse(str, root);
 	if (!parsingSuccessful) {
-		cout << "error parsing";
+
 		exit(1);
 	}
-
 	if (!root.isMember("Error")) {
 		string url = root["git_url"].asString();
 		string success_code = root["success_code"].asString();
@@ -75,10 +75,11 @@ Device GetRemoteConfig::GetConfiguration(Device& configured_device) {
             }
             configured_device.setSuccessCode(tempstr[4]);
             configured_device.setIsInstalled(true);
+
 	    }
 
         if (tempstr[0] == configured_device.getDeviceid() && tempstr[6].find("failed") != string::npos) {
-	    	configured_device.setAttemptedInstall(true);
+            configured_device.setIsInstalled(true);
             configured_device.setSuccessCode(tempstr[4]);
 
 	    }
