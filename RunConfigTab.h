@@ -35,7 +35,7 @@ Q_OBJECT
  public slots:
      void installButton(Device);
      void uninstallButton(Device);
-     void restoreButton(Device);
+
      void upgrade(Device);
 
 

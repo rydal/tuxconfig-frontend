@@ -76,7 +76,7 @@ runfile += "kill -SIGUSR2 " + to_string(::getpid()) + " \n";
 runfile += "} \n";
 runfile += "tar -C / -xvf " +  restorefile + "\n";
 if (apt_installed) {
-    runfile +="$ apt-get -s install $(apt-history rollback | tr '\n' ' ') \n";
+    runfile +="apt-undo undo \n";
 }
 
 string restore_run_file = "/usr/src/tuxconfig-" + response + "-restore";

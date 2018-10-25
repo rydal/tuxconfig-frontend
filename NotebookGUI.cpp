@@ -54,8 +54,8 @@
                 connect(this, SIGNAL(sendToConsole(Device, string, vector<string>)),console_tab,SLOT(sendToConsole(Device, string, vector<string>)));
 
                 connect(restore_tab, SIGNAL(sendCommand(Device, string, vector<string>)),console_tab,SLOT(sendToConsole(Device, string, vector<string>)));
-
-
+                connect(console_tab, SIGNAL(refreshRestore()),  restore_tab, SLOT(update()));
+                connect(console_tab, SIGNAL(sendReboot()),  contributor_tab, SLOT(receiveReboot()));
 
     }
 

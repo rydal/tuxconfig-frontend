@@ -56,6 +56,8 @@ clearLayout(mainLayout,true);
 
      mainLayout->addWidget(website_label);
 
+     mainLayout->addWidget(website_label);
+
 
 
      email_label->setOpenExternalLinks(false);
@@ -69,6 +71,13 @@ clearLayout(mainLayout,true);
      mainLayout->addWidget(email_label);
      mainLayout->setAlignment(Qt::AlignHCenter);
 
+     reboot_label = new QLabel("Reboot required",  this);
+     reboot_label->setVisible(false);
+     reboot_button = new QPushButton(QString::fromStdString("Reboot Now?"));
+     reboot_button->setVisible(false);
+     mainLayout->addWidget(reboot_button);
+
+     connect(reboot_button, &QPushButton::clicked, [=] { RebootMachine(); });
 
  }
  void ContributorTab2::mousePressEvent(QMouseEvent *event) {
@@ -129,3 +138,11 @@ void ContributorTab2::on_description_linkActivated(const QString &link)
   GetOS::runEmail(utf8_text);
 }
 
+void ContributorTab2::receiveReboot() {
+    reboot_label->setVisible(true);
+    reboot_button->setVisible(true);
+}
+
+void ContributorTab2::RebootMachine() {
+    system("shutdown -r now");
+}

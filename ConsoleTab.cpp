@@ -25,7 +25,9 @@
     works_button->setObjectName("works_button");
     fails_button->setObjectName("fails_button");
     success_label->setObjectName("success_label");
-    reboot_label = new QLabel("Reboot required");
+    reboot_label = new QLabel("Reboot required",this);
+    reboot_button = new QPushButton(QString::fromStdString("Reboot now?"));
+
     success_label->setAlignment(Qt::AlignCenter);
     QFont f( "Arial", 16, QFont::Bold);
       success_label->setFont( f);
@@ -33,6 +35,7 @@
     works_button->setVisible(false);
     fails_button->setVisible(false);
     reboot_label->setVisible(false);
+    reboot_button->setVisible(false);
     QFont font = QApplication::font();
 #ifdef Q_WS_MAC
     font.setFamily("Monaco");
@@ -62,15 +65,17 @@
     mainLayout->addWidget(success_label);
     mainLayout->addWidget(works_button);
     mainLayout->addWidget(fails_button);
-    mainLayout->addWidget(reboot_label);
+    mainLayout->addWidget(reboot_button);
 
 
 
 
 
    setLayout(mainLayout);
-   connect(works_button, &QPushButton::clicked, [=] { works_result (); });
+   connect(works_button, &QPushButton::clicked, [=] { works_result(); });
    connect(fails_button, &QPushButton::clicked, [=] { fails_result(); });
+
+   connect(reboot_button, &QPushButton::clicked, [=] { RebootMachine(); });
 
 
  }
@@ -88,6 +93,7 @@ void ConsoleTab::showButtons(vector<string> details, bool success) {
     if (details.size() >= 4) {
         if (details.at(3) == "true") {
             reboot_label->setVisible(true);
+            reboot_button->setVisible(true);
         }
     }
     console->sendText(command_string.c_str());
@@ -98,6 +104,10 @@ void ConsoleTab::showButtons(vector<string> details, bool success) {
 } else {
         success_label->setText("Command failed");
     }
+
+    emit refreshRestore();
+    emit sendReboot();
+
 
 }
 
@@ -115,8 +125,10 @@ void ConsoleTab::sendToConsole(Device device,string method, vector<string> param
     this->current_device = device;
     string command_string = parameters.at(0) +" \r";
     console->sendText(command_string.c_str());
+}
 
-
+void ConsoleTab::RebootMachine() {
+    system("shutdown -h now");
 }
 
 

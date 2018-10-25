@@ -69,7 +69,7 @@ Device GetRemoteConfig::GetConfiguration(Device& configured_device) {
 	    while (getline(ss, temp, ',')) {
 	      tempstr.push_back(temp);
 	    }
-        if (tempstr[0] == configured_device.getDeviceid() && tempstr[5].find("works") != string::npos) {
+        if (tempstr[0] == configured_device.getDeviceid() && tempstr[6].find("works") != string::npos) {
 	    	if (stoi(tempstr[2]) < configured_device.getVoteDifference()) {
 	    		configured_device.setIsUpgradeable(true);
             }
@@ -77,7 +77,7 @@ Device GetRemoteConfig::GetConfiguration(Device& configured_device) {
             configured_device.setIsInstalled(true);
 	    }
 
-        if (tempstr[0] == configured_device.getDeviceid() && tempstr[5].find("failed") != string::npos) {
+        if (tempstr[0] == configured_device.getDeviceid() && tempstr[6].find("failed") != string::npos) {
 	    	configured_device.setAttemptedInstall(true);
             configured_device.setSuccessCode(tempstr[4]);
 

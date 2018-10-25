@@ -25,6 +25,8 @@
 #include "GetLocalDevices.h"
 #include "GetRemoteConfig.h"
 #include <set>
+#include <stdio.h>
+#include <stdlib.h>
 
 #include "NotebookGUI.h"
 
@@ -42,6 +44,8 @@ protected:
     QLabel *website_label;
     QLabel *bio_label;
     QLabel *email_label;
+    QLabel *reboot_label;
+    QPushButton *reboot_button;
     QVBoxLayout *mainLayout;
     QMainWindow *mainWindow ;
     Device current_device;
@@ -51,6 +55,9 @@ protected:
 public slots:
     void updateScreen(Device device);
     void on_description_linkActivated(const QString &link);
+    void receiveReboot();
+
+    void RebootMachine();
 
 
 };

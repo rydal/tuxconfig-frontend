@@ -26,6 +26,7 @@ public:
     void RestoreButton(Device device);
     void SuccessButton(Device device);
     void FailButton(Device device);
+    void update();
 
 signals:
     void sendCommand(Device, string, vector<string>);

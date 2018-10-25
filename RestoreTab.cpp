@@ -11,16 +11,21 @@ RestoreTab::RestoreTab(const QFileInfo &fileInfo, QWidget *parent)
 
 {
 
-	// TODO Auto-generated constructor stub
-	std::map<string,Device> hashmap = GetHistory::getInstalledDevices();
+update();
 
-		 QPushButton *button = new QPushButton(QString::fromStdString("close"));
-		 	  QVBoxLayout *mainLayout = new QVBoxLayout;
+}
 
-				for (std::map<string,Device>::iterator it=hashmap.begin(); it!=hashmap.end(); ++it) {
-					QHBoxLayout* m_Grid = new QHBoxLayout;
-								QLabel *description = new QLabel(QString::fromStdString(it->second.getDescription()));
-								QLabel *devicename = new QLabel(QString::fromStdString(it->second.getDevicename()));
+void RestoreTab::update() {
+    // TODO Auto-generated constructor stub
+    std::map<string,Device> hashmap = GetHistory::getInstalledDevices();
+
+         QPushButton *button = new QPushButton(QString::fromStdString("close"));
+              QVBoxLayout *mainLayout = new QVBoxLayout;
+
+                for (std::map<string,Device>::iterator it=hashmap.begin(); it!=hashmap.end(); ++it) {
+                    QHBoxLayout* m_Grid = new QHBoxLayout;
+                                QLabel *description = new QLabel(QString::fromStdString(it->second.getDescription()));
+                                QLabel *devicename = new QLabel(QString::fromStdString(it->second.getDevicename()));
                                 QLabel *installed_status = new QLabel;
 
                                 description->setAlignment(Qt::AlignCenter);
@@ -36,7 +41,7 @@ RestoreTab::RestoreTab(const QFileInfo &fileInfo, QWidget *parent)
                                  installed_status->setText(QString::fromStdString(it->second.getStatus()));
 
                                 m_Grid->addWidget(description);
-								m_Grid->addWidget(devicename);
+                                m_Grid->addWidget(devicename);
                                 m_Grid->addWidget(installed_status);
                                 m_Grid->addWidget(restore_button1);
 
@@ -51,11 +56,10 @@ RestoreTab::RestoreTab(const QFileInfo &fileInfo, QWidget *parent)
                                 connect(fail_button, &QPushButton::clicked, [=] { FailButton(tmp_device); });
 
 
-							mainLayout->addLayout(m_Grid);
-				}
-				setLayout(mainLayout);
-				 // Set layout in QWidget
-
+                            mainLayout->addLayout(m_Grid);
+                }
+                setLayout(mainLayout);
+                 // Set layout in QWidget
 
 }
 

@@ -30,17 +30,22 @@ public:
      QPushButton *fails_button ;
      QLabel *success_label;
      QLabel *reboot_label;
+     QPushButton *reboot_button;
     void fails_result();
     void works_result();
     Device current_device;
+void RebootMachine();
 
 signals:
      void setTab(int);
      void updateScreen();
+     void refreshRestore();
+     void sendReboot();
 
 public slots:
      void showButtons(vector<string> details, bool success);
      void sendToConsole(Device device,string method, vector<string> parameters);
+
 
 };
 
