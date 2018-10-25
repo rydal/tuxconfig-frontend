@@ -21,7 +21,7 @@
 class RestoreTab : public QWidget {
     Q_OBJECT
 public:
-    RestoreTab(const QFileInfo &fileInfo, QWidget *parent = 0);
+    RestoreTab( QWidget *parent = 0);
     string DoRestore(Device device);
     void RestoreButton(Device device);
     void SuccessButton(Device device);

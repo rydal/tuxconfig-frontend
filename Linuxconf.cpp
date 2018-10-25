@@ -38,7 +38,7 @@ int main(int argc, char *argv[]) {
 
             NotebookGUI gui("Tuxconfig");
             gui.show();
-            gui.changeTab(1);
+            gui.changeTab(2);
             return app.exec();
 
 	}   else {

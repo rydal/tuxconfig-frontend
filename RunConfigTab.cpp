@@ -8,7 +8,7 @@
 #include "RunConfigTab.h"
 
 
- RunTab::RunTab(const QFileInfo &fileInfo, QWidget * m_parent)
+ RunTab::RunTab( QWidget * m_parent)
      : QWidget(m_parent), m_parent(m_parent)
 
  {

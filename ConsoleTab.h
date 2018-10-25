@@ -21,7 +21,7 @@ class ConsoleTab : public QWidget {
     Q_OBJECT
 
 public:
-    ConsoleTab(const QFileInfo &fileInfo, QWidget *m_parent);
+    ConsoleTab( QWidget *m_parent);
      void setDevice(Device device);
     QWidget *parent;
      QTermWidget *console;

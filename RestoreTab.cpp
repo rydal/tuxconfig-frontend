@@ -7,7 +7,7 @@
 
 #include "RestoreTab.h"
 
-RestoreTab::RestoreTab(const QFileInfo &fileInfo, QWidget *parent)
+RestoreTab::RestoreTab( QWidget *parent)
 
 {
 

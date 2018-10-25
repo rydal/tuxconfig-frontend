@@ -1,6 +1,6 @@
 #include "introtab.h"
 
-introTab::introTab(const QFileInfo &fileInfo, QWidget *parent)
+introTab::introTab( QWidget *parent)
 {
 QMainWindow *mainWindow = new QMainWindow();
 
@@ -29,8 +29,8 @@ QMainWindow *mainWindow = new QMainWindow();
     QPushButton *restoreTabButton = new QPushButton("Restore previous configuration");
     mainLayout->addWidget(restoreTabButton);
 
-    connect(restoreTabButton, &QPushButton::clicked, [=] { changeTab(1); });
-    connect(runTabButton, &QPushButton::clicked, [=] { changeTab(0); });
+    connect(restoreTabButton, &QPushButton::clicked, [=] { changeTab(2); });
+    connect(runTabButton, &QPushButton::clicked, [=] { changeTab(1); });
 
 
     setLayout(mainLayout);

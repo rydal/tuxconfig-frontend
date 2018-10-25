@@ -7,7 +7,7 @@
 
 #include "ContributorTab2.h"
 
- ContributorTab2::ContributorTab2(const QFileInfo &fileInfo, QWidget *parent)
+ ContributorTab2::ContributorTab2( QWidget *parent)
 : QWidget(parent) {
 
     QMainWindow *mainWindow = new QMainWindow();

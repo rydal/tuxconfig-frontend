@@ -8,7 +8,7 @@
 #include "ConsoleTab.h"
 
 
- ConsoleTab::ConsoleTab(const QFileInfo &fileInfo,    QWidget *m_parent)
+ ConsoleTab::ConsoleTab(    QWidget *m_parent)
  : parent(m_parent)
 {
 

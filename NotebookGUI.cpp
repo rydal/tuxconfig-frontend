@@ -12,30 +12,29 @@
 
     setWindowTitle("Tuxconfig");
 
-    QPushButton *button;
-    QFileInfo fileInfo(name);
-    RunTab *runTab = new RunTab(fileInfo,tabWidget);
+    introTab *intro_tab = new introTab(tabWidget);
+    tabWidget->addTab(intro_tab,"Description");
+
+
+    RunTab *runTab = new RunTab(tabWidget);
     QScrollArea* contactScrollArea = new QScrollArea();
     contactScrollArea->setWidget(runTab);
     contactScrollArea->setMinimumSize( QSize( 1024, 768) );
 
     tabWidget->addTab(contactScrollArea,"General");
 
-    RestoreTab *restore_tab = new RestoreTab(fileInfo,tabWidget);
+    RestoreTab *restore_tab = new RestoreTab(tabWidget);
 
     tabWidget->addTab(restore_tab,"Restore");
 
-    ConsoleTab *console_tab = new ConsoleTab(fileInfo,tabWidget);
+    ConsoleTab *console_tab = new ConsoleTab(tabWidget);
 
     tabWidget->addTab(console_tab,"Console");
 
-    ContributorTab2 *contributor_tab = new ContributorTab2(fileInfo,tabWidget);
+    ContributorTab2 *contributor_tab = new ContributorTab2(tabWidget);
     tabWidget->addTab(contributor_tab,"Contributor");
 
-    introTab *intro_tab = new introTab(fileInfo,tabWidget);
-    tabWidget->addTab(intro_tab,"Description");
-    changeTab(4);
-		    QVBoxLayout *mainLayout = new QVBoxLayout;
+            QVBoxLayout *mainLayout = new QVBoxLayout;
                 mainLayout->addWidget(tabWidget);
 
                 setLayout(mainLayout);

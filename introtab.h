@@ -26,7 +26,7 @@ class introTab : public QWidget
 {
     Q_OBJECT
 public:
-    introTab(const QFileInfo &fileInfo, QWidget *parent = 0);
+    introTab( QWidget *parent = 0);
     QLabel *label;
     QLabel *image_label;
     QLabel *description_label;

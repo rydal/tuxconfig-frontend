@@ -27,7 +27,7 @@ Q_OBJECT
 
  public:
      RunTab();
-     RunTab(const QFileInfo &fileInfo, QWidget *parent = 0);
+     RunTab( QWidget *parent = 0);
      QWidget *m_parent;
      QTabWidget *tabWidget;
     QTermWidget *termWidget;

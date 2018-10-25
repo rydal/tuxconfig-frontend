@@ -33,7 +33,7 @@
 class ContributorTab2  : public QWidget {
     Q_OBJECT
 public:
-    ContributorTab2(const QFileInfo &fileInfo, QWidget *parent = 0);
+    ContributorTab2( QWidget *parent = 0);
     string* DownloadInfo(string owner_git_id);
     string getAvatarImage(string url, string owner_git_id);
 
