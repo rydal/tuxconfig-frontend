@@ -10,6 +10,7 @@
 #define RUNCONFIG_H_
 #include <string>
 #include <iostream>
+#include <fstream>
 #include "device.h"
 #include "GetOS.h"
 #include <stdio.h>

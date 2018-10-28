@@ -44,8 +44,10 @@ void RestoreTab::update() {
                                 m_Grid->addWidget(devicename);
                                 m_Grid->addWidget(installed_status);
                                 m_Grid->addWidget(restore_button1);
-
-                                if (it->second.getStatus() != "works" && it->second.getStatus() != "failed") {
+                                bool installed = false;
+                                if (it->second.getStatus() == "works" || it->second.getStatus() == "failed")
+                                    installed = true;
+                                    if (! installed) {
                                 m_Grid->addWidget(success_button);
                                 m_Grid->addWidget(fail_button);
                                 }
@@ -73,7 +75,7 @@ vector<string> parameters = RunConfig::restore(device);
 
 void RestoreTab::SuccessButton(Device device) {
     Feedback(device,true);
-    emit setTab(3);
+    emit setTab(4);
     GetOS::reset_reboot();
     }
 

@@ -48,7 +48,7 @@
 
 
             if (iterated_device.getGitUrl() != "null" && iterated_device.isIsInstalled() == false) {
-            m_Grid->addWidget(install_button,0,3,1,1);
+            m_Grid->addWidget(install_button,0,2,1,1);
             }
             if (iterated_device.getGitUrl() != "null" && iterated_device.isIsInstalled() == true) {
             m_Grid->addWidget(reinstall_button,0,3,1,1);
@@ -57,6 +57,9 @@
             if (iterated_device.isUpgradeable() == true) {
                 m_Grid->addWidget(upgrade_button,0,4,1,1);
 
+            }
+            if (iterated_device.isIsInstalled() == true) {
+                m_Grid->addWidget(uninstall_button,0,4,1,1);
             }
 
 

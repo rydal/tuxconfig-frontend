@@ -91,7 +91,7 @@ vector<string> RunConfig::install(Device& device) {
     runfile += "set -e \n";
     runfile += "exec 2> >(tee -i /var/lib/tuxconfig/" + device.getDeviceid() + "-install.log) \n";
     runfile += "function cleanup() { \n";
-    runfile +=  "echo \"" + device.getDeviceid() + "," + device.getDescription() + ","	+ to_string(device.getVoteDifference()) + "," + device.getCommit() + "," + device.getSuccessCode() + "," + device.getDevicename() +  ", failed \" >> /var/lib/tuxconfig/history  \n";
+    runfile +=  "echo \"" + device.getDeviceid() + "," + device.getDescription() + ","	+ to_string(device.getVoteDifference()) + "," + device.getCommit() + "," + device.getSuccessCode() + "," + device.getDevicename() +  +  "," + device.modulename() + ", failed \" >> /var/lib/tuxconfig/history  \n";
 
     runfile += "kill -SIGUSR2 " + to_string(::getpid()) + " \n";
     runfile += "} \n";
@@ -124,7 +124,7 @@ vector<string> RunConfig::install(Device& device) {
 //install dependencies;
     runfile += " if [ !  -z \"$dependencies\" ] ; then \n";
     runfile += "apt-undo install $dependencies \n";
-    runfile +=  "echo \"" + device.getDeviceid() + "," + device.getDescription() + ","	+ to_string(device.getVoteDifference()) + "," + device.getCommit() + "," + device.getSuccessCode() + "," + device.getDevicename() +  ", apt-installed \" >> /var/lib/tuxconfig/history  \n";
+    runfile +=  "echo \"" + device.getDeviceid() + "," + device.getDescription() + ","	+ to_string(device.getVoteDifference()) + "," + device.getCommit() + "," + device.getSuccessCode() + "," + device.getDevicename() +  "," + device.modulename() + ", apt-installed \" >> /var/lib/tuxconfig/history  \n";
 
     runfile += "fi \n";
     runfile += "echo \"installed dependencies\" \n";
@@ -140,7 +140,7 @@ vector<string> RunConfig::install(Device& device) {
 //Insert module
     runfile += "modprobe -v $tuxconfig_module \n";
     runfile += "echo \"inserted module into kernel\" \n";
-    runfile +=  "echo \"" + device.getDeviceid() + "," + device.getDescription() + ","	+ to_string(device.getVoteDifference()) + "," + device.getCommit() + "," + device.getSuccessCode() + "," + device.getDevicename() + ", module-installed \" >> /var/lib/tuxconfig/history  \n";
+    runfile +=  "echo \"" + device.getDeviceid() + "," + device.getDescription() + ","	+ to_string(device.getVoteDifference()) + "," + device.getCommit() + "," + device.getSuccessCode() + "," + device.getDevicename() + +  "," + device.modulename() +  ", module-installed \" >> /var/lib/tuxconfig/history  \n";
     runfile += "fi \n";
     runfile += "kill -SIGUSR1 " + to_string(::getpid()) + " \n";
 
@@ -162,6 +162,7 @@ vector<string> RunConfig::install(Device& device) {
     string test_program;
     string test_message;
     string restart_needed = "false";
+
     if (myfile.is_open()) {
         while (getline(myfile, line)) {
             if (line.find("test_program=") == 0) {
@@ -193,18 +194,32 @@ vector<string> RunConfig::install(Device& device) {
     //wire into boot process.
     if (restart_needed == "true") {
         string sudo_user = GetOS::exec("echo $SUDO_USER");
-        ofstream myfile ("/home/" + sudo_user +"/.config/autostart");
-         if (myfile.is_open())
-         {
-           myfile << "/usr/share/applications/tuxconfig.desktop";
-         }
-         ofstream bashrc ("/home/" + sudo_user +"/.bashrc");
+        boost::trim(sudo_user);
+        ifstream infile;
+        infile.open("/usr/share/applications/tuxconfig.desktop");
+        string out_file = "/home/" + sudo_user + "/.config/autostart/tuxconfig.desktop";
+        ofstream outFile(out_file.c_str(),std::ios_base::out);
+        istream readFile();
+        string readout;
+
+
+        while(getline(inile,readout)){
+          if(readout == "/usr/bin/tuxconfig"){
+            outFile << "/usr/bin/tuxconfig recover";
+          }
+          else {
+            outFile << readout;
+          }
+        }
+
+        ofstream bashrc ;
+         bashrc.open("/home/" + sudo_user +"/.bashrc",std::ios_base::app);
           if (bashrc.is_open())
           {
-            myfile << "/usr/bin/tuxconfig recover";
+            bashrc << "/usr/bin/tuxconfig recover";
+
           }
 
-          myfile.close();
           bashrc.close();
     }
 

@@ -49,11 +49,14 @@ Device GetRemoteConfig::GetConfiguration(Device& configured_device) {
 		string vote_difference = root["vote_difference"].asString();
 		string owner_git_id = root["owner_git_id"].asString();
 		string commit_hash = root["commit_hash"].asString();
+        string module = root["module"].asString();
+
 		configured_device.setGitUrl(url);
 		configured_device.setSuccessCode(success_code);
 		configured_device.setVoteDifference(stoi(vote_difference));
 		configured_device.setCommit(commit_hash);
 		configured_device.setOwnerGitId(owner_git_id);
+        configured_device.setModulename(module);
 
 	} else {
 		configured_device.setGitUrl("null");

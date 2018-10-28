@@ -109,36 +109,38 @@ void GetOS::runEmail(string email)  {
 
 void GetOS::reset_reboot() {
         string sudo_user = GetOS::exec("echo $SUDO_USER");
-        string myfile = "/home/" + sudo_user +"/.config/autostart";
-        string erase_line = "/usr/share/applications/tuxconfig.desktop";
-        eraseFileLine(myfile,erase_line);
-         string bashrc_file =  "/home/" + sudo_user +"/.bashrc";
-         erase_line = "/usr/bin/tuxconfig recover";
-         eraseFileLine(bashrc_file,erase_line);
+        boost::trim(sudo_user);
+
+        string strReplace = "sudo /usr/bin/tuxconfig recover"; //String to search
+           string strNew = "";	//String To re
+           ifstream filein("/home/ + " + sudo_user + ".bashrc"); //File to read from
+           ofstream fileout("/tmp/.bashrc_tuxconfig"); //Temporary file
+           if(!filein || !fileout) //if both files are not available
+           {
+               cout << "Error opening files!" << endl;
+
+           }
+           string strTemp;
+           //bool found = false;
+        while(filein >> strTemp)//it will check line from test to strTemp string
+           {
+               if(strTemp == strReplace)//if your word found then replace
+               {
+                   strTemp = strNew;
+                   //found = true;
+               }
+               strTemp += "\n";
+               fileout << strTemp;//output everything to fileout(temp.txt)
+               //if(found) break;
+           }
+
+
+
+        string desktop_file ="/home/" + sudo_user + "/.config/autostart/tuxconfig.desktop";
+        remove(desktop_file.c_str());
+
 
 
 
 }
-
-void GetOS::eraseFileLine(std::string path, std::string eraseLine) {
-std::string line;
-std::ifstream fin;
-
-fin.open(path);
-std::ofstream temp; // contents of path must be copied to a temp file then renamed back to the path file
-temp.open("temp.txt");
-
-while (getline(fin, line)) {
-    if (line != eraseLine) // write all lines to temp other than the line marked fro erasing
-        temp << line << std::endl;
-}
-
-temp.close();
-fin.close();
-
-const char * p = path.c_str(); // required conversion for remove and rename functions
-remove(p);
-rename("temp.txt", p);}
-
-
 

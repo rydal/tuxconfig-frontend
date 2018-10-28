@@ -9,6 +9,8 @@ INCLUDEPATH += .\
 	/usr/include/qtermwidget5 \
 	/usr/include/qtermwidget5 \
 	/usr/include/boost
+CONFIG += c++11
+
 
 # Input
 HEADERS += CheckConnection.h \

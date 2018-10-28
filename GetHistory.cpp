@@ -29,11 +29,12 @@ map<string, Device> GetHistory::getInstalledDevices() {
 }
 		Device new_device;
 
-        if (tempstr[6].find("works") != string::npos) {
+        if (tempstr[7].find("works") != string::npos) {
             boost::trim(tempstr[0]);
             boost::trim(tempstr[1]);
             new_device = Device(tempstr[0], tempstr[1], true, false, tempstr[4],tempstr[6], tempstr[5]);
             new_device.setDescription(tempstr[5]);
+            new_device.setModulename(tempstr[6]);
             std::map<string,Device>::iterator it = device_map.find(tempstr[0]);
 
             if (it != device_map.end())
@@ -42,15 +43,17 @@ map<string, Device> GetHistory::getInstalledDevices() {
             device_map.insert(
                     std::pair<string, Device>(tempstr[0], new_device));
             }
-            cout<<"added"<<endl;
+
 
         }
-        else if (tempstr[6].find("failed") != string::npos
+        else if (tempstr[7].find("failed") != string::npos
                 ) {
             boost::trim(tempstr[0]);
             boost::trim(tempstr[1]);
             new_device = Device(tempstr[0], tempstr[1], false, false, tempstr[4],tempstr[6], tempstr[5]);
             std::map<string,Device>::iterator it = device_map.find(tempstr[0]);
+            new_device.setDescription(tempstr[5]);
+            new_device.setModulename(tempstr[6]);
             if (it != device_map.end())
                 it->second = new_device;
             else {
@@ -60,13 +63,14 @@ map<string, Device> GetHistory::getInstalledDevices() {
         }
 
 
-        else if (tempstr[6].find("module-installed") != string::npos
+        else if (tempstr[7].find("module-installed") != string::npos
                 ) {
 			boost::trim(tempstr[0]);
 			boost::trim(tempstr[1]);
             new_device = Device(tempstr[0], tempstr[1], false, true, tempstr[4],tempstr[6], tempstr[5]);
             std::map<string,Device>::iterator it = device_map.find(tempstr[0]);
-
+            new_device.setDescription(tempstr[5]);
+            new_device.setModulename(tempstr[6]);
             if (it != device_map.end())
                 it->second = new_device;
             else {
@@ -82,6 +86,9 @@ map<string, Device> GetHistory::getInstalledDevices() {
                 boost::trim(tempstr[1]);
                 new_device = Device(tempstr[0], tempstr[1], false, true, tempstr[4],tempstr[6], tempstr[5]);
                 new_device.setAptInstalled(true);
+                new_device.setDescription(tempstr[5]);
+                new_device.setModulename(tempstr[6]);
+
                 std::map<string,Device>::iterator it = device_map.find(tempstr[0]);
                 if (it != device_map.end())
                     it->second = new_device;
