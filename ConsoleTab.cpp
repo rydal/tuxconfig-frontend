@@ -103,6 +103,9 @@ void ConsoleTab::showButtons(vector<string> details, bool success) {
     }
 } else {
         success_label->setText("Command failed");
+        fails_button->setVisible(false);
+        Feedback(current_device,false);
+
     }
 
     emit refreshRestore();

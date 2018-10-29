@@ -1,8 +1,9 @@
-change get:os form ubuntu.
+change get:os from ubuntu.
+tuconfig_cmd to copy
+update restoretab
+debian package
 
-desktop file.
 
-..reboot?
 
 dependencies:
 build-essential

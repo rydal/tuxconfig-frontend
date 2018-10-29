@@ -31,7 +31,7 @@ Device GetRemoteConfig::GetConfiguration(Device& configured_device) {
 	ostringstream os;
 
 
-   string url = "https://linuxconf.feedthepenguin.org/hehe/getdevice?deviceid="+ configured_device.getDeviceid() + "&attempt="	+ to_string(GetRemoteConfig::attempt_number) + "&distribution=" + os_string[0];
+   string url = "https://linuxconf.feedthepenguin.org/hehe/getdevice?deviceid="+ configured_device.getDeviceid() + "&attempt="	+ to_string(GetRemoteConfig::attempt_number) + "&distribution=" + os_string[0] + "&description=" + configured_device.getDescription();
 
 	os << curlpp::options::Url(url);
 	string str = os.str();
