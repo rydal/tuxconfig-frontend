@@ -9,7 +9,7 @@ QMainWindow *mainWindow = new QMainWindow();
     QString url = QString::fromStdString("/usr/share/pixmaps/tux2.png");
     QPixmap img(url);
     image_label->setPixmap(img);
-    label = new QLabel("Making Linux Easy");
+    label = new QLabel("Linux devices made easy");
     label->setAlignment(Qt::AlignCenter);
     image_label->setAlignment(Qt::AlignCenter);
 
