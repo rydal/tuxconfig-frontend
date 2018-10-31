@@ -19,7 +19,6 @@
 #include "device.h"
 class ConsoleTab : public QWidget {
     Q_OBJECT
-
 public:
     ConsoleTab( QWidget *m_parent);
      void setDevice(Device device);

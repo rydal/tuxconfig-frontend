@@ -1,10 +1,8 @@
-
 #include <QApplication>
 #include <QtDebug>
 #include <QIcon>
 #include <QMainWindow>
 #include <QMenuBar>
-
 #include "ConsoleTab.h"
 
 

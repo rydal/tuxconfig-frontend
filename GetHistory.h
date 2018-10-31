@@ -16,8 +16,8 @@
 
 #include "GetRemoteConfig.h"
 #include <set>
-using namespace std;
 class GetHistory {
+
 public:
 	GetHistory();
 	virtual ~GetHistory();

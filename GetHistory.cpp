@@ -29,53 +29,34 @@ map<string, Device> GetHistory::getInstalledDevices() {
 }
 		Device new_device;
 
-        if (tempstr[7].find("works") != string::npos) {
-            boost::trim(tempstr[0]);
-            boost::trim(tempstr[1]);
-            new_device = Device(tempstr[0], tempstr[1], true, false, tempstr[4],tempstr[6], tempstr[5]);
-            new_device.setDescription(tempstr[5]);
-            new_device.setModulename(tempstr[6]);
-            new_device.setOwnerGitId(tempstr[3]);
-            std::map<string,Device>::iterator it = device_map.find(tempstr[0]);
-
-            if (it != device_map.end())
-                it->second = new_device;
-            else {
-            device_map.insert(
-                    std::pair<string, Device>(tempstr[0], new_device));
-            }
-
-
-        }
-        else if (tempstr[7].find("failed") != string::npos
+        if (tempstr[6].find("apt-installed") != string::npos
                 ) {
             boost::trim(tempstr[0]);
             boost::trim(tempstr[1]);
-            new_device = Device(tempstr[0], tempstr[1], false, false, tempstr[4],tempstr[6], tempstr[5]);
+            new_device = Device(tempstr[0], tempstr[1], false, true, tempstr[4],tempstr[6]);
+            new_device.setAptInstalled(true);
+        new_device.setModulename(tempstr[5]);
+        new_device.setOwnerGitId(tempstr[3]);
             std::map<string,Device>::iterator it = device_map.find(tempstr[0]);
-            new_device.setDescription(tempstr[5]);
-            new_device.setModulename(tempstr[6]);
-            new_device.setOwnerGitId(tempstr[3]);
             if (it != device_map.end())
                 it->second = new_device;
             else {
             device_map.insert(
                     std::pair<string, Device>(tempstr[0], new_device));
             }
+
         }
-
-
-        else if (tempstr[7].find("module-installed") != string::npos
+        else if (tempstr[6].find("module-installed") != string::npos
                 ) {
-			boost::trim(tempstr[0]);
-			boost::trim(tempstr[1]);
-            new_device = Device(tempstr[0], tempstr[1], false, true, tempstr[4],tempstr[6], tempstr[5]);
+            boost::trim(tempstr[0]);
+            boost::trim(tempstr[1]);
+            new_device = Device(tempstr[0], tempstr[1], false, true, tempstr[4],tempstr[6]);
             std::map<string,Device>::iterator it = device_map.find(tempstr[0]);
-            new_device.setDescription(tempstr[5]);
-            new_device.setModulename(tempstr[6]);
+            new_device.setModulename(tempstr[5]);
             new_device.setOwnerGitId(tempstr[3]);
-            if (it != device_map.end())
-                it->second = new_device;
+            if (it != device_map.end()) {
+                it->second.setStatus("failed");
+            }
             else {
             device_map.insert(
                     std::pair<string, Device>(tempstr[0], new_device));
@@ -83,26 +64,47 @@ map<string, Device> GetHistory::getInstalledDevices() {
 
         }
 
-            else if (tempstr[7].find("apt-installed") != string::npos
-                    ) {
-                boost::trim(tempstr[0]);
-                boost::trim(tempstr[1]);
-                new_device = Device(tempstr[0], tempstr[1], false, true, tempstr[4],tempstr[6], tempstr[5]);
-                new_device.setAptInstalled(true);
-                new_device.setDescription(tempstr[5]);
-                new_device.setModulename(tempstr[6]);
-                new_device.setOwnerGitId(tempstr[3]);
-                std::map<string,Device>::iterator it = device_map.find(tempstr[0]);
-                if (it != device_map.end())
-                    it->second = new_device;
-                else {
-                device_map.insert(
-                        std::pair<string, Device>(tempstr[0], new_device));
-                }
+        else if (tempstr[6].find("failed") != string::npos
+                ) {
+            boost::trim(tempstr[0]);
+            boost::trim(tempstr[1]);
+            new_device = Device(tempstr[0], tempstr[1], false, false, tempstr[4],tempstr[6]);
+            std::map<string,Device>::iterator it = device_map.find(tempstr[0]);
+            new_device.setModulename(tempstr[5]);
+            new_device.setOwnerGitId(tempstr[3]);
+            if (it != device_map.end()) {
 
+            } else {
+            device_map.insert(
+                    std::pair<string, Device>(tempstr[0], new_device));
             }
+        }  else       if (tempstr[6].find("works") != string::npos) {
+            boost::trim(tempstr[0]);
+            boost::trim(tempstr[1]);
+            new_device = Device(tempstr[0], tempstr[1], true, true, tempstr[4],tempstr[6]);
+            new_device.setModulename(tempstr[5]);
+            new_device.setOwnerGitId(tempstr[3]);
+            std::map<string,Device>::iterator it = device_map.find(tempstr[0]);
+
+            if (it != device_map.end()) {
+                it->second.setStatus("works");
+            it->second.setIsInstalled(true);
+            it->second.setAttemptedInstall(false);
+        } else {
+            device_map.insert(
+                    std::pair<string, Device>(tempstr[0], new_device));
+            }
+
+
+        }
+
+
+
+
+
 
     }
+
 
 	return device_map;
 }
