@@ -17,7 +17,7 @@
     console->actions();
     console->setColorScheme("GreenOnBlack");
 
-   works_button = new QPushButton("Yes devie works", this);
+   works_button = new QPushButton("Yes device works", this);
    fails_button = new QPushButton("No device fails", this);
     success_label = new QLabel(" ");
     works_button->setObjectName("works_button");
