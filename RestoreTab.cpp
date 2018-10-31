@@ -10,17 +10,17 @@
 RestoreTab::RestoreTab( QWidget *parent)
 
 {
+ mainLayout = new QVBoxLayout;
 
-update();
+update("");
 
 }
 
-void RestoreTab::update() {
+void RestoreTab::update(string message) {
     // TODO Auto-generated constructor stub
     std::map<string,Device> hashmap = GetHistory::getInstalledDevices();
 
          QPushButton *button = new QPushButton(QString::fromStdString("close"));
-              QVBoxLayout *mainLayout = new QVBoxLayout;
 
                 for (std::map<string,Device>::iterator it=hashmap.begin(); it!=hashmap.end(); ++it) {
                     QHBoxLayout* m_Grid = new QHBoxLayout;
@@ -60,7 +60,12 @@ void RestoreTab::update() {
 
                             mainLayout->addLayout(m_Grid);
                 }
+                QPushButton* updateButton = new QPushButton(QString::fromStdString("Rescan restore options"));
+                mainLayout->addWidget(updateButton);
+                connect(updateButton, &QPushButton::clicked, [=] { clearLayout(mainLayout,true) ;update("");});
+
                 setLayout(mainLayout);
+
                  // Set layout in QWidget
 
 }
@@ -70,7 +75,7 @@ void RestoreTab::RestoreButton(Device device) {
 vector<string> parameters = RunConfig::restore(device);
 
     emit    sendCommand(device, "restore", parameters );
-    emit setTab(2);
+    emit setTab(3);
 }
 
 void RestoreTab::SuccessButton(Device device) {
@@ -82,6 +87,22 @@ void RestoreTab::SuccessButton(Device device) {
 void RestoreTab::FailButton(Device device) {
     Feedback(device,false);
     GetOS::reset_reboot();
+
 }
 
+
+void RestoreTab::clearLayout(QLayout* layout, bool deleteWidgets)
+{
+    while (QLayoutItem* item = layout->takeAt(0))
+    {
+        if (deleteWidgets)
+        {
+            if (QWidget* widget = item->widget())
+                widget->deleteLater();
+        }
+        if (QLayout* childLayout = item->layout())
+            clearLayout(childLayout, deleteWidgets);
+        delete item;
+    }
+}
 

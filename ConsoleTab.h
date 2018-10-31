@@ -39,7 +39,7 @@ void RebootMachine();
 signals:
      void setTab(int);
      void updateScreen();
-     void refreshRestore();
+     void refreshRestore(string);
      void sendReboot();
 
 public slots:

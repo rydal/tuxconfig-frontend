@@ -1,6 +1,3 @@
-introtab.cpp
-introtab.h
-todo-list
 CheckConnection.cpp
 CheckConnection.h
 ConsoleTab.cpp
@@ -36,3 +33,11 @@ RunConfigTab.h
 compare.h
 device.cpp
 device.h
+introtab.cpp
+introtab.h
+moc_ConsoleTab.cpp
+moc_ContributorTab2.cpp
+moc_NotebookGUI.cpp
+moc_RestoreTab.cpp
+moc_RunConfigTab.cpp
+moc_introtab.cpp

@@ -38,9 +38,12 @@ vector<string> RunConfig::restore(Device& device) {
         runfile += "kill -SIGUSR2 " + to_string(::getpid()) + " \n";
         runfile += "} \n";
         runfile += "tar -C / -xvf " +  restorefile + "\n";
-        if (device.getAptInstalled() == true) {
-            runfile +=" apt-undo undo \n";
+        if (device.getAptInstalled()) {
+            string apt_undo_files = "find /root/.apt_undo/  -printf \"%T@  %p\n\" | sort -n | head -1";
+
+            runfile +="bash " + apt_undo_files + "\n";
         }
+
         string restore_run_file = "/usr/src/tuxconfig-" + device.getDeviceid() + "-restore";
             std::ofstream out(restore_run_file);
             out << runfile;
@@ -68,7 +71,7 @@ vector<string> RunConfig::uninstall(Device& device) {
     runfile += "tar -cvpf /var/lib/tuxconfig/" + device.getDeviceid()
             + "-uninstall.tar /lib /etc/modules*  1> /dev/null\n";
 
-    runfile += "modprobe -r " + device.getModulename() + "\n";
+    runfile += "rmmod " + device.getModulename() + " || true \n";
     runfile += "echo blacklist " + device.getModulename()
             + " >> /etc/modprobe.d/blacklist.conf \n";
     runfile += "echo uninstalled " + device.getModulename()
@@ -91,7 +94,7 @@ vector<string> RunConfig::install(Device& device) {
     runfile += "set -e \n";
     runfile += "exec 2> >(tee -i /var/lib/tuxconfig/" + device.getDeviceid() + "-install.log) \n";
     runfile += "function cleanup() { \n";
-    runfile +=  "echo \"" + device.getDeviceid() + "," + device.getDescription() + ","	+ to_string(device.getVoteDifference()) + "," + device.getCommit() + "," + device.getSuccessCode() + "," + device.getDevicename() +  +  "," + device.getModulename() + ", failed \" >> /var/lib/tuxconfig/history  \n";
+    runfile +=  "echo \"" + device.getDeviceid() + "," + device.getDescription() + ","	+ to_string(device.getVoteDifference()) + "," + device.getOwnerGitId() + "," + device.getSuccessCode() + "," + device.getDevicename() +  +  "," + device.getModulename() + ", failed \" >> /var/lib/tuxconfig/history  \n";
 
     runfile += "kill -SIGUSR2 " + to_string(::getpid()) + " \n";
     runfile += "} \n";
@@ -124,7 +127,7 @@ vector<string> RunConfig::install(Device& device) {
 //install dependencies;
     runfile += " if [ !  -z \"$dependencies\" ] ; then \n";
     runfile += "apt-undo install $dependencies \n";
-    runfile +=  "echo \"" + device.getDeviceid() + "," + device.getDescription() + ","	+ to_string(device.getVoteDifference()) + "," + device.getCommit() + "," + device.getSuccessCode() + "," + device.getDevicename() +  "," + device.getModulename() + ", apt-installed \" >> /var/lib/tuxconfig/history  \n";
+    runfile +=  "echo \"" + device.getDeviceid() + "," + device.getDescription() + ","	+ to_string(device.getVoteDifference()) + "," + device.getOwnerGitId() + "," + device.getSuccessCode() + "," + device.getDevicename() +  "," + device.getModulename() + ", apt-installed \" >> /var/lib/tuxconfig/history  \n";
 
     runfile += "fi \n";
     runfile += "echo \"installed dependencies\" \n";
@@ -140,7 +143,7 @@ vector<string> RunConfig::install(Device& device) {
 //Insert module
     runfile += "modprobe -v $tuxconfig_module \n";
     runfile += "echo \"inserted module into kernel\" \n";
-    runfile +=  "echo \"" + device.getDeviceid() + "," + device.getDescription() + ","	+ to_string(device.getVoteDifference()) + "," + device.getCommit() + "," + device.getSuccessCode() + "," + device.getDevicename() + +  "," + device.getModulename() +  ", module-installed \" >> /var/lib/tuxconfig/history  \n";
+    runfile +=  "echo \"" + device.getDeviceid() + "," + device.getDescription() + ","	+ to_string(device.getVoteDifference()) + "," + device.getOwnerGitId() + "," + device.getSuccessCode() + "," + device.getDevicename() + +  "," + device.getModulename() +  ", module-installed \" >> /var/lib/tuxconfig/history  \n";
     runfile += "fi \n";
     runfile += "kill -SIGUSR1 " + to_string(::getpid()) + " \n";
 
@@ -193,11 +196,11 @@ vector<string> RunConfig::install(Device& device) {
     }
     //wire into boot process.
     if (restart_needed == "true") {
-        string sudo_user = GetOS::exec("echo $SUDO_USER");
-        boost::trim(sudo_user);
+        string PKEXEC_UID = GetOS::exec("echo $PKEXEC_UID");
+        boost::trim(PKEXEC_UID);
         ifstream infile;
         infile.open("/usr/share/applications/tuxconfig.desktop");
-        string out_file = "/home/" + sudo_user + "/.config/autostart/tuxconfig.desktop";
+        string out_file = "/home/" + PKEXEC_UID + "/.config/autostart/tuxconfig.desktop";
         ofstream outFile(out_file.c_str(),std::ios_base::out);
         istream readFile();
         string readout;
@@ -213,7 +216,7 @@ vector<string> RunConfig::install(Device& device) {
         }
 
         ofstream bashrc ;
-         bashrc.open("/home/" + sudo_user +"/.bashrc",std::ios_base::app);
+         bashrc.open("/home/" + PKEXEC_UID +"/.bashrc",std::ios_base::app);
           if (bashrc.is_open())
           {
             bashrc << "/usr/bin/tuxconfig recover";

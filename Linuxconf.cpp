@@ -93,7 +93,6 @@ int main(int argc, char *argv[]) {
 
     QSplashScreen *splash = new QSplashScreen;
     splash->setPixmap(QPixmap("/usr/share/pixmaps/tux.png"));
-    splash->showMessage("Making Linux Easy");
 
 
 

@@ -80,10 +80,10 @@
 
  }
 void ConsoleTab::showButtons(vector<string> details, bool success) {
-    fails_button->setVisible(true);
 
     if (success) {
         works_button->setVisible(true);
+        fails_button->setVisible(true);
 
     if (details.size() >= 3) {
     success_label->setText(details.at(2).c_str());
@@ -103,9 +103,10 @@ void ConsoleTab::showButtons(vector<string> details, bool success) {
     }
 } else {
         success_label->setText("Command failed");
+        emit refreshRestore("Install for device " + current_device.getDevicename() + " , " + current_device.getDescription() +" failed.");
+
     }
 
-    emit refreshRestore();
 
 
 }

@@ -19,7 +19,7 @@
     RunTab *runTab = new RunTab(tabWidget);
     QScrollArea* contactScrollArea = new QScrollArea();
     contactScrollArea->setWidget(runTab);
-    contactScrollArea->setMinimumSize( QSize( 1024, 768) );
+    contactScrollArea->setMinimumSize( QSize( 600, 400) );
 
     tabWidget->addTab(contactScrollArea,"General");
 
@@ -47,13 +47,15 @@
                 connect(intro_tab, SIGNAL(setTab(int)), this, SLOT(changeTab(int)));
                 connect(runTab, SIGNAL(sendCommand(Device, string, vector<string>)), this, SLOT(runCommand(Device, string, vector<string>)));
                 connect(console_tab, SIGNAL(updateScreen()),  this, SLOT(updateContributor()));
+                connect(restore_tab, SIGNAL(updateScreen()),  this, SLOT(updateContributor()));
+
                 connect(this, SIGNAL(updatedContributor(Device)),  contributor_tab, SLOT(updateScreen(Device)));
 
                 connect(this, SIGNAL(showButtons(vector<string>, bool)),console_tab,SLOT(showButtons(vector<string>,bool)));
                 connect(this, SIGNAL(sendToConsole(Device, string, vector<string>)),console_tab,SLOT(sendToConsole(Device, string, vector<string>)));
 
                 connect(restore_tab, SIGNAL(sendCommand(Device, string, vector<string>)),console_tab,SLOT(sendToConsole(Device, string, vector<string>)));
-                connect(console_tab, SIGNAL(refreshRestore()),  restore_tab, SLOT(update()));
+                connect(console_tab, SIGNAL(refreshRestore(string)),  restore_tab, SLOT(update(string)));
                 connect(console_tab, SIGNAL(sendReboot()),  contributor_tab, SLOT(receiveReboot()));
 
     }

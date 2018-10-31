@@ -26,12 +26,17 @@ public:
     void RestoreButton(Device device);
     void SuccessButton(Device device);
     void FailButton(Device device);
-    void update();
+     QVBoxLayout *mainLayout;
+     void clearLayout(QLayout* layout, bool deleteWidgets);
+
 
 signals:
     void sendCommand(Device, string, vector<string>);
+    void updateScreen(void);
     void setTab(int);
 
+public slots:
+    void update(string message);
 };
 
 #endif /* RESTORETAB_H_ */

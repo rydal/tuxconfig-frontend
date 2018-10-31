@@ -54,12 +54,12 @@
             m_Grid->addWidget(reinstall_button,0,3,1,1);
             }
 
-            if (iterated_device.isUpgradeable() == true) {
+            if (iterated_device.isIsUpgradeable()== true) {
                 m_Grid->addWidget(upgrade_button,0,4,1,1);
 
             }
             if (iterated_device.isIsInstalled() == true) {
-                m_Grid->addWidget(uninstall_button,0,4,1,1);
+                m_Grid->addWidget(uninstall_button,0,5,1,1);
             }
 
 

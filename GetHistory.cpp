@@ -35,6 +35,7 @@ map<string, Device> GetHistory::getInstalledDevices() {
             new_device = Device(tempstr[0], tempstr[1], true, false, tempstr[4],tempstr[6], tempstr[5]);
             new_device.setDescription(tempstr[5]);
             new_device.setModulename(tempstr[6]);
+            new_device.setOwnerGitId(tempstr[3]);
             std::map<string,Device>::iterator it = device_map.find(tempstr[0]);
 
             if (it != device_map.end())
@@ -54,6 +55,7 @@ map<string, Device> GetHistory::getInstalledDevices() {
             std::map<string,Device>::iterator it = device_map.find(tempstr[0]);
             new_device.setDescription(tempstr[5]);
             new_device.setModulename(tempstr[6]);
+            new_device.setOwnerGitId(tempstr[3]);
             if (it != device_map.end())
                 it->second = new_device;
             else {
@@ -71,6 +73,7 @@ map<string, Device> GetHistory::getInstalledDevices() {
             std::map<string,Device>::iterator it = device_map.find(tempstr[0]);
             new_device.setDescription(tempstr[5]);
             new_device.setModulename(tempstr[6]);
+            new_device.setOwnerGitId(tempstr[3]);
             if (it != device_map.end())
                 it->second = new_device;
             else {
@@ -80,7 +83,7 @@ map<string, Device> GetHistory::getInstalledDevices() {
 
         }
 
-            else if (tempstr[6].find("apt-installed") != string::npos
+            else if (tempstr[7].find("apt-installed") != string::npos
                     ) {
                 boost::trim(tempstr[0]);
                 boost::trim(tempstr[1]);
@@ -88,7 +91,7 @@ map<string, Device> GetHistory::getInstalledDevices() {
                 new_device.setAptInstalled(true);
                 new_device.setDescription(tempstr[5]);
                 new_device.setModulename(tempstr[6]);
-
+                new_device.setOwnerGitId(tempstr[3]);
                 std::map<string,Device>::iterator it = device_map.find(tempstr[0]);
                 if (it != device_map.end())
                     it->second = new_device;
