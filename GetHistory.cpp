@@ -37,6 +37,7 @@ map<string, Device> GetHistory::getInstalledDevices() {
             new_device.setAptInstalled(true);
         new_device.setModulename(tempstr[5]);
         new_device.setOwnerGitId(tempstr[3]);
+        new_device.setCommit(tempstr[7]);
             std::map<string,Device>::iterator it = device_map.find(tempstr[0]);
             if (it != device_map.end())
                 it->second = new_device;
@@ -54,6 +55,7 @@ map<string, Device> GetHistory::getInstalledDevices() {
             std::map<string,Device>::iterator it = device_map.find(tempstr[0]);
             new_device.setModulename(tempstr[5]);
             new_device.setOwnerGitId(tempstr[3]);
+            new_device.setCommit(tempstr[7]);
             if (it != device_map.end()) {
                 it->second.setStatus("failed");
             }
@@ -72,6 +74,7 @@ map<string, Device> GetHistory::getInstalledDevices() {
             std::map<string,Device>::iterator it = device_map.find(tempstr[0]);
             new_device.setModulename(tempstr[5]);
             new_device.setOwnerGitId(tempstr[3]);
+            new_device.setCommit(tempstr[7]);
             if (it != device_map.end()) {
 
             } else {
@@ -84,6 +87,7 @@ map<string, Device> GetHistory::getInstalledDevices() {
             new_device = Device(tempstr[0], tempstr[1], true, true, tempstr[4],tempstr[6]);
             new_device.setModulename(tempstr[5]);
             new_device.setOwnerGitId(tempstr[3]);
+            new_device.setCommit(tempstr[7]);
             std::map<string,Device>::iterator it = device_map.find(tempstr[0]);
 
             if (it != device_map.end()) {

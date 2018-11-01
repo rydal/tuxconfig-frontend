@@ -19,8 +19,8 @@
     RunTab *runTab = new RunTab(tabWidget);
     QScrollArea* contactScrollArea = new QScrollArea();
     contactScrollArea->setWidget(runTab);
-    contactScrollArea->setMinimumSize( QSize( 600, 400) );
-
+    contactScrollArea->setMinimumSize( QSize( 640, 480) );
+    contactScrollArea->setWidgetResizable(true);
     tabWidget->addTab(contactScrollArea,"General");
 
     RestoreTab *restore_tab = new RestoreTab(tabWidget);

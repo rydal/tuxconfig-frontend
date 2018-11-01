@@ -20,6 +20,7 @@ RestoreGUI::~RestoreGUI() {
 
 bool RestoreGUI::CommandLineInstall(std::map <string,Device> device_map) {
     string response;
+    string device_commit;
     bool apt_installed;
 	cout<<"Don't panic \n";
 	cout<<"Everything configured ok? \n";
@@ -49,7 +50,7 @@ bool RestoreGUI::CommandLineInstall(std::map <string,Device> device_map) {
         if (it->second.getAptInstalled()) {
             apt_installed = true;
         }
-
+        device_commit = it->second.getCommit();
 	    std::cout << it->first
 	              << ":"
 	              << it->second.getDescription()   // string's value
@@ -64,12 +65,12 @@ bool RestoreGUI::CommandLineInstall(std::map <string,Device> device_map) {
 
 	} while  (device_map.find(response) == device_map.end() );
 
-        string found_files = "find /var/lib/tuxconfig/ -name \"" + response + "*.tar\" -printf \"%T@  %p\n\" | sort -n | head -1 | sed 's/^ *//'| cut -d\" \" -f2- ";
+        string found_files = "find /var/lib/tuxconfig/ -name \"" + response + "-" + device_commit + "*.tar\" -printf \"%T@  %p\n\" | sort -n | head -1 | sed 's/^ *//'| cut -d\" \" -f2- ";
         string restorefile = GetOS::exec(found_files.c_str());
  string runfile = "";
 runfile += "#! /bin/bash \n";
 runfile += "set -e \n";
-runfile += "exec 2> /var/lib/tuxconfig/" + response + "-restore.log \n";
+runfile += "exec 2> /var/lib/tuxconfig/" + response + "-" + device_commit + "-restore.log \n";
 runfile += "tar -C / -xvf " +  restorefile + "\n";
 if (apt_installed) {
     string apt_undo_file= "/root/.aptundo/lastundo";

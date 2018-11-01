@@ -93,7 +93,7 @@ vector<string> RunConfig::install(Device& device) {
     runfile += "set -e \n";
     runfile += "exec 2> >(tee -i /var/lib/tuxconfig/" + device.getDeviceid() + "-install.log) \n";
     runfile += "function cleanup() { \n";
-    runfile +=  "echo \"" + device.getDeviceid() + "," + device.getDescription() + ","	+ to_string(device.getVoteDifference()) + "," + device.getOwnerGitId() + "," + device.getSuccessCode() + "," + device.getDevicename() +  +  "," + device.getModulename() + ", failed \" >> /var/lib/tuxconfig/history  \n";
+    runfile +=  "echo \"" + device.getDeviceid() + "," + device.getDescription() + ","	+ to_string(device.getVoteDifference()) + "," + device.getOwnerGitId() + "," + device.getSuccessCode() + "," + device.getDevicename() +  +  "," + device.getModulename() + ", failed," + device.getCommit() + "\" >> /var/lib/tuxconfig/history  \n";
 
     runfile += "kill -SIGUSR2 " + to_string(::getpid()) + " \n";
     runfile += "} \n";
@@ -105,7 +105,7 @@ vector<string> RunConfig::install(Device& device) {
     boost::replace_all(filedir, "https://github.com/", "");
     boost::replace_all(filedir, ".git", "");
     runfile += "echo Backing up configuration directories \n";
-    runfile += "tar -cvpf /var/lib/tuxconfig/" + device.getDeviceid()
+    runfile += "tar -cvpf /var/lib/tuxconfig/" + device.getDeviceid() +  "-" + device.getCommit()
             + "-install.tar /lib /etc/modules* 1> /dev/null  \n";
 
     runfile += "URL=" + device.getGitUrl() + " \n";
@@ -126,7 +126,7 @@ vector<string> RunConfig::install(Device& device) {
 //install dependencies;
     runfile += " if [ !  -z \"$dependencies\" ] ; then \n";
     runfile += "apt-undo install $dependencies \n";
-    runfile +=  "echo \"" + device.getDeviceid() + "," + device.getDescription() + ","	+ to_string(device.getVoteDifference()) + "," + device.getOwnerGitId() + "," + device.getSuccessCode()  + "," + device.getModulename() + ",apt-installed \" >> /var/lib/tuxconfig/history  \n";
+    runfile +=  "echo \"" + device.getDeviceid() + "," + device.getDescription() + ","	+ to_string(device.getVoteDifference()) + "," + device.getOwnerGitId() + "," + device.getSuccessCode()  + "," + device.getModulename() + ",apt-installed," + device.getCommit() + " \" >> /var/lib/tuxconfig/history  \n";
 
     runfile += "fi \n";
     runfile += "echo \"installed dependencies\" \n";
@@ -142,7 +142,7 @@ vector<string> RunConfig::install(Device& device) {
 //Insert module
     runfile += "modprobe -v $tuxconfig_module \n";
     runfile += "echo \"inserted module into kernel\" \n";
-    runfile +=  "echo \"" + device.getDeviceid() + "," + device.getDescription() + ","	+ to_string(device.getVoteDifference()) + "," + device.getOwnerGitId() + "," + device.getSuccessCode() + "," + device.getModulename() +  ", module-installed \" >> /var/lib/tuxconfig/history  \n";
+    runfile +=  "echo \"" + device.getDeviceid() + "," + device.getDescription() + ","	+ to_string(device.getVoteDifference()) + "," + device.getOwnerGitId() + "," + device.getSuccessCode() + "," + device.getModulename() +  ", module-installed,"  + device.getCommit() + " \"  >> /var/lib/tuxconfig/history  \n";
     runfile += "fi \n";
     runfile += "kill -SIGUSR1 " + to_string(::getpid()) + " \n";
 
@@ -273,6 +273,7 @@ bool RunConfig::restoreCmd(Device& device) {
             "tar -xvf /var/lib/tuxconfig/"
                     + numbered_hashmap.find(int_reply)->second.getDeviceid()
                     + "-"
+                    + numbered_hashmap.find(int_reply)->second.getCommit()
                     + numbered_hashmap.find(int_reply)->second.getStatus();
     int result = system(rollback_command.c_str());
     if (result == 0) {

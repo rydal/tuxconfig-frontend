@@ -142,7 +142,7 @@ Feedback(current_device,false);
 GetOS::reset_reboot();
 works_button->setVisible(false);
 fails_button->setVisible(false);
-
+emit setTab(2);
 }
 
 void ConsoleTab::sendToConsole(Device device,string method, vector<string> parameters) {
