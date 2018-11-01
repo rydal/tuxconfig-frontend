@@ -128,7 +128,7 @@ if (install_method == "install") {
 
 
 void ConsoleTab::works_result() {
-    emit setTab(3);
+    emit setTab(4);
     emit updateScreen();
     Feedback(current_device,true);
     GetOS::reset_reboot();
