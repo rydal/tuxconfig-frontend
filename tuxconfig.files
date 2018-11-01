@@ -22,8 +22,8 @@ NotebookGUI.cpp
 NotebookGUI.h
 QuestionBox.cpp
 QuestionBox.h
-RestoreGUI.cpp
-RestoreGUI.h
+RestoreCmd.cpp
+RestoreCmd.h
 RestoreTab.cpp
 RestoreTab.h
 RunConfig.cpp
@@ -33,10 +33,12 @@ RunConfigTab.h
 compare.h
 device.cpp
 device.h
-enums.cpp
-enums.h
+introtab.cpp
+introtab.h
 moc_ConsoleTab.cpp
 moc_ContributorTab2.cpp
 moc_NotebookGUI.cpp
 moc_RestoreTab.cpp
 moc_RunConfigTab.cpp
+moc_introtab.cpp
+moc_predefs.h
