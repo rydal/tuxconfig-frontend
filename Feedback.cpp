@@ -28,21 +28,20 @@ Feedback::Feedback(Device& device, bool successful) {
         url += "&git_url=" + device.getGitUrl();
         url += "&device_id=" + device.getDeviceid();
 
-
+        if (successful == false) {
 		os << curlpp::options::Url(url);
 			 result_string =    os.str();
 			 // Let's parse it
 
-             std::istringstream myStream("/var/lib/tuxconfig/"  + device.getDeviceid() + "-install.log");
+             std::istringstream myStream("/var/lib/tuxconfig/"  + device.getDeviceid() + "-" + device.getCommit() + "-install.log");
              int size = myStream.str().size();
-
-             if (successful == false) {
 
               string curl_command = "/usr/bin/curl -X POST \"https://linuxconf.feedthepenguin.org/hehe/geterrorlog?code=" + device.getSuccessCode() + "&git_url=" + device.getGitUrl() + "&device_id=" + device.getDeviceid() + "\" -F 'data=@/var/lib/tuxconfig/" + device.getDeviceid() + "-install.log";
               system (curl_command.c_str());
+             }
 }
 
-}
+
 
 
 Feedback::~Feedback() {

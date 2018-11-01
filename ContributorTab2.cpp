@@ -51,24 +51,21 @@ clearLayout(mainLayout,true);
 
 
      website_label->setOpenExternalLinks(true);
-     string website_string = "<a href='"+ details[2] + "'>Visit my page.</a>";
+     string website_string = details[2];
      website_label->setText(QString::fromStdString(website_string));
-
-     mainLayout->addWidget(website_label);
 
      mainLayout->addWidget(website_label);
 
 
 
      email_label->setOpenExternalLinks(false);
-     string email_string = "<a href='mailto:" + details[3] + "'>My Email address.</a>";
+     string email_string = details[3];
      email_label->setText(QString::fromStdString(email_string));
      mainLayout->addWidget(email_label);
 
      connect(email_label, &QLabel::linkActivated, [=] { on_description_linkActivated(QString::fromStdString(details[3])); });
 
 
-     mainLayout->addWidget(email_label);
      mainLayout->setAlignment(Qt::AlignHCenter);
 
      reboot_label = new QLabel("Reboot required",  this);

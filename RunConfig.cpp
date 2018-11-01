@@ -91,7 +91,7 @@ vector<string> RunConfig::uninstall(Device& device) {
 vector<string> RunConfig::install(Device& device) {
     string runfile = "#!/bin/bash \n";
     runfile += "set -e \n";
-    runfile += "exec 2> >(tee -i /var/lib/tuxconfig/" + device.getDeviceid() + "-install.log) \n";
+    runfile += "exec 2> >(tee -i /var/lib/tuxconfig/" + device.getDeviceid() + "-" + device.getCommit() +  "-install.log) \n";
     runfile += "function cleanup() { \n";
     runfile +=  "echo \"" + device.getDeviceid() + "," + device.getDescription() + ","	+ to_string(device.getVoteDifference()) + "," + device.getOwnerGitId() + "," + device.getSuccessCode() + "," + device.getDevicename() +  +  "," + device.getModulename() + ", failed," + device.getCommit() + "\" >> /var/lib/tuxconfig/history  \n";
 
