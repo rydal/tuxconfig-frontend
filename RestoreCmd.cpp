@@ -69,11 +69,7 @@ bool RestoreGUI::CommandLineInstall(std::map <string,Device> device_map) {
  string runfile = "";
 runfile += "#! /bin/bash \n";
 runfile += "set -e \n";
-
-runfile += "exec > >(tee -i /var/lib/tuxconfig/" + response + ".log) \n";
-runfile += "function cleanup() { \n";
-runfile += "kill -SIGUSR2 " + to_string(::getpid()) + " \n";
-runfile += "} \n";
+runfile += "exec 2> /var/lib/tuxconfig/" + response + "-restore.log \n";
 runfile += "tar -C / -xvf " +  restorefile + "\n";
 if (apt_installed) {
     string apt_undo_file= "/root/.aptundo/lastundo";

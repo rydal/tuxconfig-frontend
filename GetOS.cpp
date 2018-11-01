@@ -97,6 +97,7 @@ else return true;
 }
 
 void GetOS::runWebpage(string url)  {
+
     string runCommand = "sudo -u $PKEXEC_UID x-www-browser " + url;
     system(runCommand.c_str());
 }
@@ -109,11 +110,12 @@ void GetOS::runEmail(string email)  {
 
 void GetOS::reset_reboot() {
         string PKEXEC_UID = GetOS::exec("echo $PKEXEC_UID");
+        PKEXEC_UID = GetOS::get_pk_user(PKEXEC_UID);
         boost::trim(PKEXEC_UID);
 
         string strReplace = "sudo /usr/bin/tuxconfig recover"; //String to search
            string strNew = "";	//String To re
-           ifstream filein("/home/ + " + PKEXEC_UID + ".bashrc"); //File to read from
+           ifstream filein(PKEXEC_UID + "/.bashrc"); //File to read from
            ofstream fileout("/tmp/.bashrc_tuxconfig"); //Temporary file
            if(!filein || !fileout) //if both files are not available
            {
@@ -136,7 +138,7 @@ void GetOS::reset_reboot() {
 
 
 
-        string desktop_file ="/home/" + PKEXEC_UID + "/.config/autostart/tuxconfig.desktop";
+        string desktop_file = PKEXEC_UID + "/.config/autostart/tuxconfig.desktop";
         remove(desktop_file.c_str());
 
 
@@ -144,3 +146,20 @@ void GetOS::reset_reboot() {
 
 }
 
+string GetOS::get_pk_user(string uid) {
+    ifstream inputFile("/var/lib/tuxconfig/history");
+   string tempLine;
+ while (getline(inputFile, tempLine, '\n')) {
+     vector<string> tempstr;
+     stringstream ss(tempLine);
+     string temp;
+
+     while (getline(ss, temp, ':')) {
+         tempstr.push_back(temp);
+         if(tempstr[2] == uid) {
+             return tempstr[5];
+         }
+}
+
+}
+}

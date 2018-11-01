@@ -42,7 +42,7 @@ public:
     static string DoRestore(string restorefile);
     static void reset_reboot();
     static void eraseFileLine(std::string path, std::string eraseLine);
-
+    static string get_pk_user(string uid);
 
 
 };
