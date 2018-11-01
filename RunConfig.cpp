@@ -27,7 +27,7 @@ RunConfig::~RunConfig() {
 }
 
 vector<string> RunConfig::restore(Device& device) {
-    string found_files = "find /var/lib/tuxconfig/ -name \"" + device.getDeviceid() + "*.tar\" -printf \"%T@  %p\n\" | sort -n | head -1 | sed 's/^ *//'| cut -d\" \" -f2- ";
+    string found_files = " find /var/lib/tuxconfig/ -name \"" + device.getDeviceid() + "*.tar\" -printf \"%T@  %p\n\" | sort -n | head -1 | sed 's/^ *//'| cut -d\" \" -f2- ";
     string restorefile = GetOS::exec(found_files.c_str());
         string runfile = "";
         runfile += "#! /bin/bash \n";
