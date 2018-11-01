@@ -39,9 +39,8 @@ vector<string> RunConfig::restore(Device& device) {
         runfile += "} \n";
         runfile += "tar -C / -xvf " +  restorefile + "\n";
         if (device.getAptInstalled()) {
-            string apt_undo_files = "find /root/.apt_undo/  -printf \"%T@  %p\n\" | sort -n | head -1";
-
-            runfile +="bash " + apt_undo_files + "\n";
+        string apt_undo_file= "/root/.aptundo/lastundo";
+            runfile +="bash " + apt_undo_file + "\n";
         }
 
         string restore_run_file = "/usr/src/tuxconfig-" + device.getDeviceid() + "-restore";

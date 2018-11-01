@@ -76,9 +76,9 @@ runfile += "kill -SIGUSR2 " + to_string(::getpid()) + " \n";
 runfile += "} \n";
 runfile += "tar -C / -xvf " +  restorefile + "\n";
 if (apt_installed) {
-    string apt_undo_files = "find /root/.apt_undo/  -printf \"%T@  %p\n\" | sort -n | head -1";
+    string apt_undo_file= "/root/.aptundo/lastundo";
 
-    runfile +="bash " + apt_undo_files + "\n";
+    runfile +="bash " + apt_undo_file + "\n";
 }
 
 string restore_run_file = "/usr/src/tuxconfig-" + response + "-restore";

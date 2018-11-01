@@ -17,6 +17,7 @@ update("");
 }
 
 void RestoreTab::update(string message) {
+    clearLayout(mainLayout, true);
     // TODO Auto-generated constructor stub
     std::map<string,Device> hashmap = GetHistory::getInstalledDevices();
 

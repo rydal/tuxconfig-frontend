@@ -13,12 +13,13 @@
      mainLayout = new QGridLayout;
      console = new QTermWidget();
      console->setObjectName("console");
-    QPushButton *m_button = new QPushButton("Close");
     console->actions();
     console->setColorScheme("GreenOnBlack");
 
    works_button = new QPushButton("Yes device works", this);
    fails_button = new QPushButton("No device fails", this);
+   done_label = new QLabel("", this);
+
     success_label = new QLabel(" ");
     works_button->setObjectName("works_button");
     fails_button->setObjectName("fails_button");
@@ -78,7 +79,7 @@
 
  }
 void ConsoleTab::showButtons(vector<string> details, bool success) {
-
+if (install_method == "install") {
     if (success) {
         works_button->setVisible(true);
         fails_button->setVisible(true);
@@ -104,10 +105,27 @@ void ConsoleTab::showButtons(vector<string> details, bool success) {
         emit refreshRestore("Install for device " + current_device.getDevicename() + " , " + current_device.getDescription() +" failed.");
 
     }
-
-
-
+} else if ( install_method == "uninstall") {
+    clearLayout(mainLayout, true);
+    if (success) {
+        done_label->setText("Uninstall completed successfully");
+    } else {
+        done_label->setText("Uninstall failed");
+    }
 }
+    else if ( install_method == "restore") {
+    clearLayout(mainLayout, true);
+        if (success) {
+            done_label->setText("Restore completed successfully");
+        } else {
+            done_label->setText("Uninstall failed");
+        }
+}
+}
+
+
+
+
 
 void ConsoleTab::works_result() {
     emit setTab(3);
@@ -128,13 +146,33 @@ fails_button->setVisible(false);
 }
 
 void ConsoleTab::sendToConsole(Device device,string method, vector<string> parameters) {
+    this->install_method = method;
     this->current_device = device;
     string command_string = parameters.at(0) +" \r";
     console->sendText(command_string.c_str());
 }
 
 void ConsoleTab::RebootMachine() {
-    system("shutdown -h now");
+    system("shutdown -r now");
 }
 
 
+void ConsoleTab::clearLayout(QLayout* layout, bool deleteWidgets)
+{
+    while (QLayoutItem* item = layout->takeAt(0))
+    {
+        if (deleteWidgets)
+        {
+            if (QWidget* widget = item->widget())
+                widget->deleteLater();
+        }
+        if (QLayout* childLayout = item->layout())
+            clearLayout(childLayout, deleteWidgets);
+        delete item;
+    }
+    console = new QTermWidget();
+    console->setObjectName("console");
+   console->actions();
+   console->setColorScheme("GreenOnBlack");
+
+}

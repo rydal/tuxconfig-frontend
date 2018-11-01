@@ -29,11 +29,16 @@ public:
      QPushButton *fails_button ;
      QLabel *success_label;
      QLabel *reboot_label;
+     QLabel *done_label;
+
      QPushButton *reboot_button;
+
     void fails_result();
     void works_result();
     Device current_device;
+    string install_method;
 void RebootMachine();
+void clearLayout(QLayout* layout, bool deleteWidgets);
 
 signals:
      void setTab(int);

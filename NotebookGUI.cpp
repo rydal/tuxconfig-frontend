@@ -69,7 +69,6 @@ void NotebookGUI::showResultButtons()  {
 
 }
 void NotebookGUI::showFailButton()  {
-    cout<<"pre crash notebook  gui"<<endl;
     emit showButtons(install_details, false);
 
 }
