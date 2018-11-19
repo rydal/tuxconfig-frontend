@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['parent',['parent',['../class_console_tab.html#ad37d80565e56f70da9774947e5cbe4cf',1,'ConsoleTab']]],
-  ['parsedeviceid',['parseDeviceId',['../class_device.html#a0c77b871987e94ec9088e8ab78f27293',1,'Device']]]
+  ['updatescreen',['updateScreen',['../classContributorTab2.html#abf252c3c3cacdc4a4d1f369ffd4fbb99',1,'ContributorTab2']]]
 ];

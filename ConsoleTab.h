@@ -20,7 +20,13 @@
 class ConsoleTab : public QWidget {
     Q_OBJECT
 public:
+    /**
+    /** * @brief ConsoleTab::ConsoleTab
+    /** * @param m_parent
+     * Console widget, embeds a qtermwidget in this tab.
+     */
     ConsoleTab( QWidget *m_parent);
+
      void setDevice(Device device);
     QWidget *parent;
      QTermWidget *console;
@@ -32,8 +38,18 @@ public:
      QLabel *done_label;
 
      QPushButton *reboot_button;
+     /**
+       Fires when fail button is pressed.
+       Sends device with success status to feedback class.
+       hides butons and switches to recover tab
 
+     */
     void fails_result();
+    /**
+    Fires when success button is pressed. hides buttons and switches to contributor tab.
+    Sends device with success status to feedback class.
+    Removes load on restart feature.
+    */
     void works_result();
     Device current_device;
     string install_method;
@@ -41,13 +57,29 @@ void RebootMachine();
 void clearLayout(QLayout* layout, bool deleteWidgets);
 
 signals:
+
      void setTab(int);
+
      void updateScreen();
      void refreshRestore(string);
      void sendReboot();
 
 public slots:
+     /**
+     * @brief ConsoleTab::showButtons
+     * @param details
+     * @param success
+     * On reciept of sugusr1 this method displays the success and fail buttons
+     */
      void showButtons(vector<string> details, bool success);
+     /**
+      * @brief ConsoleTab::sendToConsole
+      * @param device
+      * @param method
+      * @param parameters
+      * Recieves a message from other tabs then executes the command in the parameters tab.
+      * sets the install method and current device to the class instance.
+      */
      void sendToConsole(Device device,string method, vector<string> parameters);
 
 

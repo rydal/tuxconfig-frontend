@@ -51,12 +51,20 @@ protected:
     Device current_device;
     void mousePressEvent(QMouseEvent *event);
     string* details;
+
     void clearLayout(QLayout* layout, bool deleteWidgets );
 public slots:
     void updateScreen(Device device);
-    void on_description_linkActivated(const QString &link);
-    void receiveReboot();
+    /**
+     * @brief ContributorTab2::on_description_linkActivated
+     * @param link
+      * sends a message to GetOS to send email to contributor when label clicked.
 
+     */
+    void on_description_linkActivated(const QString &link);
+    ///sets reboot button and label to visible when method received.
+    void receiveReboot();
+    ///reboots machine.
     void RebootMachine();
 
 

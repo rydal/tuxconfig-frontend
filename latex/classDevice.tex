@@ -1,0 +1,173 @@
+\hypertarget{classDevice}{}\section{Device Class Reference}
+\label{classDevice}\index{Device@{Device}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classDevice_a107e7a95a02edc5ff586dfc831f1eb76}\label{classDevice_a107e7a95a02edc5ff586dfc831f1eb76}} 
+{\bfseries Device} (string id, string description, string name, string modulename)
+\item 
+\mbox{\Hypertarget{classDevice_a11aa3e7c780559e7749bea3ac702e55e}\label{classDevice_a11aa3e7c780559e7749bea3ac702e55e}} 
+{\bfseries Device} (string m\+\_\+id, string m\+\_\+description, bool is\+Installed, bool is\+Failed, string success\+\_\+code, string status)
+\item 
+\mbox{\Hypertarget{classDevice_a0c77b871987e94ec9088e8ab78f27293}\label{classDevice_a0c77b871987e94ec9088e8ab78f27293}} 
+string {\bfseries parse\+Device\+Id} (string device\+\_\+id)
+\item 
+\mbox{\Hypertarget{classDevice_acd077de5b2954ce456927e021c5de5df}\label{classDevice_acd077de5b2954ce456927e021c5de5df}} 
+bool {\bfseries operator$<$} (const \hyperlink{classDevice}{Device} rhs) const
+\item 
+\mbox{\Hypertarget{classDevice_a660d5da7a710da202ac6c58766370283}\label{classDevice_a660d5da7a710da202ac6c58766370283}} 
+bool {\bfseries operator$<$} (const \hyperlink{classDevice}{Device} rhs)
+\item 
+\mbox{\Hypertarget{classDevice_a1078839b751f8366b5170d4daefa26b4}\label{classDevice_a1078839b751f8366b5170d4daefa26b4}} 
+bool \hyperlink{classDevice_a1078839b751f8366b5170d4daefa26b4}{is\+Upgradeable} ()
+\begin{DoxyCompactList}\small\item\em returns true if upgradeable. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDevice_abdadd7bc6fa1760aeaa9f87dd2f96f59}\label{classDevice_abdadd7bc6fa1760aeaa9f87dd2f96f59}} 
+string {\bfseries get\+Installed\+Status} ()
+\item 
+\mbox{\Hypertarget{classDevice_a2036c2bc77979808046f7ecae94ec602}\label{classDevice_a2036c2bc77979808046f7ecae94ec602}} 
+\hyperlink{classDevice}{Device} {\bfseries getinfo} ()
+\item 
+\mbox{\Hypertarget{classDevice_ae5b04fdd1bf82d2dba2ec249e92e4da5}\label{classDevice_ae5b04fdd1bf82d2dba2ec249e92e4da5}} 
+const std\+::string \& {\bfseries get\+Commit} () const
+\item 
+\mbox{\Hypertarget{classDevice_a2d549bad1c70b5768698dbc2175669ef}\label{classDevice_a2d549bad1c70b5768698dbc2175669ef}} 
+void {\bfseries set\+Commit} (const std\+::string \&commit)
+\item 
+\mbox{\Hypertarget{classDevice_a6ba1792dd4f33f99e7b3ff97c4fae153}\label{classDevice_a6ba1792dd4f33f99e7b3ff97c4fae153}} 
+const std\+::string \& {\bfseries get\+Description} () const
+\item 
+\mbox{\Hypertarget{classDevice_a3f71228960ac3bfca0a1cca254ea782b}\label{classDevice_a3f71228960ac3bfca0a1cca254ea782b}} 
+void {\bfseries set\+Description} (const std\+::string \&description)
+\item 
+\mbox{\Hypertarget{classDevice_ace938c6c2efffdcc2d17d49440cb55b7}\label{classDevice_ace938c6c2efffdcc2d17d49440cb55b7}} 
+const std\+::string \& {\bfseries get\+Deviceid} () const
+\item 
+\mbox{\Hypertarget{classDevice_a8bd16b3e099e864db3c09ba4f6225fb0}\label{classDevice_a8bd16b3e099e864db3c09ba4f6225fb0}} 
+void {\bfseries set\+Deviceid} (const std\+::string \&deviceid)
+\item 
+\mbox{\Hypertarget{classDevice_a96f94097331f294afc73c6358918d408}\label{classDevice_a96f94097331f294afc73c6358918d408}} 
+const std\+::string \& {\bfseries get\+Git\+Url} () const
+\item 
+\mbox{\Hypertarget{classDevice_ae8587aa062a7a2f2b5b77e9a15569e53}\label{classDevice_ae8587aa062a7a2f2b5b77e9a15569e53}} 
+void {\bfseries set\+Git\+Url} (const std\+::string \&git\+Url)
+\item 
+\mbox{\Hypertarget{classDevice_a77eeec87fea2ffc4d4140b315613bb1b}\label{classDevice_a77eeec87fea2ffc4d4140b315613bb1b}} 
+const std\+::string \& {\bfseries get\+Modulename} () const
+\item 
+\mbox{\Hypertarget{classDevice_a09e9d9bbcfa76268b7ebc30afa680c69}\label{classDevice_a09e9d9bbcfa76268b7ebc30afa680c69}} 
+void {\bfseries set\+Modulename} (const std\+::string \&modulename)
+\item 
+\mbox{\Hypertarget{classDevice_a2b4556e5a3b1f955c3e498e1de75051c}\label{classDevice_a2b4556e5a3b1f955c3e498e1de75051c}} 
+const std\+::string \& {\bfseries get\+Owner\+Git\+Id} () const
+\item 
+\mbox{\Hypertarget{classDevice_aabc16749d0fe22ec25ca525fbd2b9dc2}\label{classDevice_aabc16749d0fe22ec25ca525fbd2b9dc2}} 
+void {\bfseries set\+Owner\+Git\+Id} (const std\+::string \&owner\+Git\+Id)
+\item 
+\mbox{\Hypertarget{classDevice_a19c62e8fa746efc12e6c0521b690bf03}\label{classDevice_a19c62e8fa746efc12e6c0521b690bf03}} 
+const std\+::string \& {\bfseries get\+Success\+Code} () const
+\item 
+\mbox{\Hypertarget{classDevice_ae70b727a6230454baccc6da6cfd819a7}\label{classDevice_ae70b727a6230454baccc6da6cfd819a7}} 
+void {\bfseries set\+Success\+Code} (const std\+::string \&success\+Code)
+\item 
+\mbox{\Hypertarget{classDevice_a7c1221950b9ec064b023c4033454774a}\label{classDevice_a7c1221950b9ec064b023c4033454774a}} 
+const std\+::string \& {\bfseries get\+Devicename} () const
+\item 
+\mbox{\Hypertarget{classDevice_ad1f6005dcab32855477814fa9533315d}\label{classDevice_ad1f6005dcab32855477814fa9533315d}} 
+void {\bfseries set\+Devicename} (const std\+::string \&devicename)
+\item 
+\mbox{\Hypertarget{classDevice_a3c0a93766217f57848cf6871aeb9ffc2}\label{classDevice_a3c0a93766217f57848cf6871aeb9ffc2}} 
+const std\+::string \& {\bfseries get\+Set\+Command} () const
+\item 
+\mbox{\Hypertarget{classDevice_afad48633a288b303f88f7d607c64cca3}\label{classDevice_afad48633a288b303f88f7d607c64cca3}} 
+void {\bfseries set\+Set\+Command} (const std\+::string \&set\+Command)
+\item 
+\mbox{\Hypertarget{classDevice_abbf7d73cde4dc08996414956fc25188d}\label{classDevice_abbf7d73cde4dc08996414956fc25188d}} 
+const int \& {\bfseries get\+Vote\+Difference} () const
+\item 
+\mbox{\Hypertarget{classDevice_acf378aa086771dd7c64626abb8a74821}\label{classDevice_acf378aa086771dd7c64626abb8a74821}} 
+void {\bfseries set\+Vote\+Difference} (const int \&vote\+Difference)
+\item 
+\mbox{\Hypertarget{classDevice_a068c25d48712783fd0dc759d4505c615}\label{classDevice_a068c25d48712783fd0dc759d4505c615}} 
+const bool {\bfseries get\+Attempted\+Install} () const
+\item 
+\mbox{\Hypertarget{classDevice_af2591540bf77d38b8e4c09b90e8dfaba}\label{classDevice_af2591540bf77d38b8e4c09b90e8dfaba}} 
+void {\bfseries set\+Attempted\+Install} (bool installed)
+\item 
+\mbox{\Hypertarget{classDevice_ad49afa64f231ac899736cc21027766f2}\label{classDevice_ad49afa64f231ac899736cc21027766f2}} 
+const string \& {\bfseries get\+Status} () const
+\item 
+\mbox{\Hypertarget{classDevice_a46b5e30da5b43b09c0785a054bfb678a}\label{classDevice_a46b5e30da5b43b09c0785a054bfb678a}} 
+void {\bfseries set\+Status} (const string \&status)
+\item 
+\mbox{\Hypertarget{classDevice_afe6f638cc2bcc512f5bc1f2fef39fe88}\label{classDevice_afe6f638cc2bcc512f5bc1f2fef39fe88}} 
+bool {\bfseries is\+Is\+Upgradeable} () const
+\item 
+\mbox{\Hypertarget{classDevice_a3b5d4af66cacd8e1b0e45219c16ee084}\label{classDevice_a3b5d4af66cacd8e1b0e45219c16ee084}} 
+void {\bfseries set\+Is\+Upgradeable} (bool \hyperlink{classDevice_a1078839b751f8366b5170d4daefa26b4}{is\+Upgradeable})
+\item 
+\mbox{\Hypertarget{classDevice_a697feb57b759c13cb1b56f004e61229b}\label{classDevice_a697feb57b759c13cb1b56f004e61229b}} 
+bool {\bfseries is\+Is\+Installed} () const
+\item 
+\mbox{\Hypertarget{classDevice_aec222a879b4a9aadd1a083a7aff2e516}\label{classDevice_aec222a879b4a9aadd1a083a7aff2e516}} 
+void {\bfseries set\+Is\+Installed} (bool is\+Installed)
+\item 
+\mbox{\Hypertarget{classDevice_a15d7c755aed944da8514902d06d21ea9}\label{classDevice_a15d7c755aed944da8514902d06d21ea9}} 
+void {\bfseries set\+Apt\+Installed} (bool apt\+\_\+install)
+\item 
+\mbox{\Hypertarget{classDevice_a2ea735319a841af580e6ada8ab3b4076}\label{classDevice_a2ea735319a841af580e6ada8ab3b4076}} 
+bool {\bfseries get\+Apt\+Installed} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classDevice_a1eb16134b02676dd87524745e70aa439}\label{classDevice_a1eb16134b02676dd87524745e70aa439}} 
+std\+::string {\bfseries deviceid}
+\item 
+\mbox{\Hypertarget{classDevice_a306ead055a0bfe68d4dbc947d1176cad}\label{classDevice_a306ead055a0bfe68d4dbc947d1176cad}} 
+std\+::string {\bfseries modulename}
+\item 
+\mbox{\Hypertarget{classDevice_a5660725c3c3d2349a3b164e89d27a401}\label{classDevice_a5660725c3c3d2349a3b164e89d27a401}} 
+std\+::string {\bfseries description}
+\item 
+\mbox{\Hypertarget{classDevice_ac379e1898eb7d56f85efc2aca209a508}\label{classDevice_ac379e1898eb7d56f85efc2aca209a508}} 
+std\+::string {\bfseries commit}
+\item 
+\mbox{\Hypertarget{classDevice_ae95f052236ec631403484833f5b1e618}\label{classDevice_ae95f052236ec631403484833f5b1e618}} 
+std\+::string {\bfseries git\+\_\+url}
+\item 
+\mbox{\Hypertarget{classDevice_a0ac795464def7d9466de72c954fdeac1}\label{classDevice_a0ac795464def7d9466de72c954fdeac1}} 
+std\+::string {\bfseries success\+\_\+code}
+\item 
+\mbox{\Hypertarget{classDevice_a26f60bd0aef8477a9522b018583fd020}\label{classDevice_a26f60bd0aef8477a9522b018583fd020}} 
+std\+::string {\bfseries owner\+\_\+git\+\_\+id}
+\item 
+\mbox{\Hypertarget{classDevice_aeb1dfe30b1ee923134098b7e0693d629}\label{classDevice_aeb1dfe30b1ee923134098b7e0693d629}} 
+std\+::string {\bfseries devicename}
+\item 
+\mbox{\Hypertarget{classDevice_a2decbd2aba65213d36c6aafe9a68680d}\label{classDevice_a2decbd2aba65213d36c6aafe9a68680d}} 
+std\+::string {\bfseries set\+Command}
+\item 
+\mbox{\Hypertarget{classDevice_a3ff73d2c41d11d87b9681f151ad80cc2}\label{classDevice_a3ff73d2c41d11d87b9681f151ad80cc2}} 
+bool {\bfseries Apt\+Installed}
+\item 
+\mbox{\Hypertarget{classDevice_a7f20acfc3fbc1ea6da416b64223d69a1}\label{classDevice_a7f20acfc3fbc1ea6da416b64223d69a1}} 
+bool {\bfseries attempted\+\_\+install}
+\item 
+\mbox{\Hypertarget{classDevice_a26bbc09d2ff3c76f660463c8438df083}\label{classDevice_a26bbc09d2ff3c76f660463c8438df083}} 
+int {\bfseries vote\+\_\+difference}
+\item 
+\mbox{\Hypertarget{classDevice_a1ab968c173c863b0ceccb7418c0a281c}\label{classDevice_a1ab968c173c863b0ceccb7418c0a281c}} 
+bool {\bfseries is\+\_\+upgradeable}
+\item 
+\mbox{\Hypertarget{classDevice_ad62a2bdc698beba3b477a587afaeb1f3}\label{classDevice_ad62a2bdc698beba3b477a587afaeb1f3}} 
+bool {\bfseries is\+\_\+installed}
+\item 
+\mbox{\Hypertarget{classDevice_ad3cd9d9d8054a8ef1a136ded17d2fff7}\label{classDevice_ad3cd9d9d8054a8ef1a136ded17d2fff7}} 
+string {\bfseries status}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+device.\+h\item 
+device.\+cpp\end{DoxyCompactItemize}

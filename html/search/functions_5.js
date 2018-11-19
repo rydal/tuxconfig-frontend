@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['httpdownloader',['HTTPDownloader',['../class_h_t_t_p_downloader.html#ae2755dc1dd22d7dba5a7add7c629fd9e',1,'HTTPDownloader']]]
+  ['mousepressevent',['mousePressEvent',['../classContributorTab2.html#a93c3ed51e9f40c439ed4182e4407434a',1,'ContributorTab2']]]
 ];

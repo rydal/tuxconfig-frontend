@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['feedback',['Feedback',['../class_feedback.html',1,'']]]
+  ['feedback',['Feedback',['../classFeedback.html',1,'']]]
 ];

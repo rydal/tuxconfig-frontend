@@ -18,7 +18,7 @@
 class CheckConnection {
 
 public:
-
+    /// checks a network connection by downloading from google.
 	static bool CheckNetwork();
 
 

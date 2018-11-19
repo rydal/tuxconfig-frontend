@@ -7,18 +7,19 @@
 #include "device.h"
 using namespace std;
 
-
-	struct MyException : public std::exception
+///exception handling class.
+struct MyException : public std::exception
 {
    std::string s;
    MyException(std::string ss) : s(ss) {}
    ~MyException() throw () {} // Updated
    const char* what() const throw() { return s.c_str(); }
 };
-	bool Device::isUpgradeable() {
+/// returns true if upgradeable.
+bool Device::isUpgradeable() {
 
-	return is_upgradeable;
-	}
+return is_upgradeable;
+}
 
 
 Device::Device() {

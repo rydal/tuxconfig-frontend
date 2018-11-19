@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['listdevice',['listdevice',['../class_get_local_devices.html#a9fb5548015a6108828c63d61532d3b0f',1,'GetLocalDevices']]],
-  ['listdevices',['listdevices',['../class_get_local_devices.html#a018c0984e1d9a4908220a8af573ea51c',1,'GetLocalDevices']]]
+  ['rebootmachine',['RebootMachine',['../classConsoleTab.html#a312dd40624d78a7d8506f97eb837c492',1,'ConsoleTab::RebootMachine()'],['../classContributorTab2.html#a3b818b61d87562521615de0b57f29a58',1,'ContributorTab2::RebootMachine()']]],
+  ['receivereboot',['receiveReboot',['../classContributorTab2.html#ab8a868f09884b9b5ce0e4aa7c6940166',1,'ContributorTab2']]]
 ];

@@ -6,7 +6,11 @@
  */
 
 #include "ContributorTab2.h"
-
+/**
+  * @brief ContributorTab2::ContributorTab2
+  * @param parent
+  * Contributor tab, dispays information about the contributing devleoper.
+  */
  ContributorTab2::ContributorTab2( QWidget *parent)
 : QWidget(parent) {
 
@@ -22,7 +26,13 @@
         Device device;
 
 }
-
+ /**
+  * @brief ContributorTab2::updateScreen
+  * @param device
+  * updates the contributor tab with information on a specific developer.
+  * Information derived from device object.
+  *
+  */
  void ContributorTab2::updateScreen(Device device) {
 
 clearLayout(mainLayout,true);
@@ -77,9 +87,20 @@ clearLayout(mainLayout,true);
      connect(reboot_button, &QPushButton::clicked, [=] { RebootMachine(); });
 
  }
+ /**
+  * @brief ContributorTab2::mousePressEvent
+  * @param event
+  * sends a message to GetOS to open contributors webpage when label clicked.
+  */
  void ContributorTab2::mousePressEvent(QMouseEvent *event) {
 GetOS::runWebpage(details[4]);
 }
+ /**
+ * @brief ContributorTab2::DownloadInfo
+ * @param owner_git_id
+ * @return
+ * returns a string array of contributor information downloaded from backend servlet.
+ */
 string* ContributorTab2::DownloadInfo(string owner_git_id) {
     details = new string[5];
 	ostringstream os;
@@ -106,13 +127,24 @@ string* ContributorTab2::DownloadInfo(string owner_git_id) {
 		return details;
 }
 
-
+/**
+ * @brief ContributorTab2::getAvatarImage
+ * @param url
+ * @param owner_git_id
+ * @return
+ * downloads contributor's avatar image from github's url
+ */
 string ContributorTab2::getAvatarImage(string url, string owner_git_id) {
     HTTPDownloader downloader;
     return downloader.download(url,owner_git_id);
 
 }
-
+/**
+ * @brief ConsoleTab::clearLayout
+ * @param layout
+ * @param deleteWidgets
+ * Clears the layout for future method calls.
+ */
 void ContributorTab2::clearLayout(QLayout* layout, bool deleteWidgets = true)
 {
     while (QLayoutItem* item = layout->takeAt(0))
@@ -134,12 +166,10 @@ void ContributorTab2::on_description_linkActivated(const QString &link)
 
   GetOS::runEmail(utf8_text);
 }
-
 void ContributorTab2::receiveReboot() {
     reboot_label->setVisible(true);
     reboot_button->setVisible(true);
 }
-
 void ContributorTab2::RebootMachine() {
     system("shutdown -r now");
 }

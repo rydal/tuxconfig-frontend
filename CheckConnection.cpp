@@ -6,7 +6,6 @@
  */
 #include "CheckConnection.h"
 
-
 size_t write_data(void *buffer, size_t size, size_t nmemb, void *userp)
 {
 	std::ofstream ofs("/dev/null");
@@ -14,7 +13,6 @@ size_t write_data(void *buffer, size_t size, size_t nmemb, void *userp)
 	ofs << buffer;
    return size * nmemb;
 }
-
 bool CheckConnection::CheckNetwork()
 {
 

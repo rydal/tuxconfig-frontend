@@ -6,7 +6,7 @@
 #include "ConsoleTab.h"
 
 
- ConsoleTab::ConsoleTab(    QWidget *m_parent)
+ConsoleTab::ConsoleTab(    QWidget *m_parent)
  : parent(m_parent)
 {
 
@@ -78,6 +78,7 @@
 
 
  }
+
 void ConsoleTab::showButtons(vector<string> details, bool success) {
 if (install_method == "install") {
     if (success) {
@@ -137,9 +138,9 @@ void ConsoleTab::works_result() {
 
 
 }
+
 void ConsoleTab::fails_result() {
 Feedback(current_device,false);
-GetOS::reset_reboot();
 works_button->setVisible(false);
 fails_button->setVisible(false);
 emit setTab(2);
@@ -151,12 +152,17 @@ void ConsoleTab::sendToConsole(Device device,string method, vector<string> param
     string command_string = parameters.at(0) +" \r";
     console->sendText(command_string.c_str());
 }
-
+///Reboots the machine
 void ConsoleTab::RebootMachine() {
     system("shutdown -r now");
 }
 
-
+/**
+ * @brief ConsoleTab::clearLayout
+ * @param layout
+ * @param deleteWidgets
+ * Clears the layout for future method calls.
+ */
 void ConsoleTab::clearLayout(QLayout* layout, bool deleteWidgets)
 {
     while (QLayoutItem* item = layout->takeAt(0))

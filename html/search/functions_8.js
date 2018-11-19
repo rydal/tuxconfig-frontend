@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['main',['main',['../_linuxconf_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97',1,'Linuxconf.cpp']]],
-  ['mousepressevent',['mousePressEvent',['../class_contributor_tab2.html#a93c3ed51e9f40c439ed4182e4407434a',1,'ContributorTab2']]],
-  ['myexception',['MyException',['../struct_my_exception.html#ad71a4be73b05417e6ac5ebdd44bb02ac',1,'MyException']]]
+  ['sendtoconsole',['sendToConsole',['../classConsoleTab.html#a695bb64854ca658dc9cc0a44c7a08f2c',1,'ConsoleTab']]],
+  ['showbuttons',['showButtons',['../classConsoleTab.html#abda9ef659782544e72f0e4561c5583f0',1,'ConsoleTab']]]
 ];

@@ -1,0 +1,188 @@
+\hypertarget{classConsoleTab}{}\section{Console\+Tab Class Reference}
+\label{classConsoleTab}\index{Console\+Tab@{Console\+Tab}}
+
+
+Inheritance diagram for Console\+Tab\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=149pt]{classConsoleTab__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Console\+Tab\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=228pt]{classConsoleTab__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classConsoleTab_abda9ef659782544e72f0e4561c5583f0}{show\+Buttons} (vector$<$ string $>$ details, bool success)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classConsoleTab_abda9ef659782544e72f0e4561c5583f0}{Console\+Tab\+::show\+Buttons}. \end{DoxyCompactList}\item 
+void \hyperlink{classConsoleTab_a695bb64854ca658dc9cc0a44c7a08f2c}{send\+To\+Console} (\hyperlink{classDevice}{Device} device, string method, vector$<$ string $>$ parameters)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classConsoleTab_a695bb64854ca658dc9cc0a44c7a08f2c}{Console\+Tab\+::send\+To\+Console}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classConsoleTab_afbcbf3f97fa59e43aa9fe86c9549ebed}\label{classConsoleTab_afbcbf3f97fa59e43aa9fe86c9549ebed}} 
+void {\bfseries set\+Tab} (int)
+\item 
+\mbox{\Hypertarget{classConsoleTab_a741773c43f4a548ffd154022429a3830}\label{classConsoleTab_a741773c43f4a548ffd154022429a3830}} 
+void {\bfseries update\+Screen} ()
+\item 
+\mbox{\Hypertarget{classConsoleTab_a34925515a836a363cf85b25860c795d6}\label{classConsoleTab_a34925515a836a363cf85b25860c795d6}} 
+void {\bfseries refresh\+Restore} (string)
+\item 
+\mbox{\Hypertarget{classConsoleTab_af58a230f2f192469205839920dd7fa66}\label{classConsoleTab_af58a230f2f192469205839920dd7fa66}} 
+void {\bfseries send\+Reboot} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classConsoleTab_a2c631d14f9fe5957e0622e10269e5115}{Console\+Tab} (Q\+Widget $\ast$m\+\_\+parent)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classConsoleTab_a2c631d14f9fe5957e0622e10269e5115}{Console\+Tab\+::\+Console\+Tab} /$\ast$$\ast$ $\ast$. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classConsoleTab_aa2b97a380a10d6100dc956d150ebd590}\label{classConsoleTab_aa2b97a380a10d6100dc956d150ebd590}} 
+void {\bfseries set\+Device} (\hyperlink{classDevice}{Device} device)
+\item 
+void \hyperlink{classConsoleTab_a7b2d0987db00c8b9af7ece7b36a82624}{fails\+\_\+result} ()
+\item 
+void \hyperlink{classConsoleTab_a866367073a3150527988f7cb841d5002}{works\+\_\+result} ()
+\item 
+\mbox{\Hypertarget{classConsoleTab_a312dd40624d78a7d8506f97eb837c492}\label{classConsoleTab_a312dd40624d78a7d8506f97eb837c492}} 
+void \hyperlink{classConsoleTab_a312dd40624d78a7d8506f97eb837c492}{Reboot\+Machine} ()
+\begin{DoxyCompactList}\small\item\em Reboots the machine. \end{DoxyCompactList}\item 
+void \hyperlink{classConsoleTab_aae70e23b23e401b219edefcac4882eaf}{clear\+Layout} (Q\+Layout $\ast$layout, bool delete\+Widgets)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classConsoleTab_aae70e23b23e401b219edefcac4882eaf}{Console\+Tab\+::clear\+Layout}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classConsoleTab_ad37d80565e56f70da9774947e5cbe4cf}\label{classConsoleTab_ad37d80565e56f70da9774947e5cbe4cf}} 
+Q\+Widget $\ast$ {\bfseries parent}
+\item 
+\mbox{\Hypertarget{classConsoleTab_a0304aee81920bf219e17ba6531a4119e}\label{classConsoleTab_a0304aee81920bf219e17ba6531a4119e}} 
+Q\+Term\+Widget $\ast$ {\bfseries console}
+\item 
+\mbox{\Hypertarget{classConsoleTab_aa4213b0dd52a74260783e0a46feadee6}\label{classConsoleTab_aa4213b0dd52a74260783e0a46feadee6}} 
+Q\+Grid\+Layout $\ast$ {\bfseries main\+Layout}
+\item 
+\mbox{\Hypertarget{classConsoleTab_aa771347a9e50ee2880a2f45afc9807f3}\label{classConsoleTab_aa771347a9e50ee2880a2f45afc9807f3}} 
+Q\+Push\+Button $\ast$ {\bfseries works\+\_\+button}
+\item 
+\mbox{\Hypertarget{classConsoleTab_abf0343f21a612a41948b275e348bf29f}\label{classConsoleTab_abf0343f21a612a41948b275e348bf29f}} 
+Q\+Push\+Button $\ast$ {\bfseries fails\+\_\+button}
+\item 
+\mbox{\Hypertarget{classConsoleTab_a4d68ba1e38f3633ed8bcb3ada17219dc}\label{classConsoleTab_a4d68ba1e38f3633ed8bcb3ada17219dc}} 
+Q\+Label $\ast$ {\bfseries success\+\_\+label}
+\item 
+\mbox{\Hypertarget{classConsoleTab_a67b2d7ba4daabcd8bac8187a035c79fc}\label{classConsoleTab_a67b2d7ba4daabcd8bac8187a035c79fc}} 
+Q\+Label $\ast$ {\bfseries reboot\+\_\+label}
+\item 
+\mbox{\Hypertarget{classConsoleTab_ad4de3b850b9638c177925970ec3495d3}\label{classConsoleTab_ad4de3b850b9638c177925970ec3495d3}} 
+Q\+Label $\ast$ {\bfseries done\+\_\+label}
+\item 
+\mbox{\Hypertarget{classConsoleTab_abac4c2031895f3bd40e2a81dcb67be7c}\label{classConsoleTab_abac4c2031895f3bd40e2a81dcb67be7c}} 
+Q\+Push\+Button $\ast$ {\bfseries reboot\+\_\+button}
+\item 
+\mbox{\Hypertarget{classConsoleTab_a26ca4389db3dec2aa5992491580c86be}\label{classConsoleTab_a26ca4389db3dec2aa5992491580c86be}} 
+\hyperlink{classDevice}{Device} {\bfseries current\+\_\+device}
+\item 
+\mbox{\Hypertarget{classConsoleTab_ad24707251ab4ab448a657eb0c28e108f}\label{classConsoleTab_ad24707251ab4ab448a657eb0c28e108f}} 
+string {\bfseries install\+\_\+method}
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classConsoleTab_a2c631d14f9fe5957e0622e10269e5115}\label{classConsoleTab_a2c631d14f9fe5957e0622e10269e5115}} 
+\index{Console\+Tab@{Console\+Tab}!Console\+Tab@{Console\+Tab}}
+\index{Console\+Tab@{Console\+Tab}!Console\+Tab@{Console\+Tab}}
+\subsubsection{\texorpdfstring{Console\+Tab()}{ConsoleTab()}}
+{\footnotesize\ttfamily Console\+Tab\+::\+Console\+Tab (\begin{DoxyParamCaption}\item[{Q\+Widget $\ast$}]{m\+\_\+parent }\end{DoxyParamCaption})}
+
+
+
+\hyperlink{classConsoleTab_a2c631d14f9fe5957e0622e10269e5115}{Console\+Tab\+::\+Console\+Tab} /$\ast$$\ast$ $\ast$. 
+
+/$\ast$$\ast$ $\ast$ 
+\begin{DoxyParams}{Parameters}
+{\em m\+\_\+parent} & Console widget, embeds a qtermwidget in this tab. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classConsoleTab_aae70e23b23e401b219edefcac4882eaf}\label{classConsoleTab_aae70e23b23e401b219edefcac4882eaf}} 
+\index{Console\+Tab@{Console\+Tab}!clear\+Layout@{clear\+Layout}}
+\index{clear\+Layout@{clear\+Layout}!Console\+Tab@{Console\+Tab}}
+\subsubsection{\texorpdfstring{clear\+Layout()}{clearLayout()}}
+{\footnotesize\ttfamily void Console\+Tab\+::clear\+Layout (\begin{DoxyParamCaption}\item[{Q\+Layout $\ast$}]{layout,  }\item[{bool}]{delete\+Widgets }\end{DoxyParamCaption})}
+
+
+
+\hyperlink{classConsoleTab_aae70e23b23e401b219edefcac4882eaf}{Console\+Tab\+::clear\+Layout}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em layout} & \\
+\hline
+{\em delete\+Widgets} & Clears the layout for future method calls. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classConsoleTab_a7b2d0987db00c8b9af7ece7b36a82624}\label{classConsoleTab_a7b2d0987db00c8b9af7ece7b36a82624}} 
+\index{Console\+Tab@{Console\+Tab}!fails\+\_\+result@{fails\+\_\+result}}
+\index{fails\+\_\+result@{fails\+\_\+result}!Console\+Tab@{Console\+Tab}}
+\subsubsection{\texorpdfstring{fails\+\_\+result()}{fails\_result()}}
+{\footnotesize\ttfamily void Console\+Tab\+::fails\+\_\+result (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Fires when fail button is pressed. Sends device with success status to feedback class. hides butons and switches to recover tab \mbox{\Hypertarget{classConsoleTab_a695bb64854ca658dc9cc0a44c7a08f2c}\label{classConsoleTab_a695bb64854ca658dc9cc0a44c7a08f2c}} 
+\index{Console\+Tab@{Console\+Tab}!send\+To\+Console@{send\+To\+Console}}
+\index{send\+To\+Console@{send\+To\+Console}!Console\+Tab@{Console\+Tab}}
+\subsubsection{\texorpdfstring{send\+To\+Console}{sendToConsole}}
+{\footnotesize\ttfamily void Console\+Tab\+::send\+To\+Console (\begin{DoxyParamCaption}\item[{\hyperlink{classDevice}{Device}}]{device,  }\item[{string}]{method,  }\item[{vector$<$ string $>$}]{parameters }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+\hyperlink{classConsoleTab_a695bb64854ca658dc9cc0a44c7a08f2c}{Console\+Tab\+::send\+To\+Console}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em device} & \\
+\hline
+{\em method} & \\
+\hline
+{\em parameters} & Recieves a message from other tabs then executes the command in the parameters tab. sets the install method and current device to the class instance. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classConsoleTab_abda9ef659782544e72f0e4561c5583f0}\label{classConsoleTab_abda9ef659782544e72f0e4561c5583f0}} 
+\index{Console\+Tab@{Console\+Tab}!show\+Buttons@{show\+Buttons}}
+\index{show\+Buttons@{show\+Buttons}!Console\+Tab@{Console\+Tab}}
+\subsubsection{\texorpdfstring{show\+Buttons}{showButtons}}
+{\footnotesize\ttfamily void Console\+Tab\+::show\+Buttons (\begin{DoxyParamCaption}\item[{vector$<$ string $>$}]{details,  }\item[{bool}]{success }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+\hyperlink{classConsoleTab_abda9ef659782544e72f0e4561c5583f0}{Console\+Tab\+::show\+Buttons}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em details} & \\
+\hline
+{\em success} & On reciept of sugusr1 this method displays the success and fail buttons \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classConsoleTab_a866367073a3150527988f7cb841d5002}\label{classConsoleTab_a866367073a3150527988f7cb841d5002}} 
+\index{Console\+Tab@{Console\+Tab}!works\+\_\+result@{works\+\_\+result}}
+\index{works\+\_\+result@{works\+\_\+result}!Console\+Tab@{Console\+Tab}}
+\subsubsection{\texorpdfstring{works\+\_\+result()}{works\_result()}}
+{\footnotesize\ttfamily void Console\+Tab\+::works\+\_\+result (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Fires when success button is pressed. hides buttons and switches to contributor tab. Sends device with success status to feedback class. Removes load on restart feature. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Console\+Tab.\+h\item 
+Console\+Tab.\+cpp\item 
+moc\+\_\+\+Console\+Tab.\+cpp\end{DoxyCompactItemize}

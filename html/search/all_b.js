@@ -1,6 +1,9 @@
 var searchData=
 [
-  ['notebookgui',['NotebookGUI',['../class_notebook_g_u_i.html',1,'NotebookGUI'],['../class_notebook_g_u_i.html#a4f725d6da5141b3f321e91f9ad5fb0e2',1,'NotebookGUI::NotebookGUI()'],['../class_notebook_g_u_i.html#a53202e15038548e1bc83bad3cfb6397b',1,'NotebookGUI::NotebookGUI(const QString name)']]],
-  ['notebookgui_2ecpp',['NotebookGUI.cpp',['../_notebook_g_u_i_8cpp.html',1,'']]],
-  ['notebookgui_2eh',['NotebookGUI.h',['../_notebook_g_u_i_8h.html',1,'']]]
+  ['rebootmachine',['RebootMachine',['../classConsoleTab.html#a312dd40624d78a7d8506f97eb837c492',1,'ConsoleTab::RebootMachine()'],['../classContributorTab2.html#a3b818b61d87562521615de0b57f29a58',1,'ContributorTab2::RebootMachine()']]],
+  ['receivereboot',['receiveReboot',['../classContributorTab2.html#ab8a868f09884b9b5ce0e4aa7c6940166',1,'ContributorTab2']]],
+  ['restoregui',['RestoreGUI',['../classRestoreGUI.html',1,'']]],
+  ['restoretab',['RestoreTab',['../classRestoreTab.html',1,'']]],
+  ['runconfig',['RunConfig',['../classRunConfig.html',1,'']]],
+  ['runtab',['RunTab',['../classRunTab.html',1,'']]]
 ];
