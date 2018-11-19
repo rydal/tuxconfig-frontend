@@ -157,12 +157,6 @@ void ConsoleTab::RebootMachine() {
     system("shutdown -r now");
 }
 
-/**
- * @brief ConsoleTab::clearLayout
- * @param layout
- * @param deleteWidgets
- * Clears the layout for future method calls.
- */
 void ConsoleTab::clearLayout(QLayout* layout, bool deleteWidgets)
 {
     while (QLayoutItem* item = layout->takeAt(0))

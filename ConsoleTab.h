@@ -20,10 +20,10 @@
 class ConsoleTab : public QWidget {
     Q_OBJECT
 public:
-    /**
-    /** * @brief ConsoleTab::ConsoleTab
-    /** * @param m_parent
-     * Console widget, embeds a qtermwidget in this tab.
+    /** Console widget, embeds a qtermwidget in this tab.
+     @brief
+     @param m_parent
+
      */
     ConsoleTab( QWidget *m_parent);
 
@@ -54,6 +54,13 @@ public:
     Device current_device;
     string install_method;
 void RebootMachine();
+
+/**
+ * @brief ConsoleTab::clearLayout
+ * @param layout
+ * @param deleteWidgets
+ * Clears the layout for future method calls.
+ */
 void clearLayout(QLayout* layout, bool deleteWidgets);
 
 signals:
@@ -65,20 +72,19 @@ signals:
      void sendReboot();
 
 public slots:
-     /**
-     * @brief ConsoleTab::showButtons
+     /** On reciept of sugusr1 this method displays the success and fail buttons
+     * @brief
      * @param details
      * @param success
-     * On reciept of sugusr1 this method displays the success and fail buttons
      */
      void showButtons(vector<string> details, bool success);
      /**
+      * Recieves a message from other tabs then executes the command in the parameters tab.
+      * sets the install method and current device to the class instance.
       * @brief ConsoleTab::sendToConsole
       * @param device
       * @param method
       * @param parameters
-      * Recieves a message from other tabs then executes the command in the parameters tab.
-      * sets the install method and current device to the class instance.
       */
      void sendToConsole(Device device,string method, vector<string> parameters);
 

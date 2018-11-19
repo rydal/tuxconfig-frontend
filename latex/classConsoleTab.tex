@@ -22,7 +22,7 @@ Collaboration diagram for Console\+Tab\+:\nopagebreak
 \begin{DoxyCompactItemize}
 \item 
 void \hyperlink{classConsoleTab_abda9ef659782544e72f0e4561c5583f0}{show\+Buttons} (vector$<$ string $>$ details, bool success)
-\begin{DoxyCompactList}\small\item\em \hyperlink{classConsoleTab_abda9ef659782544e72f0e4561c5583f0}{Console\+Tab\+::show\+Buttons}. \end{DoxyCompactList}\item 
+\item 
 void \hyperlink{classConsoleTab_a695bb64854ca658dc9cc0a44c7a08f2c}{send\+To\+Console} (\hyperlink{classDevice}{Device} device, string method, vector$<$ string $>$ parameters)
 \begin{DoxyCompactList}\small\item\em \hyperlink{classConsoleTab_a695bb64854ca658dc9cc0a44c7a08f2c}{Console\+Tab\+::send\+To\+Console}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Signals}
@@ -44,7 +44,7 @@ void {\bfseries send\+Reboot} ()
 \begin{DoxyCompactItemize}
 \item 
 \hyperlink{classConsoleTab_a2c631d14f9fe5957e0622e10269e5115}{Console\+Tab} (Q\+Widget $\ast$m\+\_\+parent)
-\begin{DoxyCompactList}\small\item\em \hyperlink{classConsoleTab_a2c631d14f9fe5957e0622e10269e5115}{Console\+Tab\+::\+Console\+Tab} /$\ast$$\ast$ $\ast$. \end{DoxyCompactList}\item 
+\item 
 \mbox{\Hypertarget{classConsoleTab_aa2b97a380a10d6100dc956d150ebd590}\label{classConsoleTab_aa2b97a380a10d6100dc956d150ebd590}} 
 void {\bfseries set\+Device} (\hyperlink{classDevice}{Device} device)
 \item 
@@ -102,13 +102,9 @@ string {\bfseries install\+\_\+method}
 \subsubsection{\texorpdfstring{Console\+Tab()}{ConsoleTab()}}
 {\footnotesize\ttfamily Console\+Tab\+::\+Console\+Tab (\begin{DoxyParamCaption}\item[{Q\+Widget $\ast$}]{m\+\_\+parent }\end{DoxyParamCaption})}
 
-
-
-\hyperlink{classConsoleTab_a2c631d14f9fe5957e0622e10269e5115}{Console\+Tab\+::\+Console\+Tab} /$\ast$$\ast$ $\ast$. 
-
-/$\ast$$\ast$ $\ast$ 
+Console widget, embeds a qtermwidget in this tab. 
 \begin{DoxyParams}{Parameters}
-{\em m\+\_\+parent} & Console widget, embeds a qtermwidget in this tab. \\
+{\em m\+\_\+parent} & \\
 \hline
 \end{DoxyParams}
 
@@ -147,13 +143,13 @@ Fires when fail button is pressed. Sends device with success status to feedback 
 
 \hyperlink{classConsoleTab_a695bb64854ca658dc9cc0a44c7a08f2c}{Console\+Tab\+::send\+To\+Console}. 
 
-
+Recieves a message from other tabs then executes the command in the parameters tab. sets the install method and current device to the class instance. 
 \begin{DoxyParams}{Parameters}
 {\em device} & \\
 \hline
 {\em method} & \\
 \hline
-{\em parameters} & Recieves a message from other tabs then executes the command in the parameters tab. sets the install method and current device to the class instance. \\
+{\em parameters} & \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{classConsoleTab_abda9ef659782544e72f0e4561c5583f0}\label{classConsoleTab_abda9ef659782544e72f0e4561c5583f0}} 
@@ -162,15 +158,11 @@ Fires when fail button is pressed. Sends device with success status to feedback 
 \subsubsection{\texorpdfstring{show\+Buttons}{showButtons}}
 {\footnotesize\ttfamily void Console\+Tab\+::show\+Buttons (\begin{DoxyParamCaption}\item[{vector$<$ string $>$}]{details,  }\item[{bool}]{success }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
 
-
-
-\hyperlink{classConsoleTab_abda9ef659782544e72f0e4561c5583f0}{Console\+Tab\+::show\+Buttons}. 
-
-
+On reciept of sugusr1 this method displays the success and fail buttons 
 \begin{DoxyParams}{Parameters}
 {\em details} & \\
 \hline
-{\em success} & On reciept of sugusr1 this method displays the success and fail buttons \\
+{\em success} & \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{classConsoleTab_a866367073a3150527988f7cb841d5002}\label{classConsoleTab_a866367073a3150527988f7cb841d5002}} 

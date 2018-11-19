@@ -85,7 +85,6 @@ Collaboration diagram for ConsoleTab:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-slots"></a>
 Public Slots</h2></td></tr>
 <tr class="memitem:abda9ef659782544e72f0e4561c5583f0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleTab.html#abda9ef659782544e72f0e4561c5583f0">showButtons</a> (vector&lt; string &gt; details, bool success)</td></tr>
-<tr class="memdesc:abda9ef659782544e72f0e4561c5583f0"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classConsoleTab.html#abda9ef659782544e72f0e4561c5583f0" title="ConsoleTab::showButtons. ">ConsoleTab::showButtons</a>.  <a href="#abda9ef659782544e72f0e4561c5583f0">More...</a><br /></td></tr>
 <tr class="separator:abda9ef659782544e72f0e4561c5583f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a695bb64854ca658dc9cc0a44c7a08f2c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleTab.html#a695bb64854ca658dc9cc0a44c7a08f2c">sendToConsole</a> (<a class="el" href="classDevice.html">Device</a> device, string method, vector&lt; string &gt; parameters)</td></tr>
 <tr class="memdesc:a695bb64854ca658dc9cc0a44c7a08f2c"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classConsoleTab.html#a695bb64854ca658dc9cc0a44c7a08f2c" title="ConsoleTab::sendToConsole. ">ConsoleTab::sendToConsole</a>.  <a href="#a695bb64854ca658dc9cc0a44c7a08f2c">More...</a><br /></td></tr>
@@ -109,7 +108,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>sendReboot</b> ()</td
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a2c631d14f9fe5957e0622e10269e5115"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleTab.html#a2c631d14f9fe5957e0622e10269e5115">ConsoleTab</a> (QWidget *m_parent)</td></tr>
-<tr class="memdesc:a2c631d14f9fe5957e0622e10269e5115"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classConsoleTab.html#a2c631d14f9fe5957e0622e10269e5115" title="ConsoleTab::ConsoleTab /** *. ">ConsoleTab::ConsoleTab</a> /** *.  <a href="#a2c631d14f9fe5957e0622e10269e5115">More...</a><br /></td></tr>
 <tr class="separator:a2c631d14f9fe5957e0622e10269e5115"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa2b97a380a10d6100dc956d150ebd590"><td class="memItemLeft" align="right" valign="top"><a id="aa2b97a380a10d6100dc956d150ebd590"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>setDevice</b> (<a class="el" href="classDevice.html">Device</a> device)</td></tr>
@@ -178,11 +176,9 @@ string&#160;</td><td class="memItemRight" valign="bottom"><b>install_method</b><
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p><a class="el" href="classConsoleTab.html#a2c631d14f9fe5957e0622e10269e5115" title="ConsoleTab::ConsoleTab /** *. ">ConsoleTab::ConsoleTab</a> /** *. </p>
-<p>/** * </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Console widget, embeds a qtermwidget in this tab. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">m_parent</td><td>Console widget, embeds a qtermwidget in this tab. </td></tr>
+    <tr><td class="paramname">m_parent</td><td></td></tr>
   </table>
   </dd>
 </dl>
@@ -286,11 +282,11 @@ string&#160;</td><td class="memItemRight" valign="bottom"><b>install_method</b><
 </div><div class="memdoc">
 
 <p><a class="el" href="classConsoleTab.html#a695bb64854ca658dc9cc0a44c7a08f2c" title="ConsoleTab::sendToConsole. ">ConsoleTab::sendToConsole</a>. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Recieves a message from other tabs then executes the command in the parameters tab. sets the install method and current device to the class instance. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">device</td><td></td></tr>
     <tr><td class="paramname">method</td><td></td></tr>
-    <tr><td class="paramname">parameters</td><td>Recieves a message from other tabs then executes the command in the parameters tab. sets the install method and current device to the class instance. </td></tr>
+    <tr><td class="paramname">parameters</td><td></td></tr>
   </table>
   </dd>
 </dl>
@@ -330,12 +326,10 @@ string&#160;</td><td class="memItemRight" valign="bottom"><b>install_method</b><
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p><a class="el" href="classConsoleTab.html#abda9ef659782544e72f0e4561c5583f0" title="ConsoleTab::showButtons. ">ConsoleTab::showButtons</a>. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>On reciept of sugusr1 this method displays the success and fail buttons </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">details</td><td></td></tr>
-    <tr><td class="paramname">success</td><td>On reciept of sugusr1 this method displays the success and fail buttons </td></tr>
+    <tr><td class="paramname">success</td><td></td></tr>
   </table>
   </dd>
 </dl>
