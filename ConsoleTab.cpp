@@ -152,7 +152,6 @@ void ConsoleTab::sendToConsole(Device device,string method, vector<string> param
     string command_string = parameters.at(0) +" \r";
     console->sendText(command_string.c_str());
 }
-///Reboots the machine
 void ConsoleTab::RebootMachine() {
     system("shutdown -r now");
 }

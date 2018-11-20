@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['questionbox',['QuestionBox',['../class_question_box.html#abe8853e77a48536473fdf35162b91bcd',1,'QuestionBox']]]
+  ['_7efeedback',['~Feedback',['../classFeedback.html#aa5037cce52fef7c63980caef4e13532c',1,'Feedback']]]
 ];

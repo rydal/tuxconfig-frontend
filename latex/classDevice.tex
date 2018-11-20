@@ -3,120 +3,84 @@
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classDevice_a107e7a95a02edc5ff586dfc831f1eb76}\label{classDevice_a107e7a95a02edc5ff586dfc831f1eb76}} 
-{\bfseries Device} (string id, string description, string name, string modulename)
+\hyperlink{classDevice_a64ba12dcc5f4267486c5d545d04dcf68}{Device} ()
+\begin{DoxyCompactList}\small\item\em \hyperlink{classDevice}{Device}. \end{DoxyCompactList}\item 
+\hyperlink{classDevice_a107e7a95a02edc5ff586dfc831f1eb76}{Device} (string id, string description, string name, string modulename)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classDevice}{Device}. \end{DoxyCompactList}\item 
+\hyperlink{classDevice_a11aa3e7c780559e7749bea3ac702e55e}{Device} (string m\+\_\+id, string m\+\_\+description, bool is\+Installed, bool is\+Failed, string success\+\_\+code, string status)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classDevice}{Device}. \end{DoxyCompactList}\item 
+string \hyperlink{classDevice_a0c77b871987e94ec9088e8ab78f27293}{parse\+Device\+Id} (string device\+\_\+id)
 \item 
-\mbox{\Hypertarget{classDevice_a11aa3e7c780559e7749bea3ac702e55e}\label{classDevice_a11aa3e7c780559e7749bea3ac702e55e}} 
-{\bfseries Device} (string m\+\_\+id, string m\+\_\+description, bool is\+Installed, bool is\+Failed, string success\+\_\+code, string status)
-\item 
-\mbox{\Hypertarget{classDevice_a0c77b871987e94ec9088e8ab78f27293}\label{classDevice_a0c77b871987e94ec9088e8ab78f27293}} 
-string {\bfseries parse\+Device\+Id} (string device\+\_\+id)
-\item 
-\mbox{\Hypertarget{classDevice_acd077de5b2954ce456927e021c5de5df}\label{classDevice_acd077de5b2954ce456927e021c5de5df}} 
-bool {\bfseries operator$<$} (const \hyperlink{classDevice}{Device} rhs) const
-\item 
-\mbox{\Hypertarget{classDevice_a660d5da7a710da202ac6c58766370283}\label{classDevice_a660d5da7a710da202ac6c58766370283}} 
-bool {\bfseries operator$<$} (const \hyperlink{classDevice}{Device} rhs)
-\item 
-\mbox{\Hypertarget{classDevice_a1078839b751f8366b5170d4daefa26b4}\label{classDevice_a1078839b751f8366b5170d4daefa26b4}} 
+bool \hyperlink{classDevice_acd077de5b2954ce456927e021c5de5df}{operator$<$} (const \hyperlink{classDevice}{Device} rhs) const
+\begin{DoxyCompactList}\small\item\em operator $<$ \end{DoxyCompactList}\item 
+bool \hyperlink{classDevice_a660d5da7a710da202ac6c58766370283}{operator$<$} (const \hyperlink{classDevice}{Device} rhs)
+\begin{DoxyCompactList}\small\item\em operator $<$ \end{DoxyCompactList}\item 
 bool \hyperlink{classDevice_a1078839b751f8366b5170d4daefa26b4}{is\+Upgradeable} ()
-\begin{DoxyCompactList}\small\item\em returns true if upgradeable. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classDevice_abdadd7bc6fa1760aeaa9f87dd2f96f59}\label{classDevice_abdadd7bc6fa1760aeaa9f87dd2f96f59}} 
-string {\bfseries get\+Installed\+Status} ()
-\item 
-\mbox{\Hypertarget{classDevice_a2036c2bc77979808046f7ecae94ec602}\label{classDevice_a2036c2bc77979808046f7ecae94ec602}} 
-\hyperlink{classDevice}{Device} {\bfseries getinfo} ()
-\item 
-\mbox{\Hypertarget{classDevice_ae5b04fdd1bf82d2dba2ec249e92e4da5}\label{classDevice_ae5b04fdd1bf82d2dba2ec249e92e4da5}} 
-const std\+::string \& {\bfseries get\+Commit} () const
-\item 
-\mbox{\Hypertarget{classDevice_a2d549bad1c70b5768698dbc2175669ef}\label{classDevice_a2d549bad1c70b5768698dbc2175669ef}} 
-void {\bfseries set\+Commit} (const std\+::string \&commit)
-\item 
-\mbox{\Hypertarget{classDevice_a6ba1792dd4f33f99e7b3ff97c4fae153}\label{classDevice_a6ba1792dd4f33f99e7b3ff97c4fae153}} 
-const std\+::string \& {\bfseries get\+Description} () const
-\item 
-\mbox{\Hypertarget{classDevice_a3f71228960ac3bfca0a1cca254ea782b}\label{classDevice_a3f71228960ac3bfca0a1cca254ea782b}} 
-void {\bfseries set\+Description} (const std\+::string \&description)
-\item 
-\mbox{\Hypertarget{classDevice_ace938c6c2efffdcc2d17d49440cb55b7}\label{classDevice_ace938c6c2efffdcc2d17d49440cb55b7}} 
-const std\+::string \& {\bfseries get\+Deviceid} () const
-\item 
-\mbox{\Hypertarget{classDevice_a8bd16b3e099e864db3c09ba4f6225fb0}\label{classDevice_a8bd16b3e099e864db3c09ba4f6225fb0}} 
-void {\bfseries set\+Deviceid} (const std\+::string \&deviceid)
-\item 
-\mbox{\Hypertarget{classDevice_a96f94097331f294afc73c6358918d408}\label{classDevice_a96f94097331f294afc73c6358918d408}} 
-const std\+::string \& {\bfseries get\+Git\+Url} () const
-\item 
-\mbox{\Hypertarget{classDevice_ae8587aa062a7a2f2b5b77e9a15569e53}\label{classDevice_ae8587aa062a7a2f2b5b77e9a15569e53}} 
-void {\bfseries set\+Git\+Url} (const std\+::string \&git\+Url)
-\item 
-\mbox{\Hypertarget{classDevice_a77eeec87fea2ffc4d4140b315613bb1b}\label{classDevice_a77eeec87fea2ffc4d4140b315613bb1b}} 
-const std\+::string \& {\bfseries get\+Modulename} () const
-\item 
-\mbox{\Hypertarget{classDevice_a09e9d9bbcfa76268b7ebc30afa680c69}\label{classDevice_a09e9d9bbcfa76268b7ebc30afa680c69}} 
-void {\bfseries set\+Modulename} (const std\+::string \&modulename)
-\item 
-\mbox{\Hypertarget{classDevice_a2b4556e5a3b1f955c3e498e1de75051c}\label{classDevice_a2b4556e5a3b1f955c3e498e1de75051c}} 
-const std\+::string \& {\bfseries get\+Owner\+Git\+Id} () const
-\item 
-\mbox{\Hypertarget{classDevice_aabc16749d0fe22ec25ca525fbd2b9dc2}\label{classDevice_aabc16749d0fe22ec25ca525fbd2b9dc2}} 
-void {\bfseries set\+Owner\+Git\+Id} (const std\+::string \&owner\+Git\+Id)
-\item 
-\mbox{\Hypertarget{classDevice_a19c62e8fa746efc12e6c0521b690bf03}\label{classDevice_a19c62e8fa746efc12e6c0521b690bf03}} 
-const std\+::string \& {\bfseries get\+Success\+Code} () const
-\item 
-\mbox{\Hypertarget{classDevice_ae70b727a6230454baccc6da6cfd819a7}\label{classDevice_ae70b727a6230454baccc6da6cfd819a7}} 
-void {\bfseries set\+Success\+Code} (const std\+::string \&success\+Code)
-\item 
-\mbox{\Hypertarget{classDevice_a7c1221950b9ec064b023c4033454774a}\label{classDevice_a7c1221950b9ec064b023c4033454774a}} 
-const std\+::string \& {\bfseries get\+Devicename} () const
-\item 
-\mbox{\Hypertarget{classDevice_ad1f6005dcab32855477814fa9533315d}\label{classDevice_ad1f6005dcab32855477814fa9533315d}} 
-void {\bfseries set\+Devicename} (const std\+::string \&devicename)
-\item 
-\mbox{\Hypertarget{classDevice_a3c0a93766217f57848cf6871aeb9ffc2}\label{classDevice_a3c0a93766217f57848cf6871aeb9ffc2}} 
-const std\+::string \& {\bfseries get\+Set\+Command} () const
-\item 
-\mbox{\Hypertarget{classDevice_afad48633a288b303f88f7d607c64cca3}\label{classDevice_afad48633a288b303f88f7d607c64cca3}} 
-void {\bfseries set\+Set\+Command} (const std\+::string \&set\+Command)
-\item 
-\mbox{\Hypertarget{classDevice_abbf7d73cde4dc08996414956fc25188d}\label{classDevice_abbf7d73cde4dc08996414956fc25188d}} 
-const int \& {\bfseries get\+Vote\+Difference} () const
-\item 
-\mbox{\Hypertarget{classDevice_acf378aa086771dd7c64626abb8a74821}\label{classDevice_acf378aa086771dd7c64626abb8a74821}} 
-void {\bfseries set\+Vote\+Difference} (const int \&vote\+Difference)
-\item 
-\mbox{\Hypertarget{classDevice_a068c25d48712783fd0dc759d4505c615}\label{classDevice_a068c25d48712783fd0dc759d4505c615}} 
-const bool {\bfseries get\+Attempted\+Install} () const
-\item 
-\mbox{\Hypertarget{classDevice_af2591540bf77d38b8e4c09b90e8dfaba}\label{classDevice_af2591540bf77d38b8e4c09b90e8dfaba}} 
-void {\bfseries set\+Attempted\+Install} (bool installed)
-\item 
-\mbox{\Hypertarget{classDevice_ad49afa64f231ac899736cc21027766f2}\label{classDevice_ad49afa64f231ac899736cc21027766f2}} 
-const string \& {\bfseries get\+Status} () const
-\item 
-\mbox{\Hypertarget{classDevice_a46b5e30da5b43b09c0785a054bfb678a}\label{classDevice_a46b5e30da5b43b09c0785a054bfb678a}} 
-void {\bfseries set\+Status} (const string \&status)
-\item 
-\mbox{\Hypertarget{classDevice_afe6f638cc2bcc512f5bc1f2fef39fe88}\label{classDevice_afe6f638cc2bcc512f5bc1f2fef39fe88}} 
-bool {\bfseries is\+Is\+Upgradeable} () const
-\item 
-\mbox{\Hypertarget{classDevice_a3b5d4af66cacd8e1b0e45219c16ee084}\label{classDevice_a3b5d4af66cacd8e1b0e45219c16ee084}} 
-void {\bfseries set\+Is\+Upgradeable} (bool \hyperlink{classDevice_a1078839b751f8366b5170d4daefa26b4}{is\+Upgradeable})
-\item 
-\mbox{\Hypertarget{classDevice_a697feb57b759c13cb1b56f004e61229b}\label{classDevice_a697feb57b759c13cb1b56f004e61229b}} 
-bool {\bfseries is\+Is\+Installed} () const
-\item 
-\mbox{\Hypertarget{classDevice_aec222a879b4a9aadd1a083a7aff2e516}\label{classDevice_aec222a879b4a9aadd1a083a7aff2e516}} 
-void {\bfseries set\+Is\+Installed} (bool is\+Installed)
-\item 
-\mbox{\Hypertarget{classDevice_a15d7c755aed944da8514902d06d21ea9}\label{classDevice_a15d7c755aed944da8514902d06d21ea9}} 
-void {\bfseries set\+Apt\+Installed} (bool apt\+\_\+install)
-\item 
-\mbox{\Hypertarget{classDevice_a2ea735319a841af580e6ada8ab3b4076}\label{classDevice_a2ea735319a841af580e6ada8ab3b4076}} 
-bool {\bfseries get\+Apt\+Installed} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em is\+Upgradeable \end{DoxyCompactList}\item 
+string \hyperlink{classDevice_abdadd7bc6fa1760aeaa9f87dd2f96f59}{get\+Installed\+Status} ()
+\begin{DoxyCompactList}\small\item\em get\+Installed\+Status \end{DoxyCompactList}\item 
+\hyperlink{classDevice}{Device} \hyperlink{classDevice_a2036c2bc77979808046f7ecae94ec602}{getinfo} ()
+\begin{DoxyCompactList}\small\item\em getinfo \end{DoxyCompactList}\item 
+const std\+::string \& \hyperlink{classDevice_ae5b04fdd1bf82d2dba2ec249e92e4da5}{get\+Commit} () const
+\begin{DoxyCompactList}\small\item\em get\+Commit \end{DoxyCompactList}\item 
+void \hyperlink{classDevice_a2d549bad1c70b5768698dbc2175669ef}{set\+Commit} (const std\+::string \&commit)
+\begin{DoxyCompactList}\small\item\em set\+Commit \end{DoxyCompactList}\item 
+const std\+::string \& \hyperlink{classDevice_a6ba1792dd4f33f99e7b3ff97c4fae153}{get\+Description} () const
+\begin{DoxyCompactList}\small\item\em get\+Description \end{DoxyCompactList}\item 
+void \hyperlink{classDevice_a3f71228960ac3bfca0a1cca254ea782b}{set\+Description} (const std\+::string \&description)
+\begin{DoxyCompactList}\small\item\em set\+Description \end{DoxyCompactList}\item 
+const std\+::string \& \hyperlink{classDevice_ace938c6c2efffdcc2d17d49440cb55b7}{get\+Deviceid} () const
+\begin{DoxyCompactList}\small\item\em get\+Deviceid \end{DoxyCompactList}\item 
+void \hyperlink{classDevice_a8bd16b3e099e864db3c09ba4f6225fb0}{set\+Deviceid} (const std\+::string \&deviceid)
+\begin{DoxyCompactList}\small\item\em set\+Deviceid \end{DoxyCompactList}\item 
+const std\+::string \& \hyperlink{classDevice_a96f94097331f294afc73c6358918d408}{get\+Git\+Url} () const
+\begin{DoxyCompactList}\small\item\em get\+Git\+Url \end{DoxyCompactList}\item 
+void \hyperlink{classDevice_ae8587aa062a7a2f2b5b77e9a15569e53}{set\+Git\+Url} (const std\+::string \&git\+Url)
+\begin{DoxyCompactList}\small\item\em set\+Git\+Url \end{DoxyCompactList}\item 
+const std\+::string \& \hyperlink{classDevice_a77eeec87fea2ffc4d4140b315613bb1b}{get\+Modulename} () const
+\begin{DoxyCompactList}\small\item\em get\+Modulename \end{DoxyCompactList}\item 
+void \hyperlink{classDevice_a09e9d9bbcfa76268b7ebc30afa680c69}{set\+Modulename} (const std\+::string \&modulename)
+\begin{DoxyCompactList}\small\item\em set\+Modulename \end{DoxyCompactList}\item 
+const std\+::string \& \hyperlink{classDevice_a2b4556e5a3b1f955c3e498e1de75051c}{get\+Owner\+Git\+Id} () const
+\begin{DoxyCompactList}\small\item\em get\+Owner\+Git\+Id \end{DoxyCompactList}\item 
+void \hyperlink{classDevice_aabc16749d0fe22ec25ca525fbd2b9dc2}{set\+Owner\+Git\+Id} (const std\+::string \&owner\+Git\+Id)
+\begin{DoxyCompactList}\small\item\em set\+Owner\+Git\+Id \end{DoxyCompactList}\item 
+const std\+::string \& \hyperlink{classDevice_a19c62e8fa746efc12e6c0521b690bf03}{get\+Success\+Code} () const
+\begin{DoxyCompactList}\small\item\em get\+Success\+Code \end{DoxyCompactList}\item 
+void \hyperlink{classDevice_ae70b727a6230454baccc6da6cfd819a7}{set\+Success\+Code} (const std\+::string \&success\+Code)
+\begin{DoxyCompactList}\small\item\em set\+Success\+Code \end{DoxyCompactList}\item 
+const std\+::string \& \hyperlink{classDevice_a7c1221950b9ec064b023c4033454774a}{get\+Devicename} () const
+\begin{DoxyCompactList}\small\item\em get\+Devicename \end{DoxyCompactList}\item 
+void \hyperlink{classDevice_ad1f6005dcab32855477814fa9533315d}{set\+Devicename} (const std\+::string \&devicename)
+\begin{DoxyCompactList}\small\item\em set\+Devicename \end{DoxyCompactList}\item 
+const std\+::string \& \hyperlink{classDevice_a3c0a93766217f57848cf6871aeb9ffc2}{get\+Set\+Command} () const
+\begin{DoxyCompactList}\small\item\em get\+Set\+Command \end{DoxyCompactList}\item 
+void \hyperlink{classDevice_afad48633a288b303f88f7d607c64cca3}{set\+Set\+Command} (const std\+::string \&set\+Command)
+\begin{DoxyCompactList}\small\item\em set\+Set\+Command \end{DoxyCompactList}\item 
+const int \& \hyperlink{classDevice_abbf7d73cde4dc08996414956fc25188d}{get\+Vote\+Difference} () const
+\begin{DoxyCompactList}\small\item\em get\+Vote\+Difference \end{DoxyCompactList}\item 
+void \hyperlink{classDevice_acf378aa086771dd7c64626abb8a74821}{set\+Vote\+Difference} (const int \&vote\+Difference)
+\begin{DoxyCompactList}\small\item\em set\+Vote\+Difference \end{DoxyCompactList}\item 
+const bool \hyperlink{classDevice_a068c25d48712783fd0dc759d4505c615}{get\+Attempted\+Install} () const
+\begin{DoxyCompactList}\small\item\em get\+Attempted\+Install \end{DoxyCompactList}\item 
+void \hyperlink{classDevice_af2591540bf77d38b8e4c09b90e8dfaba}{set\+Attempted\+Install} (bool installed)
+\begin{DoxyCompactList}\small\item\em set\+Attempted\+Install \end{DoxyCompactList}\item 
+const string \& \hyperlink{classDevice_ad49afa64f231ac899736cc21027766f2}{get\+Status} () const
+\begin{DoxyCompactList}\small\item\em get\+Status \end{DoxyCompactList}\item 
+void \hyperlink{classDevice_a46b5e30da5b43b09c0785a054bfb678a}{set\+Status} (const string \&status)
+\begin{DoxyCompactList}\small\item\em set\+Status \end{DoxyCompactList}\item 
+bool \hyperlink{classDevice_afe6f638cc2bcc512f5bc1f2fef39fe88}{is\+Is\+Upgradeable} () const
+\begin{DoxyCompactList}\small\item\em is\+Is\+Upgradeable \end{DoxyCompactList}\item 
+void \hyperlink{classDevice_a3b5d4af66cacd8e1b0e45219c16ee084}{set\+Is\+Upgradeable} (bool \hyperlink{classDevice_a1078839b751f8366b5170d4daefa26b4}{is\+Upgradeable})
+\begin{DoxyCompactList}\small\item\em set\+Is\+Upgradeable \end{DoxyCompactList}\item 
+bool \hyperlink{classDevice_a697feb57b759c13cb1b56f004e61229b}{is\+Is\+Installed} () const
+\begin{DoxyCompactList}\small\item\em is\+Is\+Installed \end{DoxyCompactList}\item 
+void \hyperlink{classDevice_aec222a879b4a9aadd1a083a7aff2e516}{set\+Is\+Installed} (bool is\+Installed)
+\begin{DoxyCompactList}\small\item\em set\+Is\+Installed \end{DoxyCompactList}\item 
+void \hyperlink{classDevice_a15d7c755aed944da8514902d06d21ea9}{set\+Apt\+Installed} (bool apt\+\_\+install)
+\begin{DoxyCompactList}\small\item\em set\+Apt\+Installed \end{DoxyCompactList}\item 
+bool \hyperlink{classDevice_a2ea735319a841af580e6ada8ab3b4076}{get\+Apt\+Installed} ()
+\begin{DoxyCompactList}\small\item\em get\+Apt\+Installed \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -165,6 +129,571 @@ bool {\bfseries is\+\_\+installed}
 \mbox{\Hypertarget{classDevice_ad3cd9d9d8054a8ef1a136ded17d2fff7}\label{classDevice_ad3cd9d9d8054a8ef1a136ded17d2fff7}} 
 string {\bfseries status}
 \end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classDevice_a64ba12dcc5f4267486c5d545d04dcf68}\label{classDevice_a64ba12dcc5f4267486c5d545d04dcf68}} 
+\index{Device@{Device}!Device@{Device}}
+\index{Device@{Device}!Device@{Device}}
+\subsubsection{\texorpdfstring{Device()}{Device()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily Device\+::\+Device (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\hyperlink{classDevice}{Device}. 
+
+Default constructor. \mbox{\Hypertarget{classDevice_a107e7a95a02edc5ff586dfc831f1eb76}\label{classDevice_a107e7a95a02edc5ff586dfc831f1eb76}} 
+\index{Device@{Device}!Device@{Device}}
+\index{Device@{Device}!Device@{Device}}
+\subsubsection{\texorpdfstring{Device()}{Device()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily Device\+::\+Device (\begin{DoxyParamCaption}\item[{string}]{id,  }\item[{string}]{description,  }\item[{string}]{name,  }\item[{string}]{modulename }\end{DoxyParamCaption})}
+
+
+
+\hyperlink{classDevice}{Device}. 
+
+Constructor as used in downloading remote configuration. 
+\begin{DoxyParams}{Parameters}
+{\em id} & \\
+\hline
+{\em description} & \\
+\hline
+{\em name} & \\
+\hline
+{\em modulename} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDevice_a11aa3e7c780559e7749bea3ac702e55e}\label{classDevice_a11aa3e7c780559e7749bea3ac702e55e}} 
+\index{Device@{Device}!Device@{Device}}
+\index{Device@{Device}!Device@{Device}}
+\subsubsection{\texorpdfstring{Device()}{Device()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily Device\+::\+Device (\begin{DoxyParamCaption}\item[{string}]{m\+\_\+id,  }\item[{string}]{m\+\_\+description,  }\item[{bool}]{is\+Installed,  }\item[{bool}]{is\+Failed,  }\item[{string}]{success\+\_\+code,  }\item[{string}]{status }\end{DoxyParamCaption})}
+
+
+
+\hyperlink{classDevice}{Device}. 
+
+Constructor as used when obtaining information from history file. 
+\begin{DoxyParams}{Parameters}
+{\em m\+\_\+id} & \\
+\hline
+{\em m\+\_\+description} & \\
+\hline
+{\em is\+Installed} & \\
+\hline
+{\em is\+Failed} & \\
+\hline
+{\em success\+\_\+code} & \\
+\hline
+{\em status} & \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classDevice_a2ea735319a841af580e6ada8ab3b4076}\label{classDevice_a2ea735319a841af580e6ada8ab3b4076}} 
+\index{Device@{Device}!get\+Apt\+Installed@{get\+Apt\+Installed}}
+\index{get\+Apt\+Installed@{get\+Apt\+Installed}!Device@{Device}}
+\subsubsection{\texorpdfstring{get\+Apt\+Installed()}{getAptInstalled()}}
+{\footnotesize\ttfamily bool Device\+::get\+Apt\+Installed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get\+Apt\+Installed 
+
+Returns true if packages were installed using apt-\/undo. \begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDevice_a068c25d48712783fd0dc759d4505c615}\label{classDevice_a068c25d48712783fd0dc759d4505c615}} 
+\index{Device@{Device}!get\+Attempted\+Install@{get\+Attempted\+Install}}
+\index{get\+Attempted\+Install@{get\+Attempted\+Install}!Device@{Device}}
+\subsubsection{\texorpdfstring{get\+Attempted\+Install()}{getAttemptedInstall()}}
+{\footnotesize\ttfamily const bool Device\+::get\+Attempted\+Install (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+Attempted\+Install 
+
+returns true if an attempred install of the device has been made. \begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDevice_ae5b04fdd1bf82d2dba2ec249e92e4da5}\label{classDevice_ae5b04fdd1bf82d2dba2ec249e92e4da5}} 
+\index{Device@{Device}!get\+Commit@{get\+Commit}}
+\index{get\+Commit@{get\+Commit}!Device@{Device}}
+\subsubsection{\texorpdfstring{get\+Commit()}{getCommit()}}
+{\footnotesize\ttfamily const std\+::string \& Device\+::get\+Commit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+Commit 
+
+Returns commit hash. \begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDevice_a6ba1792dd4f33f99e7b3ff97c4fae153}\label{classDevice_a6ba1792dd4f33f99e7b3ff97c4fae153}} 
+\index{Device@{Device}!get\+Description@{get\+Description}}
+\index{get\+Description@{get\+Description}!Device@{Device}}
+\subsubsection{\texorpdfstring{get\+Description()}{getDescription()}}
+{\footnotesize\ttfamily const std\+::string \& Device\+::get\+Description (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+Description 
+
+returns device description as found locally.. \begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDevice_ace938c6c2efffdcc2d17d49440cb55b7}\label{classDevice_ace938c6c2efffdcc2d17d49440cb55b7}} 
+\index{Device@{Device}!get\+Deviceid@{get\+Deviceid}}
+\index{get\+Deviceid@{get\+Deviceid}!Device@{Device}}
+\subsubsection{\texorpdfstring{get\+Deviceid()}{getDeviceid()}}
+{\footnotesize\ttfamily const std\+::string \& Device\+::get\+Deviceid (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+Deviceid 
+
+returns device id. \begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDevice_a7c1221950b9ec064b023c4033454774a}\label{classDevice_a7c1221950b9ec064b023c4033454774a}} 
+\index{Device@{Device}!get\+Devicename@{get\+Devicename}}
+\index{get\+Devicename@{get\+Devicename}!Device@{Device}}
+\subsubsection{\texorpdfstring{get\+Devicename()}{getDevicename()}}
+{\footnotesize\ttfamily const std\+::string \& Device\+::get\+Devicename (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+Devicename 
+
+reutrns device name as found on local system. \begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDevice_a96f94097331f294afc73c6358918d408}\label{classDevice_a96f94097331f294afc73c6358918d408}} 
+\index{Device@{Device}!get\+Git\+Url@{get\+Git\+Url}}
+\index{get\+Git\+Url@{get\+Git\+Url}!Device@{Device}}
+\subsubsection{\texorpdfstring{get\+Git\+Url()}{getGitUrl()}}
+{\footnotesize\ttfamily const std\+::string \& Device\+::get\+Git\+Url (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+Git\+Url 
+
+returns device\textquotesingle{}s remote repository url. \begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDevice_a2036c2bc77979808046f7ecae94ec602}\label{classDevice_a2036c2bc77979808046f7ecae94ec602}} 
+\index{Device@{Device}!getinfo@{getinfo}}
+\index{getinfo@{getinfo}!Device@{Device}}
+\subsubsection{\texorpdfstring{getinfo()}{getinfo()}}
+{\footnotesize\ttfamily \hyperlink{classDevice}{Device} Device\+::getinfo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+getinfo 
+
+Returns device object. \begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDevice_abdadd7bc6fa1760aeaa9f87dd2f96f59}\label{classDevice_abdadd7bc6fa1760aeaa9f87dd2f96f59}} 
+\index{Device@{Device}!get\+Installed\+Status@{get\+Installed\+Status}}
+\index{get\+Installed\+Status@{get\+Installed\+Status}!Device@{Device}}
+\subsubsection{\texorpdfstring{get\+Installed\+Status()}{getInstalledStatus()}}
+{\footnotesize\ttfamily string Device\+::get\+Installed\+Status (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get\+Installed\+Status 
+
+returns install status as found in history file. \begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDevice_a77eeec87fea2ffc4d4140b315613bb1b}\label{classDevice_a77eeec87fea2ffc4d4140b315613bb1b}} 
+\index{Device@{Device}!get\+Modulename@{get\+Modulename}}
+\index{get\+Modulename@{get\+Modulename}!Device@{Device}}
+\subsubsection{\texorpdfstring{get\+Modulename()}{getModulename()}}
+{\footnotesize\ttfamily const std\+::string \& Device\+::get\+Modulename (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+Modulename 
+
+returns module name as defined in tuxconfig file in repository. \begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDevice_a2b4556e5a3b1f955c3e498e1de75051c}\label{classDevice_a2b4556e5a3b1f955c3e498e1de75051c}} 
+\index{Device@{Device}!get\+Owner\+Git\+Id@{get\+Owner\+Git\+Id}}
+\index{get\+Owner\+Git\+Id@{get\+Owner\+Git\+Id}!Device@{Device}}
+\subsubsection{\texorpdfstring{get\+Owner\+Git\+Id()}{getOwnerGitId()}}
+{\footnotesize\ttfamily const std\+::string \& Device\+::get\+Owner\+Git\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+Owner\+Git\+Id 
+
+returns contibutors github.\+com user id. \begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDevice_a3c0a93766217f57848cf6871aeb9ffc2}\label{classDevice_a3c0a93766217f57848cf6871aeb9ffc2}} 
+\index{Device@{Device}!get\+Set\+Command@{get\+Set\+Command}}
+\index{get\+Set\+Command@{get\+Set\+Command}!Device@{Device}}
+\subsubsection{\texorpdfstring{get\+Set\+Command()}{getSetCommand()}}
+{\footnotesize\ttfamily const std\+::string \& Device\+::get\+Set\+Command (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+Set\+Command 
+
+Not used. \begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDevice_ad49afa64f231ac899736cc21027766f2}\label{classDevice_ad49afa64f231ac899736cc21027766f2}} 
+\index{Device@{Device}!get\+Status@{get\+Status}}
+\index{get\+Status@{get\+Status}!Device@{Device}}
+\subsubsection{\texorpdfstring{get\+Status()}{getStatus()}}
+{\footnotesize\ttfamily const string \& Device\+::get\+Status (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+Status 
+
+Returns device install status as found in history. \begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDevice_a19c62e8fa746efc12e6c0521b690bf03}\label{classDevice_a19c62e8fa746efc12e6c0521b690bf03}} 
+\index{Device@{Device}!get\+Success\+Code@{get\+Success\+Code}}
+\index{get\+Success\+Code@{get\+Success\+Code}!Device@{Device}}
+\subsubsection{\texorpdfstring{get\+Success\+Code()}{getSuccessCode()}}
+{\footnotesize\ttfamily const std\+::string \& Device\+::get\+Success\+Code (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+Success\+Code 
+
+returns success code of a particular installation as defined in backend database. \begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDevice_abbf7d73cde4dc08996414956fc25188d}\label{classDevice_abbf7d73cde4dc08996414956fc25188d}} 
+\index{Device@{Device}!get\+Vote\+Difference@{get\+Vote\+Difference}}
+\index{get\+Vote\+Difference@{get\+Vote\+Difference}!Device@{Device}}
+\subsubsection{\texorpdfstring{get\+Vote\+Difference()}{getVoteDifference()}}
+{\footnotesize\ttfamily const int \& Device\+::get\+Vote\+Difference (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+Vote\+Difference 
+
+Returns the success of the device\textquotesingle{}s install as downloaded. \begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDevice_a697feb57b759c13cb1b56f004e61229b}\label{classDevice_a697feb57b759c13cb1b56f004e61229b}} 
+\index{Device@{Device}!is\+Is\+Installed@{is\+Is\+Installed}}
+\index{is\+Is\+Installed@{is\+Is\+Installed}!Device@{Device}}
+\subsubsection{\texorpdfstring{is\+Is\+Installed()}{isIsInstalled()}}
+{\footnotesize\ttfamily bool Device\+::is\+Is\+Installed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+is\+Is\+Installed 
+
+Returns true if device is installed. \begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDevice_afe6f638cc2bcc512f5bc1f2fef39fe88}\label{classDevice_afe6f638cc2bcc512f5bc1f2fef39fe88}} 
+\index{Device@{Device}!is\+Is\+Upgradeable@{is\+Is\+Upgradeable}}
+\index{is\+Is\+Upgradeable@{is\+Is\+Upgradeable}!Device@{Device}}
+\subsubsection{\texorpdfstring{is\+Is\+Upgradeable()}{isIsUpgradeable()}}
+{\footnotesize\ttfamily bool Device\+::is\+Is\+Upgradeable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+is\+Is\+Upgradeable 
+
+returns true if vote count of device is less than that of remote verison. \begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDevice_a1078839b751f8366b5170d4daefa26b4}\label{classDevice_a1078839b751f8366b5170d4daefa26b4}} 
+\index{Device@{Device}!is\+Upgradeable@{is\+Upgradeable}}
+\index{is\+Upgradeable@{is\+Upgradeable}!Device@{Device}}
+\subsubsection{\texorpdfstring{is\+Upgradeable()}{isUpgradeable()}}
+{\footnotesize\ttfamily bool Device\+::is\+Upgradeable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+is\+Upgradeable 
+
+returns true if upgradeable.
+
+Returns true if vote count less than in database. \begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDevice_acd077de5b2954ce456927e021c5de5df}\label{classDevice_acd077de5b2954ce456927e021c5de5df}} 
+\index{Device@{Device}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!Device@{Device}}
+\subsubsection{\texorpdfstring{operator$<$()}{operator<()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool Device\+::operator$<$ (\begin{DoxyParamCaption}\item[{const \hyperlink{classDevice}{Device}}]{rhs }\end{DoxyParamCaption}) const}
+
+
+
+operator $<$ 
+
+Sorts items when referred by hashmap (const). 
+\begin{DoxyParams}{Parameters}
+{\em rhs} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDevice_a660d5da7a710da202ac6c58766370283}\label{classDevice_a660d5da7a710da202ac6c58766370283}} 
+\index{Device@{Device}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!Device@{Device}}
+\subsubsection{\texorpdfstring{operator$<$()}{operator<()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool Device\+::operator$<$ (\begin{DoxyParamCaption}\item[{const \hyperlink{classDevice}{Device}}]{rhs }\end{DoxyParamCaption})}
+
+
+
+operator $<$ 
+
+Sorts items when referred by hashmap 
+\begin{DoxyParams}{Parameters}
+{\em rhs} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDevice_a0c77b871987e94ec9088e8ab78f27293}\label{classDevice_a0c77b871987e94ec9088e8ab78f27293}} 
+\index{Device@{Device}!parse\+Device\+Id@{parse\+Device\+Id}}
+\index{parse\+Device\+Id@{parse\+Device\+Id}!Device@{Device}}
+\subsubsection{\texorpdfstring{parse\+Device\+Id()}{parseDeviceId()}}
+{\footnotesize\ttfamily string Device\+::parse\+Device\+Id (\begin{DoxyParamCaption}\item[{string}]{device\+\_\+id }\end{DoxyParamCaption})}
+
+Parses device id to match that of databse \mbox{\Hypertarget{classDevice_a15d7c755aed944da8514902d06d21ea9}\label{classDevice_a15d7c755aed944da8514902d06d21ea9}} 
+\index{Device@{Device}!set\+Apt\+Installed@{set\+Apt\+Installed}}
+\index{set\+Apt\+Installed@{set\+Apt\+Installed}!Device@{Device}}
+\subsubsection{\texorpdfstring{set\+Apt\+Installed()}{setAptInstalled()}}
+{\footnotesize\ttfamily void Device\+::set\+Apt\+Installed (\begin{DoxyParamCaption}\item[{bool}]{apt\+\_\+install }\end{DoxyParamCaption})}
+
+
+
+set\+Apt\+Installed 
+
+sets to true if packages were installed using apt-\/undo. 
+\begin{DoxyParams}{Parameters}
+{\em apt\+\_\+install} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDevice_af2591540bf77d38b8e4c09b90e8dfaba}\label{classDevice_af2591540bf77d38b8e4c09b90e8dfaba}} 
+\index{Device@{Device}!set\+Attempted\+Install@{set\+Attempted\+Install}}
+\index{set\+Attempted\+Install@{set\+Attempted\+Install}!Device@{Device}}
+\subsubsection{\texorpdfstring{set\+Attempted\+Install()}{setAttemptedInstall()}}
+{\footnotesize\ttfamily void Device\+::set\+Attempted\+Install (\begin{DoxyParamCaption}\item[{bool}]{installed }\end{DoxyParamCaption})}
+
+
+
+set\+Attempted\+Install 
+
+sets true if an attempred install of the device has been made 
+\begin{DoxyParams}{Parameters}
+{\em installed} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDevice_a2d549bad1c70b5768698dbc2175669ef}\label{classDevice_a2d549bad1c70b5768698dbc2175669ef}} 
+\index{Device@{Device}!set\+Commit@{set\+Commit}}
+\index{set\+Commit@{set\+Commit}!Device@{Device}}
+\subsubsection{\texorpdfstring{set\+Commit()}{setCommit()}}
+{\footnotesize\ttfamily void Device\+::set\+Commit (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{commit }\end{DoxyParamCaption})}
+
+
+
+set\+Commit 
+
+sets commit hash. 
+\begin{DoxyParams}{Parameters}
+{\em commit} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDevice_a3f71228960ac3bfca0a1cca254ea782b}\label{classDevice_a3f71228960ac3bfca0a1cca254ea782b}} 
+\index{Device@{Device}!set\+Description@{set\+Description}}
+\index{set\+Description@{set\+Description}!Device@{Device}}
+\subsubsection{\texorpdfstring{set\+Description()}{setDescription()}}
+{\footnotesize\ttfamily void Device\+::set\+Description (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{description }\end{DoxyParamCaption})}
+
+
+
+set\+Description 
+
+Sets device description as found locally. 
+\begin{DoxyParams}{Parameters}
+{\em description} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDevice_a8bd16b3e099e864db3c09ba4f6225fb0}\label{classDevice_a8bd16b3e099e864db3c09ba4f6225fb0}} 
+\index{Device@{Device}!set\+Deviceid@{set\+Deviceid}}
+\index{set\+Deviceid@{set\+Deviceid}!Device@{Device}}
+\subsubsection{\texorpdfstring{set\+Deviceid()}{setDeviceid()}}
+{\footnotesize\ttfamily void Device\+::set\+Deviceid (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{deviceid }\end{DoxyParamCaption})}
+
+
+
+set\+Deviceid 
+
+sets device id. 
+\begin{DoxyParams}{Parameters}
+{\em deviceid} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDevice_ad1f6005dcab32855477814fa9533315d}\label{classDevice_ad1f6005dcab32855477814fa9533315d}} 
+\index{Device@{Device}!set\+Devicename@{set\+Devicename}}
+\index{set\+Devicename@{set\+Devicename}!Device@{Device}}
+\subsubsection{\texorpdfstring{set\+Devicename()}{setDevicename()}}
+{\footnotesize\ttfamily void Device\+::set\+Devicename (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{devicename }\end{DoxyParamCaption})}
+
+
+
+set\+Devicename 
+
+sets device name as found on local system. 
+\begin{DoxyParams}{Parameters}
+{\em devicename} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDevice_ae8587aa062a7a2f2b5b77e9a15569e53}\label{classDevice_ae8587aa062a7a2f2b5b77e9a15569e53}} 
+\index{Device@{Device}!set\+Git\+Url@{set\+Git\+Url}}
+\index{set\+Git\+Url@{set\+Git\+Url}!Device@{Device}}
+\subsubsection{\texorpdfstring{set\+Git\+Url()}{setGitUrl()}}
+{\footnotesize\ttfamily void Device\+::set\+Git\+Url (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{git\+Url }\end{DoxyParamCaption})}
+
+
+
+set\+Git\+Url 
+
+sets device\textquotesingle{}s repository url. 
+\begin{DoxyParams}{Parameters}
+{\em git\+Url} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDevice_aec222a879b4a9aadd1a083a7aff2e516}\label{classDevice_aec222a879b4a9aadd1a083a7aff2e516}} 
+\index{Device@{Device}!set\+Is\+Installed@{set\+Is\+Installed}}
+\index{set\+Is\+Installed@{set\+Is\+Installed}!Device@{Device}}
+\subsubsection{\texorpdfstring{set\+Is\+Installed()}{setIsInstalled()}}
+{\footnotesize\ttfamily void Device\+::set\+Is\+Installed (\begin{DoxyParamCaption}\item[{bool}]{is\+Installed }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+set\+Is\+Installed 
+
+sets true if device is installed. 
+\begin{DoxyParams}{Parameters}
+{\em is\+Installed} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDevice_a3b5d4af66cacd8e1b0e45219c16ee084}\label{classDevice_a3b5d4af66cacd8e1b0e45219c16ee084}} 
+\index{Device@{Device}!set\+Is\+Upgradeable@{set\+Is\+Upgradeable}}
+\index{set\+Is\+Upgradeable@{set\+Is\+Upgradeable}!Device@{Device}}
+\subsubsection{\texorpdfstring{set\+Is\+Upgradeable()}{setIsUpgradeable()}}
+{\footnotesize\ttfamily void Device\+::set\+Is\+Upgradeable (\begin{DoxyParamCaption}\item[{bool}]{is\+Upgradeable }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+set\+Is\+Upgradeable 
+
+sets true if vote count of device is less than that of remote verison. 
+\begin{DoxyParams}{Parameters}
+{\em is\+Upgradeable} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDevice_a09e9d9bbcfa76268b7ebc30afa680c69}\label{classDevice_a09e9d9bbcfa76268b7ebc30afa680c69}} 
+\index{Device@{Device}!set\+Modulename@{set\+Modulename}}
+\index{set\+Modulename@{set\+Modulename}!Device@{Device}}
+\subsubsection{\texorpdfstring{set\+Modulename()}{setModulename()}}
+{\footnotesize\ttfamily void Device\+::set\+Modulename (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{modulename }\end{DoxyParamCaption})}
+
+
+
+set\+Modulename 
+
+sets module name as defined in tuxconfig file in repository. 
+\begin{DoxyParams}{Parameters}
+{\em modulename} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDevice_aabc16749d0fe22ec25ca525fbd2b9dc2}\label{classDevice_aabc16749d0fe22ec25ca525fbd2b9dc2}} 
+\index{Device@{Device}!set\+Owner\+Git\+Id@{set\+Owner\+Git\+Id}}
+\index{set\+Owner\+Git\+Id@{set\+Owner\+Git\+Id}!Device@{Device}}
+\subsubsection{\texorpdfstring{set\+Owner\+Git\+Id()}{setOwnerGitId()}}
+{\footnotesize\ttfamily void Device\+::set\+Owner\+Git\+Id (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{owner\+Git\+Id }\end{DoxyParamCaption})}
+
+
+
+set\+Owner\+Git\+Id 
+
+sets contributors github.\+com user id. 
+\begin{DoxyParams}{Parameters}
+{\em owner\+Git\+Id} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDevice_afad48633a288b303f88f7d607c64cca3}\label{classDevice_afad48633a288b303f88f7d607c64cca3}} 
+\index{Device@{Device}!set\+Set\+Command@{set\+Set\+Command}}
+\index{set\+Set\+Command@{set\+Set\+Command}!Device@{Device}}
+\subsubsection{\texorpdfstring{set\+Set\+Command()}{setSetCommand()}}
+{\footnotesize\ttfamily void Device\+::set\+Set\+Command (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{set\+Command }\end{DoxyParamCaption})}
+
+
+
+set\+Set\+Command 
+
+Not used. 
+\begin{DoxyParams}{Parameters}
+{\em set\+Command} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDevice_a46b5e30da5b43b09c0785a054bfb678a}\label{classDevice_a46b5e30da5b43b09c0785a054bfb678a}} 
+\index{Device@{Device}!set\+Status@{set\+Status}}
+\index{set\+Status@{set\+Status}!Device@{Device}}
+\subsubsection{\texorpdfstring{set\+Status()}{setStatus()}}
+{\footnotesize\ttfamily void Device\+::set\+Status (\begin{DoxyParamCaption}\item[{const string \&}]{status }\end{DoxyParamCaption})}
+
+
+
+set\+Status 
+
+sets device install status as found in history. 
+\begin{DoxyParams}{Parameters}
+{\em status} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDevice_ae70b727a6230454baccc6da6cfd819a7}\label{classDevice_ae70b727a6230454baccc6da6cfd819a7}} 
+\index{Device@{Device}!set\+Success\+Code@{set\+Success\+Code}}
+\index{set\+Success\+Code@{set\+Success\+Code}!Device@{Device}}
+\subsubsection{\texorpdfstring{set\+Success\+Code()}{setSuccessCode()}}
+{\footnotesize\ttfamily void Device\+::set\+Success\+Code (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{success\+Code }\end{DoxyParamCaption})}
+
+
+
+set\+Success\+Code 
+
+sets success code of a particular installation as defined in backend database. 
+\begin{DoxyParams}{Parameters}
+{\em success\+Code} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDevice_acf378aa086771dd7c64626abb8a74821}\label{classDevice_acf378aa086771dd7c64626abb8a74821}} 
+\index{Device@{Device}!set\+Vote\+Difference@{set\+Vote\+Difference}}
+\index{set\+Vote\+Difference@{set\+Vote\+Difference}!Device@{Device}}
+\subsubsection{\texorpdfstring{set\+Vote\+Difference()}{setVoteDifference()}}
+{\footnotesize\ttfamily void Device\+::set\+Vote\+Difference (\begin{DoxyParamCaption}\item[{const int \&}]{vote\+Difference }\end{DoxyParamCaption})}
+
+
+
+set\+Vote\+Difference 
+
+sets the success of the device\textquotesingle{}s install as downloaded. 
+\begin{DoxyParams}{Parameters}
+{\em vote\+Difference} & \\
+\hline
+\end{DoxyParams}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

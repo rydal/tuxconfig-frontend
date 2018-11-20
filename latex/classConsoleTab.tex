@@ -28,17 +28,13 @@ void \hyperlink{classConsoleTab_a695bb64854ca658dc9cc0a44c7a08f2c}{send\+To\+Con
 \subsection*{Signals}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classConsoleTab_afbcbf3f97fa59e43aa9fe86c9549ebed}\label{classConsoleTab_afbcbf3f97fa59e43aa9fe86c9549ebed}} 
-void {\bfseries set\+Tab} (int)
+void \hyperlink{classConsoleTab_afbcbf3f97fa59e43aa9fe86c9549ebed}{set\+Tab} (int)
 \item 
-\mbox{\Hypertarget{classConsoleTab_a741773c43f4a548ffd154022429a3830}\label{classConsoleTab_a741773c43f4a548ffd154022429a3830}} 
-void {\bfseries update\+Screen} ()
+void \hyperlink{classConsoleTab_a741773c43f4a548ffd154022429a3830}{update\+Screen} ()
 \item 
-\mbox{\Hypertarget{classConsoleTab_a34925515a836a363cf85b25860c795d6}\label{classConsoleTab_a34925515a836a363cf85b25860c795d6}} 
-void {\bfseries refresh\+Restore} (string)
+void \hyperlink{classConsoleTab_a34925515a836a363cf85b25860c795d6}{refresh\+Restore} (string)
 \item 
-\mbox{\Hypertarget{classConsoleTab_af58a230f2f192469205839920dd7fa66}\label{classConsoleTab_af58a230f2f192469205839920dd7fa66}} 
-void {\bfseries send\+Reboot} ()
+void \hyperlink{classConsoleTab_af58a230f2f192469205839920dd7fa66}{send\+Reboot} ()
 \end{DoxyCompactItemize}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
@@ -52,9 +48,8 @@ void \hyperlink{classConsoleTab_a7b2d0987db00c8b9af7ece7b36a82624}{fails\+\_\+re
 \item 
 void \hyperlink{classConsoleTab_a866367073a3150527988f7cb841d5002}{works\+\_\+result} ()
 \item 
-\mbox{\Hypertarget{classConsoleTab_a312dd40624d78a7d8506f97eb837c492}\label{classConsoleTab_a312dd40624d78a7d8506f97eb837c492}} 
 void \hyperlink{classConsoleTab_a312dd40624d78a7d8506f97eb837c492}{Reboot\+Machine} ()
-\begin{DoxyCompactList}\small\item\em Reboots the machine. \end{DoxyCompactList}\item 
+\item 
 void \hyperlink{classConsoleTab_aae70e23b23e401b219edefcac4882eaf}{clear\+Layout} (Q\+Layout $\ast$layout, bool delete\+Widgets)
 \begin{DoxyCompactList}\small\item\em \hyperlink{classConsoleTab_aae70e23b23e401b219edefcac4882eaf}{Console\+Tab\+::clear\+Layout}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Attributes}
@@ -120,11 +115,11 @@ Console widget, embeds a qtermwidget in this tab.
 
 \hyperlink{classConsoleTab_aae70e23b23e401b219edefcac4882eaf}{Console\+Tab\+::clear\+Layout}. 
 
-
+Clears the layout of the tab. 
 \begin{DoxyParams}{Parameters}
-{\em layout} & \\
+{\em layout} & conainer to be removed. \\
 \hline
-{\em delete\+Widgets} & Clears the layout for future method calls. \\
+{\em delete\+Widgets} & Delete widgets as well as layout. Clears the layout for future method calls. \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{classConsoleTab_a7b2d0987db00c8b9af7ece7b36a82624}\label{classConsoleTab_a7b2d0987db00c8b9af7ece7b36a82624}} 
@@ -133,7 +128,25 @@ Console widget, embeds a qtermwidget in this tab.
 \subsubsection{\texorpdfstring{fails\+\_\+result()}{fails\_result()}}
 {\footnotesize\ttfamily void Console\+Tab\+::fails\+\_\+result (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-Fires when fail button is pressed. Sends device with success status to feedback class. hides butons and switches to recover tab \mbox{\Hypertarget{classConsoleTab_a695bb64854ca658dc9cc0a44c7a08f2c}\label{classConsoleTab_a695bb64854ca658dc9cc0a44c7a08f2c}} 
+Fires when fail button is pressed. Sends device with success status to feedback class. hides butons and switches to recover tab \mbox{\Hypertarget{classConsoleTab_a312dd40624d78a7d8506f97eb837c492}\label{classConsoleTab_a312dd40624d78a7d8506f97eb837c492}} 
+\index{Console\+Tab@{Console\+Tab}!Reboot\+Machine@{Reboot\+Machine}}
+\index{Reboot\+Machine@{Reboot\+Machine}!Console\+Tab@{Console\+Tab}}
+\subsubsection{\texorpdfstring{Reboot\+Machine()}{RebootMachine()}}
+{\footnotesize\ttfamily void Console\+Tab\+::\+Reboot\+Machine (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+reboots machine \mbox{\Hypertarget{classConsoleTab_a34925515a836a363cf85b25860c795d6}\label{classConsoleTab_a34925515a836a363cf85b25860c795d6}} 
+\index{Console\+Tab@{Console\+Tab}!refresh\+Restore@{refresh\+Restore}}
+\index{refresh\+Restore@{refresh\+Restore}!Console\+Tab@{Console\+Tab}}
+\subsubsection{\texorpdfstring{refresh\+Restore}{refreshRestore}}
+{\footnotesize\ttfamily void Console\+Tab\+::refresh\+Restore (\begin{DoxyParamCaption}\item[{string}]{\+\_\+t1 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+signal to refresh the restore screen \mbox{\Hypertarget{classConsoleTab_af58a230f2f192469205839920dd7fa66}\label{classConsoleTab_af58a230f2f192469205839920dd7fa66}} 
+\index{Console\+Tab@{Console\+Tab}!send\+Reboot@{send\+Reboot}}
+\index{send\+Reboot@{send\+Reboot}!Console\+Tab@{Console\+Tab}}
+\subsubsection{\texorpdfstring{send\+Reboot}{sendReboot}}
+{\footnotesize\ttfamily void Console\+Tab\+::send\+Reboot (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+signal to reboot the machine. \mbox{\Hypertarget{classConsoleTab_a695bb64854ca658dc9cc0a44c7a08f2c}\label{classConsoleTab_a695bb64854ca658dc9cc0a44c7a08f2c}} 
 \index{Console\+Tab@{Console\+Tab}!send\+To\+Console@{send\+To\+Console}}
 \index{send\+To\+Console@{send\+To\+Console}!Console\+Tab@{Console\+Tab}}
 \subsubsection{\texorpdfstring{send\+To\+Console}{sendToConsole}}
@@ -145,14 +158,20 @@ Fires when fail button is pressed. Sends device with success status to feedback 
 
 Recieves a message from other tabs then executes the command in the parameters tab. sets the install method and current device to the class instance. 
 \begin{DoxyParams}{Parameters}
-{\em device} & \\
+{\em device} & device. \\
 \hline
-{\em method} & \\
+{\em method} & install, uninstall or restore. \\
 \hline
-{\em parameters} & \\
+{\em parameters} & runfile name, test program, test message, restart? \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classConsoleTab_abda9ef659782544e72f0e4561c5583f0}\label{classConsoleTab_abda9ef659782544e72f0e4561c5583f0}} 
+\mbox{\Hypertarget{classConsoleTab_afbcbf3f97fa59e43aa9fe86c9549ebed}\label{classConsoleTab_afbcbf3f97fa59e43aa9fe86c9549ebed}} 
+\index{Console\+Tab@{Console\+Tab}!set\+Tab@{set\+Tab}}
+\index{set\+Tab@{set\+Tab}!Console\+Tab@{Console\+Tab}}
+\subsubsection{\texorpdfstring{set\+Tab}{setTab}}
+{\footnotesize\ttfamily void Console\+Tab\+::set\+Tab (\begin{DoxyParamCaption}\item[{int}]{\+\_\+t1 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+signal to set tab \mbox{\Hypertarget{classConsoleTab_abda9ef659782544e72f0e4561c5583f0}\label{classConsoleTab_abda9ef659782544e72f0e4561c5583f0}} 
 \index{Console\+Tab@{Console\+Tab}!show\+Buttons@{show\+Buttons}}
 \index{show\+Buttons@{show\+Buttons}!Console\+Tab@{Console\+Tab}}
 \subsubsection{\texorpdfstring{show\+Buttons}{showButtons}}
@@ -160,12 +179,18 @@ Recieves a message from other tabs then executes the command in the parameters t
 
 On reciept of sugusr1 this method displays the success and fail buttons 
 \begin{DoxyParams}{Parameters}
-{\em details} & \\
+{\em details} & device install set. \\
 \hline
-{\em success} & \\
+{\em success} & succes of install. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classConsoleTab_a866367073a3150527988f7cb841d5002}\label{classConsoleTab_a866367073a3150527988f7cb841d5002}} 
+\mbox{\Hypertarget{classConsoleTab_a741773c43f4a548ffd154022429a3830}\label{classConsoleTab_a741773c43f4a548ffd154022429a3830}} 
+\index{Console\+Tab@{Console\+Tab}!update\+Screen@{update\+Screen}}
+\index{update\+Screen@{update\+Screen}!Console\+Tab@{Console\+Tab}}
+\subsubsection{\texorpdfstring{update\+Screen}{updateScreen}}
+{\footnotesize\ttfamily void Console\+Tab\+::update\+Screen (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+signal to update contributor tab \mbox{\Hypertarget{classConsoleTab_a866367073a3150527988f7cb841d5002}\label{classConsoleTab_a866367073a3150527988f7cb841d5002}} 
 \index{Console\+Tab@{Console\+Tab}!works\+\_\+result@{works\+\_\+result}}
 \index{works\+\_\+result@{works\+\_\+result}!Console\+Tab@{Console\+Tab}}
 \subsubsection{\texorpdfstring{works\+\_\+result()}{works\_result()}}

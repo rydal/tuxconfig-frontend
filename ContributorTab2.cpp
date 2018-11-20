@@ -53,14 +53,13 @@ clearLayout(mainLayout,true);
      QLabel *contributor_label = new QLabel;
      contributor_label->setText(QString::fromStdString("Contributor: " + details[0]));
      QLabel *bio_label = new QLabel;
-     QLabel *website_label = new QLabel;
-     QLabel *email_label = new QLabel;
+     website_label = new QPushButton;
+     email_label = new QPushButton;
      bio_label->setText(QString::fromStdString("Bio: " + details[1]));
      mainLayout->addWidget(contributor_label);
      mainLayout->addWidget(bio_label);
 
 
-     website_label->setOpenExternalLinks(true);
      string website_string = details[2];
      website_label->setText(QString::fromStdString(website_string));
 
@@ -68,13 +67,11 @@ clearLayout(mainLayout,true);
 
 
 
-     email_label->setOpenExternalLinks(false);
      string email_string = details[3];
      email_label->setText(QString::fromStdString(email_string));
      mainLayout->addWidget(email_label);
-
-     connect(email_label, &QLabel::linkActivated, [=] { on_description_linkActivated(QString::fromStdString(details[3])); });
-
+     connect(email_label, &QPushButton::clicked, [=] { on_description_linkActivated(); });
+connect(website_label, &QPushButton::clicked, [=] { website_launch(); });
 
      mainLayout->setAlignment(Qt::AlignHCenter);
 
@@ -160,12 +157,19 @@ void ContributorTab2::clearLayout(QLayout* layout, bool deleteWidgets = true)
     }
 }
 
-void ContributorTab2::on_description_linkActivated(const QString &link)
+void ContributorTab2::on_description_linkActivated()
 {
-    std::string utf8_text = link.toUtf8().constData();
-
-  GetOS::runEmail(utf8_text);
+    string mail_Address = "mailto:?to=";
+    mail_Address +=  email_label->text().toUtf8().constData();
+    GetOS::runEmail(mail_Address);
 }
+
+void ContributorTab2::website_launch()
+{
+    GetOS::runWebpage(website_label->text().toUtf8().constData());
+
+}
+
 void ContributorTab2::receiveReboot() {
     reboot_label->setVisible(true);
     reboot_button->setVisible(true);

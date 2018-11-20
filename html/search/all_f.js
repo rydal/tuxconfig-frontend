@@ -1,32 +1,4 @@
 var searchData=
 [
-  ['reboot_5fbutton',['reboot_button',['../class_console_tab.html#abac4c2031895f3bd40e2a81dcb67be7c',1,'ConsoleTab::reboot_button()'],['../class_contributor_tab2.html#a774327038118da4fa33b53a83e37b5ce',1,'ContributorTab2::reboot_button()']]],
-  ['reboot_5flabel',['reboot_label',['../class_console_tab.html#a67b2d7ba4daabcd8bac8187a035c79fc',1,'ConsoleTab::reboot_label()'],['../class_contributor_tab2.html#aaa2f175ef25a9d56f4554486d0d44542',1,'ContributorTab2::reboot_label()']]],
-  ['rebootmachine',['RebootMachine',['../class_console_tab.html#a312dd40624d78a7d8506f97eb837c492',1,'ConsoleTab::RebootMachine()'],['../class_contributor_tab2.html#a3b818b61d87562521615de0b57f29a58',1,'ContributorTab2::RebootMachine()']]],
-  ['receivereboot',['receiveReboot',['../class_contributor_tab2.html#ab8a868f09884b9b5ce0e4aa7c6940166',1,'ContributorTab2']]],
-  ['refreshrestore',['refreshRestore',['../class_console_tab.html#a8c3a60d4d1ea5640dfaf2c04be499924',1,'ConsoleTab']]],
-  ['reset_5freboot',['reset_reboot',['../class_get_o_s.html#a7b99affc7fab2998f0b3a08fc657f1bc',1,'GetOS']]],
-  ['restore',['restore',['../class_run_config.html#adc4527f1397bf44a015659fa67cfcfd8',1,'RunConfig']]],
-  ['restore_5fcommand',['restore_command',['../_restore_cmd_8cpp.html#a852f57191757e4fc3ff6b394458e7704',1,'RestoreCmd.cpp']]],
-  ['restore_5fdevice',['restore_device',['../_restore_cmd_8cpp.html#a8b80435bcf59653a767890decacb65f6',1,'RestoreCmd.cpp']]],
-  ['restorebutton',['RestoreButton',['../class_restore_tab.html#abc2f0056b937d2ea5c9550efc271d72e',1,'RestoreTab']]],
-  ['restorecmd',['restoreCmd',['../class_run_config.html#a630df6ad6f2bab17feba3c31c0a1fdf5',1,'RunConfig']]],
-  ['restorecmd_2ecpp',['RestoreCmd.cpp',['../_restore_cmd_8cpp.html',1,'']]],
-  ['restorecmd_2eh',['RestoreCmd.h',['../_restore_cmd_8h.html',1,'']]],
-  ['restoregui',['RestoreGUI',['../class_restore_g_u_i.html',1,'RestoreGUI'],['../class_restore_g_u_i.html#ab54fe7c54fd935a16087b8e3af3dfe64',1,'RestoreGUI::RestoreGUI()']]],
-  ['restoretab',['RestoreTab',['../class_restore_tab.html',1,'RestoreTab'],['../class_restore_tab.html#acda42485891361316db7775e695c4530',1,'RestoreTab::RestoreTab()']]],
-  ['restoretab_2ecpp',['RestoreTab.cpp',['../_restore_tab_8cpp.html',1,'']]],
-  ['restoretab_2eh',['RestoreTab.h',['../_restore_tab_8h.html',1,'']]],
-  ['result',['result',['../_run_config_8cpp.html#a8b2e13c78efca330f06b6ddcd7464b41',1,'RunConfig.cpp']]],
-  ['result_5fstring',['result_string',['../_feedback_8cpp.html#a1ae8618b1ded77caf923ea7a9b042680',1,'Feedback.cpp']]],
-  ['returnvotestatus',['ReturnVoteStatus',['../class_feedback.html#a9084f56709864534e1ee7e9c718bef45',1,'Feedback']]],
-  ['runcommand',['runCommand',['../class_notebook_g_u_i.html#a7ff25fc8ea4287bd42d2e4deae59a65a',1,'NotebookGUI']]],
-  ['runconfig',['RunConfig',['../class_run_config.html',1,'RunConfig'],['../class_run_config.html#aa6f46f0ba98dd97a9ef7412328f77752',1,'RunConfig::RunConfig()']]],
-  ['runconfig_2ecpp',['RunConfig.cpp',['../_run_config_8cpp.html',1,'']]],
-  ['runconfig_2eh',['RunConfig.h',['../_run_config_8h.html',1,'']]],
-  ['runconfigtab_2ecpp',['RunConfigTab.cpp',['../_run_config_tab_8cpp.html',1,'']]],
-  ['runconfigtab_2eh',['RunConfigTab.h',['../_run_config_tab_8h.html',1,'']]],
-  ['runemail',['runEmail',['../class_get_o_s.html#ab6860b2c5abf50d49e216967503a5e4f',1,'GetOS']]],
-  ['runtab',['RunTab',['../class_run_tab.html',1,'RunTab'],['../class_run_tab.html#af077d2caf2cf674c00471483dc483b3f',1,'RunTab::RunTab()'],['../class_run_tab.html#a1114bef665434313ecdb37698f14b5d8',1,'RunTab::RunTab(QWidget *parent=0)']]],
-  ['runwebpage',['runWebpage',['../class_get_o_s.html#af95ff65d8891872c38aed10437370d44',1,'GetOS']]]
+  ['works_5fresult',['works_result',['../classConsoleTab.html#a866367073a3150527988f7cb841d5002',1,'ConsoleTab']]]
 ];

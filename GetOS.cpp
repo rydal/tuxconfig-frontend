@@ -98,20 +98,19 @@ else return true;
 
 void GetOS::runWebpage(string url)  {
 
-    string runCommand = "sudo -u $PKEXEC_UID x-www-browser " + url;
+    string runCommand = "sudo -u $SUDO_USER x-www-browser " + url;
     system(runCommand.c_str());
 }
 void GetOS::runEmail(string email)  {
-    string runCommand = "sudo -u $PKEXEC_UID xdg-email" + email;
+    string runCommand = "sudo -u $SUDO_USER xdg-open mailto://" + email;
     system(runCommand.c_str());
 }
 
 
 
 void GetOS::reset_reboot() {
-        string PKEXEC_UID = GetOS::exec("echo $PKEXEC_UID");
-        PKEXEC_UID = GetOS::get_pk_user(PKEXEC_UID);
-        boost::trim(PKEXEC_UID);
+        string PKEXEC_UID = GetOS::exec("echo $SUDO_USER");
+                boost::trim(PKEXEC_UID);
 
         string strReplace = "sudo /usr/bin/tuxconfig recover"; //String to search
            string strNew = "";	//String To re

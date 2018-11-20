@@ -23,9 +23,17 @@ using namespace std;
 
 class Feedback {
 public:
+    /** Constructor for feedback to the remote server.
+     * @brief Feedback
+     * @param device
+     * @param successful success or failed depending on install vote / script exit.
+     */
     Feedback(Device& device, bool successful);
+    /** Virtual deconstructor.
+     * @brief ~Feedback
+     */
 	virtual ~Feedback();
-	static  bool ReturnVoteStatus();
+
 
 };
 

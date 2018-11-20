@@ -53,38 +53,46 @@ public:
     void works_result();
     Device current_device;
     string install_method;
+    /** reboots machine
+     */
 void RebootMachine();
 
-/**
+/** Clears the layout of the tab.
  * @brief ConsoleTab::clearLayout
- * @param layout
- * @param deleteWidgets
+ * @param layout conainer to be removed.
+ * @param deleteWidgets Delete widgets as well as layout.
  * Clears the layout for future method calls.
  */
 void clearLayout(QLayout* layout, bool deleteWidgets);
 
 signals:
-
+    /** signal to set tab
+     */
      void setTab(int);
-
+    /** signal to update contributor tab
+     */
      void updateScreen();
+     /** signal to refresh the restore screen
+      */
      void refreshRestore(string);
+     /** signal to reboot the machine.
+      */
      void sendReboot();
 
 public slots:
      /** On reciept of sugusr1 this method displays the success and fail buttons
      * @brief
-     * @param details
-     * @param success
+     * @param details device install set.
+     * @param success succes of install.
      */
      void showButtons(vector<string> details, bool success);
      /**
       * Recieves a message from other tabs then executes the command in the parameters tab.
       * sets the install method and current device to the class instance.
       * @brief ConsoleTab::sendToConsole
-      * @param device
-      * @param method
-      * @param parameters
+      * @param device device.
+      * @param method install, uninstall or restore.
+      * @param parameters runfile name, test program, test message, restart?
       */
      void sendToConsole(Device device,string method, vector<string> parameters);
 

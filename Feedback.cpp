@@ -24,9 +24,14 @@ Feedback::Feedback(Device& device, bool successful) {
             system(fails_history.c_str());
 
 		}
-        url += "code=" + device.getSuccessCode();
+        url += "&code=" + device.getSuccessCode();
         url += "&git_url=" + device.getGitUrl();
         url += "&device_id=" + device.getDeviceid();
+        url += "&commit_hash=" + device.getCommit();
+
+        string curl_command = "/usr/bin/curl -X POST \"" + url + "\"";
+        system (curl_command.c_str());
+
 
         if (successful == false) {
 		os << curlpp::options::Url(url);
@@ -36,7 +41,9 @@ Feedback::Feedback(Device& device, bool successful) {
              std::istringstream myStream("/var/lib/tuxconfig/"  + device.getDeviceid() + "-" + device.getCommit() + "-install.log");
              int size = myStream.str().size();
 
-              string curl_command = "/usr/bin/curl -X POST \"https://linuxconf.feedthepenguin.org/hehe/geterrorlog?code=" + device.getSuccessCode() + "&git_url=" + device.getGitUrl() + "&device_id=" + device.getDeviceid() + "\" -F 'data=@/var/lib/tuxconfig/" + device.getDeviceid() + "-install.log";
+              string curl_command = "/usr/bin/curl -X POST \"https://linuxconf.feedthepenguin.org/hehe/geterrorlog?code=" + device.getSuccessCode() + "&git_url=" + device.getGitUrl() + "&device_id=" + device.getDeviceid() + "\" -F 'data=@/var/lib/tuxconfig/" + device.getDeviceid() + "-install.log'";
+              cout<<"curl command = "<<curl_command<<endl;
+
               system (curl_command.c_str());
              }
 }

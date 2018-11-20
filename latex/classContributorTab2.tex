@@ -22,7 +22,7 @@ Collaboration diagram for Contributor\+Tab2\+:\nopagebreak
 \begin{DoxyCompactItemize}
 \item 
 void \hyperlink{classContributorTab2_abf252c3c3cacdc4a4d1f369ffd4fbb99}{update\+Screen} (\hyperlink{classDevice}{Device} device)
-\begin{DoxyCompactList}\small\item\em \hyperlink{classContributorTab2_abf252c3c3cacdc4a4d1f369ffd4fbb99}{Contributor\+Tab2\+::update\+Screen}. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em update\+Screen \end{DoxyCompactList}\item 
 void \hyperlink{classContributorTab2_a22fb06bbd151a407ff40404897cabb4d}{on\+\_\+description\+\_\+link\+Activated} (const Q\+String \&link)
 \begin{DoxyCompactList}\small\item\em \hyperlink{classContributorTab2_a22fb06bbd151a407ff40404897cabb4d}{Contributor\+Tab2\+::on\+\_\+description\+\_\+link\+Activated}. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classContributorTab2_ab8a868f09884b9b5ce0e4aa7c6940166}\label{classContributorTab2_ab8a868f09884b9b5ce0e4aa7c6940166}} 
@@ -35,11 +35,11 @@ void \hyperlink{classContributorTab2_a3b818b61d87562521615de0b57f29a58}{Reboot\+
 \begin{DoxyCompactItemize}
 \item 
 \hyperlink{classContributorTab2_afb63f19687c265fe4fc325040cc2d8d7}{Contributor\+Tab2} (Q\+Widget $\ast$parent=0)
-\begin{DoxyCompactList}\small\item\em \hyperlink{classContributorTab2_afb63f19687c265fe4fc325040cc2d8d7}{Contributor\+Tab2\+::\+Contributor\+Tab2}. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em \hyperlink{classContributorTab2}{Contributor\+Tab2}. \end{DoxyCompactList}\item 
 string $\ast$ \hyperlink{classContributorTab2_a5b9c63b5497b9e095624cd01969f0101}{Download\+Info} (string owner\+\_\+git\+\_\+id)
-\begin{DoxyCompactList}\small\item\em \hyperlink{classContributorTab2_a5b9c63b5497b9e095624cd01969f0101}{Contributor\+Tab2\+::\+Download\+Info}. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Download\+Info. \end{DoxyCompactList}\item 
 string \hyperlink{classContributorTab2_aed6aceb6bd6c0fb3d32e435a731133d8}{get\+Avatar\+Image} (string url, string owner\+\_\+git\+\_\+id)
-\begin{DoxyCompactList}\small\item\em \hyperlink{classContributorTab2_aed6aceb6bd6c0fb3d32e435a731133d8}{Contributor\+Tab2\+::get\+Avatar\+Image}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em get\+Avatar\+Image \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -97,10 +97,14 @@ string $\ast$ {\bfseries details}
 
 
 
-\hyperlink{classContributorTab2_afb63f19687c265fe4fc325040cc2d8d7}{Contributor\+Tab2\+::\+Contributor\+Tab2}. 
+\hyperlink{classContributorTab2}{Contributor\+Tab2}. 
 
+\hyperlink{classContributorTab2_afb63f19687c265fe4fc325040cc2d8d7}{Contributor\+Tab2\+::\+Contributor\+Tab2}.
 
+Contirbutor tab. 
 \begin{DoxyParams}{Parameters}
+{\em parent} & \\
+\hline
 {\em parent} & Contributor tab, dispays information about the contributing devleoper. \\
 \hline
 \end{DoxyParams}
@@ -117,8 +121,12 @@ string $\ast$ {\bfseries details}
 
 \hyperlink{classConsoleTab_aae70e23b23e401b219edefcac4882eaf}{Console\+Tab\+::clear\+Layout}. 
 
-
+Clears the layout of the tab. 
 \begin{DoxyParams}{Parameters}
+{\em layout} & layout to be removed. \\
+\hline
+{\em delete\+Widgets} & clear widgets as well as layout Clears the layout for future method calls.\\
+\hline
 {\em layout} & \\
 \hline
 {\em delete\+Widgets} & Clears the layout for future method calls. \\
@@ -132,8 +140,18 @@ string $\ast$ {\bfseries details}
 
 
 
-\hyperlink{classContributorTab2_a5b9c63b5497b9e095624cd01969f0101}{Contributor\+Tab2\+::\+Download\+Info}. 
+Download\+Info. 
 
+\hyperlink{classContributorTab2_a5b9c63b5497b9e095624cd01969f0101}{Contributor\+Tab2\+::\+Download\+Info}.
+
+Downloads information of a contributor. 
+\begin{DoxyParams}{Parameters}
+{\em owner\+\_\+git\+\_\+id} & contributor\textquotesingle{}s user id on github.\+com \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
 
 \begin{DoxyParams}{Parameters}
 {\em owner\+\_\+git\+\_\+id} & \\
@@ -150,8 +168,20 @@ returns a string array of contributor information downloaded from backend servle
 
 
 
-\hyperlink{classContributorTab2_aed6aceb6bd6c0fb3d32e435a731133d8}{Contributor\+Tab2\+::get\+Avatar\+Image}. 
+get\+Avatar\+Image 
 
+\hyperlink{classContributorTab2_aed6aceb6bd6c0fb3d32e435a731133d8}{Contributor\+Tab2\+::get\+Avatar\+Image}.
+
+Gets the github avatar of a contibutor. 
+\begin{DoxyParams}{Parameters}
+{\em url} & gtihub.\+com url to get avatar from \\
+\hline
+{\em owner\+\_\+git\+\_\+id} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
 
 \begin{DoxyParams}{Parameters}
 {\em url} & \\
@@ -187,9 +217,9 @@ downloads contributor\textquotesingle{}s avatar image from github\textquotesingl
 
 \hyperlink{classContributorTab2_a22fb06bbd151a407ff40404897cabb4d}{Contributor\+Tab2\+::on\+\_\+description\+\_\+link\+Activated}. 
 
-
+sends a message to \hyperlink{classGetOS}{Get\+OS} to send email to contributor when label clicked. 
 \begin{DoxyParams}{Parameters}
-{\em link} & sends a message to \hyperlink{classGetOS}{Get\+OS} to send email to contributor when label clicked. \\
+{\em link} & email link to be launched in mail client. \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{classContributorTab2_abf252c3c3cacdc4a4d1f369ffd4fbb99}\label{classContributorTab2_abf252c3c3cacdc4a4d1f369ffd4fbb99}} 
@@ -200,10 +230,14 @@ downloads contributor\textquotesingle{}s avatar image from github\textquotesingl
 
 
 
-\hyperlink{classContributorTab2_abf252c3c3cacdc4a4d1f369ffd4fbb99}{Contributor\+Tab2\+::update\+Screen}. 
+update\+Screen 
 
+\hyperlink{classContributorTab2_abf252c3c3cacdc4a4d1f369ffd4fbb99}{Contributor\+Tab2\+::update\+Screen}.
 
+Updates the screen with the contributor details as found in the \hyperlink{classDevice}{Device} object. 
 \begin{DoxyParams}{Parameters}
+{\em device} & \\
+\hline
 {\em device} & updates the contributor tab with information on a specific developer. Information derived from device object. \\
 \hline
 \end{DoxyParams}

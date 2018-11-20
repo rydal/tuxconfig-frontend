@@ -1,5 +1,10 @@
 var searchData=
 [
-  ['sendtoconsole',['sendToConsole',['../classConsoleTab.html#a695bb64854ca658dc9cc0a44c7a08f2c',1,'ConsoleTab']]],
-  ['showbuttons',['showButtons',['../classConsoleTab.html#abda9ef659782544e72f0e4561c5583f0',1,'ConsoleTab']]]
+  ['rebootmachine',['RebootMachine',['../classConsoleTab.html#a312dd40624d78a7d8506f97eb837c492',1,'ConsoleTab::RebootMachine()'],['../classContributorTab2.html#a3b818b61d87562521615de0b57f29a58',1,'ContributorTab2::RebootMachine()']]],
+  ['receivereboot',['receiveReboot',['../classContributorTab2.html#ab8a868f09884b9b5ce0e4aa7c6940166',1,'ContributorTab2']]],
+  ['refreshrestore',['refreshRestore',['../classConsoleTab.html#a34925515a836a363cf85b25860c795d6',1,'ConsoleTab']]],
+  ['restoregui',['RestoreGUI',['../classRestoreGUI.html',1,'']]],
+  ['restoretab',['RestoreTab',['../classRestoreTab.html',1,'']]],
+  ['runconfig',['RunConfig',['../classRunConfig.html',1,'']]],
+  ['runtab',['RunTab',['../classRunTab.html',1,'']]]
 ];

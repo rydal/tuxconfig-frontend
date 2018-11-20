@@ -33,17 +33,32 @@
 class ContributorTab2  : public QWidget {
     Q_OBJECT
 public:
+    /** Contirbutor tab.
+     * @brief ContributorTab2
+     * @param parent
+     */
     ContributorTab2( QWidget *parent = 0);
+    /** Downloads information of a contributor.
+     * @brief DownloadInfo
+     * @param owner_git_id contributor's user id on github.com
+     * @return
+     */
     string* DownloadInfo(string owner_git_id);
+    /** Gets the github avatar of a contibutor.
+     * @brief getAvatarImage
+     * @param url gtihub.com  url to get avatar from
+     * @param owner_git_id
+     * @return
+     */
     string getAvatarImage(string url, string owner_git_id);
 
 protected:
     QLabel *label;
     QLabel *image_label;
     QLabel *contributor_label;
-    QLabel *website_label;
+    QPushButton *website_label;
     QLabel *bio_label;
-    QLabel *email_label;
+    QPushButton *email_label;
     QLabel *reboot_label;
     QPushButton *reboot_button;
     QVBoxLayout *mainLayout;
@@ -51,17 +66,28 @@ protected:
     Device current_device;
     void mousePressEvent(QMouseEvent *event);
     string* details;
-
+    /** Clears the layout of the tab.
+     * @brief ConsoleTab::clearLayout
+     * @param layout layout to be removed.
+     * @param deleteWidgets clear widgets as well as layout
+     * Clears the layout for future method calls.
+     */
     void clearLayout(QLayout* layout, bool deleteWidgets );
 public slots:
-    void updateScreen(Device device);
-    /**
-     * @brief ContributorTab2::on_description_linkActivated
-     * @param link
-      * sends a message to GetOS to send email to contributor when label clicked.
-
+    /** Updates the screen with the contributor details as found in the Device object.
+     * @brief updateScreen
+     * @param device
      */
-    void on_description_linkActivated(const QString &link);
+    void updateScreen(Device device);
+    /** sends a message to GetOS to send email to contributor when label clicked.
+    * @brief ContributorTab2::on_description_linkActivated
+     * @param link email link to be launched in mail client.
+     */
+    void on_description_linkActivated();
+    /** Launches website via GetOS
+     * @brief website_launched
+     */
+    void website_launch();
     ///sets reboot button and label to visible when method received.
     void receiveReboot();
     ///reboots machine.

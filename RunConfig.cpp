@@ -195,7 +195,7 @@ vector<string> RunConfig::install(Device& device) {
     }
     //wire into boot process.
     if (restart_needed == "true") {
-        string PKEXEC_UID = GetOS::exec("echo $PKEXEC_UID");
+        string PKEXEC_UID = GetOS::exec("echo $SUDO_USER");
         boost::trim(PKEXEC_UID);
         ifstream infile;
         infile.open("/usr/share/applications/tuxconfig.desktop");

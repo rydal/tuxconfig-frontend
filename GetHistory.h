@@ -19,8 +19,18 @@
 class GetHistory {
 
 public:
+    /** Constructor.
+     * @brief GetHistory
+     */
 	GetHistory();
+    /** Virtual deconstructor.
+     * @brief ~GetHistory
+     */
 	virtual ~GetHistory();
+    /** creates and returns a map of devices.
+     * @brief getInstalledDevices
+     * @return
+     */
 	static map<string,Device> getInstalledDevices();
 
 };

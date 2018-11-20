@@ -25,59 +25,175 @@
 
 class Device {
 	public:
+    /** Default constructor.
+     * @brief Device
+     */
 	Device();
+    /** Constructor as used in downloading remote configuration.
+     * @brief Device
+     * @param id
+     * @param description
+     * @param name
+     * @param modulename
+     */
     Device(string id, string description, string name, string modulename);
-
+    /** Constructor as used when obtaining information from history file.
+     * @brief Device
+     * @param m_id
+     * @param m_description
+     * @param isInstalled
+     * @param isFailed
+     * @param success_code
+     * @param status
+     */
     Device(string m_id,  string m_description, bool isInstalled, bool isFailed, string success_code,string status);
-	string parseDeviceId(string device_id);
+    /** Parses device id to match that of databse
+     */
+    string parseDeviceId(string device_id);
 
-
+    /** Sorts items when referred by hashmap (const).
+     * @brief operator <
+     * @param rhs
+     * @return
+     */
 	bool operator< (const Device rhs) const ;
-	bool operator< (const Device rhs);
+    /** Sorts items when referred by hashmap
+     * @brief operator <
+     * @param rhs
+     * @return
+     */
+    bool operator< (const Device rhs);
+    /** Returns true if vote count less than in database.
+     * @brief isUpgradeable
+     * @return
+     */
 	bool isUpgradeable();
+    /** returns install status as found in history file.
+     * @brief getInstalledStatus
+     * @return
+     */
 	string getInstalledStatus();
+    /** Returns device object.
+     * @brief getinfo
+     * @return
+     */
 	Device getinfo();
+    /** Returns commit hash.
+     * @brief getCommit
+     * @return
+     */
 	const std::string& getCommit() const;
-
+    /** sets commit hash.
+     * @brief setCommit
+     * @param commit
+     */
 	void setCommit(const std::string& commit);
-
+    /** returns device description as found locally..
+     * @brief getDescription
+     * @return
+     */
 	const std::string& getDescription() const;
-
+    /** Sets device description as found locally.
+     * @brief setDescription
+     * @param description
+     */
 	void setDescription(const std::string& description);
 
+    /** returns device id.
+     * @brief getDeviceid
+     * @return
+     */
 	const std::string& getDeviceid() const;
-
+    /** sets device id.
+     * @brief setDeviceid
+     * @param deviceid
+     */
 	void setDeviceid(const std::string& deviceid);
-
+    /** returns device's remote repository url.
+     * @brief getGitUrl
+     * @return
+     */
 	const std::string& getGitUrl() const ;
-
+    /** sets device's repository url.
+     * @brief setGitUrl
+     * @param gitUrl
+     */
 	void setGitUrl(const std::string& gitUrl);
-
+    /** returns module name as defined in tuxconfig file in repository.
+     * @brief getModulename
+     * @return
+     */
 	const std::string& getModulename() const ;
 
-	void setModulename(const std::string& modulename) ;
+    /** sets  module name as defined in tuxconfig file in repository.
+     * @brief setModulename
+     * @param modulename
+     */
+    void setModulename(const std::string& modulename) ;
+    /** returns contibutors github.com user id.
+     * @brief getOwnerGitId
+     * @return
+     */
 	const std::string& getOwnerGitId() const ;
-
+    /** sets contributors github.com user id.
+     * @brief setOwnerGitId
+     * @param ownerGitId
+     */
 	void setOwnerGitId(const std::string& ownerGitId) ;
 
+    /** returns success code of a particular installation as defined in backend database.
+     * @brief getSuccessCode
+     * @return
+     */
 	const std::string& getSuccessCode() const;
 
+    /** sets  success code of a particular installation as defined in backend database.
+     * @brief setSuccessCode
+     * @param successCode
+     */
 	void setSuccessCode(const std::string& successCode);
 
+    /** reutrns device name as found on local system.
+     * @brief getDevicename
+     * @return
+     */
 	const std::string& getDevicename() const;
-
+    /** sets device name as found on local system.
+     * @brief setDevicename
+     * @param devicename
+     */
 	void setDevicename(const std::string& devicename);
 
+    /** Not used.
+     * @brief getSetCommand
+     * @return
+     */
 	const std::string& getSetCommand() const;
 
+    /** Not used.
+     * @brief setSetCommand
+     * @param setCommand
+     */
 	void setSetCommand(const std::string& setCommand);
-
+    /** Returns the success of the device's install as downloaded.
+     * @brief getVoteDifference
+     * @return
+     */
 	const int& getVoteDifference() const ;
-
+    /** sets the success of the device's install as downloaded.
+     * @brief setVoteDifference
+     * @param voteDifference
+     */
 	void setVoteDifference(const int& voteDifference) ;
-
+    /** returns true if an attempred install of the device has been made.
+     * @brief getAttemptedInstall
+     * @return
+     */
 	const bool getAttemptedInstall() const ;
-
+    /** sets true if an attempred install of the device has been made
+     * @brief setAttemptedInstall
+     * @param installed
+     */
 	void setAttemptedInstall(bool installed);
 
 	std::string deviceid;
@@ -97,26 +213,54 @@ class Device {
 	bool is_installed;
 
     string status;
+    /** Returns device install status as found in history.
+     * @brief getStatus
+     * @return
+     */
     const string& getStatus() const;
+    /** sets device install status as found in history.
+     * @brief setStatus
+     * @param status
+     */
     void setStatus(const string& status);
 
+    /** returns true if vote count of device is less than that of remote verison.
+     * @brief isIsUpgradeable
+     * @return
+     */
 	bool isIsUpgradeable() const {
 		return is_upgradeable;
 	}
-
+    /** sets true if vote count of device is less than that of remote verison.
+     * @brief setIsUpgradeable
+     * @param isUpgradeable
+     */
 	void setIsUpgradeable(bool isUpgradeable) {
 		is_upgradeable = isUpgradeable;
 	}
-
+    /** Returns true if device is installed.
+     * @brief isIsInstalled
+     * @return
+     */
 	bool isIsInstalled() const {
 		return is_installed;
 	}
-
+    /** sets true if device is installed.
+     * @brief setIsInstalled
+     * @param isInstalled
+     */
 	void setIsInstalled(bool isInstalled) {
 		is_installed = isInstalled;
     }
+    /** sets to true if packages were installed using apt-undo.
+     * @brief setAptInstalled
+     * @param apt_install
+     */
     void setAptInstalled( bool  apt_install);
-
+    /** Returns true if packages were installed using apt-undo.
+     * @brief getAptInstalled
+     * @return
+     */
     bool getAptInstalled() ;
 };
 
