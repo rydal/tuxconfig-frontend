@@ -218,7 +218,7 @@ vector<string> RunConfig::install(Device& device) {
          bashrc.open("/home/" + PKEXEC_UID +"/.bashrc",std::ios_base::app);
           if (bashrc.is_open())
           {
-            bashrc << "/usr/bin/tuxconfig recover";
+            bashrc << "sudo /usr/bin/tuxconfig recover";
 
           }
 
