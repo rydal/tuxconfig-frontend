@@ -33,24 +33,61 @@ class NotebookGUI :  public QDialog {
         Q_OBJECT
 
 public:
-    void setDevice(Device device, string* test_parameters);
+    /** Constructor.
+    /** * @brief NotebookGUI
+    */
     NotebookGUI();
+    /** Constructor, casts parameter to QString.
+     * @brief NotebookGUI
+     * @param name
+     */
     explicit NotebookGUI(const QString name);
 
      QTabWidget *tabWidget;
+     /** receives a signal from linuxconf (main), shows success and fail buttons
+      * @brief showResultButtons
+      */
      void showResultButtons();
+     /** receives a signal from linuxconf (main), shows and fail button and fail text
+      * @brief showFailButton
+      */
      void showFailButton();
 
 signals:
+     /** sets contributor details tab information and switches tabs.
+      * @brief updatedContributor
+      * @param device
+      */
      void updatedContributor(Device device);
+     /** Shows button information on consoleTab.
+      * @brief showButtons
+      */
      void showButtons(vector<string>, bool);
-
+     /** Not used.
+      * @brief updateDevice
+      */
      void updateDevice(Device);
+     /** sends details to consoleTab for scripts to run.
+      * @brief sendToConsole
+      */
      void sendToConsole(Device, string, vector<string>);
 
 public slots:
+     /** Change tab by index.
+     * @brief changeTab
+     * @param index
+     */
     void changeTab(int index);
+    /** Sets class variables for parameters and emits sendToConsole() with these.
+     * @brief runCommand
+     * @param device
+     * @param method
+     * @param parameters
+     */
     void runCommand(Device device, string method, vector<string> parameters);
+    /** Receives signal then updates contributor tab with contributor details.
+     * @brief updateContributor
+     */
     void updateContributor();
 
 protected:

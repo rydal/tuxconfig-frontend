@@ -41,14 +41,14 @@ public:
     /** Downloads information of a contributor.
      * @brief DownloadInfo
      * @param owner_git_id contributor's user id on github.com
-     * @return
+     * @return array { name, bio, website, email, avatar_url }
      */
     string* DownloadInfo(string owner_git_id);
     /** Gets the github avatar of a contibutor.
      * @brief getAvatarImage
      * @param url gtihub.com  url to get avatar from
      * @param owner_git_id
-     * @return
+     * @return avatar url as string.
      */
     string getAvatarImage(string url, string owner_git_id);
 

@@ -32,7 +32,11 @@
 class LinuxConf {
 public:
 NotebookGUI gui;
-
+/** runs action based on button clicked. one of install, uninstall, restore or upgrade.
+  * @brief on_button_clicked
+  * @param command
+  * @param device
+  */
  static void on_button_clicked(std::string command,Device& device);
 };
 

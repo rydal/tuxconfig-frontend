@@ -54,33 +54,33 @@ class Device {
     /** Sorts items when referred by hashmap (const).
      * @brief operator <
      * @param rhs
-     * @return
+     * @return true if this < lhs.
      */
 	bool operator< (const Device rhs) const ;
     /** Sorts items when referred by hashmap
      * @brief operator <
      * @param rhs
-     * @return
+     * @return true if this < lhs (const)
      */
     bool operator< (const Device rhs);
     /** Returns true if vote count less than in database.
      * @brief isUpgradeable
-     * @return
+     * @return true if remote server vote count higher than this vote count.
      */
 	bool isUpgradeable();
     /** returns install status as found in history file.
      * @brief getInstalledStatus
-     * @return
+     * @return failed, works or installed.
      */
 	string getInstalledStatus();
     /** Returns device object.
      * @brief getinfo
-     * @return
+     * @return device.
      */
 	Device getinfo();
     /** Returns commit hash.
      * @brief getCommit
-     * @return
+     * @return commit hash when downloaded install attempted.
      */
 	const std::string& getCommit() const;
     /** sets commit hash.
@@ -90,7 +90,7 @@ class Device {
 	void setCommit(const std::string& commit);
     /** returns device description as found locally..
      * @brief getDescription
-     * @return
+     * @return description as defined in lshw
      */
 	const std::string& getDescription() const;
     /** Sets device description as found locally.
@@ -101,7 +101,7 @@ class Device {
 
     /** returns device id.
      * @brief getDeviceid
-     * @return
+     * @return device id as in lshw -numeric.
      */
 	const std::string& getDeviceid() const;
     /** sets device id.
@@ -111,7 +111,7 @@ class Device {
 	void setDeviceid(const std::string& deviceid);
     /** returns device's remote repository url.
      * @brief getGitUrl
-     * @return
+     * @return as found in database.
      */
 	const std::string& getGitUrl() const ;
     /** sets device's repository url.
@@ -121,7 +121,7 @@ class Device {
 	void setGitUrl(const std::string& gitUrl);
     /** returns module name as defined in tuxconfig file in repository.
      * @brief getModulename
-     * @return
+     * @return modulename as defined in tuxconfig.
      */
 	const std::string& getModulename() const ;
 
@@ -132,7 +132,7 @@ class Device {
     void setModulename(const std::string& modulename) ;
     /** returns contibutors github.com user id.
      * @brief getOwnerGitId
-     * @return
+     * @return returns owner_git_id as found when device downloaded.
      */
 	const std::string& getOwnerGitId() const ;
     /** sets contributors github.com user id.
@@ -141,9 +141,9 @@ class Device {
      */
 	void setOwnerGitId(const std::string& ownerGitId) ;
 
-    /** returns success code of a particular installation as defined in backend database.
+    /**
      * @brief getSuccessCode
-     * @return
+     * @return  success code of a particular installation as defined in backend database.
      */
 	const std::string& getSuccessCode() const;
 
@@ -153,9 +153,9 @@ class Device {
      */
 	void setSuccessCode(const std::string& successCode);
 
-    /** reutrns device name as found on local system.
+    /** reutrns device name
      * @brief getDevicename
-     * @return
+     * @return as found using lshw.
      */
 	const std::string& getDevicename() const;
     /** sets device name as found on local system.

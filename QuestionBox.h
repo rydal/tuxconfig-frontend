@@ -20,6 +20,10 @@
 using namespace std;
 class QuestionBox : public QMessageBox {
 public:
+    /** Constructor, shows window with message.
+     * @brief QuestionBox
+     * @param message
+     */
 	QuestionBox(string message);
 	virtual ~QuestionBox();
 };

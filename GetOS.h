@@ -31,18 +31,42 @@ using namespace std;
 
 class GetOS {
 public:
+    /** function to execute a command and reutrn it's result
+     */
 	static std::string exec(const char* cmd);
+    /** Returns an array of distribution details.
+     * @brief getLocalMchineDistro
+     * @return array {name, linux_version, architecture, kernel_version }
+     */
 	static std::string* getLocalMchineDistro();
+    /** Returns true if gui is running.
+     * @brief is_gui_present
+     * @return
+     */
 	static bool is_gui_present();
     static int attempt_number;
-	GetOS();
+    /** Constructor
+     * @brief GetOS
+     */
+    GetOS();
+    /** Destructor.
+     * @brief ~GetOS
+     */
     virtual ~GetOS();
+    /** Derives calling user using $SUDO_USER then opens link using x-www-browser
+     * @brief runWebpage
+     * @param url
+     */
     static void runWebpage(string url);
+    /** Derives calling user using $SUDO_USER then opens email client to address.
+     * @brief runEmail
+     * @param email
+     */
     static void runEmail(string email);
-    static string DoRestore(string restorefile);
+    /** Removes run on reboot as a file in .bashrc and in ~/.config/autostart/tuxconfig.desktop
+     * @brief reset_reboot
+     */
     static void reset_reboot();
-    static void eraseFileLine(std::string path, std::string eraseLine);
-    static string get_pk_user(string uid);
 
 
 };

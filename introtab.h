@@ -26,14 +26,25 @@ class introTab : public QWidget
 {
     Q_OBJECT
 public:
+    /** Introduction tab.
+     * @brief introTab
+     * @param parent
+     */
     introTab( QWidget *parent = 0);
     QLabel *label;
     QLabel *image_label;
     QLabel *description_label;
     QVBoxLayout *mainLayout;
     QMainWindow *mainWindow ;
+    /** Changes tab based on index.
+     * @brief changeTab
+     * @param tab
+     */
     void changeTab(int tab);
 signals:
+    /** Sends signal to NotebookGUI to change tab.
+     * @brief setTab
+     */
     void setTab(int);
 
 };

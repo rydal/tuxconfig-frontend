@@ -21,13 +21,21 @@
 class GetRemoteConfig {
 
 public:
+    /** Constructor
+     */
 	GetRemoteConfig();
-	~GetRemoteConfig();
+    /** Destructor
+*/
+~GetRemoteConfig();
 
 	//std::string data;
-	size_t writeCallback(char* buf, size_t size, size_t nmemb, void* up);
+    /** Returns a device with properties of the remote server, if exists in database and
+     * has been verified as not malicious.
+      * @brief GetConfiguration
+      * @param configured_device
+      * @return url, success_code, vote_difference, commit_hash, owner_git_id and module_name set
+      */
      static Device GetConfiguration(Device& configured_device);
-	 static bool isUpgradeable(Device current_device);
      static int attempt_number;
 
 

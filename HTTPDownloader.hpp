@@ -20,7 +20,7 @@ public:
     /**
      * Download a file using HTTP GET and store in in a std::string
      * @param url The URL to download
-     * @return The download result
+     * @return A string referencing the filename it's downloaded to
      */
     std::string download(const std::string& url, std::string owner_git_id);
 private:

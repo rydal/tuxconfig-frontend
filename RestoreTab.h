@@ -21,21 +21,59 @@
 class RestoreTab : public QWidget {
     Q_OBJECT
 public:
+    /** Constructor, tab to restore previous configurations.
+     * @brief RestoreTab
+     * @param parent
+     */
     RestoreTab( QWidget *parent = 0);
-    string DoRestore(Device device);
+    /**  Switches to console tab and restores configuration
+     * @brief RestoreButton
+     * @param device
+     */
     void RestoreButton(Device device);
+    /** fires method to feedback class, switches to contributor tab, removes run
+     * on reboot flag.
+     * @brief SuccessButton
+     * @param device
+     */
     void SuccessButton(Device device);
+    /** fires method to feedback class, removes run
+     * on reboot flag.
+     * @brief FailButton
+     * @param device
+     */
     void FailButton(Device device);
      QVBoxLayout *mainLayout;
+     /** Clears layout when run multiple times.
+      * @brief clearLayout
+      * @param layout
+      * @param deleteWidgets
+      */
      void clearLayout(QLayout* layout, bool deleteWidgets);
 
 
 signals:
+     /** Sends command to console tab.
+     * @brief sendCommand
+     */
     void sendCommand(Device, string, vector<string>);
+    /**
+     * @brief updateScreen
+     */
+    /** Updates contributor tab
+     * @brief updateScreen
+     */
     void updateScreen(void);
+    /** Sets active tab by index.
+     * @brief setTab
+     */
     void setTab(int);
 
 public slots:
+    /** Redraws tab with new information where /var/lib/tuxconfig file has changed.
+     * @brief update
+     * @param message
+     */
     void update(string message);
 };
 

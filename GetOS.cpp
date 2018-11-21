@@ -49,7 +49,7 @@ std::string* GetOS::getLocalMchineDistro() {
 	    	boost::replace_all(line, "NAME=\"", "");
 	    	boost::replace_all(line, "\"", "");
 	    	boost::replace_all(line, "GNU/Linux","");
-	    	boost::to_lower(line);
+            boost::to_lower(line);
 	    	name = line;
 
 
@@ -83,7 +83,7 @@ std::string* GetOS::getLocalMchineDistro() {
 	  boost::trim(kernel_version); // modifies str
 
 	 // array[0] = name;
-	  array[0] = "ubuntu";
+      array[0] = name;
 	  array[1] = linux_version;
 	  array[2] = architecture;
 	  array[3] = kernel_version;
@@ -145,20 +145,4 @@ void GetOS::reset_reboot() {
 
 }
 
-string GetOS::get_pk_user(string uid) {
-    ifstream inputFile("/var/lib/tuxconfig/history");
-   string tempLine;
- while (getline(inputFile, tempLine, '\n')) {
-     vector<string> tempstr;
-     stringstream ss(tempLine);
-     string temp;
 
-     while (getline(ss, temp, ':')) {
-         tempstr.push_back(temp);
-         if(tempstr[2] == uid) {
-             return tempstr[5];
-         }
-}
-
-}
-}

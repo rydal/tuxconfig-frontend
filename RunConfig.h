@@ -27,16 +27,38 @@
 using namespace std;
 class RunConfig {
 public:
-	std::string exec(const char* cmd);
-
+    /** Default constructor
+     * @brief RunConfig
+     */
 	RunConfig();
-
+    /** Deconstructor.
+     * @brief ~RunConfig
+     */
 	virtual ~RunConfig();
+    /** writes instal bash script in /usr/src/
+     * @brief install
+     * @param m_device
+     * @return  vector of { install sctipr, test program, test messsage, reboot flag }
+     */
     static vector<string> install( Device& m_device) ;
+    /** Creates uninstall bash file.
+     * @brief uninstall
+     * @param m_device
+     * @return  vector containing uninstall script name.
+     */
     static vector<string> uninstall( Device& m_device);
+    /** creates install script.
+     * @brief upgrade
+     * @param m_device
+     * @return install method called with new device.
+     */
     static vector<string> upgrade( Device& m_device);
+    /**
+     * @brief restore
+     * @param m_device
+     * @return  vector containing restore script name.
+     */
     static vector<string> restore(Device& m_device);
-    static bool restoreCmd(Device& m_device);
 
 
 

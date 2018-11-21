@@ -28,12 +28,19 @@
 
 class GetLocalDevices {
 public:
+    /** Constructor
+     * @brief GetLocalDevices
+     */
 	GetLocalDevices();
+    /** Destructor
+     */
 	virtual ~GetLocalDevices();
-	static std::string exec(const char* cmd);
+    /** Returns a list of all devices found using lshw -numeric
+     * @brief listdevices
+     * @return
+     */
 	static std::set<Device> listdevices();
-	static Device listdevice(string device);
-	std::set<Device> data;
+    std::set<Device> data;
 };
 
 

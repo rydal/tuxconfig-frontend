@@ -244,42 +244,4 @@ vector<string> RunConfig::upgrade(Device& device) {
 
 }
 
-bool RunConfig::restoreCmd(Device& device) {
-    ifstream fs;
-    fs.open("/var/lib/tuxconfig/history", ios::out);
-    fs.close();
-    map<string, Device> hashmap;
-    map<int, Device> numbered_hashmap;
-    string reply;
 
-    if (!GetOS::is_gui_present()) {
-
-        int count = 1;
-
-        for (std::map<string, Device>::iterator it = hashmap.begin();
-                it != hashmap.end(); ++it) {
-            numbered_hashmap.insert(pair<int, Device>(count, it->second));
-        }
-        cout << "Which device install went wrong?";
-        for (std::map<int, Device>::iterator it = numbered_hashmap.begin();
-                it != numbered_hashmap.end(); ++it) {
-            cout << it->first << " " << it->second.getDescription();
-        }
-        cin >> reply;
-    }
-    int int_reply = stoi(reply);
-
-    string rollback_command =
-            "tar -xvf /var/lib/tuxconfig/"
-                    + numbered_hashmap.find(int_reply)->second.getDeviceid()
-                    + "-"
-                    + numbered_hashmap.find(int_reply)->second.getCommit()
-                    + numbered_hashmap.find(int_reply)->second.getStatus();
-    int result = system(rollback_command.c_str());
-    if (result == 0) {
-        return true;
-    } else {
-        return false;
-    }
-
-}

@@ -40,10 +40,18 @@ using namespace std;
 
 class RestoreGUI  {
 public:
+    /** Default constructor. does nothing.
+     * @brief RestoreGUI
+     * @param hashmap map of devices from gethistory class.
+     */
 	RestoreGUI(std::map<std::string,Device> hashmap);
 	virtual ~RestoreGUI();
+    /** Allows user to restore from command line referencing most recently modified backup tar file.
+     * @brief CommandLineInstall
+     * @param device_map
+     * @return
+     */
     static bool CommandLineInstall(std::map <string,Device> device_map);
-    static string DoRestore(string restorefile);
 
 
 protected:
