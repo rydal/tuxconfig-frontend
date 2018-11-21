@@ -1,7 +1,7 @@
 #include "GetRemoteConfig.h"
 
 using namespace std;
-int GetRemoteConfig::attempt_number = 1;
+
 
 GetRemoteConfig::GetRemoteConfig() {
 
@@ -12,16 +12,15 @@ GetRemoteConfig::~GetRemoteConfig() {
 }
 
 Device GetRemoteConfig::GetConfiguration(Device& configured_device) {
-    bool seen_before;
-	//check number  of attempts
+    int attempt_number = 1;
+    //check number  of attempts
 	ifstream inFile;
     string x;
     inFile.open("/var/lib/tuxconfig/history");
 	if (inFile.is_open()) {
 		while (inFile >> x) {
-            if (x.find(configured_device.getDeviceid()) != std::string::npos && x.find(configured_device.getCommit()) && x.find("failed") != std::string::npos &&  seen_before == false)  {
-                GetRemoteConfig::attempt_number++;
-                seen_before = true;
+            if (x.find(configured_device.getDeviceid()) != std::string::npos && x.find(configured_device.getCommit()) && x.find("failed") != std::string::npos)  {
+                attempt_number++;
             }
 		}
 		inFile.close();
@@ -30,8 +29,8 @@ Device GetRemoteConfig::GetConfiguration(Device& configured_device) {
 	string* os_string = GetOS::getLocalMchineDistro();
 	ostringstream os;
 
-
-   string url = "https://linuxconf.feedthepenguin.org/hehe/getdevice?deviceid="+ configured_device.getDeviceid() + "&attempt="	+ to_string(GetRemoteConfig::attempt_number) + "&distribution=" + os_string[0];
+    cout<<"Attempt number:"<<attempt_number<<endl;
+   string url = "https://linuxconf.feedthepenguin.org/hehe/getdevice?deviceid="+ configured_device.getDeviceid() + "&attempt="	+ to_string(attempt_number) + "&distribution=" + os_string[0];
 
 	os << curlpp::options::Url(url);
 	string str = os.str();

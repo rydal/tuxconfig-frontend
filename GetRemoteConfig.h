@@ -19,7 +19,6 @@
 #include "GetOS.h"
 
 class GetRemoteConfig {
-
 public:
     /** Constructor
      */
@@ -36,8 +35,6 @@ public:
       * @return url, success_code, vote_difference, commit_hash, owner_git_id and module_name set
       */
      static Device GetConfiguration(Device& configured_device);
-     static int attempt_number;
-
 
 };
 

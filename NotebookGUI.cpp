@@ -8,6 +8,7 @@
 #include "NotebookGUI.h"
 
     NotebookGUI::NotebookGUI(const QString name ) {
+
     tabWidget = new QTabWidget;
 
     setWindowTitle("Tuxconfig");

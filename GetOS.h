@@ -44,7 +44,7 @@ public:
      * @return
      */
 	static bool is_gui_present();
-    static int attempt_number;
+
     /** Constructor
      * @brief GetOS
      */
