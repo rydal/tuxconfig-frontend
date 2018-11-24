@@ -23,10 +23,13 @@ public:
     /** Console widget, embeds a qtermwidget in this tab.
      @brief
      @param m_parent
-
-     */
+*/
     ConsoleTab( QWidget *m_parent);
 
+    /** Sets the device to be operated on
+      * @brief setDevice
+      * @param device
+      */
      void setDevice(Device device);
     QWidget *parent;
      QTermWidget *console;

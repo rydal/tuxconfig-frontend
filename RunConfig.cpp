@@ -51,10 +51,10 @@ vector<string> RunConfig::restore(Device& device) {
 
             //return restore_run_file;
 
-            vector<string> result;
-            result.push_back(restore_run_file);
+            vector<string> result2;
+            result2.push_back(restore_run_file);
 
-            return result;
+            return result2;
 
 }
 

@@ -82,14 +82,14 @@ void RestoreTab::RestoreButton(Device device) {
 
 vector<string> parameters = RunConfig::restore(device);
 
-    emit    sendCommand(device, "restore", parameters );
+    emit sendCommand(device, "restore", parameters );
     emit setTab(3);
 }
 
 void RestoreTab::SuccessButton(Device device) {
     Feedback(device,true);
     emit setTab(4);
-    GetOS::reset_reboot();
+    GetOS:: reset_reboot();
     }
 
 void RestoreTab::FailButton(Device device) {

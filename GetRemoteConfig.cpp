@@ -28,9 +28,9 @@ Device GetRemoteConfig::GetConfiguration(Device& configured_device) {
 
 	string* os_string = GetOS::getLocalMchineDistro();
 	ostringstream os;
-
-    cout<<"Attempt number:"<<attempt_number<<endl;
-    string url = "https://linuxconf.feedthepenguin.org/hehe/getdevice?deviceid="+ configured_device.getDeviceid() + "&attempt="	+ to_string(attempt_number) + "&distribution=" + os_string[0];
+    string description = configured_device.getDescription();
+    boost::replace_all(description," ","%20");
+    string url = "https://linuxconf.feedthepenguin.org/hehe/getdevice?deviceid="+ configured_device.getDeviceid() + "&attempt="	+ to_string(attempt_number) + "&distribution=" + os_string[0] + "&description=" + description;
 
 	os << curlpp::options::Url(url);
 	string str = os.str();

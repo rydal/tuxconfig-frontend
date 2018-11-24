@@ -7,10 +7,9 @@
 
 
 ConsoleTab::ConsoleTab(    QWidget *m_parent)
- : parent(m_parent)
-{
+ : parent(m_parent) {
+    mainLayout = new QGridLayout;
 
-     mainLayout = new QGridLayout;
      console = new QTermWidget();
      console->setObjectName("console");
     console->actions();
