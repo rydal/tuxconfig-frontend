@@ -42,6 +42,12 @@ public:
      * @brief FailButton
      * @param device
      */
+    void RetryButton(Device device);
+    /** Runs install again, process will pick up failed attempts.
+     * @brief FailButton
+     * @param device
+     */
+
     void FailButton(Device device);
      QVBoxLayout *mainLayout;
      /** Clears layout when run multiple times.

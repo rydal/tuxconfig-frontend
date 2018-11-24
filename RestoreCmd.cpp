@@ -93,6 +93,7 @@ string restore_run_file = "/usr/src/tuxconfig-" + response + "-restore";
     } else {
         cout<<"Configuration restore failed"<<endl;
     }
+    GetOS::reset_reboot();
     cout<<"Restart?"<<endl;
     string choose_reboot;
     getline (cin,choose_reboot);

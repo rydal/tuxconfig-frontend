@@ -206,8 +206,8 @@ vector<string> RunConfig::install(Device& device) {
 
 
         while(getline(infile,readout)){
-          if(readout == "/usr/bin/tuxconfig"){
-            outFile << "/usr/bin/tuxconfig recover";
+          if(readout == "/usr/bin/tuxconfig_cmd"){
+            outFile << "/usr/bin/tuxconfig_cmd recover";
           }
           else {
             outFile << readout;
@@ -218,7 +218,7 @@ vector<string> RunConfig::install(Device& device) {
          bashrc.open("/home/" + PKEXEC_UID +"/.bashrc",std::ios_base::app);
           if (bashrc.is_open())
           {
-            bashrc << "sudo /usr/bin/tuxconfig recover";
+            bashrc << "sudo /usr/bin/tuxconfig_cmd recover";
 
           }
 

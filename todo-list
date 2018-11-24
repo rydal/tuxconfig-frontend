@@ -1,9 +1,4 @@
-change get:os form ubuntu.
+change get:os from ubuntu.
+databse constraints.
+exit (1) not working.
 
-desktop file.
-
-..reboot?
-
-dependencies:
-build-essential
-git

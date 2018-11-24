@@ -37,7 +37,9 @@ map<string, Device> GetHistory::getInstalledDevices() {
             new_device.setAptInstalled(true);
         new_device.setModulename(tempstr[5]);
         new_device.setOwnerGitId(tempstr[3]);
-        new_device.setCommit(tempstr[7]);
+        string commit_hash = tempstr[7];
+        boost::trim(commit_hash);
+        new_device.setCommit(commit_hash);
             std::map<string,Device>::iterator it = device_map.find(tempstr[0]);
             if (it != device_map.end())
                 it->second = new_device;
