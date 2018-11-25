@@ -126,8 +126,9 @@ vector<string> RunConfig::install(Device& device) {
 //install dependencies;
     runfile += " if [ !  -z \"$dependencies\" ] ; then \n";
     runfile += "apt-undo install $dependencies \n";
+    runfile += "if [ $? -eq 0 ] \n";
     runfile +=  "echo \"" + device.getDeviceid() + "," + device.getDescription() + ","	+ to_string(device.getVoteDifference()) + "," + device.getOwnerGitId() + "," + device.getSuccessCode()  + "," + device.getModulename() + ",apt-installed," + device.getCommit() + " \" >> /var/lib/tuxconfig/history  \n";
-
+    runfile += "fi \n";
     runfile += "fi \n";
     runfile += "echo \"installed dependencies\" \n";
     runfile += "if [ -f Makefile ] ; then \n";
