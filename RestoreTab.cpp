@@ -38,8 +38,9 @@ void RestoreTab::update(string message) {
                                 QPushButton *success_button = new QPushButton(QString::fromStdString("Successful install"));
                                 QPushButton *fail_button = new QPushButton(QString::fromStdString("Failed install"));
                                 QPushButton *retry_button = new QPushButton(QString::fromStdString("Try next install"));
+                                already_installed = new QLabel(QString::fromStdString("Already installed"));
 
-                                 installed_status->setText(QString::fromStdString(it->second.getStatus()));
+                                installed_status->setText(QString::fromStdString(it->second.getStatus()));
 
                                 m_Grid->addWidget(description);
                                 m_Grid->addWidget(devicename);
@@ -47,6 +48,8 @@ void RestoreTab::update(string message) {
                                 m_Grid->addWidget(restore_button1);
                                 m_Grid->addWidget(retry_button);
 
+                                m_Grid->addWidget(already_installed);
+                                already_installed->hide();
                                 bool installed = false;
                                 if (it->second.getStatus() == "works" || it->second.getStatus() == "failed")
                                     installed = true;
@@ -54,10 +57,10 @@ void RestoreTab::update(string message) {
                                 m_Grid->addWidget(success_button);
                                 m_Grid->addWidget(fail_button);
                                 }
-                                    if (it->second.getStatus() != "works") {
-                                        m_Grid->addWidget(retry_button);
 
-                                    }
+                                    if (it->second.getStatus() != "works" && CheckConnection::CheckNetwork()) {
+                                        m_Grid->addWidget(retry_button);
+                                }
 
                                 Device& tmp_device = it->second;
                                 connect(restore_button1, &QPushButton::clicked, [=] { RestoreButton(tmp_device); });
@@ -99,6 +102,9 @@ void RestoreTab::FailButton(Device device) {
 }
 void RestoreTab::RetryButton(Device device) {
     Device parsedDevice = GetRemoteConfig::GetConfiguration(device);
+    if (parsedDevice.getCommit() == device.getCommit()) {
+        already_installed->show();
+    }
     vector<string> install = RunConfig::install(parsedDevice);
        emit setTab(3);
 

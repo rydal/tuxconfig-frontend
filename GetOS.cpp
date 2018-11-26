@@ -6,7 +6,6 @@
  */
 
 #include "GetOS.h"
-
 std::string GetOS::exec(const char* cmd) {
     std::array<char, 128> buffer;
     std::string result;
@@ -117,10 +116,6 @@ void GetOS::reset_reboot() {
         system(remove_bash_rc_line.c_str());
         string desktop_file = PKEXEC_UID + "/.config/autostart/tuxconfig.desktop";
         remove(desktop_file.c_str());
-
-
-
-
 }
 
 

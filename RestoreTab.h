@@ -16,11 +16,13 @@
 #include <vector>
 #include "Feedback.h"
 #include "GetOS.h"
+#include "CheckConnection.h"
 
 
 class RestoreTab : public QWidget {
     Q_OBJECT
 public:
+    QLabel *already_installed;
     /** Constructor, tab to restore previous configurations.
      * @brief RestoreTab
      * @param parent
