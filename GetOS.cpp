@@ -112,7 +112,7 @@ void GetOS::reset_reboot() {
         string PKEXEC_UID = GetOS::exec("echo $SUDO_USER");
                 boost::trim(PKEXEC_UID);
 
-        string remove_bash_rc_line = "sed 's,sudo /usr/bin/tuxconfig_cmd recover,,g' /home/" + PKEXEC_UID + "/.bashrc";
+        string remove_bash_rc_line = "sed -i 's,sudo /usr/bin/tuxconfig_cmd recover,,g' /home/" + PKEXEC_UID + "/.bashrc";
         cout<<"Remove reboot line="<<remove_bash_rc_line<<endl;
         system(remove_bash_rc_line.c_str());
         string desktop_file = PKEXEC_UID + "/.config/autostart/tuxconfig.desktop";
