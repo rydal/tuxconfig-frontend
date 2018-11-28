@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'RestoreTab.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.7.1)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.9.5)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,12 +12,14 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'RestoreTab.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.7.1. It"
+#error "This file was generated using the moc from 5.9.5. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
 
 QT_BEGIN_MOC_NAMESPACE
+QT_WARNING_PUSH
+QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_RestoreTab_t {
     QByteArrayData data[10];
     char stringdata0[88];
@@ -93,24 +95,23 @@ void RestoreTab::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
-        void **func = reinterpret_cast<void **>(_a[1]);
         {
             typedef void (RestoreTab::*_t)(Device , string , vector<string> );
-            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&RestoreTab::sendCommand)) {
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&RestoreTab::sendCommand)) {
                 *result = 0;
                 return;
             }
         }
         {
             typedef void (RestoreTab::*_t)();
-            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&RestoreTab::updateScreen)) {
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&RestoreTab::updateScreen)) {
                 *result = 1;
                 return;
             }
         }
         {
             typedef void (RestoreTab::*_t)(int );
-            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&RestoreTab::setTab)) {
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&RestoreTab::setTab)) {
                 *result = 2;
                 return;
             }
@@ -120,7 +121,7 @@ void RestoreTab::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
 
 const QMetaObject RestoreTab::staticMetaObject = {
     { &QWidget::staticMetaObject, qt_meta_stringdata_RestoreTab.data,
-      qt_meta_data_RestoreTab,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
+      qt_meta_data_RestoreTab,  qt_static_metacall, nullptr, nullptr}
 };
 
 
@@ -131,9 +132,9 @@ const QMetaObject *RestoreTab::metaObject() const
 
 void *RestoreTab::qt_metacast(const char *_clname)
 {
-    if (!_clname) return Q_NULLPTR;
+    if (!_clname) return nullptr;
     if (!strcmp(_clname, qt_meta_stringdata_RestoreTab.stringdata0))
-        return static_cast<void*>(const_cast< RestoreTab*>(this));
+        return static_cast<void*>(this);
     return QWidget::qt_metacast(_clname);
 }
 
@@ -157,20 +158,21 @@ int RestoreTab::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 // SIGNAL 0
 void RestoreTab::sendCommand(Device _t1, string _t2, vector<string> _t3)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)), const_cast<void*>(reinterpret_cast<const void*>(&_t3)) };
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)), const_cast<void*>(reinterpret_cast<const void*>(&_t3)) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 
 // SIGNAL 1
 void RestoreTab::updateScreen()
 {
-    QMetaObject::activate(this, &staticMetaObject, 1, Q_NULLPTR);
+    QMetaObject::activate(this, &staticMetaObject, 1, nullptr);
 }
 
 // SIGNAL 2
 void RestoreTab::setTab(int _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 2, _a);
 }
+QT_WARNING_POP
 QT_END_MOC_NAMESPACE

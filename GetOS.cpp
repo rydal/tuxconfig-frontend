@@ -97,7 +97,7 @@ else return true;
 
 void GetOS::runWebpage(string url)  {
 
-    string runCommand = "sudo -u $SUDO_USER x-www-browser " + url;
+    string runCommand = "sudo -u " + getusername()  +" x-www-browser " + url;
     system(runCommand.c_str());
 }
 void GetOS::runEmail(string email)  {
@@ -108,14 +108,22 @@ void GetOS::runEmail(string email)  {
 
 
 void GetOS::reset_reboot() {
-        string PKEXEC_UID = GetOS::exec("echo $SUDO_USER");
-                boost::trim(PKEXEC_UID);
 
-        string remove_bash_rc_line = "sed -i 's,sudo /usr/bin/tuxconfig_cmd recover,,g' /home/" + PKEXEC_UID + "/.bashrc";
+        string remove_bash_rc_line = "sed -i 's,sudo /usr/bin/tuxconfig_cmd recover,,g'" + gethomedir() + "/.bashrc";
         cout<<"Remove reboot line="<<remove_bash_rc_line<<endl;
         system(remove_bash_rc_line.c_str());
-        string desktop_file = PKEXEC_UID + "/.config/autostart/tuxconfig.desktop";
+        string desktop_file = gethomedir() + "/.config/autostart/tuxconfig.desktop";
         remove(desktop_file.c_str());
 }
 
+string GetOS::gethomedir() {
+    struct passwd *pw = getpwuid(getuid());
+    const char *homedir = pw->pw_dir;
+    return homedir;
+}
 
+string GetOS::getusername() {
+    struct passwd *pw = getpwuid(getuid());
+    const char *name = pw->pw_name;
+    return name;
+}

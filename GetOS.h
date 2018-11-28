@@ -25,7 +25,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <pwd.h>
 
 using namespace std;
 
@@ -68,6 +68,8 @@ public:
      */
     static void reset_reboot();
 
+    static string gethomedir();
+    static string getusername();
 
 };
 

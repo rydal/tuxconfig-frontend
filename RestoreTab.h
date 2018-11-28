@@ -58,6 +58,7 @@ public:
       * @param deleteWidgets
       */
      void clearLayout(QLayout* layout, bool deleteWidgets);
+     bool getLastInstall(Device device);
 
 
 signals:

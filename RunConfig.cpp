@@ -126,7 +126,7 @@ vector<string> RunConfig::install(Device& device) {
 //install dependencies;
     runfile += " if [ !  -z \"$dependencies\" ] ; then \n";
     runfile += "apt-undo install $dependencies \n";
-    runfile += "if [ $? -eq 0 ] \n";
+    runfile += "if [ $? -eq 0 ] ; then \n";
     runfile +=  "echo \"" + device.getDeviceid() + "," + device.getDescription() + ","	+ to_string(device.getVoteDifference()) + "," + device.getOwnerGitId() + "," + device.getSuccessCode()  + "," + device.getModulename() + ",apt-installed," + device.getCommit() + " \" >> /var/lib/tuxconfig/history  \n";
     runfile += "fi \n";
     runfile += "fi \n";
@@ -196,11 +196,9 @@ vector<string> RunConfig::install(Device& device) {
     }
     //wire into boot process.
     if (restart_needed == "true") {
-        string PKEXEC_UID = GetOS::exec("echo $SUDO_USER");
-        boost::trim(PKEXEC_UID);
         ifstream infile;
         infile.open("/usr/share/applications/tuxconfig.desktop");
-        string out_file = "/home/" + PKEXEC_UID + "/.config/autostart/tuxconfig.desktop";
+        string out_file = GetOS::gethomedir() + "/.config/autostart/tuxconfig.desktop";
         ofstream outFile(out_file.c_str(),std::ios_base::out);
         istream readFile();
         string readout;
@@ -216,7 +214,7 @@ vector<string> RunConfig::install(Device& device) {
         }
 
         ofstream bashrc ;
-         bashrc.open("/home/" + PKEXEC_UID +"/.bashrc",std::ios_base::app);
+         bashrc.open(GetOS::gethomedir() +"/.bashrc",std::ios_base::app);
           if (bashrc.is_open())
           {
             bashrc << "sudo /usr/bin/tuxconfig_cmd recover";

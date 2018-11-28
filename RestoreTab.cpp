@@ -38,7 +38,7 @@ void RestoreTab::update(string message) {
                                 QPushButton *success_button = new QPushButton(QString::fromStdString("Successful install"));
                                 QPushButton *fail_button = new QPushButton(QString::fromStdString("Failed install"));
                                 QPushButton *retry_button = new QPushButton(QString::fromStdString("Try next install"));
-                                already_installed = new QLabel(QString::fromStdString("Already installed"));
+                                already_installed = new QLabel(QString::fromStdString("No more installs"));
 
                                 installed_status->setText(QString::fromStdString(it->second.getStatus()));
 
@@ -46,10 +46,12 @@ void RestoreTab::update(string message) {
                                 m_Grid->addWidget(devicename);
                                 m_Grid->addWidget(installed_status);
                                 m_Grid->addWidget(restore_button1);
-                                m_Grid->addWidget(retry_button);
 
+                                if (getLastInstall(it->second)) {
                                 m_Grid->addWidget(already_installed);
-                                already_installed->hide();
+                                } else { m_Grid->addWidget(retry_button);
+
+                                    }
                                 bool installed = false;
                                 if (it->second.getStatus() == "works" || it->second.getStatus() == "failed")
                                     installed = true;
@@ -102,9 +104,6 @@ void RestoreTab::FailButton(Device device) {
 }
 void RestoreTab::RetryButton(Device device) {
     Device parsedDevice = GetRemoteConfig::GetConfiguration(device);
-    if (parsedDevice.getCommit() == device.getCommit()) {
-        already_installed->show();
-    }
     vector<string> install = RunConfig::install(parsedDevice);
        emit setTab(3);
 
@@ -127,3 +126,12 @@ void RestoreTab::clearLayout(QLayout* layout, bool deleteWidgets)
     }
 }
 
+bool RestoreTab::getLastInstall(Device device) {
+    Device parsedDevice = GetRemoteConfig::GetConfiguration(device);
+    if (parsedDevice.getCommit() == device.getCommit()) {
+        return true;
+    }  else {
+        return false;
+    }
+
+}
