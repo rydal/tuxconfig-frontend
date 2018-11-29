@@ -12,7 +12,7 @@ void signal_handler1(int signal) { shutdown_handler1(signal); }
 }
 
 int main(int argc, char *argv[]) {
-	bool is_gui_present = GetOS::is_gui_present();
+    bool is_gui_present = GetOS::is_gui_present();
 
 	//check root.
 	if (getuid() != 0) {

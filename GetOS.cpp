@@ -117,13 +117,14 @@ void GetOS::reset_reboot() {
 }
 
 string GetOS::gethomedir() {
-    struct passwd *pw = getpwuid(getuid());
-    const char *homedir = pw->pw_dir;
-    return homedir;
+    string user_id = std::getenv("PKEXEC_UID");
+    string homedir = "awk -F':' '{print $3 \":\" $6}' /etc/passwd  | grep ^" + user_id + "  | cut -d':' -f2";
+    return exec(homedir.c_str());
 }
 
 string GetOS::getusername() {
-    struct passwd *pw = getpwuid(getuid());
-    const char *name = pw->pw_name;
-    return name;
+    string user_id = std::getenv("PKEXEC_UID");
+    string name = "awk -F':' '{print $1 \":\" $3}' /etc/passwd  | grep \\:" + user_id +"  | cut -d':' -f1";
+
+    return exec(name.c_str());
 }
