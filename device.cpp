@@ -28,12 +28,11 @@ Device::Device() {
     Device::Device(string m_id,  string m_description, string m_name, string m_modulename )
     : deviceid(m_id),description(m_description),devicename(m_name),modulename(m_modulename),vote_difference(0),git_url("null"),is_upgradeable(false),attempted_install(false),is_installed(false){
 	     		}
-    Device::Device(string m_id,  string m_description, bool isInstalled, bool isFailed, string success_code, string status)
-    : deviceid(m_id),description(m_description), is_installed(isInstalled), attempted_install(isFailed), success_code(success_code),status(status) {
+    Device::Device(string m_id,  string m_devicename, bool isInstalled, bool isFailed, string success_code, string status)
+    : deviceid(m_id),devicename(m_devicename), is_installed(isInstalled), attempted_install(isFailed), success_code(success_code),status(status) {
 
 
-		     	this->description = m_description;
-		     	this->deviceid = m_id;
+                this->deviceid = m_id;
 		}
 
 

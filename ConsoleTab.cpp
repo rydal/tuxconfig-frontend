@@ -102,7 +102,8 @@ if (install_method == "install") {
     }
 } else {
         success_label->setText("Command failed");
-        emit refreshRestore("Install for device " + current_device.getDevicename() + " , " + current_device.getDescription() +" failed.");
+        string restore_message = "Install for device " + current_device.getDevicename() + " , " + current_device.getDescription() +" failed.";
+        emit refreshRestore(restore_message);
 
     }
 } else if ( install_method == "uninstall") {

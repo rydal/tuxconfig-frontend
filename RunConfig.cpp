@@ -93,7 +93,7 @@ vector<string> RunConfig::install(Device& device) {
     runfile += "set -e \n";
     runfile += "exec 2> >(tee -i /var/lib/tuxconfig/" + device.getDeviceid() + "-" + device.getCommit() +  "-install.log) \n";
     runfile += "function cleanup() { \n";
-    runfile +=  "echo \"" + device.getDeviceid() + "," + device.getDescription() + ","	+ to_string(device.getVoteDifference()) + "," + device.getOwnerGitId() + "," + device.getSuccessCode() + "," + device.getDevicename() +  +  "," + device.getModulename() + ", failed," + device.getCommit() + "\" >> /var/lib/tuxconfig/history  \n";
+    runfile +=  "echo \"" + device.getDeviceid() + "," + device.getDevicename() + ","	+ to_string(device.getVoteDifference()) + "," + device.getOwnerGitId() + "," + device.getSuccessCode() +   "," + device.getModulename() + ", failed," + device.getCommit() + "\" >> /var/lib/tuxconfig/history  \n";
 
     runfile += "kill -SIGUSR2 " + to_string(::getpid()) + " \n";
     runfile += "} \n";
@@ -127,7 +127,7 @@ vector<string> RunConfig::install(Device& device) {
     runfile += " if [ !  -z \"$dependencies\" ] ; then \n";
     runfile += "apt-undo install $dependencies \n";
     runfile += "if [ $? -eq 0 ] ; then \n";
-    runfile +=  "echo \"" + device.getDeviceid() + "," + device.getDescription() + ","	+ to_string(device.getVoteDifference()) + "," + device.getOwnerGitId() + "," + device.getSuccessCode()  + "," + device.getModulename() + ",apt-installed," + device.getCommit() + " \" >> /var/lib/tuxconfig/history  \n";
+    runfile +=  "echo \"" + device.getDeviceid() + "," + device.getDevicename() + ","	+ to_string(device.getVoteDifference()) + "," + device.getOwnerGitId() + "," + device.getSuccessCode()  + "," + device.getModulename() + ",apt-installed," + device.getCommit() + " \" >> /var/lib/tuxconfig/history  \n";
     runfile += "fi \n";
     runfile += "fi \n";
     runfile += "echo \"installed dependencies\" \n";
@@ -143,7 +143,7 @@ vector<string> RunConfig::install(Device& device) {
 //Insert module
     runfile += "modprobe -v $tuxconfig_module \n";
     runfile += "echo \"inserted module into kernel\" \n";
-    runfile +=  "echo \"" + device.getDeviceid() + "," + device.getDescription() + ","	+ to_string(device.getVoteDifference()) + "," + device.getOwnerGitId() + "," + device.getSuccessCode() + "," + device.getModulename() +  ", module-installed,"  + device.getCommit() + " \"  >> /var/lib/tuxconfig/history  \n";
+    runfile +=  "echo \"" + device.getDeviceid() + "," + device.getDevicename() + ","	+ to_string(device.getVoteDifference()) + "," + device.getOwnerGitId() + "," + device.getSuccessCode() + "," + device.getModulename() +  ", module-installed,"  + device.getCommit() + " \"  >> /var/lib/tuxconfig/history  \n";
     runfile += "fi \n";
     runfile += "kill -SIGUSR1 " + to_string(::getpid()) + " \n";
 

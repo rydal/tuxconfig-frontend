@@ -97,19 +97,19 @@ else return true;
 
 void GetOS::runWebpage(string url)  {
 
-    string runCommand = "sudo -u " + getusername()  +" x-www-browser " + url;
+    string runCommand = "sudo -H -u " + getusername() + " bash -c  \" x-www-browser " + url + "\"";
     system(runCommand.c_str());
 }
 void GetOS::runEmail(string email)  {
-    string runCommand = "sudo -u $SUDO_USER xdg-open mailto://" + email;
+    string runCommand = "sudo -H -u " + getusername() + " bash -c \" xdg-email mailto://" + email + "\"";
     system(runCommand.c_str());
 }
 
 
 
 void GetOS::reset_reboot() {
-
-        string remove_bash_rc_line = "sed -i 's,sudo /usr/bin/tuxconfig_cmd recover,,g'" + gethomedir() + "/.bashrc";
+        string home_dir = gethomedir() + "/.bashrc";
+        string remove_bash_rc_line = "sed -i -e 's,sudo /usr/bin/tuxconfig_cmd recover,,g' " + home_dir;
         cout<<"Remove reboot line="<<remove_bash_rc_line<<endl;
         system(remove_bash_rc_line.c_str());
         string desktop_file = gethomedir() + "/.config/autostart/tuxconfig.desktop";
@@ -120,10 +120,13 @@ string GetOS::gethomedir() {
     if (is_gui_present()) {
     string user_id = std::getenv("PKEXEC_UID");
     string homedir = "awk -F':' '{print $3 \":\" $6}' /etc/passwd  | grep ^" + user_id + "  | cut -d':' -f2";
-    return exec(homedir.c_str());
+    string result =  exec(homedir.c_str());
+    result.erase(std::remove(result.begin(), result.end(), '\n'), result.end());
+    return result;
     } else {
         string get_home = "eval echo ~${SUDO_USER}";
         string homedir = exec(get_home.c_str());
+        homedir.erase(std::remove(homedir.begin(), homedir.end(), '\n'), homedir.end());
         return homedir;
     }
 }
@@ -132,8 +135,13 @@ string GetOS::getusername() {
     if (is_gui_present()) {
     string user_id = std::getenv("PKEXEC_UID");
     string name = "awk -F':' '{print $1 \":\" $3}' /etc/passwd  | grep \\:" + user_id +"  | cut -d':' -f1";
-    return exec(name.c_str());
+
+    string result = exec(name.c_str());
+    result.erase(std::remove(result.begin(), result.end(), '\n'), result.end());
+    return result;
     } else {
-        return exec("echo $SUDO_USER");
+        string name =  exec("echo $SUDO_USER");
+        name.erase(std::remove(name.begin(), name.end(), '\n'), name.end());
+        return name;
     }
 }

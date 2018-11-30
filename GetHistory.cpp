@@ -49,7 +49,7 @@ map<string, Device> GetHistory::getInstalledDevices() {
             }
 
         }
-        else if (tempstr[6].find("module-installed") != string::npos
+        if (tempstr[6].find("module-installed") != string::npos
                 ) {
             boost::trim(tempstr[0]);
             boost::trim(tempstr[1]);
@@ -68,7 +68,7 @@ map<string, Device> GetHistory::getInstalledDevices() {
 
         }
 
-        else if (tempstr[6].find("failed") != string::npos
+        if (tempstr[6].find("failed") != string::npos
                 ) {
             boost::trim(tempstr[0]);
             boost::trim(tempstr[1]);
@@ -78,12 +78,13 @@ map<string, Device> GetHistory::getInstalledDevices() {
             new_device.setOwnerGitId(tempstr[3]);
             new_device.setCommit(tempstr[7]);
             if (it != device_map.end()) {
+                it->second.setStatus("failed");
 
             } else {
             device_map.insert(
                     std::pair<string, Device>(tempstr[0], new_device));
             }
-        }  else       if (tempstr[6].find("works") != string::npos) {
+        }   if (tempstr[6].find("works") != string::npos) {
             boost::trim(tempstr[0]);
             boost::trim(tempstr[1]);
             new_device = Device(tempstr[0], tempstr[1], true, true, tempstr[4],tempstr[6]);

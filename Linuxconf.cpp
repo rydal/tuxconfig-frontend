@@ -13,7 +13,6 @@ void signal_handler1(int signal) { shutdown_handler1(signal); }
 
 int main(int argc, char *argv[]) {
     bool is_gui_present = GetOS::is_gui_present();
-
     if (getenv("PKEXEC_UID") == 0 ) {
          if (is_gui_present) {
              QApplication app(argc, argv);
