@@ -117,14 +117,23 @@ void GetOS::reset_reboot() {
 }
 
 string GetOS::gethomedir() {
+    if (is_gui_present()) {
     string user_id = std::getenv("PKEXEC_UID");
     string homedir = "awk -F':' '{print $3 \":\" $6}' /etc/passwd  | grep ^" + user_id + "  | cut -d':' -f2";
     return exec(homedir.c_str());
+    } else {
+        string get_home = "eval echo ~${SUDO_USER}";
+        string homedir = exec(get_home.c_str());
+        return homedir;
+    }
 }
 
 string GetOS::getusername() {
+    if (is_gui_present()) {
     string user_id = std::getenv("PKEXEC_UID");
     string name = "awk -F':' '{print $1 \":\" $3}' /etc/passwd  | grep \\:" + user_id +"  | cut -d':' -f1";
-
     return exec(name.c_str());
+    } else {
+        return exec("echo $SUDO_USER");
+    }
 }
