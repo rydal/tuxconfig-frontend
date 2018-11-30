@@ -1,0 +1,10 @@
+Package: tuxconfig
+Version: 0.7-1
+Section: base
+Priority: optional
+Architecture: amd64
+Depends: libqtermwidget5-0 , libcurlpp0 , libjsoncpp1
+Maintainer: Your Name <rob@rydal.org>
+Description: Linux devices made easy
+ Install linux device drivers using a graphical interface.
+ More information at https://linuxconf.feedthepenguin.org/hehe

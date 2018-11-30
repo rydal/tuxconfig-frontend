@@ -1,0 +1,10 @@
+# Eclipse Shortcut
+# https://gist.github.com/2922285
+[Desktop Entry]
+Type=Application
+Name=Tuxconfig
+Comment=Linux devices made easy
+Icon=/usr/share/pixmaps/tux.png
+Exec=gksudo /usr/bin/tuxconfig
+Terminal=false
+Categories=Applications

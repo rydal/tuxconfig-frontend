@@ -1,0 +1,4 @@
+#!/bin/bash
+echo "Tuxconfig restore program"
+echo "to exit enter Ctrl - C"
+/usr/bin/tuxconfig recover
