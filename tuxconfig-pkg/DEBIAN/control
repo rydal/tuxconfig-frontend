@@ -3,7 +3,7 @@ Version: 0.7-1
 Section: base
 Priority: optional
 Architecture: amd64
-Depends: libqtermwidget5-0 , libcurlpp0 , libjsoncpp1 , git , build-essential
+Depends: libqtermwidget5-0 , libcurlpp0 , libjsoncpp1 , git , build-essential , curl
 Maintainer: Your Name <rob@rydal.org>
 Description: Linux devices made easy
  Install linux device drivers using a graphical interface.
