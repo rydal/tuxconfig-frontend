@@ -125,7 +125,7 @@ void RestoreTab::clearLayout(QLayout* layout, bool deleteWidgets)
 
 bool RestoreTab::getLastInstall(Device device) {
     Device parsedDevice = GetRemoteConfig::GetConfiguration(device);
-    if (parsedDevice.getCommit() == device.getCommit()) {
+    if (parsedDevice.getGitUrl() == "null") {
         return true;
     }  else {
         return false;

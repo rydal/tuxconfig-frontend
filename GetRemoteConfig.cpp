@@ -14,6 +14,7 @@ GetRemoteConfig::~GetRemoteConfig() {
 Device GetRemoteConfig::GetConfiguration(Device& configured_device) {
     int attempt_number = 1;
     //check number  of attempts
+
     ifstream inFile("/var/lib/tuxconfig/history");
     string x;
     if (inFile.is_open()) {
@@ -21,6 +22,7 @@ Device GetRemoteConfig::GetConfiguration(Device& configured_device) {
 
             if (x.find(configured_device.getDeviceid()) != std::string::npos && x.find("failed") != std::string::npos)  {
                 attempt_number++;
+                cout<<"Attempt: "<<attempt_number<<endl;
             }
 		}
 		inFile.close();
@@ -30,7 +32,10 @@ Device GetRemoteConfig::GetConfiguration(Device& configured_device) {
 	ostringstream os;
     string description = configured_device.getDescription();
     boost::replace_all(description," ","%20");
-    string url = "https://linuxconf.feedthepenguin.org/hehe/getdevice?deviceid="+ configured_device.getDeviceid() + "&attempt="	+ to_string(attempt_number) + "&distribution=" + os_string[0] + "&description=" + description;
+    string name = configured_device.getDevicename();
+    boost::replace_all(name," ","%20");
+
+    string url = "https://linuxconf.feedthepenguin.org/hehe/getdevice?deviceid="+ configured_device.getDeviceid() + "&attempt="	+ to_string(attempt_number) + "&description=" + description + "&name=" ;
 
 	os << curlpp::options::Url(url);
 	string str = os.str();
@@ -58,7 +63,7 @@ Device GetRemoteConfig::GetConfiguration(Device& configured_device) {
         configured_device.setModulename(module);
 	} else {
 		configured_device.setGitUrl("null");
-
+        return configured_device;
 	}
 	string line;
      ifstream inputFile("/var/lib/tuxconfig/history");

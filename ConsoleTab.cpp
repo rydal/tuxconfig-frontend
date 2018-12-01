@@ -95,7 +95,8 @@ if (install_method == "install") {
         }
 
     }
-    console->sendText(command_string.c_str());
+    command_string = "sudo -H -u \"" + GetOS::getusername() + "\" bash -c \""  + command_string.c_str() + "\"";
+            system(command_string.c_str());
 
     } else {
         success_label->setText("Command completed successfully");
