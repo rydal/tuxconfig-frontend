@@ -22,7 +22,6 @@ Device GetRemoteConfig::GetConfiguration(Device& configured_device) {
 
             if (x.find(configured_device.getDeviceid()) != std::string::npos && x.find("failed") != std::string::npos)  {
                 attempt_number++;
-                cout<<"Attempt: "<<attempt_number<<endl;
             }
 		}
 		inFile.close();
@@ -44,6 +43,9 @@ Device GetRemoteConfig::GetConfiguration(Device& configured_device) {
 
 	bool parsingSuccessful = reader.parse(str, root);
 	if (!parsingSuccessful) {
+
+               QuestionBox window("Cannot parse response from server.");
+
 
 		exit(1);
 	}

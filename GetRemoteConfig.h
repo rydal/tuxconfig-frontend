@@ -17,7 +17,8 @@
 #include <jsoncpp/json/json.h>
 #include "device.h"
 #include "GetOS.h"
-
+#include <QtWidgets>
+#include "QuestionBox.h"
 class GetRemoteConfig {
 public:
     /** Constructor
