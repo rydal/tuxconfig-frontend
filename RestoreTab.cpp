@@ -100,7 +100,7 @@ void RestoreTab::FailButton(Device device) {
 
 }
 void RestoreTab::RetryButton(Device device) {
-    Device parsedDevice = GetRemoteConfig::GetConfiguration(device);
+    Device parsedDevice = GetRemoteConfig::GetConfiguration(device, false);
     vector<string> install = RunConfig::install(parsedDevice);
        emit setTab(3);
 
@@ -124,7 +124,7 @@ void RestoreTab::clearLayout(QLayout* layout, bool deleteWidgets)
 }
 
 bool RestoreTab::getLastInstall(Device device) {
-    Device parsedDevice = GetRemoteConfig::GetConfiguration(device);
+    Device parsedDevice = GetRemoteConfig::GetConfiguration(device, true);
     if (parsedDevice.getGitUrl() == "null") {
         return true;
     }  else {

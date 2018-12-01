@@ -199,7 +199,7 @@ vector<string> RunConfig::install(Device& device) {
         ifstream infile;
         infile.open("/usr/share/applications/tuxconfig.desktop");
         string out_file = GetOS::gethomedir() + "/.config/autostart/tuxconfig.desktop";
-        ofstream outFile(out_file.c_str(),std::ios_base::out);
+        ofstream outFile(out_file,std::ios_base::out);
         istream readFile();
         string readout;
 
@@ -238,7 +238,7 @@ vector<string> RunConfig::install(Device& device) {
 
 vector<string> RunConfig::upgrade(Device& device) {
     GetRemoteConfig remote_config_class;
-    Device new_device = remote_config_class.GetConfiguration(device);
+    Device new_device = remote_config_class.GetConfiguration(device, false);
     return install(new_device);
 
 }

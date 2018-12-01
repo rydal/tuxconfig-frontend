@@ -11,13 +11,13 @@ GetRemoteConfig::~GetRemoteConfig() {
 
 }
 
-Device GetRemoteConfig::GetConfiguration(Device& configured_device) {
+Device GetRemoteConfig::GetConfiguration(Device& configured_device, bool restore_tab_asking) {
     int attempt_number = 1;
     //check number  of attempts
 
     ifstream inFile("/var/lib/tuxconfig/history");
     string x;
-    if (inFile.is_open()) {
+    if (inFile.is_open() && ! restore_tab_asking) {
        while (getline(inFile, x)) {
 
             if (x.find(configured_device.getDeviceid()) != std::string::npos && x.find("failed") != std::string::npos)  {

@@ -21,7 +21,7 @@
 
 		for (auto device : local_devices) {
 
-			remote_devices.insert(GetRemoteConfig::GetConfiguration(device));
+            remote_devices.insert(GetRemoteConfig::GetConfiguration(device,false));
 
 		}
 	for (auto iterated_device : remote_devices) {
