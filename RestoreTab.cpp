@@ -46,12 +46,13 @@ void RestoreTab::update(string message) {
                                 m_Grid->addWidget(devicename);
                                 m_Grid->addWidget(installed_status);
                                 m_Grid->addWidget(restore_button1);
-
+                                if (CheckConnection::CheckNetwork()) {
                                 if (getLastInstall(it->second)) {
                                 m_Grid->addWidget(already_installed);
                                 } else { m_Grid->addWidget(retry_button);
 
                                     }
+                                }
                                 bool installed = false;
                                 if (it->second.getStatus() == "works" || it->second.getStatus() == "failed")
                                     installed = true;
