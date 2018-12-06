@@ -29,7 +29,6 @@ int main(int argc, char *argv[]) {
 		}
 	}
     bool recovering = false; // allow not connected if recovering.
-    if (is_gui_present) recovering = true;
     if (argc == 2) {
         recovering = true;
 	if (strcmp(argv[1], "recover") == 0) {
@@ -49,7 +48,7 @@ int main(int argc, char *argv[]) {
 	}
 	}
 	CheckConnection connchk = CheckConnection();
-    if (connchk.CheckNetwork() == false && ! recovering) {
+    if (connchk.CheckNetwork() == false || recovering) {
 		 QApplication app(argc, argv);
 			QuestionBox window(
 					"No internet connection\n consider tethering with a mobile phone\n or plug into a network socket");
