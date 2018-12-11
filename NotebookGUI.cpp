@@ -58,7 +58,7 @@
                 connect(restore_tab, SIGNAL(sendCommand(Device, string, vector<string>)),console_tab,SLOT(sendToConsole(Device, string, vector<string>)));
                 connect(console_tab, SIGNAL(refreshRestore(string)),  restore_tab, SLOT(update(string)));
                 connect(console_tab, SIGNAL(sendReboot()),  contributor_tab, SLOT(receiveReboot()));
-
+                connect(this, SIGNAL(updates_available_signal()), runTab, SLOT(updates_available()));
     }
 
 
@@ -86,4 +86,6 @@ void NotebookGUI::updateContributor() {
     emit updatedContributor(current_device);
 }
 
-
+void NotebookGUI::updates_available() {
+    emit updates_available();
+}

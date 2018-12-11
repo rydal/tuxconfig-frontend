@@ -24,7 +24,10 @@
             remote_devices.insert(GetRemoteConfig::GetConfiguration(device,false));
 
 		}
-	for (auto iterated_device : remote_devices) {
+        QLabel* updates_available_button = new QLabel("Updates available");
+        mainLayout->addWidget(updates_available_button);
+        updates_available_button->hide();
+        for (auto iterated_device : remote_devices) {
 
         QGridLayout* m_Grid = new QGridLayout;
 			QLabel* description = new QLabel;
@@ -116,5 +119,8 @@
              clearLayout(childLayout, deleteWidgets);
          delete item;
      }
+ }
+ void RunTab::updates_available() {
+     updates_available_button->show();
  }
 

@@ -28,11 +28,8 @@ int main(int argc, char *argv[]) {
 
 		}
 	}
-    bool recovering = false; // allow not connected if recovering.
-    if (argc == 2) {
-        recovering = true;
-	if (strcmp(argv[1], "recover") == 0) {
-		map <string, Device> installed_devices = GetHistory::getInstalledDevices();
+    if (argc == 2 && strcmp(argv[1], "recover") == 0) {
+        map <string, Device> installed_devices = GetHistory::getInstalledDevices();
         if (is_gui_present) {
             QApplication app(argc, argv);
 
@@ -44,11 +41,11 @@ int main(int argc, char *argv[]) {
 	}   else {
             RestoreGUI::CommandLineInstall(installed_devices);
             exit(1);
-	}
+
 	}
 	}
 	CheckConnection connchk = CheckConnection();
-    if (connchk.CheckNetwork() == false || recovering) {
+    if (! connchk.CheckNetwork()) {
 		 QApplication app(argc, argv);
 			QuestionBox window(
 					"No internet connection\n consider tethering with a mobile phone\n or plug into a network socket");
@@ -59,6 +56,29 @@ int main(int argc, char *argv[]) {
 
 	};
 
+    if (argc == 2 && strcmp(argv[1], "update") == 0) {
+        set<Device> local_devices = GetLocalDevices::listdevices();
+        set<Device> remote_devices;
+        bool upgrades_available = false;
+            for (auto device : local_devices) {
+
+                Device remote_device = GetRemoteConfig::GetConfiguration(device,false);
+                if (remote_device.isUpgradeable()) {
+                    upgrades_available = true;
+                }
+
+            }
+        if (upgrades_available) {
+            QApplication app(argc, argv);
+
+            NotebookGUI gui("Tuxconfig");
+            gui.show();
+            gui.changeTab(1);
+            gui.updates_available();
+            return app.exec();
+        }
+
+    }
     const int dir_err = system("mkdir ~/.config/tuxconfig >  /dev/null 2>&1 ");
 	if (-1 == dir_err) {
 	    QApplication app(argc, argv);

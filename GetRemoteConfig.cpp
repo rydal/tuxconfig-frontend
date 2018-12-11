@@ -34,21 +34,20 @@ Device GetRemoteConfig::GetConfiguration(Device& configured_device, bool restore
     string name = configured_device.getDevicename();
     boost::replace_all(name," ","%20");
 
-    string url = "https://linuxconf.feedthepenguin.org/hehe/getdevice?deviceid="+ configured_device.getDeviceid() + "&attempt="	+ to_string(attempt_number) + "&description=" + description + "&name=" ;
-
+    string url = "https://linuxconf.feedthepenguin.org/hehe/getdevice?deviceid="+ configured_device.getDeviceid() + "&attempt="	+ to_string(attempt_number) + "&distribution=" + os_string[0] + "&description=" + description + "&name=" + name;
 	os << curlpp::options::Url(url);
 	string str = os.str();
 	Json::Value root;
 	Json::Reader reader;
 
-	bool parsingSuccessful = reader.parse(str, root);
-	if (!parsingSuccessful) {
+    bool parsingSuccessful = reader.parse(str, root);
+    if (!parsingSuccessful) {
 
                QuestionBox window("Cannot parse response from server.");
 
 
-		exit(1);
-	}
+        exit(1);
+    }
 	if (!root.isMember("Error")) {
 		string url = root["git_url"].asString();
 		string success_code = root["success_code"].asString();
