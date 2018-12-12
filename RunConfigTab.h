@@ -41,7 +41,7 @@ Q_OBJECT
      void updateLayout();
      QWidget *m_parent;
      QTabWidget *tabWidget;
-    QTermWidget *termWidget;
+     QLabel *updates_available_button;
     QVBoxLayout *mainLayout;
     /** Clears widgets when refreshing.
  * @brief clearLayout
@@ -63,7 +63,7 @@ void clearLayout(QLayout* layout, bool deleteWidgets = true);
       * @brief upgrade
       */
      void upgrade(Device);
-
+     void updates_available();
 
 signals:
      /** sets tab by index.

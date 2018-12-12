@@ -76,6 +76,8 @@ int main(int argc, char *argv[]) {
             gui.changeTab(1);
             gui.updates_available();
             return app.exec();
+        } else {
+            exit (1);
         }
 
     }

@@ -124,6 +124,8 @@ vector<string> RunConfig::install(Device& device) {
     runfile += "sed -i 's/^[ \t]*device_ids.*//g' " + tuxconfig_file + " \n";
     runfile += ". " + tuxconfig_file + "\n";
 //install dependencies;
+    runfile += "echo \"Be careful not to uninstall previous dependencies\" \n";
+    runfile += "echo \"Ctrl -C to exit\" \n";
     runfile += " if [ !  -z \"$dependencies\" ] ; then \n";
     runfile += "apt-undo install $dependencies \n";
     runfile += "if [ $? -eq 0 ] ; then \n";

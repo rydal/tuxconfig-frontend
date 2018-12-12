@@ -52,7 +52,7 @@ public:
       * @brief showFailButton
       */
      void showFailButton();
-
+     void updates_available();
 signals:
      /** sets contributor details tab information and switches tabs.
       * @brief updatedContributor
@@ -71,6 +71,7 @@ signals:
       * @brief sendToConsole
       */
      void sendToConsole(Device, string, vector<string>);
+     void updates_available_signal();
 
 public slots:
      /** Change tab by index.
