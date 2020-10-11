@@ -44,7 +44,7 @@ std::string* GetOS::getLocalMchineDistro() {
       {
         while ( getline (iss,line) )
         {
-         if(line.find("NAME") == 0) {
+         if(line.find("DISTRIB_ID") == 0) {
             boost::replace_all(line, "NAME=\"", "");
             boost::replace_all(line, "\"", "");
             boost::replace_all(line, "GNU/Linux","");
@@ -53,7 +53,7 @@ std::string* GetOS::getLocalMchineDistro() {
 
 
          }
-         if(line.find("VERSION_ID") == 0 ) {
+         if(line.find("DISTRIB_RELEASE") == 0 ) {
                     boost::replace_all(line, "VERSION_ID=\"", "");
                     boost::replace_all(line, "\"", "");
                     linux_version = line;
@@ -108,17 +108,12 @@ void GetOS::runEmail(string email)  {
 
 
 void GetOS::reset_reboot() {
-        string home_dir = gethomedir() + "/.bashrc";
-        string remove_bash_rc_line = "sed -i -e 's,sudo /usr/bin/tuxconfig_cmd recover,,g' " + home_dir;
-        cout<<"Remove reboot line="<<remove_bash_rc_line<<endl;
-        system(remove_bash_rc_line.c_str());
-        string desktop_file = gethomedir() + "/.config/autostart/tuxconfig.desktop";
-        remove(desktop_file.c_str());
+
 }
 
 string GetOS::gethomedir() {
     if (is_gui_present()) {
-    string user_id = std::getenv("PKEXEC_UID");
+    string user_id = std::getenv("SUDO_UID");
     string homedir = "awk -F':' '{print $3 \":\" $6}' /etc/passwd  | grep ^" + user_id + "  | cut -d':' -f2";
     string result =  exec(homedir.c_str());
     result.erase(std::remove(result.begin(), result.end(), '\n'), result.end());
@@ -133,7 +128,7 @@ string GetOS::gethomedir() {
 
 string GetOS::getusername() {
     if (is_gui_present()) {
-    string user_id = std::getenv("PKEXEC_UID");
+    string user_id = std::getenv("SUDO_UID");
     string name = "awk -F':' '{print $1 \":\" $3}' /etc/passwd  | grep \\:" + user_id +"  | cut -d':' -f1";
 
     string result = exec(name.c_str());

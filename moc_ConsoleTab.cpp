@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'ConsoleTab.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.7.1)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.12.8)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,12 +12,14 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'ConsoleTab.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.7.1. It"
+#error "This file was generated using the moc from 5.12.8. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
 
 QT_BEGIN_MOC_NAMESPACE
+QT_WARNING_PUSH
+QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_ConsoleTab_t {
     QByteArrayData data[16];
     char stringdata0[154];
@@ -58,7 +60,7 @@ QT_MOC_LITERAL(15, 143, 10) // "parameters"
 static const uint qt_meta_data_ConsoleTab[] = {
 
  // content:
-       7,       // revision
+       8,       // revision
        0,       // classname
        0,    0, // classinfo
        6,   14, // methods
@@ -94,7 +96,7 @@ static const uint qt_meta_data_ConsoleTab[] = {
 void ConsoleTab::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
-        ConsoleTab *_t = static_cast<ConsoleTab *>(_o);
+        auto *_t = static_cast<ConsoleTab *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->setTab((*reinterpret_cast< int(*)>(_a[1]))); break;
@@ -107,31 +109,30 @@ void ConsoleTab::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
-        void **func = reinterpret_cast<void **>(_a[1]);
         {
-            typedef void (ConsoleTab::*_t)(int );
-            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&ConsoleTab::setTab)) {
+            using _t = void (ConsoleTab::*)(int );
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&ConsoleTab::setTab)) {
                 *result = 0;
                 return;
             }
         }
         {
-            typedef void (ConsoleTab::*_t)();
-            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&ConsoleTab::updateScreen)) {
+            using _t = void (ConsoleTab::*)();
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&ConsoleTab::updateScreen)) {
                 *result = 1;
                 return;
             }
         }
         {
-            typedef void (ConsoleTab::*_t)(string );
-            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&ConsoleTab::refreshRestore)) {
+            using _t = void (ConsoleTab::*)(string );
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&ConsoleTab::refreshRestore)) {
                 *result = 2;
                 return;
             }
         }
         {
-            typedef void (ConsoleTab::*_t)();
-            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&ConsoleTab::sendReboot)) {
+            using _t = void (ConsoleTab::*)();
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&ConsoleTab::sendReboot)) {
                 *result = 3;
                 return;
             }
@@ -139,10 +140,14 @@ void ConsoleTab::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
     }
 }
 
-const QMetaObject ConsoleTab::staticMetaObject = {
-    { &QWidget::staticMetaObject, qt_meta_stringdata_ConsoleTab.data,
-      qt_meta_data_ConsoleTab,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
-};
+QT_INIT_METAOBJECT const QMetaObject ConsoleTab::staticMetaObject = { {
+    &QWidget::staticMetaObject,
+    qt_meta_stringdata_ConsoleTab.data,
+    qt_meta_data_ConsoleTab,
+    qt_static_metacall,
+    nullptr,
+    nullptr
+} };
 
 
 const QMetaObject *ConsoleTab::metaObject() const
@@ -152,9 +157,9 @@ const QMetaObject *ConsoleTab::metaObject() const
 
 void *ConsoleTab::qt_metacast(const char *_clname)
 {
-    if (!_clname) return Q_NULLPTR;
+    if (!_clname) return nullptr;
     if (!strcmp(_clname, qt_meta_stringdata_ConsoleTab.stringdata0))
-        return static_cast<void*>(const_cast< ConsoleTab*>(this));
+        return static_cast<void*>(this);
     return QWidget::qt_metacast(_clname);
 }
 
@@ -178,26 +183,27 @@ int ConsoleTab::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 // SIGNAL 0
 void ConsoleTab::setTab(int _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 
 // SIGNAL 1
 void ConsoleTab::updateScreen()
 {
-    QMetaObject::activate(this, &staticMetaObject, 1, Q_NULLPTR);
+    QMetaObject::activate(this, &staticMetaObject, 1, nullptr);
 }
 
 // SIGNAL 2
 void ConsoleTab::refreshRestore(string _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 2, _a);
 }
 
 // SIGNAL 3
 void ConsoleTab::sendReboot()
 {
-    QMetaObject::activate(this, &staticMetaObject, 3, Q_NULLPTR);
+    QMetaObject::activate(this, &staticMetaObject, 3, nullptr);
 }
+QT_WARNING_POP
 QT_END_MOC_NAMESPACE

@@ -34,7 +34,6 @@ void RestoreTab::update(string message) {
                                 installed_status->setAlignment(Qt::AlignCenter);
 
 
-                                QPushButton *restore_button1 = new QPushButton(QString::fromStdString("restore"));
                                 QPushButton *success_button = new QPushButton(QString::fromStdString("Successful install"));
                                 QPushButton *fail_button = new QPushButton(QString::fromStdString("Failed install"));
                                 QPushButton *retry_button = new QPushButton(QString::fromStdString("Try next install"));
@@ -45,7 +44,6 @@ void RestoreTab::update(string message) {
                                 m_Grid->addWidget(description);
                                 m_Grid->addWidget(devicename);
                                 m_Grid->addWidget(installed_status);
-                                m_Grid->addWidget(restore_button1);
                                 if (CheckConnection::CheckNetwork()) {
                                 if (getLastInstall(it->second)) {
                                 m_Grid->addWidget(already_installed);
@@ -63,7 +61,6 @@ void RestoreTab::update(string message) {
 
 
                                 Device& tmp_device = it->second;
-                                connect(restore_button1, &QPushButton::clicked, [=] { RestoreButton(tmp_device); });
                                 connect(success_button, &QPushButton::clicked, [=] { SuccessButton(tmp_device); });
                                 connect(fail_button, &QPushButton::clicked, [=] { FailButton(tmp_device); });
                                 connect(retry_button, &QPushButton::clicked, [=] { RetryButton(tmp_device); });

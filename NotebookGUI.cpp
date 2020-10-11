@@ -40,7 +40,7 @@
 
                 setLayout(mainLayout);
 
-                setWindowTitle(tr("Tab Dialog"));
+                setWindowTitle(tr("Tuxconfig"));
 
                 connect(runTab, SIGNAL(setTab(int)), this, SLOT(changeTab(int)));
                 connect(console_tab, SIGNAL(setTab(int)), this, SLOT(changeTab(int)));

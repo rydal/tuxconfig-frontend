@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'RunConfigTab.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.7.1)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.12.8)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,12 +12,14 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'RunConfigTab.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.7.1. It"
+#error "This file was generated using the moc from 5.12.8. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
 
 QT_BEGIN_MOC_NAMESPACE
+QT_WARNING_PUSH
+QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_RunTab_t {
     QByteArrayData data[11];
     char stringdata0[112];
@@ -51,7 +53,7 @@ QT_MOC_LITERAL(10, 94, 17) // "updates_available"
 static const uint qt_meta_data_RunTab[] = {
 
  // content:
-       7,       // revision
+       8,       // revision
        0,       // classname
        0,    0, // classinfo
        6,   14, // methods
@@ -87,7 +89,7 @@ static const uint qt_meta_data_RunTab[] = {
 void RunTab::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
-        RunTab *_t = static_cast<RunTab *>(_o);
+        auto *_t = static_cast<RunTab *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->setTab((*reinterpret_cast< int(*)>(_a[1]))); break;
@@ -100,17 +102,16 @@ void RunTab::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
-        void **func = reinterpret_cast<void **>(_a[1]);
         {
-            typedef void (RunTab::*_t)(int );
-            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&RunTab::setTab)) {
+            using _t = void (RunTab::*)(int );
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&RunTab::setTab)) {
                 *result = 0;
                 return;
             }
         }
         {
-            typedef void (RunTab::*_t)(Device , string , vector<string> );
-            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&RunTab::sendCommand)) {
+            using _t = void (RunTab::*)(Device , string , vector<string> );
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&RunTab::sendCommand)) {
                 *result = 1;
                 return;
             }
@@ -118,10 +119,14 @@ void RunTab::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
     }
 }
 
-const QMetaObject RunTab::staticMetaObject = {
-    { &QWidget::staticMetaObject, qt_meta_stringdata_RunTab.data,
-      qt_meta_data_RunTab,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
-};
+QT_INIT_METAOBJECT const QMetaObject RunTab::staticMetaObject = { {
+    &QWidget::staticMetaObject,
+    qt_meta_stringdata_RunTab.data,
+    qt_meta_data_RunTab,
+    qt_static_metacall,
+    nullptr,
+    nullptr
+} };
 
 
 const QMetaObject *RunTab::metaObject() const
@@ -131,9 +136,9 @@ const QMetaObject *RunTab::metaObject() const
 
 void *RunTab::qt_metacast(const char *_clname)
 {
-    if (!_clname) return Q_NULLPTR;
+    if (!_clname) return nullptr;
     if (!strcmp(_clname, qt_meta_stringdata_RunTab.stringdata0))
-        return static_cast<void*>(const_cast< RunTab*>(this));
+        return static_cast<void*>(this);
     return QWidget::qt_metacast(_clname);
 }
 
@@ -157,14 +162,15 @@ int RunTab::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 // SIGNAL 0
 void RunTab::setTab(int _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 
 // SIGNAL 1
 void RunTab::sendCommand(Device _t1, string _t2, vector<string> _t3)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)), const_cast<void*>(reinterpret_cast<const void*>(&_t3)) };
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)), const_cast<void*>(reinterpret_cast<const void*>(&_t3)) };
     QMetaObject::activate(this, &staticMetaObject, 1, _a);
 }
+QT_WARNING_POP
 QT_END_MOC_NAMESPACE

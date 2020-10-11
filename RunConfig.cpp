@@ -12,7 +12,6 @@ string distribution_name;
 string arch;
 string test_result;
 RunConfig::RunConfig()
-
 {
 
     GetOS os;
@@ -27,6 +26,8 @@ RunConfig::~RunConfig() {
 }
 
 vector<string> RunConfig::restore(Device& device) {
+    long pid = getpid();
+
     string found_files = " find /var/lib/tuxconfig/ -name \"" + device.getDeviceid() + "*.tar\" -printf \"%T@  %p\n\" | sort -n | head -1 | sed 's/^ *//'| cut -d\" \" -f2- ";
     string restorefile = GetOS::exec(found_files.c_str());
         string runfile = "";
@@ -35,7 +36,7 @@ vector<string> RunConfig::restore(Device& device) {
 
         runfile += "exec > >(tee -i /var/lib/tuxconfig/" + device.getDeviceid() + ".log) \n";
         runfile += "function cleanup() { \n";
-        runfile += "kill -SIGUSR2 " + to_string(::getpid()) + " \n";
+        runfile += "kill -SIGUSR2 " + to_string(pid) + " \n";
         runfile += "} \n";
         runfile += "tar -C / -xvf " +  restorefile + "\n";
         if (device.getAptInstalled()) {
@@ -60,12 +61,13 @@ vector<string> RunConfig::restore(Device& device) {
 
 
 vector<string> RunConfig::uninstall(Device& device) {
+    long pid = getpid();
 
     string runfile = "#!/bin/bash\n";
     runfile += "set -e \n";
     runfile += "exec > >(tee -i /var/lib/tuxconfig/" + device.getDeviceid() + "-uninstall.log) \n";
     runfile += "function cleanup() { \n";
-    runfile += "kill -SIGUSR2 " + to_string(::getpid()) + " \n";
+    runfile += "kill -SIGUSR2 " + to_string(pid) + " \n";
     runfile += "} \n";
     runfile += "tar -cvpf /var/lib/tuxconfig/" + device.getDeviceid()
             + "-uninstall.tar /lib /etc/modules*  1> /dev/null\n";
@@ -88,14 +90,17 @@ vector<string> RunConfig::uninstall(Device& device) {
     return (result);
 }
 
+
 vector<string> RunConfig::install(Device& device) {
+    long pid = getpid();
+
     string runfile = "#!/bin/bash \n";
     runfile += "set -e \n";
     runfile += "exec 2> >(tee -i /var/lib/tuxconfig/" + device.getDeviceid() + "-" + device.getCommit() +  "-install.log) \n";
     runfile += "function cleanup() { \n";
     runfile +=  "echo \"" + device.getDeviceid() + "," + device.getDevicename() + ","	+ to_string(device.getVoteDifference()) + "," + device.getOwnerGitId() + "," + device.getSuccessCode() +   "," + device.getModulename() + ", failed," + device.getCommit() + "\" >> /var/lib/tuxconfig/history  \n";
 
-    runfile += "kill -SIGUSR2 " + to_string(::getpid()) + " \n";
+    runfile += "kill -SIGUSR2 " + to_string(pid) + " \n";
     runfile += "} \n";
     runfile += "trap cleanup ERR \n";
     runfile += "touch /var/lib/tuxconfig/history \n";
@@ -114,9 +119,8 @@ vector<string> RunConfig::install(Device& device) {
     runfile += "rm -rf /usr/src/" + filedir + " \n";
     runfile += "mkdir -p " + filedir + "\n";
     runfile += "echo Downloading install media\n";
-    runfile += "git clone $URL /usr/src/" + filedir + " 1> /dev/null \n";
+    runfile += "git clone $URL /usr/src/" + filedir + "  \n";
     runfile += "echo git repository downloaded \n";
-    runfile += "wait\n";
     runfile += "cd /usr/src/" + filedir + " \n";
     runfile += "git checkout  -b tuxconfig-branch $COMMIT\n";
     runfile += "echo commit checked out\n";
@@ -136,7 +140,7 @@ vector<string> RunConfig::install(Device& device) {
     runfile += "if [ -f Makefile ] ; then \n";
 //Build module
     runfile += "echo Making module \n";
-    runfile += "make 1> /dev/nu\n";
+    runfile += "make 1> /dev/null\n";
     runfile += "echo \"built source code\" \n";
 //Install module
     runfile += "echo installing module\n";
@@ -147,8 +151,7 @@ vector<string> RunConfig::install(Device& device) {
     runfile += "echo \"inserted module into kernel\" \n";
     runfile +=  "echo \"" + device.getDeviceid() + "," + device.getDevicename() + ","	+ to_string(device.getVoteDifference()) + "," + device.getOwnerGitId() + "," + device.getSuccessCode() + "," + device.getModulename() +  ", module-installed,"  + device.getCommit() + " \"  >> /var/lib/tuxconfig/history  \n";
     runfile += "fi \n";
-    runfile += "kill -SIGUSR1 " + to_string(::getpid()) + " \n";
-
+    runfile += "kill -SIGUSR1 " + to_string(pid) + " \n";
 
     boost::replace_all(filedir, "/", "-");
     string tuxconfig_run_name = "/usr/src/tuxconfig-" + filedir;
@@ -174,7 +177,7 @@ vector<string> RunConfig::install(Device& device) {
                 boost::replace_all(line, "test_program=", "");
                 boost::replace_all(line, "\"", "");
                 boost::trim(line);
-                test_program = line ;
+                test_program = line + "&" ;
 
             }
             if (line.find("test_message=") == 0) {

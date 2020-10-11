@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'ContributorTab2.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.7.1)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.12.8)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,12 +12,14 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'ContributorTab2.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.7.1. It"
+#error "This file was generated using the moc from 5.12.8. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
 
 QT_BEGIN_MOC_NAMESPACE
+QT_WARNING_PUSH
+QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_ContributorTab2_t {
     QByteArrayData data[9];
     char stringdata0[116];
@@ -49,7 +51,7 @@ QT_MOC_LITERAL(8, 102, 13) // "RebootMachine"
 static const uint qt_meta_data_ContributorTab2[] = {
 
  // content:
-       7,       // revision
+       8,       // revision
        0,       // classname
        0,    0, // classinfo
        5,   14, // methods
@@ -79,7 +81,7 @@ static const uint qt_meta_data_ContributorTab2[] = {
 void ContributorTab2::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
-        ContributorTab2 *_t = static_cast<ContributorTab2 *>(_o);
+        auto *_t = static_cast<ContributorTab2 *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->updateScreen((*reinterpret_cast< Device(*)>(_a[1]))); break;
@@ -92,10 +94,14 @@ void ContributorTab2::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
     }
 }
 
-const QMetaObject ContributorTab2::staticMetaObject = {
-    { &QWidget::staticMetaObject, qt_meta_stringdata_ContributorTab2.data,
-      qt_meta_data_ContributorTab2,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
-};
+QT_INIT_METAOBJECT const QMetaObject ContributorTab2::staticMetaObject = { {
+    &QWidget::staticMetaObject,
+    qt_meta_stringdata_ContributorTab2.data,
+    qt_meta_data_ContributorTab2,
+    qt_static_metacall,
+    nullptr,
+    nullptr
+} };
 
 
 const QMetaObject *ContributorTab2::metaObject() const
@@ -105,9 +111,9 @@ const QMetaObject *ContributorTab2::metaObject() const
 
 void *ContributorTab2::qt_metacast(const char *_clname)
 {
-    if (!_clname) return Q_NULLPTR;
+    if (!_clname) return nullptr;
     if (!strcmp(_clname, qt_meta_stringdata_ContributorTab2.stringdata0))
-        return static_cast<void*>(const_cast< ContributorTab2*>(this));
+        return static_cast<void*>(this);
     return QWidget::qt_metacast(_clname);
 }
 
@@ -127,4 +133,5 @@ int ContributorTab2::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     }
     return _id;
 }
+QT_WARNING_POP
 QT_END_MOC_NAMESPACE

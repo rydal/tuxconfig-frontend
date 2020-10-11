@@ -18,7 +18,7 @@ int main(int argc, char *argv[]) {
 	if (getuid() != 0) {
 		if (is_gui_present) {
 			 QApplication app(argc, argv);
-                    QuestionBox window("Run from desktop shortcut.");
+                    QuestionBox window("Run as root or using sudo.");
 				    return app.exec();
 
 			//Shows the window and returns when it is closed.

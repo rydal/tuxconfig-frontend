@@ -79,6 +79,7 @@ ConsoleTab::ConsoleTab(    QWidget *m_parent)
  }
 
 void ConsoleTab::showButtons(vector<string> details, bool success) {
+
 if (install_method == "install") {
     if (success) {
         works_button->setVisible(true);
