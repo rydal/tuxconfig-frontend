@@ -28,22 +28,29 @@ Device GetRemoteConfig::GetConfiguration(Device& configured_device, bool restore
 	}
 
 	string* os_string = GetOS::getLocalMchineDistro();
-	ostringstream os;
+    std::stringstream os;
     string description = configured_device.getDescription();
     boost::replace_all(description," ","%20");
     string name = configured_device.getDevicename();
     boost::replace_all(name," ","%20");
-
-    string url = "https://linuxconf.feedthepenguin.org/hehe/getdevice?deviceid="+ configured_device.getDeviceid() + "&attempt="	+ to_string(attempt_number) + "&distribution=" + os_string[0] + "&description=" + description + "&name=" + name;
-	os << curlpp::options::Url(url);
-	string str = os.str();
+    string device_name = configured_device.getDeviceid();
+    boost::replace_all(device_name,":","%3A");
+    string url = "https://linuxconf.feedthepenguin.org/live/getdevice?deviceid="+ device_name + "&attempt="	+ to_string(attempt_number) + "&distribution=" + os_string[0] + "&description=" + description + "&name=" + name;
+    cout  << url << endl;
+    curlpp::Cleanup cleanup;
+    curlpp::Easy easyhandle;
+    easyhandle.setOpt(curlpp::options::Url(url));
+    os << easyhandle << std::endl;
+    string str = os.str();
+    cout << str;
+    cout.flush();
 	Json::Value root;
 	Json::Reader reader;
 
     bool parsingSuccessful = reader.parse(str, root);
-    if (!parsingSuccessful) {
 
-               QuestionBox window("Cannot parse response from server.");
+    if (!parsingSuccessful) {
+            QuestionBox window("Cannot parse response from server.");
 
 
         exit(1);

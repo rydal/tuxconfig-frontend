@@ -24,6 +24,7 @@
 #include <fstream>
 #include <streambuf>
 #include "GetOS.h"
+#include <curl/curl.h>
 
 
 class GetLocalDevices {

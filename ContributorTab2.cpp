@@ -101,9 +101,12 @@ GetOS::runWebpage(details[4]);
 string* ContributorTab2::DownloadInfo(string owner_git_id) {
     details = new string[5];
 	ostringstream os;
-		string url = "https://linuxconf.feedthepenguin.org/hehe/getcontributor?owner_git_id=" + owner_git_id;
-		os << curlpp::options::Url(url);
-		string str = os.str();
+        string url = "https://linuxconf.feedthepeguin.org/live/getcontributor?owner_git_id=" + owner_git_id;
+                curlpp::Easy easyhandle;
+                easyhandle.setOpt(curlpp::options::Url(url));
+                 easyhandle.setOpt(new curlpp::options::WriteStream(&os));
+                easyhandle.perform();
+        string str = os.str();
 		Json::Value root;
 		Json::Reader reader;
 

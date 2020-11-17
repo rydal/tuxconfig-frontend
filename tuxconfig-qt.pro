@@ -56,9 +56,10 @@ SOURCES += CheckConnection.cpp \
 
 LIBS += -L"/usr/include/boost" -lboost_system \
 	-L"/usr/include/qtermwidget5" -lqtermwidget5 \ 
-	-L"/usr/local/include/curlpp" -lcurlpp \
 	-L"/usr/include/x86_64-linux-gnu/curl/" -lcurl \	
 	-L"/usr/include/jsoncpp" -ljsoncpp \
-	-L"/usr/lib/x86_64-linux-gnu" -lboost_system
+	-L"/usr/lib/x86_64-linux-gnu" -lboost_system \ 
+        -L"/usr/local/include/curlpp" -lcurlpp
+
 
 CONFIG += c++14

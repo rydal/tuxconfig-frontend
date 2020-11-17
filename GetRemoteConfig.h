@@ -13,12 +13,16 @@
 #include <fstream>
 #include <sstream>
 #include <curlpp/cURLpp.hpp>
+#include <curlpp/Easy.hpp>
 #include <curlpp/Options.hpp>
 #include <jsoncpp/json/json.h>
+
 #include "device.h"
 #include "GetOS.h"
 #include <QtWidgets>
 #include "QuestionBox.h"
+
+#include <curlpp/Infos.hpp>
 class GetRemoteConfig {
 public:
     /** Constructor

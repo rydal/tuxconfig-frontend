@@ -1,0 +1,6 @@
+tuxconfig (0.7.1) unstable; urgency=low
+
+  * Changelog messages
+
+ -- Your Name <rob@rydal.org>  Mon, 13 Aug 2012 14:09:01 -0300
+( Changed library resolution )

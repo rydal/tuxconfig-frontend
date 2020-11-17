@@ -10,7 +10,7 @@ string result_string;
 Feedback::Feedback(Device& device, bool successful) {
     // TODO Auto-generated constructor stub
 	ostringstream os;
-		string url = "https://linuxconf.feedthepenguin.org/hehe/reportback?";
+        string url = "https://linuxconf.feedthepenguin.org/live/reportback?";
 		if (successful == true) {
 		url +=  "success=true";
          string works_history =  "echo \"" + device.getDeviceid() + "," + device.getDevicename() + ","	+ to_string(device.getVoteDifference()) + "," + device.getOwnerGitId() + "," + device.getSuccessCode() + "," + device.getModulename() +  ",works," + device.getCommit() + "\" >> /var/lib/tuxconfig/history  \n";
@@ -34,14 +34,18 @@ Feedback::Feedback(Device& device, bool successful) {
 
 
         if (successful == false) {
-		os << curlpp::options::Url(url);
+            curlpp::Easy easyhandle;
+                   easyhandle.setOpt(curlpp::options::Url(url));
+                    easyhandle.setOpt(new curlpp::options::WriteStream(&os));
+                   easyhandle.perform();
+
 			 result_string =    os.str();
 			 // Let's parse it
 
              std::istringstream myStream("/var/lib/tuxconfig/"  + device.getDeviceid() + "-" + device.getCommit() + "-install.log");
              int size = myStream.str().size();
 
-              string curl_command = "/usr/bin/curl -X POST \"https://linuxconf.feedthepenguin.org/hehe/geterrorlog?code=" + device.getSuccessCode() + "&git_url=" + device.getGitUrl() + "&device_id=" + device.getDeviceid() + "\" -F 'data=@/var/lib/tuxconfig/" + device.getDeviceid() + "-install.log'";
+              string curl_command = "/usr/bin/curl -X POST \"https://linuxconf.feedthepenguin.org/live/geterrorlog?code=" + device.getSuccessCode() + "&git_url=" + device.getGitUrl() + "&device_id=" + device.getDeviceid() + "\" -F 'data=@/var/lib/tuxconfig/" + device.getDeviceid() + "-install.log'";
               cout<<"curl command = "<<curl_command<<endl;
 
               system (curl_command.c_str());

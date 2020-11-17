@@ -1,0 +1,15 @@
+Source: tuxconfig
+Version: 0.7.1
+Section: base
+Priority: optional
+Depends: libqtermwidget5-0 , libcurlpp0 , libjsoncpp1 , git , build-essential , curl, libboost-system-dev
+Maintainer: Rob Brew <rob@rydal.org>
+Description: Linux devices made easy
+  Install linux device drivers using a graphical interface.
+  More information at https://linuxconf.feedthepenguin.org/hehe
+
+Maintainer: "Firstname Lastname" <email.address@example.org>
+Standards-Version: 4.1.4
+Homepage: www.rydalinc.org
+Package: tuxconfig
+Architecture: amd64
